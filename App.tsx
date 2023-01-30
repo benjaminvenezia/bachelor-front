@@ -2,16 +2,24 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./store/store";
-import UserList from "./screens/UserList";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./screens/Home";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <>
       <StatusBar style="auto" />
       <ReduxProvider store={store}>
-        <UserList />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={Home} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </ReduxProvider>
-    </View>
+    </>
   );
 }
 

@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./screens/Home";
+import Habits from "./screens/Habits";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,6 +23,7 @@ const MyTabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Habits" component={Habits} />
       {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
     </Tab.Navigator>
   );
@@ -41,6 +43,7 @@ export default function App() {
           >
             <Stack.Screen options={{ headerShown: false }} name="MyTabs" component={MyTabs} />
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Habits" component={Habits} />
           </Stack.Navigator>
         </NavigationContainer>
       </ReduxProvider>

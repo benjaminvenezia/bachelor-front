@@ -4,6 +4,7 @@ import ROUTES from "../constants/routes";
 import About from "../screens/About";
 import Register from "../screens/Register";
 import Login from "../screens/Login";
+import Welcome from "../screens/Welcome";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const AuthNavigator = () => {
       <Stack.Screen name={ROUTES.REGISTER} component={Register} />
       <Stack.Screen name={ROUTES.LOGIN} component={Login} />
       <Stack.Screen name={ROUTES.ABOUT} component={About} />
+      <Stack.Screen name={ROUTES.WELCOME} component={Welcome} />
     </Stack.Navigator>
   );
 };

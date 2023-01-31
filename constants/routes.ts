@@ -11,4 +11,5 @@ export default {
   USER: "User",
   GAGE: "Gage",
   ABOUT: "About",
+  WELCOME: "Welcome",
 };

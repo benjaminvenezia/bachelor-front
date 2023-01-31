@@ -2,8 +2,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import ROUTES from "../constants/routes";
 import About from "../screens/About";
-import Register from "../screens/Register";
-import Login from "../screens/Login";
+import Register from "../screens/auth/Register";
+import Login from "../screens/auth/Login";
 import Suggestion from "../screens/Suggestion";
 
 const Stack = createStackNavigator();

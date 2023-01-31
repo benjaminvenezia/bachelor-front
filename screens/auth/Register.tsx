@@ -1,5 +1,5 @@
 import { View, Text, Button, StyleSheet } from "react-native";
-import ROUTES from "../constants/routes";
+import ROUTES from "../../constants/routes";
 const Register = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>

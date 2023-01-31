@@ -1,1 +1,9 @@
-import About from "./About";
+export { default as About } from "./About";
+export { default as Gage } from "./Gage";
+export { default as Habits } from "./Habits";
+export { default as Home } from "./Home";
+export { default as Shop } from "./Shop";
+export { default as Suggestion } from "./Suggestion";
+export { default as Team } from "./Team";
+export { default as Thematic } from "./Thematic";
+export { default as Welcome } from "./Welcome";

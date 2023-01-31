@@ -10,7 +10,7 @@ const AuthNavigator = () => {
     <Stack.Navigator initialRouteName={ROUTES.REGISTER}>
       <Stack.Screen name={ROUTES.REGISTER} component={Register} />
       <Stack.Screen name={ROUTES.LOGIN} component={Login} />
-      <Stack.Screen name={ROUTES.HOME} component={BottomTabNavigator} />
+      <Stack.Screen name={ROUTES.HOME} component={BottomTabNavigator} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

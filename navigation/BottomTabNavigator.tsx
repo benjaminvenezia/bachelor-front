@@ -1,7 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import About from "../screens/About";
-
 import ROUTES from "../constants/routes";
 import Habits from "../screens/Habits";
 import Gage from "../screens/Gage";
@@ -14,12 +12,12 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name={ROUTES.HOME} component={Home} />
-      <Tab.Screen name={ROUTES.HABITS} component={Habits} />
-      <Tab.Screen name={ROUTES.GAGE} component={Gage} />
-      <Tab.Screen name={ROUTES.TEAM} component={Team} />
-      <Tab.Screen name={ROUTES.SUGGEST} component={Suggestion} />
-      <Tab.Screen name={ROUTES.SHOP} component={Shop} />
+      <Tab.Screen name={ROUTES.HOME_TAB} component={Home} />
+      <Tab.Screen name={ROUTES.HABITS_TAB} component={Habits} />
+      <Tab.Screen name={ROUTES.GAGE_TAB} component={Gage} />
+      <Tab.Screen name={ROUTES.TEAM_TAB} component={Team} />
+      <Tab.Screen name={ROUTES.SUGGEST_TAB} component={Suggestion} />
+      <Tab.Screen name={ROUTES.SHOP_TAB} component={Shop} />
     </Tab.Navigator>
   );
 };

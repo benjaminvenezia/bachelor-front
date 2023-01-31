@@ -6,6 +6,8 @@ const Register = ({ navigation }) => {
       <Text>Inscription</Text>
 
       <Text>Déjà un compte?</Text>
+      <Button title="valider" onPress={() => navigation.navigate(ROUTES.HOME)} />
+      <Text></Text>
       <Button title="connexion" onPress={() => navigation.navigate(ROUTES.LOGIN)} />
     </View>
   );

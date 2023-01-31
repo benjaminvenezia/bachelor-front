@@ -12,4 +12,5 @@ export default {
   GAGE: "Gage",
   ABOUT: "About",
   WELCOME: "Welcome",
+  SUGGEST: "Suggestion",
 };

@@ -1,11 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
 import ROUTES from "../constants/routes";
-import Habits from "../screens/Habits";
-import Gage from "../screens/Gage";
-import Team from "../screens/Team";
-import Suggestion from "../screens/Suggestion";
-import Shop from "../screens/Shop";
+import { Home, Habits, Gage, Team, Suggestion, Shop } from "../screens";
 
 const Tab = createBottomTabNavigator();
 

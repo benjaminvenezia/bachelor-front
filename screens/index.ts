@@ -7,3 +7,5 @@ export { default as Suggestion } from "./Suggestion";
 export { default as Team } from "./Team";
 export { default as Thematic } from "./Thematic";
 export { default as Welcome } from "./Welcome";
+export { default as Login } from "./auth/Login";
+export { default as Register } from "./auth/Register";

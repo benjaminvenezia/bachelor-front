@@ -7,13 +7,14 @@ type TaskItemProps = {
   id: string;
   title: string;
   reward: number;
+  style?: any;
 };
 
-const TaskItem = ({ title, reward, id }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id, style }: TaskItemProps) => {
   const dispatch = useDispatch();
 
   return (
-    <Pressable onPress={() => dispatch(toggleStatus({ id: id }))} style={styles.container}>
+    <Pressable onPress={() => dispatch(toggleStatus({ id: id }))} style={[styles.container, style]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>

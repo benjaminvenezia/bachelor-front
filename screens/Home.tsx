@@ -6,6 +6,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/tasksListSlice";
 import { TaskItem, Hr } from "../components";
+import { GlobalStyles } from "../constants/style";
 
 const Home: FunctionComponent = () => {
   const tasks = useSelector((state: RootState) => state.tasksList);
@@ -26,10 +27,13 @@ const Home: FunctionComponent = () => {
       </View>
 
       <Hr />
+
       <View>
         <FlatList
           data={tasksDone}
-          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} />}
+          renderItem={({ item }) => (
+            <TaskItem title={item.title} reward={item.reward} id={item.id} style={{ backgroundColor: GlobalStyles.colors.done }} />
+          )}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />

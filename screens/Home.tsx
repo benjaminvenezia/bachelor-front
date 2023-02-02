@@ -1,20 +1,22 @@
 import { FunctionComponent } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Pressable } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/tasksListSlice";
-import { TaskItem, Hr } from "../components";
+import { TaskItem, Hr, DaysContainer } from "../components";
 import { GlobalStyles } from "../constants/style";
 
 const Home: FunctionComponent = () => {
   const tasks = useSelector((state: RootState) => state.tasksList);
+
   const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done);
   const tasksDone = tasks["tasks"].filter((task) => task.is_done);
 
   return (
     <SafeAreaView>
+      <DaysContainer />
       <View>
         <FlatList
           data={tasksNotDone}

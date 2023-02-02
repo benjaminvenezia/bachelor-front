@@ -9,17 +9,26 @@ import { TaskItem } from "../components";
 
 const Home: FunctionComponent = () => {
   const tasks = useSelector((state: RootState) => state.tasksList);
-
-  console.log(tasks["tasks"]);
+  const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done);
+  const tasksDone = tasks["tasks"].filter((task) => task.is_done);
 
   return (
     <SafeAreaView>
       <FlatList
-        data={tasks["tasks"]}
+        data={tasksNotDone}
         renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} />}
         keyExtractor={(item) => item.id}
+        numColumns={3}
       />
-      <Text>Ici seront affichés les cards</Text>
+
+      <Text>Hr</Text>
+
+      <FlatList
+        data={tasksDone}
+        renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} />}
+        keyExtractor={(item) => item.id}
+        numColumns={3}
+      />
     </SafeAreaView>
   );
 };

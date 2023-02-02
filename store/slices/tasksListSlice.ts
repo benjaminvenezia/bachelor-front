@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type Task = {
   id: string;
+  title: string;
+  reward: number;
 };
 
 export type TaskListState = {
@@ -9,11 +11,27 @@ export type TaskListState = {
 };
 
 const initialState: TaskListState = {
-  tasks: [],
+  tasks: [
+    {
+      id: "1",
+      title: "Nettoyer la cuisine",
+      reward: 15,
+    },
+    {
+      id: "2",
+      title: "Faire la vaisselle",
+      reward: 20,
+    },
+    {
+      id: "3",
+      title: "Vider et nettoyer la table",
+      reward: 15,
+    },
+  ],
 };
 
 const tasksListSlice = createSlice({
-  name: "favorites",
+  name: "tasks",
   initialState: initialState,
   reducers: {
     addTask: (state, action) => {

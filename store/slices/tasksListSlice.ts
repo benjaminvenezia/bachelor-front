@@ -44,6 +44,19 @@ const tasksListSlice = createSlice({
   name: "tasks",
   initialState: initialState,
   reducers: {
+    toggleStatus: (state, action) => {
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => {
+          if (task.id === action.payload.id) {
+            return { ...task, is_done: !task.is_done };
+          } else {
+            return task;
+          }
+        }),
+      };
+    },
+
     addTask: (state, action) => {
       //we can mutate our state
       state.tasks.push(action.payload.id);
@@ -54,6 +67,5 @@ const tasksListSlice = createSlice({
   },
 });
 
-export const addTask = tasksListSlice.actions.addTask;
-export const removeTask = tasksListSlice.actions.removeTask;
+export const { addTask, removeTask, toggleStatus } = tasksListSlice.actions;
 export default tasksListSlice.reducer;

@@ -16,7 +16,7 @@ const Home: FunctionComponent = () => {
     <SafeAreaView>
       <FlatList
         data={tasksNotDone}
-        renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} />}
+        renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} />}
         keyExtractor={(item) => item.id}
         numColumns={3}
       />
@@ -25,7 +25,7 @@ const Home: FunctionComponent = () => {
 
       <FlatList
         data={tasksDone}
-        renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} />}
+        renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} />}
         keyExtractor={(item) => item.id}
         numColumns={3}
       />

@@ -1,14 +1,19 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
+import { toggleStatus } from "../../store/slices/tasksListSlice";
+import { useDispatch } from "react-redux";
 
 type TaskItemProps = {
+  id: string;
   title: string;
   reward: number;
 };
 
-const TaskItem = ({ title, reward }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id }: TaskItemProps) => {
+  const dispatch = useDispatch();
+
   return (
-    <Pressable onPress={() => alert(1)} style={styles.container}>
+    <Pressable onPress={() => dispatch(toggleStatus({ id: id }))} style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>

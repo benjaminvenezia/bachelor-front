@@ -9,7 +9,6 @@ const DaysContainer = () => {
 
   return (
     <View style={styles.container}>
-      <Text>The day active is : {day["activeDay"]}</Text>
       <Day>{DAYS.MONDAY}</Day>
       <Day>{DAYS.TUESDAY}</Day>
       <Day>{DAYS.WEDNESDAY}</Day>

@@ -7,11 +7,11 @@ export type Task = {
   is_done: boolean;
 };
 
-export type TaskListState = {
+export type ActiveTasksState = {
   tasks: Task[];
 };
 
-const initialState: TaskListState = {
+const initialState: ActiveTasksState = {
   tasks: [
     {
       id: "1",
@@ -41,10 +41,10 @@ const initialState: TaskListState = {
 };
 
 /**
- * return a DAY ASSOCIATED TASKS.
+ * return active tasks (selected in thematic menu) attached in a specific day.
  */
-const tasksListSlice = createSlice({
-  name: "tasks",
+const activeTasksSlice = createSlice({
+  name: "activeTasks",
   initialState: initialState,
   reducers: {
     toggleStatus: (state, action) => {
@@ -60,15 +60,11 @@ const tasksListSlice = createSlice({
       };
     },
 
-    addTask: (state, action) => {
-      //we can mutate our state
-      state.tasks.push(action.payload.id);
-    },
     removeTask: (state, action) => {
       state.tasks.splice(state.tasks.indexOf(action.payload.id), 1);
     },
   },
 });
 
-export const { addTask, removeTask, toggleStatus } = tasksListSlice.actions;
-export default tasksListSlice.reducer;
+export const { removeTask, toggleStatus } = activeTasksSlice.actions;
+export default activeTasksSlice.reducer;

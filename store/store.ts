@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import tasksListSlice from "./slices/tasksListSlice";
+import tasksListSlice from "./slices/activeTasksSlice";
 import userListSlice from "./slices/userListSlice";
 import daySlice from "./slices/daySlice";
 

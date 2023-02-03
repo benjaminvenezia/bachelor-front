@@ -1,6 +1,6 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
-import { toggleStatus } from "../../store/slices/tasksListSlice";
+import { toggleStatus } from "../../store/slices/activeTasksSlice";
 import { useDispatch } from "react-redux";
 
 type TaskItemProps = {

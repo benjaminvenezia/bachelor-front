@@ -14,30 +14,30 @@ export type ActiveTasksState = {
 
 const initialState: ActiveTasksState = {
   tasks: [
-    {
-      id: "1",
-      title: "Nettoyer la cuisine",
-      reward: 15,
-      is_done: false,
-    },
-    {
-      id: "2",
-      title: "Faire la vaisselle",
-      reward: 20,
-      is_done: false,
-    },
-    {
-      id: "3",
-      title: "Vider et nettoyer la table",
-      reward: 15,
-      is_done: false,
-    },
-    {
-      id: "4",
-      title: "Ranger les courses",
-      reward: 15,
-      is_done: false,
-    },
+    // {
+    //   id: "1",
+    //   title: "Nettoyer la cuisine",
+    //   reward: 15,
+    //   is_done: false,
+    // },
+    // {
+    //   id: "2",
+    //   title: "Faire la vaisselle",
+    //   reward: 20,
+    //   is_done: false,
+    // },
+    // {
+    //   id: "3",
+    //   title: "Vider et nettoyer la table",
+    //   reward: 15,
+    //   is_done: false,
+    // },
+    // {
+    //   id: "4",
+    //   title: "Ranger les courses",
+    //   reward: 15,
+    //   is_done: false,
+    // },
   ],
 };
 

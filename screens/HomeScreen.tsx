@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, Hr, DaysContainer, CategoriesList } from "../components";
+import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 
 const Home: FunctionComponent = () => {
@@ -13,24 +13,39 @@ const Home: FunctionComponent = () => {
   const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done);
   const tasksDone = tasks["tasks"].filter((task) => task.is_done);
 
+  if (tasksDone.length === 0 && tasksNotDone.length === 0) {
+    return (
+      <SafeAreaView>
+        <DaysContainer />
+        <Title>Aucune tâche associée à ce jour!</Title>
+        <Text>Choisissez une catégorie</Text>
+        <CategoriesList />
+
+        <Text>Nos Suggestions : button</Text>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView>
       <DaysContainer />
       <View>
         <FlatList
+          style={styles.listContainer}
           data={tasksNotDone}
           renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} />}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />
 
-        {tasksNotDone.length === 0 && <Text>Pas de tâches prévue aujourd'hui.</Text>}
+        {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
       </View>
 
       <Hr />
 
       <View>
         <FlatList
+          style={styles.listContainer}
           data={tasksDone}
           renderItem={({ item }) => (
             <TaskItem title={item.title} reward={item.reward} id={item.id} style={{ backgroundColor: GlobalStyles.colors.done }} />
@@ -39,11 +54,22 @@ const Home: FunctionComponent = () => {
           numColumns={3}
         />
 
-        {tasksDone.length === 0 && <Text>Aucune tâche effectuée</Text>}
+        {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
       </View>
 
       <CategoriesList />
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  listContainer: {
+    minHeight: 110,
+  },
+  message: {
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});
+
 export default Home;

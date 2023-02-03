@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, Hr, DaysContainer } from "../components";
+import { TaskItem, Hr, DaysContainer, CategoriesList } from "../components";
 import { GlobalStyles } from "../constants/style";
 
 const Home: FunctionComponent = () => {
@@ -41,6 +41,8 @@ const Home: FunctionComponent = () => {
 
         {tasksDone.length === 0 && <Text>Aucune tâche effectuée</Text>}
       </View>
+
+      <CategoriesList />
     </SafeAreaView>
   );
 };

@@ -5,7 +5,7 @@ export type Day = {
 };
 
 const initialState: Day = {
-  activeDay: "lun",
+  activeDay: "",
 };
 
 const daySlice = createSlice({
@@ -14,8 +14,7 @@ const daySlice = createSlice({
   reducers: {
     changeDay: (state, action) => {
       return {
-        ...state,
-        day: action.payload.day,
+        activeDay: action.payload.activeDay,
       };
     },
   },

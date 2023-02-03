@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Day } from "../index";
+import Day from "./Day";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
@@ -23,6 +23,9 @@ const DaysContainer = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
   },
 });
+
 export default DaysContainer;

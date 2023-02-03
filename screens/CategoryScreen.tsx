@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { TaskItem } from "../components";
+import { TaskItem, Title } from "../components";
 import { FlatList } from "react-native-gesture-handler";
 import { GlobalStyles } from "../constants/style";
 
@@ -12,7 +12,7 @@ const Category = ({ navigation, route }: any) => {
 
   return (
     <View>
-      <Text style={styles.title}>{categoryName}</Text>
+      <Title>{categoryName}</Title>
       <FlatList
         data={categoryTasks}
         renderItem={({ item }) => (

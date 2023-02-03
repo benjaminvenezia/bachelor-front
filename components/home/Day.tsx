@@ -12,8 +12,6 @@ const Day = ({ children }: DayProps) => {
 
   const storeActiveDay = useSelector((state: RootState) => state.day);
 
-  console.log(storeActiveDay);
-
   return (
     <Pressable onPress={() => dispatch(changeDay({ activeDay: children }))}>
       <Text style={storeActiveDay["activeDay"] === children ? [styles.text, styles.active] : styles.text}>{children}</Text>

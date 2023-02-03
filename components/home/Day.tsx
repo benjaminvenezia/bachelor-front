@@ -1,6 +1,7 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 import { changeDay } from "../../store/slices/daySlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 type DayProps = {
   children: any;
@@ -9,9 +10,13 @@ type DayProps = {
 const Day = ({ children }: DayProps) => {
   const dispatch = useDispatch();
 
+  const storeActiveDay = useSelector((state: RootState) => state.day);
+
+  console.log(storeActiveDay);
+
   return (
     <Pressable onPress={() => dispatch(changeDay({ activeDay: children }))}>
-      <Text style={styles.text}>{children}</Text>
+      <Text style={storeActiveDay["activeDay"] === children ? [styles.text, styles.active] : styles.text}>{children}</Text>
     </Pressable>
   );
 };
@@ -19,6 +24,9 @@ const Day = ({ children }: DayProps) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
+  },
+  active: {
+    fontWeight: "bold",
   },
 });
 

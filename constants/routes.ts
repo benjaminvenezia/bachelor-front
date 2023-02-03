@@ -6,6 +6,8 @@ export default {
   HOME_TAB: "Home Tab",
   HOME_DRAWER: "Home Drawer",
 
+  CATEGORY: "Category",
+
   CONNECTUS: "ConnectUs",
   CONNECTUS_TAB: "ConnectUs Tab",
   CONNECTUS_DRAWER: "ConnectUs Drawer",

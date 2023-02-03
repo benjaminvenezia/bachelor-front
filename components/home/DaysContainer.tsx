@@ -1,9 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Day } from "../index";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const DaysContainer = () => {
+  const day = useSelector((state: RootState) => state.day);
+
   return (
-    <View>
+    <View style={styles.container}>
+      <Text>The day active is : {day["activeDay"]}</Text>
       <Day>Lun</Day>
       <Day>Mar</Day>
       <Day>Mer</Day>
@@ -14,4 +19,10 @@ const DaysContainer = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+  },
+});
 export default DaysContainer;

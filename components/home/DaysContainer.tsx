@@ -1,12 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import Day from "./Day";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import DAYS from "../../constants/days";
 
 const DaysContainer = () => {
-  const day = useSelector((state: RootState) => state.day);
-
   return (
     <View style={styles.container}>
       <Day>{DAYS.MONDAY}</Day>

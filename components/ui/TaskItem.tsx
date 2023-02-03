@@ -8,13 +8,17 @@ type TaskItemProps = {
   title: string;
   reward: number;
   style?: any;
+  isPresentation?: boolean;
 };
 
-const TaskItem = ({ title, reward, id, style }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id, style, isPresentation }: TaskItemProps) => {
   const dispatch = useDispatch();
 
+  const handleToggle = () => dispatch(toggleStatus({ id: id }));
+  const handleAddToActiveDay = () => alert(1);
+
   return (
-    <Pressable onPress={() => dispatch(toggleStatus({ id: id }))} style={[styles.container, style]}>
+    <Pressable onPress={isPresentation ? handleAddToActiveDay : handleToggle} style={[styles.container, style]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>

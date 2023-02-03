@@ -1,5 +1,7 @@
-export { default as TaskItem } from "./ui/TaskItem";
-export { default as Hr } from "./ui/Hr";
-export { default as DaysContainer } from "./home/DaysContainer";
-export { default as CategoriesList } from "./home/CategoriesList";
-export { default as CategoryItem } from "./home/CategoryItem";
+import TaskItem from "./ui/TaskItem";
+import Hr from "./ui/Hr";
+import DaysContainer from "./home/DaysContainer";
+import CategoriesList from "./home/CategoriesList";
+import CategoryItem from "./home/CategoryItem";
+
+export { TaskItem, Hr, DaysContainer, CategoriesList, CategoryItem };

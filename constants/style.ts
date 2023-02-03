@@ -5,4 +5,8 @@ export const GlobalStyles = {
     presentation: "lightblue",
     muted: "#515151",
   },
+  fonts: {
+    h1: 30,
+    h2: 22,
+  },
 };

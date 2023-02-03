@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { TaskItem } from "../components";
@@ -12,7 +12,7 @@ const Category = ({ navigation, route }: any) => {
 
   return (
     <View>
-      <Text>{categoryName}</Text>
+      <Text style={styles.title}>{categoryName}</Text>
       <FlatList
         data={categoryTasks}
         renderItem={({ item }) => (
@@ -30,4 +30,16 @@ const Category = ({ navigation, route }: any) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: GlobalStyles.fonts.h1,
+    marginBottom: 10,
+  },
+});
+
 export default Category;

@@ -1,6 +1,7 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 import ROUTES from "../../constants/routes";
-const Register = ({ navigation }) => {
+
+const Register = ({ navigation }: any) => {
   return (
     <View style={styles.wrapper}>
       <Text>Inscription</Text>

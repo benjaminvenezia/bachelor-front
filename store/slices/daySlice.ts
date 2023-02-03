@@ -8,6 +8,9 @@ const initialState: Day = {
   activeDay: "",
 };
 
+/**
+ * This slice store the ACTIVE DAY selected by user.
+ */
 const daySlice = createSlice({
   name: "day",
   initialState: initialState,

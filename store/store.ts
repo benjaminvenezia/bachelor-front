@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import tasksListSlice from "./slices/activeTasksSlice";
+import activeTasksSlice from "./slices/activeTasksSlice";
 import userListSlice from "./slices/userListSlice";
 import daySlice from "./slices/daySlice";
 import allTasksSlice from "./slices/allTasksSlice";
 
 const rootReducer = combineReducers({
   userList: userListSlice,
-  tasksList: tasksListSlice,
+  activeTasksList: activeTasksSlice,
   allTasksList: allTasksSlice,
   day: daySlice,
 });

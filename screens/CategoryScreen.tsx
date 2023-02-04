@@ -1,14 +1,27 @@
-import { View, Text, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { TaskItem, Title } from "../components";
-import { FlatList } from "react-native-gesture-handler";
 import { GlobalStyles } from "../constants/style";
+import ROUTES from "../constants/routes";
+import { addTask } from "../store/slices/activeTasksSlice";
 
-const Category = ({ navigation, route }: any) => {
+const CategoryScreen = ({ navigation, route }: any) => {
+  const dispatch = useDispatch();
+
+  const [activatedTasks, setActivatedTasks] = useState([]);
+
   const { categoryName } = route.params;
+
   const allTasks = useSelector((state: RootState) => state.allTasksList);
+
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
+
+  const addTasksInHomeScreen = () => {
+    dispatch(addTask(activatedTasks));
+    navigation.navigate(ROUTES.HOME);
+  };
 
   return (
     <View>
@@ -20,13 +33,20 @@ const Category = ({ navigation, route }: any) => {
             title={item.title}
             reward={item.reward}
             id={item.id}
+            category={item.category}
             style={{ backgroundColor: GlobalStyles.colors.presentation }}
             isPresentation={true}
+            setActivatedTasks={setActivatedTasks}
+            activatedTasks={activatedTasks}
           />
         )}
         keyExtractor={(item) => item.id}
         numColumns={3}
       />
+
+      <Pressable onPress={addTasksInHomeScreen}>
+        <Text>Ajouter</Text>
+      </Pressable>
     </View>
   );
 };
@@ -42,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Category;
+export default CategoryScreen;

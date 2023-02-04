@@ -7,8 +7,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 
-const Home: FunctionComponent = () => {
-  const tasks = useSelector((state: RootState) => state.tasksList);
+const HomeScreen: FunctionComponent = () => {
+  const tasks = useSelector((state: RootState) => state.activeTasksList);
 
   const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done);
   const tasksDone = tasks["tasks"].filter((task) => task.is_done);
@@ -33,7 +33,7 @@ const Home: FunctionComponent = () => {
         <FlatList
           style={styles.listContainer}
           data={tasksNotDone}
-          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} />}
+          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} />}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />
@@ -48,7 +48,13 @@ const Home: FunctionComponent = () => {
           style={styles.listContainer}
           data={tasksDone}
           renderItem={({ item }) => (
-            <TaskItem title={item.title} reward={item.reward} id={item.id} style={{ backgroundColor: GlobalStyles.colors.done }} />
+            <TaskItem
+              title={item.title}
+              reward={item.reward}
+              id={item.id}
+              category={item.category}
+              style={{ backgroundColor: GlobalStyles.colors.done }}
+            />
           )}
           keyExtractor={(item) => item.id}
           numColumns={3}
@@ -72,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default HomeScreen;

@@ -1,7 +1,7 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 import ROUTES from "../../constants/routes";
 
-const Register = ({ navigation }: any) => {
+const RegisterScreen = ({ navigation }: any) => {
   return (
     <View style={styles.wrapper}>
       <Text>Inscription</Text>
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default RegisterScreen;

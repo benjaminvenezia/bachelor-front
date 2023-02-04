@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
-const Gage = () => {
+const GageScreen = () => {
   return (
     <View>
       <Text>Gage</Text>
     </View>
   );
 };
-export default Gage;
+export default GageScreen;

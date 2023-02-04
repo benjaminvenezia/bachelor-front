@@ -1,44 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export type Task = {
-  id: string;
-  title: string;
-  reward: number;
-  is_done: boolean;
-  // associated_day: string;
-};
+import { Task } from "./allTasksSlice";
 
 export type ActiveTasksState = {
   tasks: Task[];
 };
 
 const initialState: ActiveTasksState = {
-  tasks: [
-    // {
-    //   id: "1",
-    //   title: "Nettoyer la cuisine",
-    //   reward: 15,
-    //   is_done: false,
-    // },
-    // {
-    //   id: "2",
-    //   title: "Faire la vaisselle",
-    //   reward: 20,
-    //   is_done: false,
-    // },
-    // {
-    //   id: "3",
-    //   title: "Vider et nettoyer la table",
-    //   reward: 15,
-    //   is_done: false,
-    // },
-    // {
-    //   id: "4",
-    //   title: "Ranger les courses",
-    //   reward: 15,
-    //   is_done: false,
-    // },
-  ],
+  tasks: [],
 };
 
 /**
@@ -60,12 +28,18 @@ const activeTasksSlice = createSlice({
         }),
       };
     },
+    addTask: (state, action) => {
+      const tasksFromCategory = action.payload;
 
+      tasksFromCategory.forEach((taskObject: Task) => {
+        state.tasks.push(taskObject);
+      });
+    },
     removeTask: (state, action) => {
       state.tasks.splice(state.tasks.indexOf(action.payload.id), 1);
     },
   },
 });
 
-export const { removeTask, toggleStatus } = activeTasksSlice.actions;
+export const { addTask, removeTask, toggleStatus } = activeTasksSlice.actions;
 export default activeTasksSlice.reducer;

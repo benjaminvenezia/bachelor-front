@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
-const Shop = () => {
+const ShopScreen = () => {
   return (
     <View>
       <Text>Shop</Text>
     </View>
   );
 };
-export default Shop;
+export default ShopScreen;

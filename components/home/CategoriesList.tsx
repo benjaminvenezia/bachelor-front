@@ -6,11 +6,12 @@ const CategoriesList = () => {
   return (
     <View style={styles.container}>
       {Object.values(CATEGORIES).map((category, index) => {
-        return <CategoryItem>{category}</CategoryItem>;
+        return <CategoryItem key={index}>{category}</CategoryItem>;
       })}
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",

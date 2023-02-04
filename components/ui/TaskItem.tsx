@@ -33,13 +33,10 @@ const TaskItem = ({ title, reward, id, style, category, isPresentation, setActiv
       is_done: false,
     };
 
-    /**
-     * Il faut regarder la dedans et aussi dans le store!!!! sinon si on quitte la page et quon revient ca bug
-     */
-    const allTasksIndexes = activatedTasks?.map((task) => task.id);
+    const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
     const homeTasksIndexes = homeTasks["tasks"].map((task) => task.id);
 
-    if (!allTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
+    if (!locallyTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
       setActivatedTasks((old: any) => [...old, taskToAdd]);
     }
   };

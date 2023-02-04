@@ -6,6 +6,7 @@ import { Button, TaskItem, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { addTask } from "../store/slices/activeTasksSlice";
+import { Task } from "../store/slices/allTasksSlice";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   let locallyTasksIndexes: Array<string>;
 
   useEffect(() => {
-    locallyTasksIndexes = activatedTasks.map((task) => task.id);
+    locallyTasksIndexes = activatedTasks.map((task: Task) => task.id);
   }, [activatedTasks]);
 
   const allTasks = useSelector((state: RootState) => state.allTasksList);

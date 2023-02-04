@@ -1,9 +1,10 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus } from "../../store/slices/activeTasksSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, SetStateAction } from "react";
 import { Task } from "../../store/slices/allTasksSlice";
+import { RootState } from "../../store/store";
 
 type TaskItemProps = {
   id: string;
@@ -17,6 +18,8 @@ type TaskItemProps = {
 };
 
 const TaskItem = ({ title, reward, id, style, category, isPresentation, setActivatedTasks, activatedTasks }: TaskItemProps) => {
+  const homeTasks = useSelector((state: RootState) => state.activeTasksList);
+
   const dispatch = useDispatch();
 
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
@@ -30,9 +33,13 @@ const TaskItem = ({ title, reward, id, style, category, isPresentation, setActiv
       is_done: false,
     };
 
+    /**
+     * Il faut regarder la dedans et aussi dans le store!!!! sinon si on quitte la page et quon revient ca bug
+     */
     const allTasksIndexes = activatedTasks?.map((task) => task.id);
+    const homeTasksIndexes = homeTasks["tasks"].map((task) => task.id);
 
-    if (!allTasksIndexes?.includes(taskToAdd.id)) {
+    if (!allTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
       setActivatedTasks((old: any) => [...old, taskToAdd]);
     }
   };

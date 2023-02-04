@@ -3,10 +3,11 @@ import { GlobalStyles } from "../../constants/style";
 
 type Props = {
   children: string;
+  style: object;
 };
 
-const Title = ({ children }: Props) => {
-  return <Text style={styles.title}>{children}</Text>;
+const Title = ({ children, style }: Props) => {
+  return <Text style={[styles.title, style]}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({

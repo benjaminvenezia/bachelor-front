@@ -25,7 +25,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   return (
     <View style={styles.container}>
-      <Title>{categoryName}</Title>
+      <Title style={styles.title}>{categoryName}</Title>
       <FlatList
         data={categoryTasks}
         renderItem={({ item }) => (
@@ -59,9 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontWeight: "bold",
-    fontSize: GlobalStyles.fonts.h1,
-    marginBottom: 10,
+    marginVertical: 15,
   },
 });
 

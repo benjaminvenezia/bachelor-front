@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../constants/style";
 
 type Props = {
   children: string;
-  style: object;
+  style?: object;
 };
 
 const Title = ({ children, style }: Props) => {

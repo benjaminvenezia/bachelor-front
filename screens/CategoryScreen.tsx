@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { TaskItem, Title } from "../components";
+import { Button, TaskItem, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { addTask } from "../store/slices/activeTasksSlice";
@@ -24,7 +24,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Title>{categoryName}</Title>
       <FlatList
         data={categoryTasks}
@@ -44,15 +44,18 @@ const CategoryScreen = ({ navigation, route }: any) => {
         numColumns={3}
       />
 
-      <Pressable onPress={addTasksInHomeScreen}>
-        <Text>Ajouter</Text>
-      </Pressable>
+      <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={addTasksInHomeScreen} alternativeStyle={true}>
+        Ajouter
+      </Button>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  button: {
     flex: 1,
   },
   title: {

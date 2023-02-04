@@ -2,9 +2,9 @@ import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus } from "../../store/slices/activeTasksSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, SetStateAction } from "react";
 import { Task } from "../../store/slices/allTasksSlice";
 import { RootState } from "../../store/store";
+import { useState } from "react";
 
 type TaskItemProps = {
   id: string;
@@ -20,11 +20,15 @@ type TaskItemProps = {
 const TaskItem = ({ title, reward, id, style, category, isPresentation, setActivatedTasks, activatedTasks }: TaskItemProps) => {
   const homeTasks = useSelector((state: RootState) => state.activeTasksList);
 
+  const [clickedTask, setClickedTask] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
 
   const handleAddToActiveDay = () => {
+    setClickedTask(true);
+
     const taskToAdd: Task = {
       id,
       title,
@@ -40,6 +44,18 @@ const TaskItem = ({ title, reward, id, style, category, isPresentation, setActiv
       setActivatedTasks((old: any) => [...old, taskToAdd]);
     }
   };
+
+  if (isPresentation) {
+    return (
+      <Pressable
+        onPress={isPresentation ? handleAddToActiveDay : handleToggle}
+        style={[styles.container, clickedTask ? styles.active : styles.default]}
+      >
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.reward}>{reward} Points</Text>
+      </Pressable>
+    );
+  }
 
   return (
     <Pressable onPress={isPresentation ? handleAddToActiveDay : handleToggle} style={[styles.container, style]}>
@@ -59,6 +75,12 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",
     alignItems: "center",
+  },
+  active: {
+    backgroundColor: "purple",
+  },
+  default: {
+    backgroundColor: "lightblue",
   },
   title: {
     fontWeight: "bold",

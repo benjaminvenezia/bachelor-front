@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -13,6 +13,11 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const [activatedTasks, setActivatedTasks] = useState([]);
 
   const { categoryName } = route.params;
+  let locallyTasksIndexes: Array<string>;
+
+  useEffect(() => {
+    locallyTasksIndexes = activatedTasks.map((task) => task.id);
+  }, [activatedTasks]);
 
   const allTasks = useSelector((state: RootState) => state.allTasksList);
 
@@ -35,6 +40,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
             id={item.id}
             category={item.category}
             style={{ backgroundColor: GlobalStyles.colors.presentation }}
+            // style={locallyTasksIndexes?.includes(item.id) ? { backgroundColor: "red" } : ""}
             isPresentation={true}
             setActivatedTasks={setActivatedTasks}
             activatedTasks={activatedTasks}

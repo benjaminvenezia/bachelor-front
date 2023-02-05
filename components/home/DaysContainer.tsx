@@ -1,17 +1,17 @@
 import { View, StyleSheet } from "react-native";
-import { Day } from "../";
+import { DayItem } from "../";
 import DAYS from "../../constants/days";
 
 const DaysContainer = () => {
   return (
     <View style={styles.container}>
-      <Day>{DAYS.MONDAY}</Day>
-      <Day>{DAYS.TUESDAY}</Day>
-      <Day>{DAYS.WEDNESDAY}</Day>
-      <Day>{DAYS.THURSDAY}</Day>
-      <Day>{DAYS.FRIDAY}</Day>
-      <Day>{DAYS.SATURDAY}</Day>
-      <Day>{DAYS.SUNDAY}</Day>
+      <DayItem>{DAYS.MONDAY}</DayItem>
+      <DayItem>{DAYS.TUESDAY}</DayItem>
+      <DayItem>{DAYS.WEDNESDAY}</DayItem>
+      <DayItem>{DAYS.THURSDAY}</DayItem>
+      <DayItem>{DAYS.FRIDAY}</DayItem>
+      <DayItem>{DAYS.SATURDAY}</DayItem>
+      <DayItem>{DAYS.SUNDAY}</DayItem>
     </View>
   );
 };

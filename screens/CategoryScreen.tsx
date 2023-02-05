@@ -14,11 +14,6 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const [activatedTasks, setActivatedTasks] = useState([]);
 
   const { categoryName } = route.params;
-  // let locallyTasksIndexes: Array<string>;
-
-  // useEffect(() => {
-  //   locallyTasksIndexes = activatedTasks.map((task: Task) => task.id);
-  // }, [activatedTasks]);
 
   const allTasks = useSelector((state: RootState) => state.allTasksList);
 

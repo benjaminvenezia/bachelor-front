@@ -4,7 +4,7 @@ import Title from "./ui/Title";
 import CategoryItem from "./home/CategoryItem";
 import DaysContainer from "./home/DaysContainer";
 import CategoriesList from "./home/CategoriesList";
-import Day from "./home/Day";
+import DayItem from "./home/DayItem";
 import Button from "./ui/Button";
 
-export { TaskItem, Hr, DaysContainer, Day, CategoriesList, CategoryItem, Title, Button };
+export { TaskItem, Hr, DaysContainer, DayItem, CategoriesList, CategoryItem, Title, Button };

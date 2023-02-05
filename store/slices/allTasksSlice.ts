@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CATEGORIES from "../../constants/categories";
+import DAYS from "../../constants/days";
 
 export type Task = {
   id: string;
@@ -7,6 +8,7 @@ export type Task = {
   category: string;
   reward: number;
   is_done: boolean;
+  associated_day: string;
 };
 
 export type GenericsTasksState = {
@@ -21,6 +23,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 15,
       is_done: false,
+      associated_day: DAYS.MONDAY,
     },
     {
       id: "2",
@@ -28,6 +31,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 30,
       is_done: false,
+      associated_day: DAYS.MONDAY,
     },
     {
       id: "3",
@@ -35,6 +39,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 10,
       is_done: false,
+      associated_day: DAYS.MONDAY,
     },
     {
       id: "4",
@@ -42,6 +47,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 15,
       is_done: false,
+      associated_day: DAYS.MONDAY,
     },
     {
       id: "5",
@@ -49,6 +55,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 10,
       is_done: false,
+      associated_day: DAYS.TUESDAY,
     },
     {
       id: "6",
@@ -56,6 +63,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.ROOM,
       reward: 10,
       is_done: false,
+      associated_day: DAYS.WEDNESDAY,
     },
   ],
 };

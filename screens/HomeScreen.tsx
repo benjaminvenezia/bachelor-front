@@ -16,23 +16,21 @@ const HomeScreen: FunctionComponent = () => {
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <DaysContainer />
         <Title>Aucune tâche associée à ce jour!</Title>
         <Text>Choisissez une catégorie</Text>
-        <CategoriesList />
-
         <Text>Nos Suggestions : button</Text>
+        <CategoriesList />
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <DaysContainer />
-      <View>
+      <View style={styles.listContainer}>
         <FlatList
-          style={styles.listContainer}
           data={tasksNotDone}
           renderItem={({ item }) => (
             <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} associated_day={item.associated_day} />
@@ -46,9 +44,8 @@ const HomeScreen: FunctionComponent = () => {
 
       <Hr />
 
-      <View>
+      <View style={styles.listContainer}>
         <FlatList
-          style={styles.listContainer}
           data={tasksDone}
           renderItem={({ item }) => (
             <TaskItem
@@ -73,12 +70,16 @@ const HomeScreen: FunctionComponent = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   listContainer: {
-    minHeight: 110,
+    minHeight: 140,
   },
   message: {
     fontWeight: "bold",
     textAlign: "center",
+    marginBottom: 50,
   },
 });
 

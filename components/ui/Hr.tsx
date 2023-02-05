@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#D4D4D4",
     width: "80%",
-    marginVertical: 5,
+    marginVertical: 10,
   },
 });
 

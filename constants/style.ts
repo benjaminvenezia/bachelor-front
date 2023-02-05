@@ -2,6 +2,7 @@ export const GlobalStyles = {
   colors: {
     primary: "#000000",
     secondary: "#ffffff",
+    background: "#ffffff",
     todo: "#FCB1B1",
     done: "#C2FFC8",
     presentation: "lightblue",

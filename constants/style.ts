@@ -8,6 +8,15 @@ export const GlobalStyles = {
     presentation: "lightblue",
     muted: "#515151",
   },
+  reactNative: {
+    primary: "rgb(0, 0, 0)",
+    background: "rgb(255, 255, 255)",
+    card: "rgb(255, 255, 255)",
+    text: "rgb(0, 0, 0)",
+    border: "rgb(255, 255, 255)",
+    notification: "rgb(0, 0, 0)",
+    darktheme: false,
+  },
   fonts: {
     h1: 30,
     h2: 22,

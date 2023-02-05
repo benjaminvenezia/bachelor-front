@@ -8,14 +8,14 @@ import AuthNavigator from "./navigation/AuthNavigator";
 import { GlobalStyles } from "./constants/style";
 
 const MyTheme = {
-  dark: false,
+  dark: GlobalStyles.reactNative.darktheme,
   colors: {
-    primary: "rgb(0, 0, 0)",
-    background: "rgb(255, 255, 255)",
-    card: "rgb(255, 255, 255)",
-    text: "rgb(0, 0, 0)",
-    border: "rgb(255, 255, 255)",
-    notification: "rgb(0, 0, 0)",
+    primary: GlobalStyles.reactNative.primary,
+    background: GlobalStyles.reactNative.background,
+    card: GlobalStyles.reactNative.card,
+    text: GlobalStyles.reactNative.text,
+    border: GlobalStyles.reactNative.border,
+    notification: GlobalStyles.reactNative.notification,
   },
 };
 

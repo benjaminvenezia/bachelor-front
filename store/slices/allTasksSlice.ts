@@ -7,8 +7,8 @@ export type Task = {
   title: string;
   category: string;
   reward: number;
-  is_done: boolean;
-  associated_day: string;
+  isDone: boolean;
+  associatedDay: string;
 };
 
 export type GenericsTasksState = {
@@ -22,48 +22,48 @@ const initialState: GenericsTasksState = {
       title: "Nettoyer le plan de travail",
       category: CATEGORIES.KITCHEN,
       reward: 15,
-      is_done: false,
-      associated_day: DAYS.MONDAY,
+      isDone: false,
+      associatedDay: DAYS.MONDAY,
     },
     {
       id: "2",
       title: "Faire la vaisselle à la main",
       category: CATEGORIES.KITCHEN,
       reward: 30,
-      is_done: false,
-      associated_day: DAYS.MONDAY,
+      isDone: false,
+      associatedDay: DAYS.MONDAY,
     },
     {
       id: "3",
       title: "remplir le lave vaisselle",
       category: CATEGORIES.KITCHEN,
       reward: 10,
-      is_done: false,
-      associated_day: DAYS.MONDAY,
+      isDone: false,
+      associatedDay: DAYS.MONDAY,
     },
     {
       id: "4",
       title: "Vider et nettoyer la table",
       category: CATEGORIES.KITCHEN,
       reward: 15,
-      is_done: false,
-      associated_day: DAYS.MONDAY,
+      isDone: false,
+      associatedDay: DAYS.MONDAY,
     },
     {
       id: "5",
       title: "Ranger les courses",
       category: CATEGORIES.KITCHEN,
       reward: 10,
-      is_done: false,
-      associated_day: DAYS.TUESDAY,
+      isDone: false,
+      associatedDay: DAYS.TUESDAY,
     },
     {
       id: "6",
       title: "faire le lit",
       category: CATEGORIES.ROOM,
       reward: 10,
-      is_done: false,
-      associated_day: DAYS.WEDNESDAY,
+      isDone: false,
+      associatedDay: DAYS.WEDNESDAY,
     },
   ],
 };

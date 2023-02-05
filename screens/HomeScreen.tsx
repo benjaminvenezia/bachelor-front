@@ -11,8 +11,8 @@ const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 
-  const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["tasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
+  const tasksNotDone = tasks["tasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["tasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
@@ -33,7 +33,7 @@ const HomeScreen: FunctionComponent = () => {
         <FlatList
           data={tasksNotDone}
           renderItem={({ item }) => (
-            <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} associated_day={item.associated_day} />
+            <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} associatedDay={item.associatedDay} />
           )}
           keyExtractor={(item) => item.id}
           numColumns={3}
@@ -54,7 +54,7 @@ const HomeScreen: FunctionComponent = () => {
               id={item.id}
               category={item.category}
               style={{ backgroundColor: GlobalStyles.colors.done }}
-              associated_day={item.associated_day}
+              associatedDay={item.associatedDay}
             />
           )}
           keyExtractor={(item) => item.id}

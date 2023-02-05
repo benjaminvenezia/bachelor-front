@@ -1,4 +1,4 @@
-import { Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable, Image } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus } from "../../store/slices/activeTasksSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ type TaskItemProps = {
   isPresentation?: boolean;
   setActivatedTasks?: any;
   activatedTasks?: Array<Task>;
-  associated_day: string;
+  associatedDay: string;
 };
 
 const TaskItem = ({
@@ -24,7 +24,7 @@ const TaskItem = ({
   id,
   style,
   category,
-  associated_day,
+  associatedDay,
   isPresentation,
   setActivatedTasks,
   activatedTasks,
@@ -45,8 +45,8 @@ const TaskItem = ({
       title,
       category,
       reward,
-      is_done: false,
-      associated_day,
+      isDone: false,
+      associatedDay,
     };
 
     const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
@@ -71,6 +71,7 @@ const TaskItem = ({
 
   return (
     <Pressable onPress={isPresentation ? handleAddToActiveDay : handleToggle} style={[styles.container, style]}>
+      <Image style={styles.icon} source={require("../../assets/icons/tasks/kitchen/kitchen-dishes-todo.png")} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>
@@ -93,6 +94,11 @@ const styles = StyleSheet.create({
   },
   default: {
     backgroundColor: "lightblue",
+  },
+  icon: {
+    width: 40,
+    height: 40,
+    marginBottom: 10,
   },
   title: {
     fontWeight: "bold",

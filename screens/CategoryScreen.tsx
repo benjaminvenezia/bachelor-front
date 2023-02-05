@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
+import { useState } from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Button, TaskItem, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { addTask } from "../store/slices/activeTasksSlice";
-import { Task } from "../store/slices/allTasksSlice";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();

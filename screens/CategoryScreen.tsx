@@ -39,6 +39,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
             isPresentation={true}
             setActivatedTasks={setActivatedTasks}
             activatedTasks={activatedTasks}
+            associated_day={item.associated_day}
           />
         )}
         keyExtractor={(item) => item.id}

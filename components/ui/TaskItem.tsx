@@ -15,9 +15,20 @@ type TaskItemProps = {
   isPresentation?: boolean;
   setActivatedTasks?: any;
   activatedTasks?: Array<Task>;
+  associated_day: string;
 };
 
-const TaskItem = ({ title, reward, id, style, category, isPresentation, setActivatedTasks, activatedTasks }: TaskItemProps) => {
+const TaskItem = ({
+  title,
+  reward,
+  id,
+  style,
+  category,
+  associated_day,
+  isPresentation,
+  setActivatedTasks,
+  activatedTasks,
+}: TaskItemProps) => {
   const homeTasks = useSelector((state: RootState) => state.activeTasksList);
 
   const [clickedTask, setClickedTask] = useState(false);
@@ -35,6 +46,7 @@ const TaskItem = ({ title, reward, id, style, category, isPresentation, setActiv
       category,
       reward,
       is_done: false,
+      associated_day,
     };
 
     const locallyTasksIndexes = activatedTasks?.map((task) => task.id);

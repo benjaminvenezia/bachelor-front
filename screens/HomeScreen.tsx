@@ -8,14 +8,16 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 
 const HomeScreen: FunctionComponent = () => {
+  const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 
-  const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done);
-  const tasksDone = tasks["tasks"].filter((task) => task.is_done);
+  const tasksNotDone = tasks["tasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["tasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView>
+        <Text>{storeActiveDay["activeDay"]}</Text>
         <DaysContainer />
         <Title>Aucune tâche associée à ce jour!</Title>
         <Text>Choisissez une catégorie</Text>
@@ -33,7 +35,9 @@ const HomeScreen: FunctionComponent = () => {
         <FlatList
           style={styles.listContainer}
           data={tasksNotDone}
-          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} />}
+          renderItem={({ item }) => (
+            <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} associated_day={item.associated_day} />
+          )}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />
@@ -54,6 +58,7 @@ const HomeScreen: FunctionComponent = () => {
               id={item.id}
               category={item.category}
               style={{ backgroundColor: GlobalStyles.colors.done }}
+              associated_day={item.associated_day}
             />
           )}
           keyExtractor={(item) => item.id}

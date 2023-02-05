@@ -7,7 +7,7 @@ type DayProps = {
   children: any;
 };
 
-const Day = ({ children }: DayProps) => {
+const DayItem = ({ children }: DayProps) => {
   const dispatch = useDispatch();
 
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Day;
+export default DayItem;

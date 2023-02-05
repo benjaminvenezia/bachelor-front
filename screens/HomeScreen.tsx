@@ -33,7 +33,14 @@ const HomeScreen: FunctionComponent = () => {
         <FlatList
           data={tasksNotDone}
           renderItem={({ item }) => (
-            <TaskItem title={item.title} reward={item.reward} id={item.id} category={item.category} associatedDay={item.associatedDay} />
+            <TaskItem
+              title={item.title}
+              reward={item.reward}
+              id={item.id}
+              category={item.category}
+              associatedDay={item.associatedDay}
+              pathIconTodo={item.pathIconTodo}
+            />
           )}
           keyExtractor={(item) => item.id}
           numColumns={3}
@@ -55,6 +62,7 @@ const HomeScreen: FunctionComponent = () => {
               category={item.category}
               style={{ backgroundColor: GlobalStyles.colors.done }}
               associatedDay={item.associatedDay}
+              pathIconTodo={item.pathIconTodo}
             />
           )}
           keyExtractor={(item) => item.id}

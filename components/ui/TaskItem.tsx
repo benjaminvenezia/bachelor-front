@@ -16,6 +16,7 @@ type TaskItemProps = {
   setActivatedTasks?: any;
   activatedTasks?: Array<Task>;
   associatedDay: string;
+  pathIconTodo: string;
 };
 
 const TaskItem = ({
@@ -28,6 +29,7 @@ const TaskItem = ({
   isPresentation,
   setActivatedTasks,
   activatedTasks,
+  pathIconTodo,
 }: TaskItemProps) => {
   const homeTasks = useSelector((state: RootState) => state.activeTasksList);
 
@@ -47,6 +49,7 @@ const TaskItem = ({
       reward,
       isDone: false,
       associatedDay,
+      pathIconTodo,
     };
 
     const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
@@ -71,7 +74,6 @@ const TaskItem = ({
 
   return (
     <Pressable onPress={isPresentation ? handleAddToActiveDay : handleToggle} style={[styles.container, style]}>
-      <Image style={styles.icon} source={require("../../assets/icons/tasks/kitchen/kitchen-dishes-todo.png")} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>

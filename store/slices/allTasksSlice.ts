@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CATEGORIES from "../../constants/categories";
 import DAYS from "../../constants/days";
+import { ICONS } from "../../constants/icons";
 
 export type Task = {
   id: string;
@@ -9,6 +10,8 @@ export type Task = {
   reward: number;
   isDone: boolean;
   associatedDay: string;
+  pathIconTodo: string;
+  // pathIconDone: string;
 };
 
 export type GenericsTasksState = {
@@ -24,6 +27,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: DAYS.MONDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
     {
       id: "2",
@@ -32,6 +36,7 @@ const initialState: GenericsTasksState = {
       reward: 30,
       isDone: false,
       associatedDay: DAYS.MONDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
     {
       id: "3",
@@ -40,6 +45,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.MONDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
     {
       id: "4",
@@ -48,6 +54,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: DAYS.MONDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
     {
       id: "5",
@@ -56,6 +63,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.TUESDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
     {
       id: "6",
@@ -64,6 +72,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.WEDNESDAY,
+      pathIconTodo: ICONS.KITCHEN.dishesToDo,
     },
   ],
 };

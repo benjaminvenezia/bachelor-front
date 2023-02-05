@@ -74,6 +74,7 @@ const TaskItem = ({
 
   return (
     <Pressable onPress={isPresentation ? handleAddToActiveDay : handleToggle} style={[styles.container, style]}>
+      <Image style={styles.icon} source={pathIconTodo} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
     </Pressable>

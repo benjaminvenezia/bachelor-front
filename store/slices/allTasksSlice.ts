@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CATEGORIES from "../../constants/categories";
 import DAYS from "../../constants/days";
-import { ICONS } from "../../constants/icons";
+import { ImageBuilder } from "../../utils/ImageBuilder";
 
 export type Task = {
   id: string;
@@ -27,7 +27,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: DAYS.MONDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
       id: "2",
@@ -36,7 +36,7 @@ const initialState: GenericsTasksState = {
       reward: 30,
       isDone: false,
       associatedDay: DAYS.MONDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
       id: "3",
@@ -45,7 +45,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.MONDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
       id: "4",
@@ -54,7 +54,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: DAYS.MONDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
       id: "5",
@@ -63,7 +63,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.TUESDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
       id: "6",
@@ -72,7 +72,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: DAYS.WEDNESDAY,
-      pathIconTodo: ICONS.KITCHEN.dishesToDo,
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
   ],
 };

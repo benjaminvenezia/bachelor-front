@@ -17,7 +17,6 @@ const HomeScreen: FunctionComponent = () => {
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView>
-        <Text>{storeActiveDay["activeDay"]}</Text>
         <DaysContainer />
         <Title>Aucune tâche associée à ce jour!</Title>
         <Text>Choisissez une catégorie</Text>

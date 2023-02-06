@@ -7,5 +7,7 @@ import CategoriesList from "./home/CategoriesList";
 import DayItem from "./home/DayItem";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
+import DaySelector from "./category/DaySelector";
+import DaysSelectorContainer from "./category/DaysSelectorContainer";
 
-export { TaskItem, Hr, DaysContainer, DayItem, CategoriesList, CategoryItem, Title, Button, Input };
+export { TaskItem, Hr, DaysContainer, DayItem, CategoriesList, CategoryItem, Title, Button, Input, DaySelector, DaysSelectorContainer };

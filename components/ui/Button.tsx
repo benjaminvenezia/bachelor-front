@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   defaultStyle: {
     backgroundColor: GlobalStyles.colors.primary,
     color: GlobalStyles.colors.secondary,
+    borderRadius: 10,
   },
   alternativeStyle: {
     backgroundColor: "lightgrey",
@@ -52,10 +53,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 15,
+    color: "white",
   },
   xl: { width: 230, height: 60, paddingVertical: 10, paddingHorizontal: 25 },
-  lg: { width: 100, height: 40, paddingVertical: 8, paddingHorizontal: 20 },
+  lg: { width: 120, height: 45, paddingVertical: 8, paddingHorizontal: 20 },
   md: { width: 80, height: 20, paddingVertical: 5, paddingHorizontal: 15 },
   sm: { width: 60, height: 10, paddingVertical: 5, paddingHorizontal: 15 },
   xs: { width: 40, height: 5, paddingVertical: 5, paddingHorizontal: 15 },

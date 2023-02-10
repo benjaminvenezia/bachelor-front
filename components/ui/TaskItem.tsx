@@ -1,37 +1,18 @@
 import { Text, StyleSheet, Pressable, Image } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus } from "../../store/slices/activeTasksSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { Task } from "../../store/slices/allTasksSlice";
-import { RootState } from "../../store/store";
+import { useDispatch } from "react-redux";
 
 type TaskItemProps = {
   id: string;
   title: string;
   reward: number;
   style?: any;
-  category: string;
-  setActivatedTasks?: any;
-  activatedTasks?: Array<Task>;
-  associatedDay: string;
   pathIconTodo: string;
 };
 
-const TaskItem = ({
-  title,
-  reward,
-  id,
-  style,
-  category,
-  associatedDay,
-  setActivatedTasks,
-  activatedTasks,
-  pathIconTodo,
-}: TaskItemProps) => {
-  const homeTasks = useSelector((state: RootState) => state.activeTasksList);
-
+const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => {
   const dispatch = useDispatch();
-
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
 
   return (
@@ -53,12 +34,6 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",
     alignItems: "center",
-  },
-  active: {
-    backgroundColor: "purple",
-  },
-  default: {
-    backgroundColor: "lightblue",
   },
   icon: {
     width: 40,

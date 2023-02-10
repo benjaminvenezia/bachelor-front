@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Button, DaysSelectorContainer, TaskItem, Title } from "../components";
+import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { addTask } from "../store/slices/activeTasksSlice";
@@ -31,13 +31,12 @@ const CategoryScreen = ({ navigation, route }: any) => {
         <FlatList
           data={categoryTasks}
           renderItem={({ item }) => (
-            <TaskItem
+            <TaskItemCategory
               title={item.title}
               reward={item.reward}
               id={item.id}
               category={item.category}
               style={{ backgroundColor: GlobalStyles.colors.presentation }}
-              isPresentation={true}
               setActivatedTasks={setActivatedTasks}
               activatedTasks={activatedTasks}
               associatedDay={item.associatedDay}

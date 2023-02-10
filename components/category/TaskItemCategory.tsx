@@ -17,7 +17,7 @@ type TaskItemProps = {
   pathIconTodo: string;
 };
 
-const TaskItem = ({
+const TaskItemCategory = ({
   title,
   reward,
   id,
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TaskItem;
+export default TaskItemCategory;

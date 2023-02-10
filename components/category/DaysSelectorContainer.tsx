@@ -7,8 +7,8 @@ const daysLabels: Array<string> = [DAYS.MONDAY, DAYS.THURSDAY, DAYS.WEDNESDAY, D
 const DaysSelectorContainer = () => {
   return (
     <View style={styles.container}>
-      {daysLabels.map((day) => (
-        <DaySelector label={day} />
+      {daysLabels.map((day, index) => (
+        <DaySelector key={index} label={day} />
       ))}
     </View>
   );

@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../constants/style";
 import { useSelector } from "react-redux";
 import { Task } from "../../store/slices/allTasksSlice";
 import { RootState } from "../../store/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type TaskItemProps = {
   id: string;
@@ -13,27 +13,15 @@ type TaskItemProps = {
   category: string;
   setActivatedTasks?: any;
   activatedTasks?: Array<Task>;
-  associatedDay: string;
   pathIconTodo: string;
 };
 
-const TaskItemCategory = ({
-  title,
-  reward,
-  id,
-  style,
-  category,
-  associatedDay,
-  setActivatedTasks,
-  activatedTasks,
-  pathIconTodo,
-}: TaskItemProps) => {
+const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo }: TaskItemProps) => {
   const homeTasks = useSelector((state: RootState) => state.activeTasksList);
-
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
-    setClickedTask(true);
+    setClickedTask(!clickedTask);
 
     const taskToAdd: Task = {
       id,
@@ -41,12 +29,12 @@ const TaskItemCategory = ({
       category,
       reward,
       isDone: false,
-      associatedDay,
+      associatedDays: [],
       pathIconTodo,
     };
 
     const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
-    const homeTasksIndexes = homeTasks["tasks"].map((task) => task.id);
+    const homeTasksIndexes = homeTasks["activeTasks"].map((task) => task.id);
 
     if (!locallyTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
       setActivatedTasks((old: any) => [...old, taskToAdd]);
@@ -76,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: "purple",
   },
   default: {
-    backgroundColor: "lightblue",
+    backgroundColor: "pink",
   },
   icon: {
     width: 40,

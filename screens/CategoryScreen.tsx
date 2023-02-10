@@ -7,20 +7,25 @@ import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Task } from "../store/slices/allTasksSlice";
+import { resetDays } from "../store/slices/daysToAddTasksSlice";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
 
   const [activatedTasks, setActivatedTasks] = useState([]);
+  const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
+  const allTasks = useSelector((state: RootState) => state.allTasksList);
 
   const { categoryName } = route.params;
-
-  const allTasks = useSelector((state: RootState) => state.allTasksList);
 
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
 
   const addTasksInHomeScreen = () => {
+    activatedTasks.map((task: Task) => (task.associatedDays = activeDays["activeDays"]));
+
     dispatch(addTask(activatedTasks));
+    dispatch(resetDays(activatedTasks));
     navigation.navigate(ROUTES.HOME);
   };
 
@@ -39,7 +44,6 @@ const CategoryScreen = ({ navigation, route }: any) => {
               style={{ backgroundColor: GlobalStyles.colors.presentation }}
               setActivatedTasks={setActivatedTasks}
               activatedTasks={activatedTasks}
-              associatedDay={item.associatedDay}
               pathIconTodo={item.pathIconTodo}
             />
           )}

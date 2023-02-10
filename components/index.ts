@@ -1,4 +1,4 @@
-import TaskItem from "./home/TaskItem";
+import TaskItem from "./ui/TaskItem";
 import Hr from "./ui/Hr";
 import Title from "./ui/Title";
 import CategoryItem from "./home/CategoryItem";

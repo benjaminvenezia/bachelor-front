@@ -13,6 +13,7 @@ type TaskItemProps = {
 
 const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => {
   const dispatch = useDispatch();
+
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
 
   return (

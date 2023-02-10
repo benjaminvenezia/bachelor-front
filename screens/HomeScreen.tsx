@@ -11,8 +11,8 @@ const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 
-  const tasksNotDone = tasks["tasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["tasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDays.includes(storeActiveDay["activeDay"]));
+  const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDays.includes(storeActiveDay["activeDay"]));
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
@@ -32,16 +32,7 @@ const HomeScreen: FunctionComponent = () => {
       <View style={styles.listContainer}>
         <FlatList
           data={tasksNotDone}
-          renderItem={({ item }) => (
-            <TaskItem
-              title={item.title}
-              reward={item.reward}
-              id={item.id}
-              category={item.category}
-              associatedDay={item.associatedDay}
-              pathIconTodo={item.pathIconTodo}
-            />
-          )}
+          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} pathIconTodo={item.pathIconTodo} />}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />
@@ -59,9 +50,7 @@ const HomeScreen: FunctionComponent = () => {
               title={item.title}
               reward={item.reward}
               id={item.id}
-              category={item.category}
               style={{ backgroundColor: GlobalStyles.colors.done }}
-              associatedDay={item.associatedDay}
               pathIconTodo={item.pathIconTodo}
             />
           )}

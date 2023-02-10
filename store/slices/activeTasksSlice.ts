@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Task } from "./allTasksSlice";
 
 export type ActiveTasksState = {
-  tasks: Task[];
+  activeTasks: Task[];
 };
 
 const initialState: ActiveTasksState = {
-  tasks: [],
+  activeTasks: [],
 };
 
 /**
@@ -19,7 +19,7 @@ const activeTasksSlice = createSlice({
     toggleStatus: (state, action) => {
       return {
         ...state,
-        tasks: state.tasks.map((task) => {
+        activeTasks: state.activeTasks.map((task) => {
           if (task.id === action.payload.id) {
             return { ...task, isDone: !task.isDone };
           } else {
@@ -32,11 +32,11 @@ const activeTasksSlice = createSlice({
       const tasksFromCategory = action.payload;
 
       tasksFromCategory.forEach((taskObject: Task) => {
-        state.tasks.push(taskObject);
+        state.activeTasks.push(taskObject);
       });
     },
     removeTask: (state, action) => {
-      state.tasks.splice(state.tasks.indexOf(action.payload.id), 1);
+      state.activeTasks.splice(state.activeTasks.indexOf(action.payload.id), 1);
     },
   },
 });

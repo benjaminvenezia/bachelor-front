@@ -11,6 +11,9 @@ type TaskItemProps = {
   reward: number;
   style?: any;
   category: string;
+  /**
+   * use state passé en props
+   */
   setActivatedTasks?: any;
   activatedTasks?: Array<Task>;
   pathIconTodo: string;
@@ -29,16 +32,16 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       category,
       reward,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo,
     };
 
     const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
     const homeTasksIndexes = homeTasks["activeTasks"].map((task) => task.id);
 
-    if (!locallyTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
-      setActivatedTasks((old: any) => [...old, taskToAdd]);
-    }
+    //if (!locallyTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
+    setActivatedTasks((old: any) => [...old, taskToAdd]);
+    //}
   };
 
   return (

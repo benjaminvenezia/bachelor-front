@@ -8,12 +8,14 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 
 const HomeScreen: FunctionComponent = () => {
+  const activeTasks = useSelector((state: RootState) => state.activeTasksList);
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 
-  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDays.includes(storeActiveDay["activeDay"]));
-  const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDays.includes(storeActiveDay["activeDay"]));
-
+  //faux
+  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
+  // console.log(activeTasks["activeTasks"]);
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView style={styles.container}>

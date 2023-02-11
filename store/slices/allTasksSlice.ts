@@ -9,7 +9,7 @@ export type Task = {
   category: string;
   reward: number;
   isDone: boolean;
-  associatedDays: Array<string>;
+  associatedDay: string;
   pathIconTodo: string;
   // pathIconDone: string;
 };
@@ -26,7 +26,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 15,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
@@ -35,7 +35,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 30,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
@@ -44,7 +44,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 10,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
@@ -53,7 +53,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 15,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
@@ -62,7 +62,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       reward: 10,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
@@ -71,7 +71,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.ROOM,
       reward: 10,
       isDone: false,
-      associatedDays: [],
+      associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
   ],

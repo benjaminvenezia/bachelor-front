@@ -28,7 +28,7 @@ const activeTasksSlice = createSlice({
         }),
       };
     },
-    addTask: (state, action) => {
+    addTask: (state, action): any => {
       const tasksFromCategory = action.payload;
 
       tasksFromCategory.forEach((taskObject: Task) => {

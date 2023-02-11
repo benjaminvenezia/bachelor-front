@@ -22,10 +22,22 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
 
   const addTasksInHomeScreen = () => {
-    activatedTasks.map((task: Task) => (task.associatedDays = activeDays["activeDays"]));
+    let toPush: any = [];
 
-    dispatch(addTask(activatedTasks));
+    for (let i = 0; i < activatedTasks.length; i++) {
+      for (let j = 0; j < activeDays["activeDays"].length; j++) {
+        let taskToPush = { ...(activatedTasks[i] as Task) };
+
+        taskToPush.id = Math.floor(Math.random() * 1000).toString();
+        taskToPush.associatedDay = activeDays["activeDays"][j];
+
+        toPush.push(taskToPush);
+      }
+    }
+
+    dispatch(addTask(toPush));
     dispatch(resetDays(activatedTasks));
+
     navigation.navigate(ROUTES.HOME);
   };
 
@@ -51,7 +63,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
           numColumns={3}
         />
 
-        <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={addTasksInHomeScreen} alternativeStyle={true}>
+        <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => addTasksInHomeScreen()} alternativeStyle={true}>
           Ajouter
         </Button>
 

@@ -9,6 +9,7 @@ import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/allTasksSlice";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
+import uuid from "react-native-uuid";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
@@ -28,11 +29,12 @@ const CategoryScreen = ({ navigation, route }: any) => {
       for (let j = 0; j < activeDays["activeDays"].length; j++) {
         let taskToPush = { ...(activatedTasks[i] as Task) };
 
-        taskToPush.id = Math.floor(Math.random() * 1000).toString();
+        taskToPush.id = uuid.v4().toString();
         taskToPush.associatedDay = activeDays["activeDays"][j];
 
         toPush.push(taskToPush);
       }
+      console.log(toPush);
     }
 
     dispatch(addTask(toPush));

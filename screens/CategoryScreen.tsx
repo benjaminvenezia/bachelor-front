@@ -9,6 +9,7 @@ import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/allTasksSlice";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
+//PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
 
 const CategoryScreen = ({ navigation, route }: any) => {
@@ -17,6 +18,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const [activatedTasks, setActivatedTasks] = useState([]);
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
   const allTasks = useSelector((state: RootState) => state.allTasksList);
+  const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);
 
   const { categoryName } = route.params;
 
@@ -28,13 +30,17 @@ const CategoryScreen = ({ navigation, route }: any) => {
     for (let i = 0; i < activatedTasks.length; i++) {
       for (let j = 0; j < activeDays["activeDays"].length; j++) {
         let taskToPush = { ...(activatedTasks[i] as Task) };
-
         taskToPush.id = uuid.v4().toString();
         taskToPush.associatedDay = activeDays["activeDays"][j];
 
-        toPush.push(taskToPush);
+        const isAlreadyThisTaskInActiveDay = activeTasksInHome["activeTasks"].some((taskInHomeObj) => {
+          return taskInHomeObj.title === taskToPush.title && taskInHomeObj.associatedDay === taskToPush.associatedDay;
+        });
+
+        if (!isAlreadyThisTaskInActiveDay) {
+          toPush.push(taskToPush);
+        }
       }
-      console.log(toPush);
     }
 
     dispatch(addTask(toPush));

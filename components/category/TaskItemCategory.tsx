@@ -21,6 +21,7 @@ type TaskItemProps = {
 
 const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo }: TaskItemProps) => {
   const homeTasks = useSelector((state: RootState) => state.activeTasksList);
+
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
@@ -35,13 +36,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       associatedDay: "",
       pathIconTodo,
     };
-
-    const locallyTasksIndexes = activatedTasks?.map((task) => task.id);
-    const homeTasksIndexes = homeTasks["activeTasks"].map((task) => task.id);
-
-    //if (!locallyTasksIndexes?.includes(taskToAdd.id) && !homeTasksIndexes.includes(taskToAdd.id)) {
     setActivatedTasks((old: any) => [...old, taskToAdd]);
-    //}
   };
 
   return (

@@ -12,10 +12,9 @@ const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 
-  //faux
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
-  // console.log(activeTasks["activeTasks"]);
+
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView style={styles.container}>

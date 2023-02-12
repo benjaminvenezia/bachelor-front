@@ -26,6 +26,13 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
 
+  const getDaysAssociated = (title: string) => {
+    const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);
+    const daysLabels = days.map((item) => item.associatedDay);
+
+    return daysLabels;
+  };
+
   const addTasksInHomeScreen = () => {
     let toPush: any = [];
 
@@ -37,12 +44,13 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
         if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {
           toPush.push(taskToPush);
+          setActivatedTasks([]);
         }
       }
     }
 
     dispatch(addTask(toPush));
-    dispatch(resetDays(activatedTasks));
+    dispatch(resetDays());
     navigation.navigate(ROUTES.HOME);
   };
 
@@ -52,18 +60,23 @@ const CategoryScreen = ({ navigation, route }: any) => {
         <Title style={styles.title}>{categoryName}</Title>
         <FlatList
           data={categoryTasks}
-          renderItem={({ item }) => (
-            <TaskItemCategory
-              title={item.title}
-              reward={item.reward}
-              id={item.id}
-              category={item.category}
-              style={{ backgroundColor: GlobalStyles.colors.presentation }}
-              setActivatedTasks={setActivatedTasks}
-              activatedTasks={activatedTasks}
-              pathIconTodo={item.pathIconTodo}
-            />
-          )}
+          renderItem={({ item }) => {
+            const daysLabels = getDaysAssociated(item.title);
+
+            return (
+              <TaskItemCategory
+                title={item.title}
+                reward={item.reward}
+                id={item.id}
+                category={item.category}
+                style={{ backgroundColor: GlobalStyles.colors.presentation }}
+                setActivatedTasks={setActivatedTasks}
+                activatedTasks={activatedTasks}
+                pathIconTodo={item.pathIconTodo}
+                days={daysLabels}
+              />
+            );
+          }}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />

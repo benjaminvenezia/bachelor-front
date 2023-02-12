@@ -1,8 +1,6 @@
-import { Text, StyleSheet, Pressable, Image } from "react-native";
+import { Text, StyleSheet, Pressable, Image, View } from "react-native";
 import { GlobalStyles } from "../../constants/style";
-import { useSelector } from "react-redux";
 import { Task } from "../../store/slices/allTasksSlice";
-import { RootState } from "../../store/store";
 import { useState } from "react";
 import { checkTaskIsPresent } from "../../utils/checkTaskIsPresent";
 
@@ -18,9 +16,10 @@ type TaskItemProps = {
   setActivatedTasks?: any;
   activatedTasks: Task[];
   pathIconTodo: string;
+  days: string[];
 };
 
-const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo }: TaskItemProps) => {
+const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo, days }: TaskItemProps) => {
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
@@ -55,7 +54,13 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
     <Pressable onPress={handleAddToActiveDay} style={[styles.container, clickedTask ? styles.active : styles.default]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
-      <Text>{clickedTask ? "true" : "false"}</Text>
+      <View style={{ flexDirection: "row" }}>
+        {days.map((dayLabel, index) => (
+          <Text key={index} style={{ fontSize: 10 }}>
+            {dayLabel}
+          </Text>
+        ))}
+      </View>
     </Pressable>
   );
 };

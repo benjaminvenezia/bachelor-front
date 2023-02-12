@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import { CategoryItem } from "../";
+import CategoryItem from "./CategoryItem";
 import CATEGORIES from "../../constants/categories";
 
 const CategoriesList = () => {

@@ -1,8 +1,6 @@
 import { View, StyleSheet } from "react-native";
-import { DaySelector } from "../";
+import DaySelector from "./DaySelector";
 import DAYS from "../../constants/days";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 
 const daysLabels: Array<string> = [DAYS.MONDAY, DAYS.THURSDAY, DAYS.WEDNESDAY, DAYS.TUESDAY, DAYS.FRIDAY, DAYS.SATURDAY, DAYS.SUNDAY];
 

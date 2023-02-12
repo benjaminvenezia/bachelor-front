@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import { DayItem } from "../";
+import DayItem from "./DayItem";
 import DAYS from "../../constants/days";
 
 const DaysContainer = () => {

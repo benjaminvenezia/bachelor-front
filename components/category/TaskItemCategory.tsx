@@ -26,8 +26,9 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
-    setClickedTask(!clickedTask);
-
+    if (clickedTask) {
+      setActivatedTasks([]);
+    }
     const taskToAdd: Task = {
       id,
       title,
@@ -37,6 +38,8 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       associatedDay: "",
       pathIconTodo,
     };
+
+    setClickedTask(!clickedTask);
 
     if (!checkTaskIsPresent(activatedTasks, taskToAdd)) {
       setActivatedTasks((old: any) => [...old, taskToAdd]);

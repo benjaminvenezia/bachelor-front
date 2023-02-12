@@ -2,6 +2,10 @@ interface Image {
   name: string;
   image: any;
 }
+
+/**
+ * Allow to generate dynamics icons for our components.
+ */
 export class ImageBuilder {
   private static images: Array<Image> = [
     {

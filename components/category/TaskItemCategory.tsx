@@ -3,7 +3,8 @@ import { GlobalStyles } from "../../constants/style";
 import { useSelector } from "react-redux";
 import { Task } from "../../store/slices/allTasksSlice";
 import { RootState } from "../../store/store";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { checkTaskIsPresent } from "../../utils/checkTaskIsPresent";
 
 type TaskItemProps = {
   id: string;
@@ -15,7 +16,7 @@ type TaskItemProps = {
    * use state passé en props
    */
   setActivatedTasks?: any;
-  activatedTasks?: Array<Task>;
+  activatedTasks: Task[];
   pathIconTodo: string;
 };
 
@@ -36,7 +37,10 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       associatedDay: "",
       pathIconTodo,
     };
-    setActivatedTasks((old: any) => [...old, taskToAdd]);
+
+    if (!checkTaskIsPresent(activatedTasks, taskToAdd)) {
+      setActivatedTasks((old: any) => [...old, taskToAdd]);
+    }
   };
 
   return (

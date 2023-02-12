@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
@@ -9,6 +9,7 @@ import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/allTasksSlice";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
+import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 //PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
 
@@ -24,16 +25,6 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
 
-  const checkTaskIsPresentInHome = (taskToAdd: Task): boolean => {
-    let isExisting = false;
-
-    activeTasksInHome["activeTasks"].some((t: Task) => {
-      isExisting = t.title === taskToAdd.title && t.associatedDay === taskToAdd.associatedDay;
-    });
-
-    return isExisting;
-  };
-
   const addTasksInHomeScreen = () => {
     let toPush: any = [];
 
@@ -43,7 +34,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         taskToPush.id = uuid.v4().toString();
         taskToPush.associatedDay = activeDays["activeDays"][j];
 
-        if (!checkTaskIsPresentInHome(taskToPush)) {
+        if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {
           toPush.push(taskToPush);
         }
       }
@@ -76,11 +67,20 @@ const CategoryScreen = ({ navigation, route }: any) => {
           numColumns={3}
         />
 
-        <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => addTasksInHomeScreen()} alternativeStyle={true}>
-          Ajouter
-        </Button>
-
         <DaysSelectorContainer />
+
+        {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
+          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => addTasksInHomeScreen()} alternativeStyle={false}>
+            Ajouter
+          </Button>
+        ) : (
+          <>
+            <Text>Merci de choisir au moins un jour et une tâche</Text>
+            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => {}} alternativeStyle={true}>
+              Invalide
+            </Button>
+          </>
+        )}
       </View>
     </SafeAreaView>
   );

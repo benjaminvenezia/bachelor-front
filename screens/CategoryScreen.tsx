@@ -17,6 +17,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
 
   const [activatedTasks, setActivatedTasks] = useState([]);
+
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
   const allTasks = useSelector((state: RootState) => state.allTasksList);
   const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);

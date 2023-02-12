@@ -21,14 +21,19 @@ type TaskItemProps = {
 };
 
 const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo }: TaskItemProps) => {
-  const homeTasks = useSelector((state: RootState) => state.activeTasksList);
-
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
     if (clickedTask) {
-      setActivatedTasks([]);
+      const newArrayTasks = activatedTasks.filter((t) => {
+        return t.id !== id;
+      });
+
+      setActivatedTasks(newArrayTasks);
+      setClickedTask(false);
+      return;
     }
+
     const taskToAdd: Task = {
       id,
       title,
@@ -50,6 +55,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
     <Pressable onPress={handleAddToActiveDay} style={[styles.container, clickedTask ? styles.active : styles.default]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
+      <Text>{clickedTask ? "true" : "false"}</Text>
     </Pressable>
   );
 };

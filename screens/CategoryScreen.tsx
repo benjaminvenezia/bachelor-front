@@ -43,9 +43,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         taskToPush.id = uuid.v4().toString();
         taskToPush.associatedDay = activeDays["activeDays"][j];
 
-        const isAlreadyThisTaskInActiveDay = checkTaskIsPresentInHome(taskToPush);
-
-        if (!isAlreadyThisTaskInActiveDay) {
+        if (!checkTaskIsPresentInHome(taskToPush)) {
           toPush.push(taskToPush);
         }
       }

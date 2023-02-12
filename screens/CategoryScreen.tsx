@@ -24,8 +24,9 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
 
-  const checkTaskIsPresentInHome = (taskToAdd: Task) => {
+  const checkTaskIsPresentInHome = (taskToAdd: Task): boolean => {
     let isExisting = false;
+
     activeTasksInHome["activeTasks"].some((t: Task) => {
       isExisting = t.title === taskToAdd.title && t.associatedDay === taskToAdd.associatedDay;
     });
@@ -52,7 +53,6 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
     dispatch(addTask(toPush));
     dispatch(resetDays(activatedTasks));
-
     navigation.navigate(ROUTES.HOME);
   };
 

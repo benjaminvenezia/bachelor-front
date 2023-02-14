@@ -1,7 +1,8 @@
-import { Text, StyleSheet, Pressable, Image } from "react-native";
+import { Text, StyleSheet, Pressable, Image, Vibration } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 type TaskItemProps = {
   id: string;
@@ -13,15 +14,40 @@ type TaskItemProps = {
 
 const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => {
   const dispatch = useDispatch();
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
-  const handleRemove = () => dispatch(removeTask({ id: id }));
+
+  const handleRemove = () => {
+    setIsDeleting(false);
+    dispatch(removeTask({ id: id }));
+    Vibration.vibrate(200);
+  };
+
+  const handlePrintMessageDuringDeletion = () => {
+    const delayBeforePrintingInMs = 150;
+
+    setTimeout(() => {
+      setIsDeleting(true);
+    }, delayBeforePrintingInMs);
+  };
 
   return (
-    <Pressable onPress={handleToggle} onLongPress={handleRemove} style={[styles.container, style]}>
+    <Pressable
+      onPress={handleToggle}
+      onLongPress={handleRemove}
+      delayLongPress={2000}
+      onPressIn={handlePrintMessageDuringDeletion}
+      style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
+    >
       <Image style={styles.icon} source={pathIconTodo} />
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.reward}>{reward} Points</Text>
+      {!isDeleting && (
+        <>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.reward}>{reward} Points</Text>
+        </>
+      )}
+      {isDeleting && <Text>Suppression de la tâche en cours...</Text>}
     </Pressable>
   );
 };

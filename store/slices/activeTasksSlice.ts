@@ -36,7 +36,10 @@ const activeTasksSlice = createSlice({
       });
     },
     removeTask: (state, action) => {
-      state.activeTasks.splice(state.activeTasks.indexOf(action.payload.id), 1);
+      return {
+        ...state,
+        activeTasks: state.activeTasks.filter((task) => task.id !== action.payload.id),
+      };
     },
   },
 });

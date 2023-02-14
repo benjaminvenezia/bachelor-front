@@ -21,7 +21,7 @@ export type GenericsTasksState = {
 const initialState: GenericsTasksState = {
   tasks: [
     {
-      id: "1",
+      id: "",
       title: "Nettoyer le plan de travail",
       category: CATEGORIES.KITCHEN,
       reward: 15,
@@ -30,7 +30,7 @@ const initialState: GenericsTasksState = {
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
-      id: "2",
+      id: "",
       title: "Faire la vaisselle à la main",
       category: CATEGORIES.KITCHEN,
       reward: 30,
@@ -39,7 +39,7 @@ const initialState: GenericsTasksState = {
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
-      id: "3",
+      id: "",
       title: "remplir le lave vaisselle",
       category: CATEGORIES.KITCHEN,
       reward: 10,
@@ -48,7 +48,7 @@ const initialState: GenericsTasksState = {
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
-      id: "4",
+      id: "",
       title: "Vider et nettoyer la table",
       category: CATEGORIES.KITCHEN,
       reward: 15,
@@ -57,7 +57,7 @@ const initialState: GenericsTasksState = {
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
-      id: "5",
+      id: "",
       title: "Ranger les courses",
       category: CATEGORIES.KITCHEN,
       reward: 10,
@@ -66,8 +66,17 @@ const initialState: GenericsTasksState = {
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
     },
     {
-      id: "6",
+      id: "",
       title: "faire le lit",
+      category: CATEGORIES.ROOM,
+      reward: 10,
+      isDone: false,
+      associatedDay: "",
+      pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+    },
+    {
+      id: "",
+      title: "blblblbl",
       category: CATEGORIES.ROOM,
       reward: 10,
       isDone: false,
@@ -83,12 +92,8 @@ const initialState: GenericsTasksState = {
 const activeTasksSlice = createSlice({
   name: "activeTasks",
   initialState: initialState,
-  reducers: {
-    removeTask: (state, action) => {
-      state.tasks.splice(state.tasks.indexOf(action.payload.id), 1);
-    },
-  },
+  reducers: {},
 });
 
-export const { removeTask } = activeTasksSlice.actions;
+export const {} = activeTasksSlice.actions;
 export default activeTasksSlice.reducer;

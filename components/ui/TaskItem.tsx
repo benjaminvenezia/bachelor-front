@@ -1,6 +1,6 @@
 import { Text, StyleSheet, Pressable, Image } from "react-native";
 import { GlobalStyles } from "../../constants/style";
-import { toggleStatus } from "../../store/slices/activeTasksSlice";
+import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useDispatch } from "react-redux";
 
 type TaskItemProps = {
@@ -15,9 +15,10 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => 
   const dispatch = useDispatch();
 
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
+  const handleRemove = () => dispatch(removeTask({ id: id }));
 
   return (
-    <Pressable onPress={handleToggle} style={[styles.container, style]}>
+    <Pressable onPress={handleToggle} onLongPress={handleRemove} style={[styles.container, style]}>
       <Image style={styles.icon} source={pathIconTodo} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>

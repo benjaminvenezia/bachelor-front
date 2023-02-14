@@ -8,7 +8,6 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 
 const HomeScreen: FunctionComponent = () => {
-  const activeTasks = useSelector((state: RootState) => state.activeTasksList);
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
 

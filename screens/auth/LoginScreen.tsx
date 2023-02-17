@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StyleSheet } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text } from "react-native";
 import ROUTES from "../../constants/routes";
 import React from "react";
 import { Button, Title, Input } from "../../components";
@@ -7,32 +7,35 @@ import { useState } from "react";
 import axios from "axios";
 import { setToken } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, onChangeMail] = useState("ben@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [loading, setLoading] = useState(false);
-  const [fromFetch, setFromFetch] = useState(false);
-  const [axiosData, setAxiosData] = useState(null);
-
-  const token = useSelector((state: RootState) => state.user);
+  const [error, setError] = useState(false);
+  const [status, setStatus] = useState(0);
 
   const dispatch = useDispatch();
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    setFromFetch(false);
     setLoading(true);
 
-    axios.post("http://127.0.0.1:8000/api/login/", { email: email, password: password }).then((response) => {
-      dispatch(setToken({ token: response.data.data.token }));
-      setLoading(false);
-      setAxiosData(response.data);
-    });
+    const res = axios
+      .post("http://127.0.0.1:8000/api/login/", { email: email, password: password })
+      .then((response) => {
+        dispatch(setToken({ token: response.data.data.token }));
+        setLoading(false);
 
-    navigation.navigate(ROUTES.HOME);
+        if (response.status === 200) {
+          navigation.navigate(ROUTES.HOME);
+        }
+      })
+      .catch((error) => {
+        setStatus(400);
+        setError(true);
+        console.log(error);
+      });
   };
 
   return (
@@ -46,6 +49,8 @@ const LoginScreen = ({ navigation }: any) => {
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider
           </Button>
+
+          {error && <Text>Les identifiants entrés sont incorrects...</Text>}
         </View>
       </View>
     </SafeAreaView>

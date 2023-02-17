@@ -5,7 +5,7 @@ import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useState } from "react";
 import axios from "axios";
-import { setToken } from "../../store/slices/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 const LoginScreen = ({ navigation }: any) => {
@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation }: any) => {
     const res = axios
       .post("http://127.0.0.1:8000/api/login/", { email: email, password: password })
       .then((response) => {
-        dispatch(setToken({ token: response.data.data.token }));
+        dispatch(setUser({ user: response.data.data }));
         setLoading(false);
 
         if (response.status === 200) {

@@ -10,15 +10,15 @@ import { GlobalStyles } from "../constants/style";
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
+  const user = useSelector((state: RootState) => state.user);
 
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
-
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Title>Aucune tâche associée à ce jour!</Title>
+        <Title>Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
         <Text>Choisissez une catégorie</Text>
         <Text>Nos Suggestions : button</Text>
         <CategoriesList />
@@ -29,6 +29,7 @@ const HomeScreen: FunctionComponent = () => {
   return (
     <SafeAreaView style={styles.container}>
       <DaysContainer />
+
       <View style={styles.listContainer}>
         <FlatList
           data={tasksNotDone}
@@ -39,9 +40,7 @@ const HomeScreen: FunctionComponent = () => {
 
         {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
       </View>
-
       <Hr />
-
       <View style={styles.listContainer}>
         <FlatList
           data={tasksDone}
@@ -60,7 +59,6 @@ const HomeScreen: FunctionComponent = () => {
 
         {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
       </View>
-
       <CategoriesList />
     </SafeAreaView>
   );

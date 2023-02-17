@@ -2,7 +2,7 @@ import { StyleSheet, Text } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 
 type Props = {
-  children: string;
+  children: any;
   style?: object;
 };
 

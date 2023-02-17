@@ -1,7 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  token: "",
+type UserParent = {
+  token: string;
+  user: User;
+};
+
+type User = {
+  created_at: string;
+  email: string;
+  email_verified_at: string;
+  id: number;
+  name: string;
+  updated_at: string;
+};
+
+const initialState: UserParent | any = {
+  user: {},
 };
 /**
  * This slice store the crucial information for the user.
@@ -10,13 +24,13 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    setToken: (state, action) => {
+    setUser: (state, action) => {
       return {
-        token: action.payload.token,
+        user: action.payload.user,
       };
     },
   },
 });
 
-export const { setToken } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

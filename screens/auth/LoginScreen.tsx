@@ -5,6 +5,10 @@ import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useState } from "react";
 import axios from "axios";
+import { setToken } from "../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, onChangeMail] = useState("ben@gmail.com");
@@ -13,23 +17,23 @@ const LoginScreen = ({ navigation }: any) => {
   const [fromFetch, setFromFetch] = useState(false);
   const [axiosData, setAxiosData] = useState(null);
 
+  const token = useSelector((state: RootState) => state.user);
+
+  const dispatch = useDispatch();
+
   const handleClick = (e: any) => {
     e.preventDefault();
     setFromFetch(false);
     setLoading(true);
 
     axios.post("http://127.0.0.1:8000/api/login/", { email: email, password: password }).then((response) => {
-      console.log("getting data from axios", response.data);
+      dispatch(setToken({ token: response.data.data.token }));
       setLoading(false);
       setAxiosData(response.data);
     });
 
     navigation.navigate(ROUTES.HOME);
   };
-
-  {
-    console.log("pututut ", axiosData);
-  }
 
   return (
     <SafeAreaView style={styles.wrapper}>

@@ -7,25 +7,7 @@ type User = {
   password: string;
 };
 
-export const login = (user: User) => {
-  const headers = {
-    Accept: "application/vnd.api+json",
-    "Content-Type": "application/vnd.api+json",
-    // Authorization: apiKey,
-  };
-
-  const { email, password } = user;
-
-  try {
-    const p = axios.post(
-      "127.0.0.1:8000/api/login",
-      {
-        email: email,
-        password: password,
-      },
-      { headers }
-    );
-  } catch (error) {
-    console.log(error);
-  }
+export const getAllTasks = async () => {
+  const response = await axios.get("http://localhost:8000/api/tasks");
+  console.log(response.data);
 };

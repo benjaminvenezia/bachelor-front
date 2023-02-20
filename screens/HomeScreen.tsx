@@ -1,13 +1,14 @@
 import { FunctionComponent } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
-import { getAllTasks } from "../utils/http";
 import { useEffect } from "react";
+import axios from "axios";
+import { addTask, setTasks } from "../store/slices/activeTasksSlice";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -16,8 +17,29 @@ const HomeScreen: FunctionComponent = () => {
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
 
+  const dispatch = useDispatch();
+
+  const fetchTasks = () => {
+    axios
+      .get("http://localhost:8000/api/tasks", {
+        headers: {
+          Authorization: `Bearer ${user.user.token}`,
+        },
+      })
+      .then((response) => {
+        dispatch(setTasks(response.data.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    getAllTasks();
+    async function getTasks() {
+      await fetchTasks();
+    }
+
+    getTasks();
   }, []);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {

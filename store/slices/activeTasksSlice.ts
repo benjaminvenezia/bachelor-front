@@ -35,6 +35,12 @@ const activeTasksSlice = createSlice({
         state.activeTasks.push(taskObject);
       });
     },
+    setTasks: (state, action): any => {
+      const tasksFromDatabase = action.payload;
+
+      console.log("TRYYY, ", tasksFromDatabase);
+      state.activeTasks = tasksFromDatabase;
+    },
     removeTask: (state, action) => {
       return {
         ...state,
@@ -44,5 +50,5 @@ const activeTasksSlice = createSlice({
   },
 });
 
-export const { addTask, removeTask, toggleStatus } = activeTasksSlice.actions;
+export const { addTask, removeTask, toggleStatus, setTasks } = activeTasksSlice.actions;
 export default activeTasksSlice.reducer;

@@ -8,6 +8,7 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 import axios from "axios";
 import { setTasks } from "../store/slices/activeTasksSlice";
+import { fetchTasks } from "../utils/http/httpTask";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -18,24 +19,9 @@ const HomeScreen: FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
-  const fetchTasks = () => {
-    axios
-      .get("http://localhost:8000/api/tasks", {
-        headers: {
-          Authorization: `Bearer ${user.user.token}`,
-        },
-      })
-      .then((response) => {
-        dispatch(setTasks(response.data.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     async function getTasks() {
-      await fetchTasks();
+      fetchTasks(user.user.token, dispatch);
     }
 
     getTasks();

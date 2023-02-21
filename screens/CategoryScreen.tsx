@@ -12,8 +12,7 @@ import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 //PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
-import axios from "axios";
-import { setTasksInDatabase } from "../utils/http";
+import { setTasksInDatabase } from "../utils/http/httpTask";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();

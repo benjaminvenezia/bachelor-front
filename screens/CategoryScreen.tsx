@@ -5,13 +5,14 @@ import { RootState } from "../store/store";
 import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
-import { addTask } from "../store/slices/activeTasksSlice";
+import { addTask, setTasks } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/allTasksSlice";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 //PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
+import axios from "axios";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
   const allTasks = useSelector((state: RootState) => state.allTasksList);
   const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);
+  const user = useSelector((state: RootState) => state.user);
 
   const { categoryName } = route.params;
 
@@ -33,7 +35,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
     return daysLabels;
   };
 
-  const addTasksInHomeScreen = () => {
+  const getTasksForEachDaysSelected = () => {
     let toPush: any = [];
 
     for (let i = 0; i < activatedTasks.length; i++) {
@@ -49,9 +51,43 @@ const CategoryScreen = ({ navigation, route }: any) => {
       }
     }
 
-    dispatch(addTask(toPush));
+    return toPush;
+  };
+
+  const addTasksInDatabase = async (tasksArray: Task[]) => {
+    tasksArray.map((task) => {
+      axios({
+        method: "post",
+        url: "http://localhost:8000/api/tasks",
+        data: {
+          title: task.title,
+          description: "rédigé manuellment",
+          category: task.category,
+          reward: task.reward,
+          isDone: task.isDone,
+          associated_day: task.associatedDay,
+        },
+        headers: {
+          Authorization: `Bearer ${user.user.token}`,
+        },
+      })
+        .then((response) => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
+
+  const addTasksInHomeScreen = (tasks: Task[]) => {
+    dispatch(addTask(tasks));
     dispatch(resetDays());
     navigation.navigate(ROUTES.HOME);
+  };
+
+  const handleClick = () => {
+    const tasksExtracted = getTasksForEachDaysSelected();
+    addTasksInHomeScreen(tasksExtracted);
+    addTasksInDatabase(tasksExtracted);
   };
 
   return (
@@ -84,7 +120,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         <DaysSelectorContainer />
 
         {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
-          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => addTasksInHomeScreen()} alternativeStyle={false}>
+          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
             Ajouter
           </Button>
         ) : (

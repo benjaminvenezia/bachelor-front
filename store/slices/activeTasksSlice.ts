@@ -38,7 +38,6 @@ const activeTasksSlice = createSlice({
     setTasks: (state, action): any => {
       const tasksFromDatabase = action.payload;
 
-      console.log("TRYYY, ", tasksFromDatabase);
       state.activeTasks = tasksFromDatabase;
     },
     removeTask: (state, action) => {

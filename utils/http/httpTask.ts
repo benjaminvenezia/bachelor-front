@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import { Task } from "../../store/slices/allTasksSlice";
 import { setTasks } from "../../store/slices/activeTasksSlice";
 import { Dispatch } from "react";

@@ -13,6 +13,7 @@ import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 //PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
 import axios from "axios";
+import { setTasksInDatabase } from "../utils/http";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
@@ -54,32 +55,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
     return toPush;
   };
 
-  const addTasksInDatabase = async (tasksArray: Task[]) => {
-    //Je préférerais recourir à 1 seul call api et ne pas boucler, mais pour le moment ça ira.
-    tasksArray.map((task) => {
-      axios({
-        method: "post",
-        url: "http://localhost:8000/api/tasks",
-        data: {
-          title: task.title,
-          description: "rédigé manuellment",
-          category: task.category,
-          reward: task.reward,
-          isDone: task.isDone,
-          associated_day: task.associatedDay,
-        },
-        headers: {
-          Authorization: `Bearer ${user.user.token}`,
-        },
-      })
-        .then((response) => {})
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-  };
-
-  const addTasksInHomeScreen = (tasks: Task[]) => {
+  const setTasksInHomeScreen = (tasks: Task[]) => {
     dispatch(addTask(tasks));
     dispatch(resetDays());
     navigation.navigate(ROUTES.HOME);
@@ -87,8 +63,9 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const handleClick = () => {
     const tasksExtracted = getTasksForEachDaysSelected();
-    addTasksInHomeScreen(tasksExtracted);
-    addTasksInDatabase(tasksExtracted);
+
+    setTasksInHomeScreen(tasksExtracted);
+    setTasksInDatabase(tasksExtracted, user.user.token);
   };
 
   return (

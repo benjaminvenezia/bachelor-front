@@ -55,6 +55,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   };
 
   const addTasksInDatabase = async (tasksArray: Task[]) => {
+    //Je préférerais recourir à 1 seul call api et ne pas boucler, mais pour le moment ça ira.
     tasksArray.map((task) => {
       axios({
         method: "post",

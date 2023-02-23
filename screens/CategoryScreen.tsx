@@ -36,7 +36,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
   };
 
   const getTasksForEachDaysSelected = () => {
-    let toPush: any = [];
+    let toPush: Task[] = [];
 
     for (let i = 0; i < activatedTasks.length; i++) {
       for (let j = 0; j < activeDays["activeDays"].length; j++) {

@@ -5,6 +5,26 @@ import { Dispatch } from "react";
 
 /**
  *
+ * @param idTask id of the task
+ * @param token  The token of the current user, stored in store.
+ * @param dispatch The Redux dispatch hook. He can't be invoked here.
+ */
+export const removeTaskFromDatabase = (idTask: string, token: string) => {
+  axios
+    .delete("http://localhost:8000/api/tasks/" + idTask, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      console.log("Suppression réussie!");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+/**
  * @param token The token of the current user, stored in store.
  * @param dispatch The Redux dispatch hook. He can't be invoked here.
  */
@@ -34,6 +54,7 @@ export const setTasksInDatabase = (tasks: Task[], token: string) => {
       method: "post",
       url: "http://localhost:8000/api/tasks",
       data: {
+        id: task.id,
         title: task.title,
         description: "rédigé manuellment",
         category: task.category,
@@ -45,7 +66,9 @@ export const setTasksInDatabase = (tasks: Task[], token: string) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => {})
+      .then((response) => {
+        console.log(response.data);
+      })
       .catch((error) => {
         console.log(error);
       });

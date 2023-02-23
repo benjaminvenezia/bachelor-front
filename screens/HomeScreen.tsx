@@ -6,8 +6,6 @@ import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
-import axios from "axios";
-import { setTasks } from "../store/slices/activeTasksSlice";
 import { fetchTasks } from "../utils/http/httpTask";
 
 const HomeScreen: FunctionComponent = () => {
@@ -31,7 +29,7 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Title>Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Title>Salut {user.user.user.title} Aucune tâche associée à ce jour!</Title>
         <Text>Choisissez une catégorie</Text>
         <Text>Nos Suggestions : button</Text>
         <CategoriesList />

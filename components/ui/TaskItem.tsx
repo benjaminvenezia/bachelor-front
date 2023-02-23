@@ -3,6 +3,9 @@ import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { removeTaskFromDatabase } from "../../utils/http/httpTask";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 type TaskItemProps = {
   id: string;
@@ -17,9 +20,11 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => 
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleToggle = () => dispatch(toggleStatus({ id: id }));
+  const user = useSelector((state: RootState) => state.user);
 
   const handleRemove = () => {
     setIsDeleting(false);
+    removeTaskFromDatabase(id, user.user.token);
     dispatch(removeTask({ id: id }));
     Vibration.vibrate(200);
   };

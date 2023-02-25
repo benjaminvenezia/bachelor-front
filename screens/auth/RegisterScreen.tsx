@@ -1,14 +1,49 @@
-import { SafeAreaView, View, StyleSheet } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text } from "react-native";
 import ROUTES from "../../constants/routes";
-import React from "react";
+import React, { useState } from "react";
 import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 
 const RegisterScreen = ({ navigation }: any) => {
-  const [name, onChangeName] = React.useState("");
-  const [mail, onChangeMail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
-  const [passwordVerification, onChangePasswordVerification] = React.useState("");
+  const [email, onChangeMail] = useState("papa@gmail.com");
+  const [name, onChangeName] = useState("benjamin");
+  const [password, onChangePassword] = useState("password");
+  const [passwordVerification, onChangePasswordVerification] = useState("password");
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [status, setStatus] = useState(0);
+
+  const dispatch = useDispatch();
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const res = axios
+      .post("http://127.0.0.1:8000/api/register/", {
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: passwordVerification,
+      })
+      .then((response) => {
+        dispatch(setUser({ user: response.data.data }));
+        setLoading(false);
+
+        if (response.status === 200) {
+          navigation.navigate(ROUTES.HOME);
+        }
+      })
+      .catch((error) => {
+        setStatus(400);
+        setError(true);
+        console.log(error);
+      });
+  };
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -16,8 +51,7 @@ const RegisterScreen = ({ navigation }: any) => {
         <Title style={styles.title}>Inscription</Title>
         <View style={styles.inputsContainer}>
           <Input onChangeHandler={onChangeName} value={name} placeholder="prénom" keyboard="default" />
-          <Input onChangeHandler={onChangeMail} value={mail} placeholder="Mail" keyboard="email-address" />
-
+          <Input onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
           <Input onChangeHandler={onChangePassword} value={password} placeholder="Mot de passe" keyboard="default" />
           <Input
             onChangeHandler={onChangePasswordVerification}
@@ -25,7 +59,10 @@ const RegisterScreen = ({ navigation }: any) => {
             placeholder="Vérifier le mot de passe"
             keyboard="default"
           />
-          <Button size={GlobalStyles.buttons.lg} onPress={() => navigation.navigate(ROUTES.HOME)}>
+
+          {error ? <Text>Erreur </Text> : ""}
+
+          <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider
           </Button>
         </View>

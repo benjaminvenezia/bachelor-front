@@ -60,7 +60,7 @@ const RegisterScreen = ({ navigation }: any) => {
             keyboard="default"
           />
 
-          {error ? <Text>Erreur </Text> : ""}
+          {error ? <Text>Erreur, un champ est non rempli ou l'adresse existe déjà. </Text> : ""}
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider

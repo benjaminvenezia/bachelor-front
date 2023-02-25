@@ -44,7 +44,9 @@ const HomeScreen: FunctionComponent = () => {
       <View style={styles.listContainer}>
         <FlatList
           data={tasksNotDone}
-          renderItem={({ item }) => <TaskItem title={item.title} reward={item.reward} id={item.id} pathIconTodo={item.pathIconTodo} />}
+          renderItem={({ item }) => (
+            <TaskItem title={item.title} reward={item.reward} id={item.id} isDone={item.isDone} pathIconTodo={item.pathIconTodo} />
+          )}
           keyExtractor={(item) => item.id}
           numColumns={3}
         />
@@ -60,6 +62,7 @@ const HomeScreen: FunctionComponent = () => {
               title={item.title}
               reward={item.reward}
               id={item.id}
+              isDone={item.isDone}
               style={{ backgroundColor: GlobalStyles.colors.done }}
               pathIconTodo={item.pathIconTodo}
             />

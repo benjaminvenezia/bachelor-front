@@ -6,20 +6,28 @@ import { useState } from "react";
 import { removeTaskFromDatabase } from "../../utils/http/httpTask";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { toggleStatusTaskInDatabase } from "../../utils/http/httpTask";
 
 type TaskItemProps = {
   id: string;
   title: string;
   reward: number;
   style?: any;
+  isDone: boolean;
   pathIconTodo: string;
 };
 
-const TaskItem = ({ title, reward, id, style, pathIconTodo }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemProps) => {
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleToggle = () => dispatch(toggleStatus({ id: id }));
+  //Ici on doit aussi changer l'état dans le back
+  // on a besoin de l'id de la tâche
+  const handleToggle = () => {
+    dispatch(toggleStatus({ id: id }));
+    toggleStatusTaskInDatabase(id, user.user.token, isDone);
+  };
+
   const user = useSelector((state: RootState) => state.user);
 
   const handleRemove = () => {

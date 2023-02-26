@@ -35,7 +35,7 @@ const RegisterScreen = ({ navigation }: any) => {
         setLoading(false);
 
         if (response.status === 200) {
-          navigation.navigate(ROUTES.HOME);
+          navigation.navigate(ROUTES.LINK);
         }
       })
       .catch((error) => {

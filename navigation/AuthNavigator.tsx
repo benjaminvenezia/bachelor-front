@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 const AuthNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.LINK}>
+    <Stack.Navigator initialRouteName={ROUTES.REGISTER}>
       <Stack.Screen name={ROUTES.REGISTER} component={RegisterScreen} options={{ headerShown: false }} />
       <Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name={ROUTES.LINK} component={LinkTogetherScreen} options={{ headerShown: false }} />

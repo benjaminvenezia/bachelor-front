@@ -12,6 +12,8 @@ type User = {
   id: number;
   name: string;
   updated_at: string;
+  personalCode: string;
+  otherCode: string;
 };
 
 const initialState: UserParent | any = {

@@ -1,10 +1,46 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { Button } from "../../components";
+import { Title, Input } from "../../components";
+import { GlobalStyles } from "../../constants/style";
+import { useState } from "react";
 
 const LinkTogetherScreen = () => {
+  const handleClick = () => {};
+
+  const [anotherLink, setAnotherLink] = useState("");
+
   return (
-    <View>
-      <Text>LinkTogetherScreen</Text>
-    </View>
+    <SafeAreaView style={styles.wrapper}>
+      <View style={styles.container}>
+        <Title style={styles.title}>Lien avec votre partenaire</Title>
+
+        <View style={styles.inputsContainer}>
+          <Text>Mon code d'invitation : Assiette-cassee-12</Text>
+
+          <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
+
+          <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
+            Valider
+          </Button>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+  container: {
+    paddingTop: 40,
+    padding: 20,
+  },
+  inputsContainer: {
+    marginBottom: 30,
+  },
+  title: {
+    marginBottom: 30,
+  },
+});
 export default LinkTogetherScreen;

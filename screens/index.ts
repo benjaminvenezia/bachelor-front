@@ -9,10 +9,12 @@ import ShopScreen from "./ShopScreen";
 import SuggestionScreen from "./SuggestionScreen";
 import TeamScreen from "./TeamScreen";
 import WelcomeScreen from "./WelcomeScreen";
+import LinkTogetherScreen from "./auth/LinkTogetherScreen";
 
 export {
   LoginScreen,
   RegisterScreen,
+  LinkTogetherScreen,
   AboutScreen,
   CategoryScreen,
   GageScreen,

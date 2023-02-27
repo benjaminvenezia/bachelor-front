@@ -3,8 +3,12 @@ import { Button } from "../../components";
 import { Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const LinkTogetherScreen = () => {
+  const user = useSelector((state: RootState) => state.user);
+
   const handleClick = () => {};
 
   const [anotherLink, setAnotherLink] = useState("");
@@ -15,7 +19,7 @@ const LinkTogetherScreen = () => {
         <Title style={styles.title}>Lien avec votre partenaire</Title>
 
         <View style={styles.inputsContainer}>
-          <Text>Mon code d'invitation : Assiette-cassee-12</Text>
+          <Text>Mon code d'invitation : {user.user.user.personalCode}</Text>
 
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 

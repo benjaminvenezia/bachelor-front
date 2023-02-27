@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CATEGORIES from "../../constants/categories";
-import DAYS from "../../constants/days";
 import { ImageBuilder } from "../../utils/ImageBuilder";
 
 export type Task = {
@@ -13,6 +12,8 @@ export type Task = {
   associatedDay: string;
   pathIconTodo: string;
   // pathIconDone: string;
+  personalCode: string;
+  otherCode: string;
 };
 
 export type GenericsTasksState = {
@@ -30,6 +31,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -40,6 +43,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -50,6 +55,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -60,6 +67,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -70,6 +79,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -80,6 +91,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
     {
       id: "",
@@ -90,6 +103,8 @@ const initialState: GenericsTasksState = {
       isDone: false,
       associatedDay: "",
       pathIconTodo: ImageBuilder.GetImage("dishesToDo"),
+      personalCode: "",
+      otherCode: "",
     },
   ],
 };

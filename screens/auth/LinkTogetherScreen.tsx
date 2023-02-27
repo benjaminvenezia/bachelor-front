@@ -21,6 +21,7 @@ const LinkTogetherScreen = () => {
         <View style={styles.inputsContainer}>
           <Text>Mon code d'invitation : {user.user.user.personalCode}</Text>
 
+          <Text>Code de votre partenaire</Text>
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>

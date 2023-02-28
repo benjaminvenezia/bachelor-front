@@ -18,6 +18,7 @@ type User = {
 
 const initialState: UserParent | any = {
   user: {},
+  otherCode: "",
 };
 /**
  * This slice store the crucial information for the user.
@@ -31,8 +32,13 @@ const userSlice = createSlice({
         user: action.payload.user,
       };
     },
+    setOtherCode: (state, action) => {
+      return {
+        otherCode: action.payload.otherCode,
+      };
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setOtherCode } = userSlice.actions;
 export default userSlice.reducer;

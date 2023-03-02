@@ -5,13 +5,23 @@ import { GlobalStyles } from "../../constants/style";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { setGroupInDatabase } from "../../utils/http/httpGroup";
+import { getUserByCode } from "../../utils/http/httpUser";
 
 const LinkTogetherScreen = () => {
   const user = useSelector((state: RootState) => state.user);
-
-  const handleClick = () => {};
-
   const [anotherLink, setAnotherLink] = useState("");
+  const [anotherId, setAnotherId] = useState(-1);
+  // const [group, setGroup] = useState(null);
+  const token = user.user.token;
+
+  const handleClick = () => {
+    //1. On trouve l'id de notre partenaire grâce au code
+    getUserByCode(token, anotherLink, setAnotherId);
+
+    //2. On enregistre le groupe avec l'id récupéré
+    setGroupInDatabase(anotherId, token);
+  };
 
   return (
     <SafeAreaView style={styles.wrapper}>

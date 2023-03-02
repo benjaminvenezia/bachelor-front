@@ -11,7 +11,7 @@ import { Dispatch } from "react";
 export const setGroupInDatabase = (idPartner: number, token: string): void => {
   axios({
     method: "post",
-    url: "localhost:8000/api/group/" + idPartner,
+    url: "http://localhost:8000/api/group/" + idPartner,
     data: {
       idPartner: idPartner,
     },

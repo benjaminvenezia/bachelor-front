@@ -1,21 +1,22 @@
 import axios from "axios";
 import { Task } from "../../store/slices/allTasksSlice";
 import { setTasks } from "../../store/slices/activeTasksSlice";
-import { Dispatch } from "react";
+import { Dispatch, useState } from "react";
 
 /**
  * @param token The token of the current user, stored in store.
  * @param dispatch The Redux dispatch hook. He can't be invoked here.
  */
-export const getUserByCode = (token: string, code: string): void => {
+export const getUserByCode = (token: string, code: string, setAnotherId: any) => {
   axios
-    .get("localhost:8000/api/users/" + code, {
+    .get("http://localhost:8000/api/users/" + code, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then((response) => {
       //il faut gérer sa avec redux
+      setAnotherId(response.data.id);
     })
     .catch((error) => {
       console.log(error);

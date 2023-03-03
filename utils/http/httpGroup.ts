@@ -21,7 +21,7 @@ export const setGroupInDatabase = (idPartner: number, token: string, setGroupErr
   })
     .then((response) => {
       console.log(response.data);
-      setGroupErrorMessage(response.data);
+      setGroupErrorMessage(response.data.message);
     })
     .catch((error) => {
       console.log(error);

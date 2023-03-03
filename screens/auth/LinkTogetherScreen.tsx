@@ -13,11 +13,12 @@ const LinkTogetherScreen = () => {
   const [anotherLink, setAnotherLink] = useState("");
   const [anotherId, setAnotherId] = useState(-1);
   const [groupErrorMessage, setGroupErrorMessage] = useState("");
+  const [linkErrorMessage, setLinkErrorMessage] = useState("");
   // const [group, setGroup] = useState(null);
   const token = user.user.token;
 
   const handleClick = () => {
-    getUserByCode(token, anotherLink, setAnotherId);
+    getUserByCode(token, anotherLink, setAnotherId, setLinkErrorMessage);
     setGroupInDatabase(anotherId, token, setGroupErrorMessage);
     console.log(groupErrorMessage);
   };
@@ -37,7 +38,8 @@ const LinkTogetherScreen = () => {
             Valider
           </Button>
 
-          <Text>{groupErrorMessage["message"]}</Text>
+          <Text>{groupErrorMessage}</Text>
+          <Text>{linkErrorMessage}</Text>
         </View>
       </View>
     </SafeAreaView>

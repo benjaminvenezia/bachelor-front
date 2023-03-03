@@ -7,6 +7,8 @@ import { removeTaskFromDatabase } from "../../utils/http/httpTask";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../utils/http/httpTask";
+import { updateUserPoints } from "../../utils/http/httpUser";
+import { setPoints } from "../../store/slices/userSlice";
 
 type TaskItemProps = {
   id: string;
@@ -20,11 +22,14 @@ type TaskItemProps = {
 const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemProps) => {
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
+  const [updatePointsMessage, setUpdatePointsMessage] = useState("");
 
   //Ici on doit mettre à jour les points de l'utilisateur
   const handleToggle = () => {
     dispatch(toggleStatus({ id: id }));
+    dispatch(setPoints({ points: reward }));
     toggleStatusTaskInDatabase(id, user.user.token, isDone);
+    updateUserPointsInDatabase(user.user.user.id, user.user.token, user.user.user.points + reward, setUpdatePointsMessage);
   };
 
   const user = useSelector((state: RootState) => state.user);
@@ -57,6 +62,7 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
         <>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.reward}>{reward} Points</Text>
+          <Text>{updatePointsMessage}</Text>
         </>
       )}
       {isDeleting && <Text>Suppression de la tâche en cours...</Text>}

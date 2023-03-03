@@ -17,6 +17,8 @@ const HomeScreen: FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
+  console.log("BALROGGOGOGOG ", user);
+
   useEffect(() => {
     async function getTasks() {
       fetchTasks(user.user.token, dispatch);
@@ -29,7 +31,7 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Text>Vos points : {user.user.user.points}</Text>
+        <Text>Vos points : {user.user.points}</Text>
         <Title>Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
         <CategoriesList />
       </SafeAreaView>
@@ -39,7 +41,7 @@ const HomeScreen: FunctionComponent = () => {
   return (
     <SafeAreaView style={styles.container}>
       <DaysContainer />
-      <Text>Vos points : {user.user.user.points}</Text>
+      <Text>Vos points : {user.user.points}</Text>
       <View style={styles.listContainer}>
         <FlatList
           data={tasksNotDone}

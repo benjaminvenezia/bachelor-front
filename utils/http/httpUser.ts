@@ -23,3 +23,25 @@ export const getUserByCode = (token: string, code: string, setAnotherId: any, se
       console.log(error);
     });
 };
+
+/**
+ * @param token The token of the current user, stored in store.
+ * @param dispatch The Redux dispatch hook. He can't be invoked here.
+ */
+export const updateUserPointsInDatabase = (id: number, token: string, points: number, setUpdatePointsMessage: any) => {
+  axios
+    .patch("http://localhost:8000/api/users/" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        points: points,
+      },
+    })
+    .then((response) => {
+      setUpdatePointsMessage(`Bravo vous avez obtenu ${points} points.`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

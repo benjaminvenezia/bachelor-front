@@ -21,8 +21,7 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
 
-  //Ici on doit aussi changer l'état dans le back
-  // on a besoin de l'id de la tâche
+  //Ici on doit mettre à jour les points de l'utilisateur
   const handleToggle = () => {
     dispatch(toggleStatus({ id: id }));
     toggleStatusTaskInDatabase(id, user.user.token, isDone);

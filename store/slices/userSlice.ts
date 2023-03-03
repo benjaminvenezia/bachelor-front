@@ -6,14 +6,15 @@ type UserParent = {
 };
 
 type User = {
-  created_at: string;
-  email: string;
-  email_verified_at: string;
   id: number;
+  email: string;
   name: string;
-  updated_at: string;
+  points: number;
   personalCode: string;
   otherCode: string;
+  created_at: string;
+  email_verified_at: string;
+  updated_at: string;
 };
 
 const initialState: UserParent | any = {

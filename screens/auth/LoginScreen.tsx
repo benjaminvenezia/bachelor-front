@@ -9,7 +9,7 @@ import { setUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 const LoginScreen = ({ navigation }: any) => {
-  const [email, onChangeMail] = useState("ben@gmail.com");
+  const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

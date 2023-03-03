@@ -7,6 +7,7 @@ export type Group = {
   name: string;
   userId1: number;
   userId2: number;
+  // deltaPoints: number;
 };
 
 const initialState = {

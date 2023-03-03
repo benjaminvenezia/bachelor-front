@@ -7,7 +7,7 @@ import { Dispatch, useState } from "react";
  * @param token The token of the current user, stored in store.
  * @param dispatch The Redux dispatch hook. He can't be invoked here.
  */
-export const getUserByCode = (token: string, code: string, setAnotherId: any, setLinkErrorMessage: any) => {
+export const getUserByCode = (token: string, code: string, setAnotherId: any, setLinkMessage: any) => {
   axios
     .get("http://localhost:8000/api/users/" + code, {
       headers: {
@@ -17,7 +17,7 @@ export const getUserByCode = (token: string, code: string, setAnotherId: any, se
     .then((response) => {
       //il faut gérer sa avec redux
       setAnotherId(response.data.id);
-      setLinkErrorMessage(response.data.message);
+      setLinkMessage(response.data);
     })
     .catch((error) => {
       console.log(error);

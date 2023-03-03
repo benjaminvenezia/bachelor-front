@@ -2,26 +2,34 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { Button } from "../../components";
 import { Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { setGroupInDatabase } from "../../utils/http/httpGroup";
 import { getUserByCode } from "../../utils/http/httpUser";
+import ROUTES from "../../constants/routes";
 
-const LinkTogetherScreen = () => {
+const LinkTogetherScreen = ({ navigation }: any) => {
   const user = useSelector((state: RootState) => state.user);
   const [anotherLink, setAnotherLink] = useState("");
   const [anotherId, setAnotherId] = useState(-1);
-  const [groupErrorMessage, setGroupErrorMessage] = useState("");
-  const [linkErrorMessage, setLinkErrorMessage] = useState("");
+  const [groupMessage, setGroupMessage]: any = useState("");
+  const [linkMessage, setLinkMessage]: any = useState("");
   // const [group, setGroup] = useState(null);
   const token = user.user.token;
 
   const handleClick = () => {
-    getUserByCode(token, anotherLink, setAnotherId, setLinkErrorMessage);
-    setGroupInDatabase(anotherId, token, setGroupErrorMessage);
-    console.log(groupErrorMessage);
+    getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
+    setGroupInDatabase(anotherId, token, setGroupMessage);
+
+    //on recupère le groupe et on le stock dans redux, on peut recupérer ce groupe à l'aide de notre id
   };
+
+  useEffect(() => {
+    if (groupMessage["code"] === 200) {
+      navigation.navigate(ROUTES.HOME);
+    }
+  }, [groupMessage]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -38,8 +46,8 @@ const LinkTogetherScreen = () => {
             Valider
           </Button>
 
-          <Text>{groupErrorMessage}</Text>
-          <Text>{linkErrorMessage}</Text>
+          <Text>{groupMessage["message"]}</Text>
+          <Text>{linkMessage["message"]}</Text>
         </View>
       </View>
     </SafeAreaView>

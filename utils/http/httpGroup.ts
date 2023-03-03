@@ -8,7 +8,7 @@ import { Dispatch } from "react";
  * @param idPartner The id of the partner who want link with
  * @param token The token of the current user, stored in store.
  */
-export const setGroupInDatabase = (idPartner: number, token: string, setGroupErrorMessage: any): void => {
+export const setGroupInDatabase = (idPartner: number, token: string, setGroupMessage: any): void => {
   axios({
     method: "post",
     url: "http://localhost:8000/api/group/" + idPartner,
@@ -21,7 +21,7 @@ export const setGroupInDatabase = (idPartner: number, token: string, setGroupErr
   })
     .then((response) => {
       console.log(response.data);
-      setGroupErrorMessage(response.data.message);
+      setGroupMessage(response.data);
     })
     .catch((error) => {
       console.log(error);

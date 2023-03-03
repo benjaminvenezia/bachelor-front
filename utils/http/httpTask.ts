@@ -28,7 +28,7 @@ export const removeTaskFromDatabase = (idTask: string, token: string): void => {
  * @param token The token of the current user, stored in store.
  * @param dispatch The Redux dispatch hook. He can't be invoked here.
  */
-export const fetchTasks = (token: string, dispatch: Dispatch<any>): void => {
+export const fetchTasksFromDatabase = (token: string, dispatch: Dispatch<any>): void => {
   axios
     .get("http://localhost:8000/api/tasks", {
       headers: {
@@ -60,7 +60,7 @@ export const toggleStatusTaskInDatabase = (id: string, token: string, actualStat
     },
   })
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch((error) => {
       console.log(error);

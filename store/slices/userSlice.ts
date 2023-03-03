@@ -38,14 +38,11 @@ const userSlice = createSlice({
         otherCode: action.payload.otherCode,
       };
     },
-    setPoints: (state, action) => {
-      return {
-        ...state,
-        points: action.payload.points,
-      };
+    setUserPoints: (state, action) => {
+      state.user.user.points += action.payload.points;
     },
   },
 });
 
-export const { setUser, setOtherCode, setPoints } = userSlice.actions;
+export const { setUser, setOtherCode, setUserPoints } = userSlice.actions;
 export default userSlice.reducer;

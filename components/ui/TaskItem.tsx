@@ -1,14 +1,13 @@
 import { Text, StyleSheet, Pressable, Image, Vibration } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { removeTaskFromDatabase } from "../../utils/http/httpTask";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../utils/http/httpTask";
-import { updateUserPoints } from "../../utils/http/httpUser";
-import { setPoints } from "../../store/slices/userSlice";
+import { setUserPointsInDatabase } from "../../utils/http/httpUser";
+import { setUserPoints } from "../../store/slices/userSlice";
 
 type TaskItemProps = {
   id: string;
@@ -23,22 +22,30 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
+  const user = useSelector((state: RootState) => state.user);
 
-  //Ici on doit mettre à jour les points de l'utilisateur
-  const handleToggle = () => {
+  const toggleStatusOfTaskInStoreAndDatabase = () => {
     dispatch(toggleStatus({ id: id }));
-    dispatch(setPoints({ points: reward }));
     toggleStatusTaskInDatabase(id, user.user.token, isDone);
-    updateUserPointsInDatabase(user.user.user.id, user.user.token, user.user.user.points + reward, setUpdatePointsMessage);
   };
 
-  const user = useSelector((state: RootState) => state.user);
+  const setPointsInStoreAndDatabase = () => {
+    if (!isDone) {
+      dispatch(setUserPoints({ points: reward }));
+      setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
+    }
+  };
 
   const handleRemove = () => {
     setIsDeleting(false);
     removeTaskFromDatabase(id, user.user.token);
     dispatch(removeTask({ id: id }));
     Vibration.vibrate(200);
+  };
+
+  const handleClick = () => {
+    toggleStatusOfTaskInStoreAndDatabase();
+    setPointsInStoreAndDatabase();
   };
 
   const handlePrintMessageDuringDeletion = () => {
@@ -51,7 +58,7 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
 
   return (
     <Pressable
-      onPress={handleToggle}
+      onPress={handleClick}
       onLongPress={handleRemove}
       delayLongPress={2000}
       onPressIn={handlePrintMessageDuringDeletion}

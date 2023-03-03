@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
-import { addTask, setTasks } from "../store/slices/activeTasksSlice";
+import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../store/slices/allTasksSlice";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";

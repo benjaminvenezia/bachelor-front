@@ -1,7 +1,4 @@
 import axios from "axios";
-import { Task } from "../../store/slices/allTasksSlice";
-import { setTasks } from "../../store/slices/activeTasksSlice";
-import { Dispatch } from "react";
 
 /**
  *
@@ -20,7 +17,6 @@ export const setGroupInDatabase = (idPartner: number, token: string, setGroupMes
     },
   })
     .then((response) => {
-      console.log(response.data);
       setGroupMessage(response.data);
     })
     .catch((error) => {

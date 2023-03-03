@@ -6,7 +6,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
-import { fetchTasks } from "../utils/http/httpTask";
+import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -17,11 +17,9 @@ const HomeScreen: FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
-  console.log("BALROGGOGOGOG ", user);
-
   useEffect(() => {
     async function getTasks() {
-      fetchTasks(user.user.token, dispatch);
+      fetchTasksFromDatabase(user.user.token, dispatch);
     }
 
     getTasks();
@@ -31,7 +29,7 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Text>Vos points : {user.user.points}</Text>
+        <Text>Vos points : {user.user.user.points}</Text>
         <Title>Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
         <CategoriesList />
       </SafeAreaView>
@@ -41,7 +39,7 @@ const HomeScreen: FunctionComponent = () => {
   return (
     <SafeAreaView style={styles.container}>
       <DaysContainer />
-      <Text>Vos points : {user.user.points}</Text>
+      <Text>Vos points : {user.user.user.points}</Text>
       <View style={styles.listContainer}>
         <FlatList
           data={tasksNotDone}

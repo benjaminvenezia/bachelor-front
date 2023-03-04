@@ -3,11 +3,15 @@ import CATEGORIES from "../../constants/categories";
 import { ImageBuilder } from "../../utils/ImageBuilder";
 
 export type Group = {
-  id: string;
-  name: string;
-  userId1: number;
-  userId2: number;
-  // deltaPoints: number;
+  idGroup: string;
+  GroupName: string;
+  idUser1: number;
+  idUser2: number;
+  user1Points: number;
+  user2Points: number;
+  delta: number;
+  winner: string;
+  looser: string;
 };
 
 const initialState = {

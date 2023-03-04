@@ -7,11 +7,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
+import { getGroupFromDatabase } from "../utils/http/httpGroup";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
+  const group = useSelector((state: RootState) => state.group);
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
 
@@ -22,8 +24,16 @@ const HomeScreen: FunctionComponent = () => {
       fetchTasksFromDatabase(user.user.token, dispatch);
     }
 
+    async function getGroup() {
+      getGroupFromDatabase(user.user.token, dispatch);
+    }
+
     getTasks();
+    getGroup();
   }, []);
+
+  const { delta } = group.group[0];
+  console.log("in home p : ", delta);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
@@ -39,6 +49,7 @@ const HomeScreen: FunctionComponent = () => {
   return (
     <SafeAreaView style={styles.container}>
       <DaysContainer />
+
       <Text>Vos points : {user.user.user.points}</Text>
       <View style={styles.listContainer}>
         <FlatList

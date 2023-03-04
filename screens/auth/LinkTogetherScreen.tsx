@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { Button } from "../../components";
 import { Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { setGroupInDatabase } from "../../utils/http/httpGroup";
+import { setGroupInDatabase, getGroupFromDatabase } from "../../utils/http/httpGroup";
 import { getUserByCode } from "../../utils/http/httpUser";
 import ROUTES from "../../constants/routes";
 
@@ -18,11 +18,13 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   // const [group, setGroup] = useState(null);
   const token = user.user.token;
 
+  const dispatch = useDispatch();
+
   const handleClick = () => {
     getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
     setGroupInDatabase(anotherId, token, setGroupMessage);
 
-    //on recupère le groupe et on le stock dans redux, on peut recupérer ce groupe à l'aide de notre id
+    getGroupFromDatabase(token, dispatch);
   };
 
   useEffect(() => {

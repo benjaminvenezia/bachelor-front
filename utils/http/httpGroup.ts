@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setGroup } from "../../store/slices/groupSlice";
 
 /**
  *
@@ -18,6 +19,27 @@ export const setGroupInDatabase = (idPartner: number, token: string, setGroupMes
   })
     .then((response) => {
       setGroupMessage(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+/**
+ * Return the group of current logged user.
+ * @param token The token of the current user, stored in store.
+ */
+export const getGroupFromDatabase = (token: string, dispatch: any): void => {
+  axios({
+    method: "get",
+    url: "http://localhost:8000/api/group/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      console.log("dans httpGroup: ", response.data.data.group);
+      dispatch(setGroup(response.data.data));
     })
     .catch((error) => {
       console.log(error);

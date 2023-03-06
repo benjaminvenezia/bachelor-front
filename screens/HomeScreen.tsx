@@ -8,13 +8,11 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
-import { Group } from "../store/slices/groupSlice";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
-  const group = useSelector((state: RootState) => state.group);
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
 

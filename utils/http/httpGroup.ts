@@ -38,7 +38,6 @@ export const getGroupFromDatabase = (token: string, dispatch: any): void => {
     },
   })
     .then((response) => {
-      console.log("dans httpGroup: ", response.data.data.group);
       dispatch(setGroup(response.data.data));
     })
     .catch((error) => {

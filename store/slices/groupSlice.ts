@@ -7,6 +7,8 @@ export type Group = {
   GroupName: string;
   idUser1: number;
   idUser2: number;
+  nameUser1: string;
+  nameUser2: string;
   user1Points: number;
   user2Points: number;
   delta: number;

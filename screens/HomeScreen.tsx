@@ -8,6 +8,7 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
+import { Group } from "../store/slices/groupSlice";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -31,9 +32,6 @@ const HomeScreen: FunctionComponent = () => {
     getTasks();
     getGroup();
   }, []);
-
-  const { delta } = group.group[0];
-  console.log("in home p : ", delta);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (

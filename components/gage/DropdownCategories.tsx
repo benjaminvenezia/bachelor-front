@@ -14,6 +14,7 @@ const DropdownCategories = () => {
           return <CategoryDropdownItem {...item} />;
         }}
         keyExtractor={(item): any => item.id}
+        numColumns={3}
       />
     </View>
   );

@@ -10,6 +10,7 @@ export type Category = {
 
 export type GenericsTasksState = {
   categories: Category[];
+  categoryGageSelection: string;
 };
 
 const initialState: GenericsTasksState = {
@@ -27,13 +28,18 @@ const initialState: GenericsTasksState = {
       description: "Un grand lit, la couverture en boule, on est bien dans la chambre.",
     },
   ],
+  categoryGageSelection: "",
 };
 
 const categoriesSlice = createSlice({
   name: "categories",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setCategoryGageSelection: (state, action) => {
+      state.categoryGageSelection = action.payload.categoryTitle;
+    },
+  },
 });
 
-export const {} = categoriesSlice.actions;
+export const { setCategoryGageSelection } = categoriesSlice.actions;
 export default categoriesSlice.reducer;

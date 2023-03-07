@@ -91,7 +91,7 @@ export const setTasksInDatabase = (tasks: Task[], token: string): void => {
       },
     })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

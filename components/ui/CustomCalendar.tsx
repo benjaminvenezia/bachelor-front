@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Calendar } from "react-native-calendars";
 
 const CustomCalendar = (props: any) => {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected]: any = useState();
   const marked = useMemo(
     () => ({
       [selected]: {

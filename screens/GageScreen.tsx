@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
-import { CustomCalendar } from "../components";
+import { Text } from "react-native";
+import { CustomCalendar, Title } from "../components";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const GageScreen = () => {
   const running = { key: "running", color: "blue" };
@@ -14,20 +15,22 @@ const GageScreen = () => {
     },
   };
   return (
-    <View>
-      <Text>Gage</Text>
+    <SafeAreaView>
+      <Title>Faire subir un gage</Title>
+
+      <Text>Faire subir un gage</Text>
 
       <CustomCalendar
         markingType="multi-dot"
         markedDates={marked}
-        onDayPress={(day) => console.log("onDayPress", day)}
-        onDayLongPress={(day) => console.log("onDayLongPress", day)}
-        onMonthChange={(date) => console.log("onMonthChange", date)}
-        onPressArrowLeft={(goToPreviousMonth) => {
+        onDayPress={(day: string) => console.log("onDayPress", day)}
+        onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
+        onMonthChange={(date: string) => console.log("onMonthChange", date)}
+        onPressArrowLeft={(goToPreviousMonth: any) => {
           console.log("onPressArrowLeft");
           goToPreviousMonth();
         }}
-        onPressArrowRight={(goToNextMonth) => {
+        onPressArrowRight={(goToNextMonth: any) => {
           console.log("onPressArrowRight");
           goToNextMonth();
         }}
@@ -68,7 +71,7 @@ const GageScreen = () => {
           monthTextColor: "#888",
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 export default GageScreen;

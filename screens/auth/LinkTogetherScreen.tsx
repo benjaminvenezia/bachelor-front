@@ -15,13 +15,13 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   const [anotherId, setAnotherId] = useState(-1);
   const [groupMessage, setGroupMessage]: any = useState("");
   const [linkMessage, setLinkMessage]: any = useState("");
-  // const [group, setGroup] = useState(null);
   const token = user.user.token;
 
   const dispatch = useDispatch();
 
   const handleClick = () => {
     getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
+
     setGroupInDatabase(anotherId, token, setGroupMessage);
 
     getGroupFromDatabase(token, dispatch);

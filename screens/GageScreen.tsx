@@ -1,8 +1,12 @@
 import { Text } from "react-native";
 import { CustomCalendar, Title } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 const GageScreen = () => {
+  const categories = useSelector((state: RootState) => state.categories);
+
   const running = { key: "running", color: "blue" };
   const cycling = { key: "cycling", color: "green" };
   const walking = { key: "walking", color: "orange" };

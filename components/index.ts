@@ -7,6 +7,6 @@ import Button from "./ui/Button";
 import Input from "./ui/Input";
 import DaysSelectorContainer from "./category/DaysSelectorContainer";
 import TaskItemCategory from "./category/TaskItemCategory";
-import CustomCalendar from "./ui/CustomCalendar";
+import CustomCalendar from "./gage/CustomCalendar";
 
 export { TaskItem, Hr, DaysContainer, CategoriesList, Title, Button, Input, DaysSelectorContainer, TaskItemCategory, CustomCalendar };

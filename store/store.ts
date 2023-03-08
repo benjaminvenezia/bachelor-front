@@ -6,6 +6,7 @@ import daysToAddTasksSlice from "./slices/daysToAddTasksSlice";
 import userSlice from "./slices/userSlice";
 import groupSlice from "./slices/groupSlice";
 import categoriesSlice from "./slices/categoriesSlice";
+import gagesSlice from "./slices/gagesSlice";
 
 const rootReducer = combineReducers({
   user: userSlice,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   daysToAddTasks: daysToAddTasksSlice,
   group: groupSlice,
   categories: categoriesSlice,
+  gages: gagesSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

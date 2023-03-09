@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export type Gage = {
   title: string;
   description: string;
+  category: string;
   isDone: boolean;
   dateString: string;
   day: number;
@@ -23,7 +24,9 @@ const gagesSlice = createSlice({
   name: "gages",
   initialState: initialState,
   reducers: {
-    changeGageStatus: (state, action) => {},
+    changeGageStatus: (state, action) => {
+      state.gages.push(action.payload.newGages);
+    },
   },
 });
 

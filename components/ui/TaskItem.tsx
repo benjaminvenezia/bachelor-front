@@ -24,44 +24,46 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
   const user = useSelector((state: RootState) => state.user);
 
-  const toggleStatusOfTaskInStoreAndDatabase = () => {
-    dispatch(toggleStatus({ id: id }));
-    toggleStatusTaskInDatabase(id, user.user.token, isDone);
+  let timeoutDeletingId: any;
+  let timeoutTogglingId: any;
+
+  const handleRemove = () => {
+    removeTaskFromDatabase(id, user.user.token);
+    dispatch(removeTask({ id: id }));
+    Vibration.vibrate(200);
+    setIsDeleting(false);
   };
 
-  const setPointsInStoreAndDatabase = () => {
+  const handlePressIn = () => {
+    dispatch(toggleStatus({ id: id }));
+    toggleStatusTaskInDatabase(id, user.user.token, isDone);
+
     if (!isDone) {
       dispatch(setUserPoints({ points: reward }));
       setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
     }
   };
 
-  const handleRemove = () => {
-    setIsDeleting(false);
-    removeTaskFromDatabase(id, user.user.token);
-    dispatch(removeTask({ id: id }));
-    Vibration.vibrate(200);
-  };
-
-  const handleClick = () => {
-    toggleStatusOfTaskInStoreAndDatabase();
-    setPointsInStoreAndDatabase();
+  const handlePressOut = () => {
+    clearTimeout(timeoutTogglingId);
+    clearTimeout(timeoutDeletingId);
   };
 
   const handlePrintMessageDuringDeletion = () => {
-    const delayBeforePrintingInMs = 750;
+    const delayBeforePrintingInMs = 500;
 
-    setTimeout(() => {
+    timeoutDeletingId = setTimeout(() => {
       setIsDeleting(true);
     }, delayBeforePrintingInMs);
   };
 
   return (
     <Pressable
-      onPress={handleClick}
+      onPress={handlePressIn}
       onLongPress={handleRemove}
       delayLongPress={2000}
       onPressIn={handlePrintMessageDuringDeletion}
+      onPressOut={handlePressOut}
       style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
     >
       <Image style={styles.icon} source={pathIconTodo} />

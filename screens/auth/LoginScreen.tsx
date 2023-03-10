@@ -12,8 +12,7 @@ const LoginScreen = ({ navigation }: any) => {
   const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [status, setStatus] = useState(0);
+  const [error, setError]: any = useState();
 
   const dispatch = useDispatch();
 
@@ -21,7 +20,7 @@ const LoginScreen = ({ navigation }: any) => {
     e.preventDefault();
     setLoading(true);
 
-    const res = axios
+    axios
       .post("http://127.0.0.1:8000/api/login/", { email: email, password: password })
       .then((response) => {
         dispatch(setUser({ user: response.data.data }));
@@ -32,9 +31,8 @@ const LoginScreen = ({ navigation }: any) => {
         }
       })
       .catch((error) => {
-        setStatus(400);
-        setError(true);
-        console.log(error);
+        setError(error.response.data);
+        console.log(error.response.data);
       });
   };
 
@@ -50,7 +48,7 @@ const LoginScreen = ({ navigation }: any) => {
             Valider
           </Button>
 
-          {error && <Text>Les identifiants entrés sont incorrects...</Text>}
+          <Text>{error?.message}</Text>
         </View>
       </View>
     </SafeAreaView>

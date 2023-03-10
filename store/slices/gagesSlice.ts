@@ -24,11 +24,11 @@ const gagesSlice = createSlice({
   name: "gages",
   initialState: initialState,
   reducers: {
-    changeGageStatus: (state, action) => {
-      state.gages.push(action.payload.newGages);
+    addGage: (state, action) => {
+      state.gages.push(action.payload.newGage);
     },
   },
 });
 
-export const { changeGageStatus } = gagesSlice.actions;
+export const { addGage } = gagesSlice.actions;
 export default gagesSlice.reducer;

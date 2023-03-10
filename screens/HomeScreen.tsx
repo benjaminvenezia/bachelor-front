@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
@@ -45,41 +45,41 @@ const HomeScreen: FunctionComponent = () => {
   return (
     <SafeAreaView style={styles.container}>
       <DaysContainer />
+      <ScrollView>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={tasksNotDone}
+            renderItem={({ item }) => (
+              <TaskItem title={item.title} reward={item.reward} id={item.id} isDone={item.isDone} pathIconTodo={item.pathIconTodo} />
+            )}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+          />
 
-      <Text>Vos points : {user.user.user.points}</Text>
-      <View style={styles.listContainer}>
-        <FlatList
-          data={tasksNotDone}
-          renderItem={({ item }) => (
-            <TaskItem title={item.title} reward={item.reward} id={item.id} isDone={item.isDone} pathIconTodo={item.pathIconTodo} />
-          )}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-        />
+          {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
+        </View>
+        <Hr />
+        <View style={styles.listContainer}>
+          <FlatList
+            data={tasksDone}
+            renderItem={({ item }) => (
+              <TaskItem
+                title={item.title}
+                reward={item.reward}
+                id={item.id}
+                isDone={item.isDone}
+                style={{ backgroundColor: GlobalStyles.colors.done }}
+                pathIconTodo={item.pathIconTodo}
+              />
+            )}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+          />
 
-        {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
-      </View>
-      <Hr />
-      <View style={styles.listContainer}>
-        <FlatList
-          data={tasksDone}
-          renderItem={({ item }) => (
-            <TaskItem
-              title={item.title}
-              reward={item.reward}
-              id={item.id}
-              isDone={item.isDone}
-              style={{ backgroundColor: GlobalStyles.colors.done }}
-              pathIconTodo={item.pathIconTodo}
-            />
-          )}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-        />
-
-        {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
-      </View>
-      <CategoriesList />
+          {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
+        </View>
+        <CategoriesList />
+      </ScrollView>
     </SafeAreaView>
   );
 };

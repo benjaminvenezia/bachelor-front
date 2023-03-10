@@ -47,34 +47,32 @@ const HomeScreen: FunctionComponent = () => {
       <DaysContainer />
       <ScrollView>
         <View style={styles.listContainer}>
-          <FlatList
-            data={tasksNotDone}
-            renderItem={({ item }) => (
-              <TaskItem title={item.title} reward={item.reward} id={item.id} isDone={item.isDone} pathIconTodo={item.pathIconTodo} />
-            )}
-            keyExtractor={(item) => item.id}
-            numColumns={3}
-          />
+          {tasksNotDone.map((item) => (
+            <TaskItem
+              key={item.id}
+              title={item.title}
+              reward={item.reward}
+              id={item.id}
+              isDone={item.isDone}
+              pathIconTodo={item.pathIconTodo}
+            />
+          ))}
 
           {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
         </View>
         <Hr />
         <View style={styles.listContainer}>
-          <FlatList
-            data={tasksDone}
-            renderItem={({ item }) => (
-              <TaskItem
-                title={item.title}
-                reward={item.reward}
-                id={item.id}
-                isDone={item.isDone}
-                style={{ backgroundColor: GlobalStyles.colors.done }}
-                pathIconTodo={item.pathIconTodo}
-              />
-            )}
-            keyExtractor={(item) => item.id}
-            numColumns={3}
-          />
+          {tasksDone.map((item) => (
+            <TaskItem
+              key={item.id}
+              title={item.title}
+              reward={item.reward}
+              id={item.id}
+              isDone={item.isDone}
+              style={{ backgroundColor: GlobalStyles.colors.done }}
+              pathIconTodo={item.pathIconTodo}
+            />
+          ))}
 
           {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
         </View>
@@ -90,6 +88,8 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     minHeight: 140,
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   message: {
     fontWeight: "bold",

@@ -49,7 +49,7 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
   };
 
   const handlePrintMessageDuringDeletion = () => {
-    const delayBeforePrintingInMs = 150;
+    const delayBeforePrintingInMs = 750;
 
     setTimeout(() => {
       setIsDeleting(true);
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginRight: 2,
     marginBottom: 2,
-    width: "33.3333%",
+    width: "32.86%",
     height: 130,
     backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",

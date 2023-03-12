@@ -5,12 +5,12 @@ import { GlobalStyles } from "../../constants/style";
 type Props = {
   children: string;
   style?: object;
-  size: string;
+  size?: string;
   alternativeStyle?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 };
 
-const Button = ({ children, style, size, alternativeStyle, onPress }: Props) => {
+const Button = ({ children, style, size = GlobalStyles.buttons.md, alternativeStyle, onPress }: Props) => {
   let dynamicSize = null;
 
   switch (size) {

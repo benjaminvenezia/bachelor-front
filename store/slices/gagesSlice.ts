@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type Gage = {
+  id: number;
   title: string;
   description: string;
+  is_done: boolean;
+  cost: number;
   category: string;
-  isDone: boolean;
-  dateString: string;
   day: number;
   month: number;
   year: number;
-  timestamp: number;
+  date_string: string;
 };
 
 export type Gages = {
@@ -25,7 +26,7 @@ const gagesSlice = createSlice({
   initialState: initialState,
   reducers: {
     addGage: (state, action) => {
-      state.gages.push(action.payload.newGage);
+      state.gages.push(action.payload);
     },
   },
 });

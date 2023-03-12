@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
 import { GlobalStyles } from "../constants/style";

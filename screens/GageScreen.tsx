@@ -1,9 +1,17 @@
 import { Text } from "react-native";
-import { CustomCalendar, Title } from "../components";
+import { Button, CustomCalendar, Title } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
+import { setGageInDatabase } from "../utils/http/httpGage";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { Gage } from "../store/slices/gagesSlice";
 
 const GageScreen = () => {
+  const user = useSelector((state: RootState) => state.user);
+  const gages = useSelector((state: RootState) => state.gages);
+  const dispatch = useDispatch();
+
   const running = { key: "running", color: "blue" };
   const cycling = { key: "cycling", color: "green" };
   const walking = { key: "walking", color: "orange" };
@@ -15,6 +23,26 @@ const GageScreen = () => {
       dots: [running, walking, cycling],
     },
   };
+
+  console.log("In gagescreen : ", gages);
+
+  const gageTest: Gage = {
+    id: -1,
+    title: "title gage",
+    description: "description gage",
+    is_done: false,
+    cost: 450,
+    category: "category gage",
+    day: 12,
+    month: 3,
+    year: 2023,
+    date_string: "2023-03-12",
+  };
+
+  const handlePress = () => {
+    setGageInDatabase(gageTest, user.user.token, dispatch);
+  };
+
   return (
     <SafeAreaView>
       <Title>Faire subir un gage</Title>
@@ -73,6 +101,8 @@ const GageScreen = () => {
           monthTextColor: "#888",
         }}
       />
+
+      <Button onPress={handlePress}>Valider</Button>
     </SafeAreaView>
   );
 };

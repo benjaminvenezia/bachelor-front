@@ -11,7 +11,7 @@ const DropdownCategories = () => {
       <FlatList
         data={categories["categories"]}
         renderItem={({ item }) => {
-          return <CategoryDropdownItem {...item} />;
+          return <CategoryDropdownItem active={item.category === categories.categoryGageSelection ? true : false} {...item} />;
         }}
         keyExtractor={(item): any => item.id}
         numColumns={3}

@@ -7,7 +7,7 @@ const CustomCalendar = (props: any) => {
     () => ({
       [selected]: {
         selected: true,
-        selectedColor: "#222222",
+        selectedColor: "#ff0000",
         selectedTextColor: "yellow",
       },
     }),

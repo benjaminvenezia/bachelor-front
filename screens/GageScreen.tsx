@@ -21,7 +21,7 @@ const GageScreen = () => {
   const [description, setDescription] = useState<string>("description gage");
   const [isDone, setIsDone] = useState<boolean>(false);
   const [cost, setCost] = useState<number>(450);
-  const [category, setCategory] = useState<null | string>(null);
+  const [category, setCategory] = useState<null | string>(categories.categoryGageSelection);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
@@ -39,21 +39,7 @@ const GageScreen = () => {
     },
   };
 
-  console.log("In gagescreen : ", gages);
-
-  const handlePress = () => {
-    setGageInDatabase(gageTest, user.user.token, dispatch);
-  };
-
-  const setupTheGage = (data: any) => {
-    setDateString(data.dateString);
-    setDay(data.day);
-    setMonth(data.month);
-    setYear(data.year);
-    setCategory(categories.categoryGageSelection);
-  };
-
-  const gageTest: Gage = {
+  const gageToSave: Gage = {
     id: -1,
     title: "title gage",
     description: "description gage",
@@ -64,6 +50,17 @@ const GageScreen = () => {
     month: month,
     year: year,
     date_string: "2023-03-12",
+  };
+
+  const handlePress = () => {
+    setGageInDatabase(gageToSave, user.user.token, dispatch);
+  };
+
+  const setTheCalendarGagePart = (data: any) => {
+    setDateString(data.dateString);
+    setDay(data.day);
+    setMonth(data.month);
+    setYear(data.year);
   };
 
   return (
@@ -78,7 +75,7 @@ const GageScreen = () => {
       <CustomCalendar
         markingType="multi-dot"
         markedDates={marked}
-        onDayPress={(day: string) => setupTheGage(day)}
+        onDayPress={(day: string) => setTheCalendarGagePart(day)}
         onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
         onMonthChange={(date: string) => console.log("onMonthChange", date)}
         onPressArrowLeft={(goToPreviousMonth: any) => {
@@ -126,7 +123,7 @@ const GageScreen = () => {
           monthTextColor: "#888",
         }}
       />
-      {day !== null && month !== null && year !== null ? (
+      {day !== null && month !== null && year !== null && category !== null ? (
         <Button onPress={handlePress}>Valider</Button>
       ) : (
         <Button size={GlobalStyles.buttons.xl} alternativeStyle={true} onPress={() => {}}>

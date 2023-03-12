@@ -7,9 +7,9 @@ export type Gage = {
   is_done: boolean;
   cost: number;
   category: string;
-  day: number;
-  month: number;
-  year: number;
+  day: number | null;
+  month: number | null;
+  year: number | null;
   date_string: string;
 };
 

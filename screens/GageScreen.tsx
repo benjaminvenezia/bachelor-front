@@ -1,13 +1,14 @@
-import { Text } from "react-native";
-import { Button, CustomCalendar, Title } from "../components";
+import { Text, StyleSheet } from "react-native";
+import { Button, CustomCalendar, Title, Popup } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
 import { setGageInDatabase } from "../utils/http/httpGage";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../store/slices/gagesSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
+import DELAYS from "../constants/delays";
 
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -15,8 +16,7 @@ const GageScreen = () => {
   const categories = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
-
-  const [id, setId] = useState<number>(-1);
+  const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState<string>("title gage");
   const [description, setDescription] = useState<string>("description gage");
   const [isDone, setIsDone] = useState<boolean>(false);
@@ -53,8 +53,17 @@ const GageScreen = () => {
   };
 
   const handlePress = () => {
+    setModalVisible(true);
     setGageInDatabase(gageToSave, user.user.token, dispatch);
   };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setModalVisible(false);
+    }, DELAYS.POPUP);
+
+    return () => clearTimeout(timeoutId);
+  }, [modalVisible]);
 
   const setTheCalendarGagePart = (data: any) => {
     setDateString(data.dateString);
@@ -130,7 +139,12 @@ const GageScreen = () => {
           Choisir un jour
         </Button>
       )}
+
+      {modalVisible && <Popup>Vous avez offert un gage!</Popup>}
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({});
+
 export default GageScreen;

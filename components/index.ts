@@ -9,6 +9,7 @@ import DaysSelectorContainer from "./category/DaysSelectorContainer";
 import TaskItemCategory from "./category/TaskItemCategory";
 import CustomCalendar from "./gage/CustomCalendar";
 import DropdownCategories from "./gage/DropdownCategories";
+import Popup from "./ui/Popup";
 
 export {
   TaskItem,
@@ -22,4 +23,5 @@ export {
   TaskItemCategory,
   CustomCalendar,
   DropdownCategories,
+  Popup,
 };

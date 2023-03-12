@@ -12,6 +12,8 @@ import { GlobalStyles } from "../constants/style";
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
   const gages = useSelector((state: RootState) => state.gages);
+  const categories = useSelector((state: RootState) => state.categories);
+
   const dispatch = useDispatch();
 
   const [id, setId] = useState<number>(-1);
@@ -19,7 +21,7 @@ const GageScreen = () => {
   const [description, setDescription] = useState<string>("description gage");
   const [isDone, setIsDone] = useState<boolean>(false);
   const [cost, setCost] = useState<number>(450);
-  const [category, setCategory] = useState<string>("category gage");
+  const [category, setCategory] = useState<null | string>(null);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
@@ -48,6 +50,7 @@ const GageScreen = () => {
     setDay(data.day);
     setMonth(data.month);
     setYear(data.year);
+    setCategory(categories.categoryGageSelection);
   };
 
   const gageTest: Gage = {
@@ -56,7 +59,7 @@ const GageScreen = () => {
     description: "description gage",
     is_done: false,
     cost: 450,
-    category: "category gage",
+    category: category,
     day: day,
     month: month,
     year: year,
@@ -66,6 +69,8 @@ const GageScreen = () => {
   return (
     <SafeAreaView>
       <Title>Faire subir un gage</Title>
+
+      <Text>Choississeez une catégorie!</Text>
       <DropdownCategories />
 
       <Text>Faire subir un gage</Text>

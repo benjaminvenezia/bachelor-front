@@ -1,15 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Category } from "../../store/slices/categoriesSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCategoryGageSelection } from "../../store/slices/categoriesSlice";
-import { RootState } from "../../store/store";
 
 const CategoryDropdownItem = (props: Category) => {
   const { category, description, title } = props;
   const dispatch = useDispatch();
-  // const gageStore = useSelector((state: RootState) => state.categories);
-
-  // console.log(gageStore.categoryGageSelection);
 
   return (
     <Pressable onPress={() => dispatch(setCategoryGageSelection({ categoryTitle: category }))}>
@@ -23,9 +19,10 @@ const CategoryDropdownItem = (props: Category) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    borderWidth: 1,
-    padding: 5,
+    borderWidth: 2,
+    padding: 15,
     borderColor: "black",
+    marginVertical: 10,
   },
   text: {
     textAlign: "center",

@@ -27,6 +27,12 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.ROOM,
       description: "Un grand lit, la couverture en boule, on est bien dans la chambre.",
     },
+    {
+      id: 3,
+      title: "Salle de bain",
+      category: CATEGORIES.ROOM,
+      description: "Test poulet  machin rigolo",
+    },
   ],
   categoryGageSelection: "",
 };

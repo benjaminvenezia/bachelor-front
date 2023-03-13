@@ -30,7 +30,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const getDaysAssociated = (title: string) => {
     const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);
-    const daysLabels = days.map((item) => item.associatedDay);
+    const daysLabels = days.map((item) => item.associated_day);
 
     return daysLabels;
   };
@@ -43,7 +43,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         const taskToExtract: Task = activatedTasks[i];
         let taskToPush = { ...taskToExtract };
         taskToPush.id = uuid.v4().toString();
-        taskToPush.associatedDay = activeDays["activeDays"][j];
+        taskToPush.associated_day = activeDays["activeDays"][j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
         if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {

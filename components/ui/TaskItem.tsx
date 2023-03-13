@@ -65,7 +65,12 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
       delayLongPress={2000}
       onPressIn={handlePrintMessageDuringDeletion}
       onPressOut={handlePressOut}
-      style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
+      style={[
+        styles.container,
+        style,
+        isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : "",
+        is_done ? styles.disabled : null,
+      ]}
     >
       <ImageBackground borderRadius={20} source={images[path_icon_todo]} style={styles.icon} />
       {!isDeleting && (
@@ -75,7 +80,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
           <Text style={styles.text}>{updatePointsMessage}</Text>
         </View>
       )}
-      {isDeleting && <Text>Suppression de la tâche en cours...</Text>}
+      {isDeleting && <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>}
     </Pressable>
   );
 };
@@ -124,6 +129,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
     color: GlobalStyles.colors.muted,
+  },
+  deleting: {
+    fontSize: 20,
+    color: "red",
+  },
+  disabled: {
+    opacity: 0.25,
   },
 });
 

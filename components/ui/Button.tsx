@@ -1,4 +1,4 @@
-import { GestureResponderEvent } from "react-native";
+import { GestureResponderEvent, Linking } from "react-native";
 import { Text, Pressable, View, StyleSheet } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 

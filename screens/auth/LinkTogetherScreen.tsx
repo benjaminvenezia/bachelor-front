@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, ImageBackground } from "react-native";
 import { Button } from "../../components";
 import { Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
@@ -35,23 +35,27 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground style={styles.image} source={require("../../assets/images/man-looking-binoculars.png")} />
+
       <View style={styles.container}>
         <Title titleType="h1" style={styles.title}>
           Lien avec votre partenaire
         </Title>
 
         <View style={styles.inputsContainer}>
-          <Text style={styles.text}>Mon code d'invitation : {user.user.user.personalCode}</Text>
+          <Text style={styles.text}>Mon code d'invitation : </Text>
+          <Title titleType="h1">{user.user.user.personalCode}</Title>
 
           <Text style={styles.text}>Code de votre partenaire</Text>
+
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
-          <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
+          <Text style={styles.text}>{groupMessage.message}</Text>
+          <Text style={styles.text}>{linkMessage.message}</Text>
+
+          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
             Valider
           </Button>
-
-          <Text>{groupMessage["message"]}</Text>
-          <Text>{linkMessage["message"]}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -75,6 +79,15 @@ const styles = StyleSheet.create({
   text: {
     color: GlobalStyles.colors.text,
     fontSize: GlobalStyles.fontsSize.text,
+    marginBottom: 10,
+  },
+  button: {},
+  image: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: -1,
+    width: "100%",
+    height: "50%",
   },
 });
 export default LinkTogetherScreen;

@@ -27,7 +27,7 @@ const CategoryDropdownItem = (props: Props) => {
 
   return (
     <Pressable onPress={handlePress}>
-      <View style={[styles.container, props.active ? styles.active : {}]}>
+      <View style={[styles.wrapper, props.active ? styles.active : {}]}>
         <Text style={styles.text}>{title}</Text>
       </View>
     </Pressable>
@@ -35,15 +35,16 @@ const CategoryDropdownItem = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    borderWidth: 2,
+  wrapper: {
+    borderWidth: 1,
     padding: 15,
     borderColor: "black",
     marginVertical: 10,
+    marginHorizontal: 5,
+    borderRadius: 40,
   },
   active: {
-    backgroundColor: "red",
+    backgroundColor: "lightgray",
   },
   text: {
     textAlign: "center",

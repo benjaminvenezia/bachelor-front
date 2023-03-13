@@ -2,10 +2,11 @@ export const GlobalStyles = {
   colors: {
     primary: "#000000",
     secondary: "#ffffff",
-    background: "#ffffff",
+    background: "#000000",
+    text: "#ffffff",
     todo: "#FCB1B1",
     done: "#C2FFC8",
-    deleting: "#ff6464",
+    deleting: "#ff0033",
     presentation: "lightblue",
     muted: "#515151",
   },

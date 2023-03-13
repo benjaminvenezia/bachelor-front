@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { Button, CustomCalendar, Title, Popup } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
@@ -75,16 +75,18 @@ const GageScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.wrapper}>
       <Title>Faire subir un gage</Title>
 
       <Text>Choississeez une catégorie!</Text>
       <DropdownCategories />
 
       <Text>Choississeez une tâche!</Text>
-      {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
-        return <Text key={index}>{item.title}</Text>;
-      })}
+      <View>
+        {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
+          return <Text key={index}>{item.title}</Text>;
+        })}
+      </View>
 
       <Text>Choississez une date :</Text>
       <CustomCalendar
@@ -103,7 +105,7 @@ const GageScreen = () => {
         }}
         style={{
           borderRadius: 5,
-          margin: 12,
+          marginVertical: 10,
           elevation: 5,
           borderWidth: 4,
           borderColor: "rgba(0, 0, 0, 0.1)",
@@ -152,6 +154,10 @@ const GageScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  wrapper: {
+    marginHorizontal: 10,
+  },
+});
 
 export default GageScreen;

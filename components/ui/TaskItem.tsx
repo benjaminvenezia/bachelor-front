@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 15,
-    fontFamily: "Roboto-Italic",
   },
   text: {
     color: GlobalStyles.colors.text,

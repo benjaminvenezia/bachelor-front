@@ -1,4 +1,4 @@
-import { Text, StyleSheet, Pressable, Vibration, ImageBackground } from "react-native";
+import { Text, StyleSheet, Pressable, Vibration, ImageBackground, View } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useEffect, useState } from "react";
@@ -67,14 +67,13 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
       onPressOut={handlePressOut}
       style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
     >
-      <ImageBackground source={images[path_icon_todo]} style={styles.icon} />
+      <ImageBackground borderRadius={20} source={images[path_icon_todo]} style={styles.icon} />
       {!isDeleting && (
-        <>
+        <View style={styles.iconContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text style={[styles.text, styles.reward]}>{reward} Points</Text>
-          <Text style={styles.text}>{path_icon_todo}</Text>
           <Text style={styles.text}>{updatePointsMessage}</Text>
-        </>
+        </View>
       )}
       {isDeleting && <Text>Suppression de la tâche en cours...</Text>}
     </Pressable>
@@ -83,14 +82,28 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    borderRadius: 20,
+    borderWidth: 5,
+    borderColor: "white",
+    paddingTop: 5,
+    paddingBottom: 0,
     marginRight: 2,
     marginBottom: 2,
     width: "32.80%",
     height: 130,
+
     backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",
     alignItems: "center",
+  },
+  iconContainer: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "#ffffffcd",
+    borderRadius: 20,
+    width: "100%",
+    paddingHorizontal: 5,
+    paddingTop: 5,
   },
   icon: {
     position: "absolute",
@@ -101,6 +114,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
+    fontSize: 15,
   },
   text: {
     color: GlobalStyles.colors.text,
@@ -108,6 +122,7 @@ const styles = StyleSheet.create({
   },
   reward: {
     fontWeight: "bold",
+    fontSize: 15,
     color: GlobalStyles.colors.muted,
   },
 });

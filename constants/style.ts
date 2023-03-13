@@ -4,7 +4,7 @@ export const GlobalStyles = {
     background: "rgb(27, 27, 27)",
     secondary: "#ffffff",
     todo: "#FCB1B1",
-    done: "#C2FFC8",
+    done: "#8a8a8a",
     deleting: "#ff0033",
     presentation: "lightblue",
     muted: "#515151",

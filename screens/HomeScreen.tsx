@@ -65,27 +65,30 @@ const HomeScreen: FunctionComponent = () => {
           )}
         </View>
 
-        <Image style={styles.image} source={require("../assets/images/hr-menu.png")} />
+        <View style={styles.footer}>
+          <Image style={styles.image} source={require("../assets/images/hr-menu.png")} />
 
-        <View style={styles.listContainer}>
-          {tasksDone.map((item) => (
-            <TaskItem
-              key={item.id}
-              title={item.title}
-              reward={item.reward}
-              id={item.id}
-              is_done={item.is_done}
-              style={{ backgroundColor: GlobalStyles.colors.done }}
-              path_icon_todo={item.path_icon_todo}
-            />
-          ))}
-          {tasksDone.length === 0 && (
-            <View style={styles.textContainer}>
-              <Text style={styles.text}>Aucune tâche effectuée</Text>
-            </View>
-          )}
+          <View style={styles.listContainer}>
+            {tasksDone.map((item) => (
+              <TaskItem
+                key={item.id}
+                title={item.title}
+                reward={item.reward}
+                id={item.id}
+                is_done={item.is_done}
+                style={{ backgroundColor: GlobalStyles.colors.done }}
+                path_icon_todo={item.path_icon_todo}
+              />
+            ))}
+            {tasksDone.length === 0 && (
+              <View style={styles.textContainer}>
+                <Text style={styles.text}>Aucune tâche effectuée</Text>
+              </View>
+            )}
+          </View>
+          <CategoriesList />
+          <ImageBackground style={styles.background} source={require("../assets/images/menu-background.png")} />
         </View>
-        <CategoriesList />
       </ScrollView>
     </SafeAreaView>
   );
@@ -93,13 +96,12 @@ const HomeScreen: FunctionComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: 10,
+    position: "relative",
   },
   listContainer: {
-    minHeight: 140,
     flexDirection: "row",
     flexWrap: "wrap",
+    minHeight: 140,
   },
   textContainer: {
     width: "100%",
@@ -112,10 +114,26 @@ const styles = StyleSheet.create({
     fontSize: GlobalStyles.fontsSize.text,
   },
   image: {
+    position: "absolute",
+    top: -30,
     zIndex: -1,
     width: "100%",
     height: 30,
-    marginVertical: 20,
+  },
+  background: {
+    position: "absolute",
+    top: 0,
+    zIndex: -3,
+    width: "100%",
+    height: 600,
+    resizeMode: "stretch",
+  },
+  footer: {
+    marginTop: 100,
+    position: "relative",
+    paddingVertical: 50,
+    // borderColor: "white",
+    // borderWidth: 4,
   },
 });
 

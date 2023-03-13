@@ -1,27 +1,29 @@
 export const GlobalStyles = {
   colors: {
-    primary: "#000000",
+    primary: "#fff200",
+    background: "rgb(27, 27, 27)",
     secondary: "#ffffff",
-    background: "#000000",
-    text: "#ffffff",
     todo: "#FCB1B1",
     done: "#C2FFC8",
     deleting: "#ff0033",
     presentation: "lightblue",
     muted: "#515151",
+    text: "#ffffff",
+    h1: "#ffffff",
   },
   reactNative: {
-    primary: "rgb(0, 0, 0)",
-    background: "rgb(255, 255, 255)",
-    card: "rgb(255, 255, 255)",
-    text: "rgb(0, 0, 0)",
-    border: "rgb(255, 255, 255)",
+    primary: "rgb(255, 255, 255)",
+    background: "rgb(27, 27, 27)",
+    card: "rgb(0, 0, 0)",
+    text: "rgb(255, 255, 255)",
+    border: "rgb(0, 0, 0)",
     notification: "rgb(0, 0, 0)",
     darktheme: false,
   },
-  fonts: {
+  fontsSize: {
     h1: 30,
     h2: 22,
+    text: 20,
   },
   buttons: {
     xl: "XL",

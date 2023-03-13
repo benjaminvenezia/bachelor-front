@@ -35,7 +35,7 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Title>Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Title style={styles.h1}>Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
         <CategoriesList />
       </SafeAreaView>
     );
@@ -57,7 +57,11 @@ const HomeScreen: FunctionComponent = () => {
             />
           ))}
 
-          {tasksNotDone.length === 0 && <Text style={styles.message}>Pas de tâches prévue aujourd'hui.</Text>}
+          {tasksNotDone.length === 0 && (
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>Pas de tâches prévue aujourd'hui.</Text>
+            </View>
+          )}
         </View>
         <Hr />
         <View style={styles.listContainer}>
@@ -72,8 +76,11 @@ const HomeScreen: FunctionComponent = () => {
               pathIconTodo={item.pathIconTodo}
             />
           ))}
-
-          {tasksDone.length === 0 && <Text style={styles.message}>Aucune tâche effectuée</Text>}
+          {tasksDone.length === 0 && (
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>Aucune tâche effectuée</Text>
+            </View>
+          )}
         </View>
         <CategoriesList />
       </ScrollView>
@@ -84,16 +91,28 @@ const HomeScreen: FunctionComponent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginHorizontal: 10,
   },
   listContainer: {
     minHeight: 140,
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  message: {
+  textContainer: {
+    width: "100%",
+    // borderWidth: 4,
+    // borderColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
     fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 50,
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
+  },
+  h1: {
+    color: GlobalStyles.colors.h1,
+    fontSize: GlobalStyles.fontsSize.h1,
   },
 });
 

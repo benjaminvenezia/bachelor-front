@@ -57,7 +57,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       <Text style={styles.reward}>{reward} Points</Text>
       <View style={{ flexDirection: "row" }}>
         {days.map((dayLabel, index) => (
-          <Text key={index} style={{ fontSize: 10 }}>
+          <Text key={index} style={styles.text}>
             {dayLabel}
           </Text>
         ))}
@@ -89,7 +89,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
+    color: GlobalStyles.colors.h1,
     fontWeight: "bold",
+  },
+  text: {
+    fontSize: GlobalStyles.fontsSize.text,
+    color: GlobalStyles.colors.text,
   },
   reward: {
     fontWeight: "bold",

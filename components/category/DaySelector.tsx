@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addDay, removeDay } from "../../store/slices/daysToAddTasksSlice";
 import { Day } from "../../store/slices/daySlice";
 import { RootState } from "../../store/store";
+import { GlobalStyles } from "../../constants/style";
 
 type Props = {
   label: string | any;
@@ -30,7 +31,7 @@ const DaySelector = ({ label }: Props) => {
   return (
     <Pressable onPress={() => addTaskDay()} style={[styles.container, isSelected ? styles.isSelectedItem : null]}>
       <View>
-        <Text style={isSelected ? styles.isSelectedText : null}>{label}</Text>
+        <Text style={[isSelected ? styles.isSelectedText : styles.text]}>{label}</Text>
       </View>
     </Pressable>
   );
@@ -49,7 +50,11 @@ const styles = StyleSheet.create({
     backgroundColor: "purple",
   },
   isSelectedText: {
-    color: "white",
+    color: "red",
+  },
+  text: {
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
 });
 

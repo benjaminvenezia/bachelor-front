@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   text: {
-    fontWeight: "bold",
+    fontSize: GlobalStyles.fontsSize.text,
+    color: GlobalStyles.colors.text,
   },
 });
 

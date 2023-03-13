@@ -13,7 +13,8 @@ const Title = ({ children, style }: Props) => {
 const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
-    fontSize: GlobalStyles.fonts.h1,
+    fontSize: GlobalStyles.fontsSize.h1,
+    color: GlobalStyles.colors.h1,
     marginBottom: 10,
   },
 });

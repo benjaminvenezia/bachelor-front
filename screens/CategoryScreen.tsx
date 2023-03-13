@@ -102,7 +102,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
           </Button>
         ) : (
           <>
-            <Text>Merci de choisir au moins un jour et une tâche</Text>
+            <Text style={styles.text}>Merci de choisir au moins un jour et une tâche</Text>
             <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => {}} alternativeStyle={true}>
               Invalide
             </Button>
@@ -116,9 +116,15 @@ const CategoryScreen = ({ navigation, route }: any) => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    paddingHorizontal: 15,
+    backgroundColor: GlobalStyles.colors.background,
   },
   container: {
     flex: 1,
+  },
+  text: {
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
   button: {},
   title: {

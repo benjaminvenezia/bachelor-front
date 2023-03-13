@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
@@ -64,7 +64,9 @@ const HomeScreen: FunctionComponent = () => {
             </View>
           )}
         </View>
-        <Hr />
+
+        <Image style={styles.image} source={require("../assets/images/hr-menu.png")} />
+
         <View style={styles.listContainer}>
           {tasksDone.map((item) => (
             <TaskItem
@@ -101,8 +103,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: "100%",
-    // borderWidth: 4,
-    // borderColor: "white",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -110,6 +110,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: GlobalStyles.colors.text,
     fontSize: GlobalStyles.fontsSize.text,
+  },
+  image: {
+    zIndex: -1,
+    width: "100%",
+    height: 30,
+    marginVertical: 20,
   },
 });
 

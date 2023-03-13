@@ -16,10 +16,10 @@ type TaskItemProps = {
   reward: number;
   style?: any;
   isDone: boolean;
-  pathIconTodo: string;
+  path_icon_todo: string;
 };
 
-const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id, style, path_icon_todo, isDone }: TaskItemProps) => {
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
@@ -67,12 +67,12 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
       onPressOut={handlePressOut}
       style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
     >
-      <ImageBackground source={images[pathIconTodo]} style={styles.icon} />
+      <ImageBackground source={images[path_icon_todo]} style={styles.icon} />
       {!isDeleting && (
         <>
           <Text style={styles.title}>{title}</Text>
           <Text style={[styles.text, styles.reward]}>{reward} Points</Text>
-          <Text style={styles.text}>{pathIconTodo}</Text>
+          <Text style={styles.text}>{path_icon_todo}</Text>
           <Text style={styles.text}>{updatePointsMessage}</Text>
         </>
       )}

@@ -9,7 +9,7 @@ export type Task = {
   reward: number;
   isDone: boolean;
   associatedDay: string;
-  pathIconTodo: string;
+  path_icon_todo: string;
 };
 
 export type GenericsTasksState = {
@@ -26,7 +26,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -36,7 +36,7 @@ const initialState: GenericsTasksState = {
       reward: 30,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -46,7 +46,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -56,7 +56,7 @@ const initialState: GenericsTasksState = {
       reward: 15,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -66,7 +66,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -76,7 +76,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
     {
       id: "",
@@ -86,7 +86,7 @@ const initialState: GenericsTasksState = {
       reward: 10,
       isDone: false,
       associatedDay: "",
-      pathIconTodo: "bocal",
+      path_icon_todo: "bocal",
     },
   ],
 };

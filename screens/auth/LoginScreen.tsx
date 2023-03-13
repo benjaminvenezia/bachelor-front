@@ -52,7 +52,7 @@ const LoginScreen = ({ navigation }: any) => {
             Valider
           </Button>
 
-          <Text>{error?.message}</Text>
+          <Text style={styles.text}>{error?.message}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -79,6 +79,10 @@ const styles = StyleSheet.create({
     zIndex: -1,
     width: "100%",
     height: "60%",
+  },
+  text: {
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
 });
 

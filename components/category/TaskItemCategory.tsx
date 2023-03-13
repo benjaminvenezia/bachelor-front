@@ -15,11 +15,11 @@ type TaskItemProps = {
    */
   setActivatedTasks?: any;
   activatedTasks: Task[];
-  pathIconTodo: string;
+  path_icon_todo: string;
   days: string[];
 };
 
-const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, pathIconTodo, days }: TaskItemProps) => {
+const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, activatedTasks, path_icon_todo, days }: TaskItemProps) => {
   const [clickedTask, setClickedTask] = useState(false);
 
   const handleAddToActiveDay = () => {
@@ -41,7 +41,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       description: "desc",
       isDone: false,
       associatedDay: "",
-      pathIconTodo,
+      path_icon_todo,
     };
 
     setClickedTask(!clickedTask);

@@ -31,8 +31,6 @@ const HomeScreen: FunctionComponent = () => {
     getGroup();
   }, []);
 
-  console.log(tasks);
-
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView style={styles.container}>
@@ -56,7 +54,7 @@ const HomeScreen: FunctionComponent = () => {
               reward={item.reward}
               id={item.id}
               isDone={item.isDone}
-              pathIconTodo={item.pathIconTodo}
+              path_icon_todo={item.path_icon_todo}
             />
           ))}
 
@@ -76,7 +74,7 @@ const HomeScreen: FunctionComponent = () => {
               id={item.id}
               isDone={item.isDone}
               style={{ backgroundColor: GlobalStyles.colors.done }}
-              pathIconTodo={item.pathIconTodo}
+              path_icon_todo={item.path_icon_todo}
             />
           ))}
           {tasksDone.length === 0 && (

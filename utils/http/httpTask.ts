@@ -84,6 +84,7 @@ export const setTasksInDatabase = (tasks: Task[], token: string): void => {
         category: task.category,
         reward: task.reward,
         isDone: task.isDone,
+        path_icon_todo: task.path_icon_todo,
         associated_day: task.associatedDay,
       },
       headers: {

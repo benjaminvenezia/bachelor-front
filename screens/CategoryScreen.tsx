@@ -44,7 +44,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         let taskToPush = { ...taskToExtract };
         taskToPush.id = uuid.v4().toString();
         taskToPush.associatedDay = activeDays["activeDays"][j];
-        taskToPush.pathIconTodo = taskToExtract.pathIconTodo;
+        taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
         if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {
           toPush.push(taskToPush);
@@ -89,7 +89,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
                 style={{ backgroundColor: GlobalStyles.colors.presentation }}
                 setActivatedTasks={setActivatedTasks}
                 activatedTasks={activatedTasks}
-                pathIconTodo={item.pathIconTodo}
+                path_icon_todo={item.path_icon_todo}
                 days={daysLabels}
               />
             );

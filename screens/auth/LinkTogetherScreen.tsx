@@ -41,9 +41,9 @@ const LinkTogetherScreen = ({ navigation }: any) => {
         </Title>
 
         <View style={styles.inputsContainer}>
-          <Text>Mon code d'invitation : {user.user.user.personalCode}</Text>
+          <Text style={styles.text}>Mon code d'invitation : {user.user.user.personalCode}</Text>
 
-          <Text>Code de votre partenaire</Text>
+          <Text style={styles.text}>Code de votre partenaire</Text>
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
@@ -71,6 +71,10 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 30,
+  },
+  text: {
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
 });
 export default LinkTogetherScreen;

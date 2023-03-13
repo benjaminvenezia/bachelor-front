@@ -53,10 +53,11 @@ const RegisterScreen = ({ navigation }: any) => {
           Inscription
         </Title>
         <View style={styles.inputsContainer}>
-          <Input onChangeHandler={onChangeName} value={name} placeholder="prénom" keyboard="default" />
-          <Input onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
-          <Input onChangeHandler={onChangePassword} value={password} placeholder="Mot de passe" keyboard="default" />
+          <Input shadow={true} onChangeHandler={onChangeName} value={name} placeholder="prénom" keyboard="default" />
+          <Input shadow={true} onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
+          <Input shadow={true} onChangeHandler={onChangePassword} value={password} placeholder="Mot de passe" keyboard="default" />
           <Input
+            shadow={true}
             onChangeHandler={onChangePasswordVerification}
             value={passwordVerification}
             placeholder="Vérifier le mot de passe"

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "white",
+    color: "#1E1E1E",
   },
   xl: { width: 230, height: 60, paddingVertical: 10, paddingHorizontal: 25 },
   lg: { width: 120, height: 45, paddingVertical: 8, paddingHorizontal: 20 },

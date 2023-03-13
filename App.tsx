@@ -6,6 +6,8 @@ import store from "./store/store";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import AuthNavigator from "./navigation/AuthNavigator";
 import { GlobalStyles } from "./constants/style";
+import { useFonts } from "expo-font";
+import { useCallback } from "react";
 
 const MyTheme = {
   dark: GlobalStyles.reactNative.darktheme,
@@ -20,16 +22,25 @@ const MyTheme = {
 };
 
 export default function App() {
-  return (
-    <>
-      <StatusBar style="auto" />
-      <ReduxProvider store={store}>
-        <NavigationContainer theme={MyTheme}>
-          <AuthNavigator />
-        </NavigationContainer>
-      </ReduxProvider>
-    </>
-  );
+  const [fontsLoaded] = useFonts({
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+    "Roboto-Italic": require("./assets/fonts/Roboto-Italic.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    // return <AppLoading />;
+  } else {
+    return (
+      <>
+        <StatusBar style="auto" />
+        <ReduxProvider store={store}>
+          <NavigationContainer theme={MyTheme}>
+            <AuthNavigator />
+          </NavigationContainer>
+        </ReduxProvider>
+      </>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

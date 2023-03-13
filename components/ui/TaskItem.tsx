@@ -1,4 +1,4 @@
-import { Text, StyleSheet, Pressable, Image, Vibration } from "react-native";
+import { Text, StyleSheet, Pressable, Vibration, ImageBackground } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../utils/http/httpTask";
 import { setUserPointsInDatabase } from "../../utils/http/httpUser";
 import { setUserPoints } from "../../store/slices/userSlice";
+import images from "../../constants/images";
 
 type TaskItemProps = {
   id: string;
@@ -66,12 +67,13 @@ const TaskItem = ({ title, reward, id, style, pathIconTodo, isDone }: TaskItemPr
       onPressOut={handlePressOut}
       style={[styles.container, style, isDeleting ? { backgroundColor: GlobalStyles.colors.deleting } : ""]}
     >
-      <Image style={styles.icon} source={pathIconTodo} />
+      <ImageBackground source={images[pathIconTodo]} style={styles.icon} />
       {!isDeleting && (
         <>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.reward}>{reward} Points</Text>
-          <Text>{updatePointsMessage}</Text>
+          <Text style={[styles.text, styles.reward]}>{reward} Points</Text>
+          <Text style={styles.text}>{pathIconTodo}</Text>
+          <Text style={styles.text}>{updatePointsMessage}</Text>
         </>
       )}
       {isDeleting && <Text>Suppression de la tâche en cours...</Text>}
@@ -91,12 +93,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
   },
   title: {
     fontWeight: "bold",
+  },
+  text: {
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
   reward: {
     fontWeight: "bold",

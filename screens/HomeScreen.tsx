@@ -31,6 +31,8 @@ const HomeScreen: FunctionComponent = () => {
     getGroup();
   }, []);
 
+  console.log(tasks);
+
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (
       <SafeAreaView style={styles.container}>

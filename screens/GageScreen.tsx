@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View } from "react-native";
-import { Button, CustomCalendar, Title, Popup } from "../components";
+import { Button, CustomCalendar, Title, Popup, DropdownGagesTasks } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
 import { setGageInDatabase } from "../utils/http/httpGage";
@@ -10,6 +10,7 @@ import { Gage } from "../store/slices/gagesSlice";
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import DELAYS from "../constants/delays";
+import { ScrollView } from "react-native-gesture-handler";
 
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -76,80 +77,78 @@ const GageScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <Title titleType="h1">Faire subir un gage</Title>
+      <ScrollView>
+        <Title titleType="h1">Faire subir un gage</Title>
 
-      <Text style={styles.text}>Choississeez une catégorie!</Text>
-      <DropdownCategories />
+        <Text style={styles.text}>Choississeez une catégorie!</Text>
+        <DropdownCategories />
 
-      <Text style={styles.text}>Choississeez une tâche!</Text>
-      <View>
-        {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
-          return <Text key={index}>{item.title}</Text>;
-        })}
-      </View>
+        <Text style={styles.text}>Choississeez une tâche!</Text>
+        <DropdownGagesTasks />
 
-      <Text style={styles.text}>Choississez une date :</Text>
-      <CustomCalendar
-        markingType="multi-dot"
-        markedDates={marked}
-        onDayPress={(day: string) => setTheCalendarGagePart(day)}
-        onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
-        onMonthChange={(date: string) => console.log("onMonthChange", date)}
-        onPressArrowLeft={(goToPreviousMonth: any) => {
-          console.log("onPressArrowLeft");
-          goToPreviousMonth();
-        }}
-        onPressArrowRight={(goToNextMonth: any) => {
-          console.log("onPressArrowRight");
-          goToNextMonth();
-        }}
-        style={{
-          borderRadius: 5,
-          marginVertical: 10,
-          elevation: 5,
-          borderWidth: 4,
-          borderColor: "rgba(0, 0, 0, 0.1)",
-        }}
-        theme={{
-          "stylesheet.calendar.header": {
-            dayTextAtIndex0: {
-              color: "lightgreen",
+        <Text style={styles.text}>Choississez une date :</Text>
+        <CustomCalendar
+          markingType="multi-dot"
+          markedDates={marked}
+          onDayPress={(day: string) => setTheCalendarGagePart(day)}
+          onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
+          onMonthChange={(date: string) => console.log("onMonthChange", date)}
+          onPressArrowLeft={(goToPreviousMonth: any) => {
+            console.log("onPressArrowLeft");
+            goToPreviousMonth();
+          }}
+          onPressArrowRight={(goToNextMonth: any) => {
+            console.log("onPressArrowRight");
+            goToNextMonth();
+          }}
+          style={{
+            borderRadius: 5,
+            marginVertical: 10,
+            elevation: 5,
+            borderWidth: 4,
+            borderColor: "rgba(0, 0, 0, 0.1)",
+          }}
+          theme={{
+            "stylesheet.calendar.header": {
+              dayTextAtIndex0: {
+                color: "lightgreen",
+              },
+              dayTextAtIndex1: {
+                color: "green",
+              },
+              dayTextAtIndex2: {
+                color: "yellow",
+              },
+              dayTextAtIndex3: {
+                color: "orange",
+              },
+              dayTextAtIndex4: {
+                color: "red",
+              },
+              dayTextAtIndex5: {
+                color: "purple",
+              },
+              dayTextAtIndex6: {
+                color: "green",
+              },
             },
-            dayTextAtIndex1: {
-              color: "green",
-            },
-            dayTextAtIndex2: {
-              color: "yellow",
-            },
-            dayTextAtIndex3: {
-              color: "orange",
-            },
-            dayTextAtIndex4: {
-              color: "red",
-            },
-            dayTextAtIndex5: {
-              color: "purple",
-            },
-            dayTextAtIndex6: {
-              color: "green",
-            },
-          },
-          calendarBackground: "#111111",
-          dayTextColor: "#fff",
-          textDisabledColor: "#444",
-          monthTextColor: "#888",
-        }}
-      />
+            calendarBackground: "#111111",
+            dayTextColor: "#fff",
+            textDisabledColor: "#444",
+            monthTextColor: "#888",
+          }}
+        />
 
-      {day !== null && month !== null && year !== null && categoryInStore !== null ? (
-        <Button onPress={handlePress}>Valider</Button>
-      ) : (
-        <Button size={GlobalStyles.buttons.xl} alternativeStyle={true} onPress={() => {}}>
-          Choisir un jour
-        </Button>
-      )}
+        {day !== null && month !== null && year !== null && categoryInStore !== null ? (
+          <Button onPress={handlePress}>Valider</Button>
+        ) : (
+          <Button size={GlobalStyles.buttons.xl} alternativeStyle={true} onPress={() => {}}>
+            Choisir un jour
+          </Button>
+        )}
 
-      {modalVisible && <Popup>Vous avez offert un gage!</Popup>}
+        {modalVisible && <Popup>Vous avez offert un gage!</Popup>}
+      </ScrollView>
     </SafeAreaView>
   );
 };

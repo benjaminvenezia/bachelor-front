@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useEffect } from "react";
 import categories from "../../constants/categories";
+import { GlobalStyles } from "../../constants/style";
 
 type Props = {
   id: number;
@@ -36,9 +37,9 @@ const CategoryDropdownItem = (props: Props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 15,
-    borderColor: "black",
+    borderColor: "white",
     marginVertical: 10,
     marginHorizontal: 5,
     borderRadius: 40,
@@ -48,6 +49,8 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
+    color: GlobalStyles.colors.text,
+    fontSize: GlobalStyles.fontsSize.text,
   },
 });
 

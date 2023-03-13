@@ -1,9 +1,27 @@
-import { View, Text } from "react-native";
-const GageTaskItem = () => {
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { GlobalStyles } from "../../constants/style";
+
+const GageTaskItem = ({ children }: any) => {
   return (
-    <View>
-      <Text>GageTaskItem</Text>
-    </View>
+    <Pressable style={styles.wrapper}>
+      <Text style={styles.text}>{children}</Text>
+    </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    borderWidth: 2,
+    borderColor: GlobalStyles.colors.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    borderRadius: 100,
+    width: "50%",
+  },
+  text: {
+    fontSize: GlobalStyles.fontsSize.text,
+    color: GlobalStyles.colors.text,
+  },
+});
 export default GageTaskItem;

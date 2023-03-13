@@ -35,8 +35,7 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Text>Vos points : {user.user.user.points}</Text>
-        <Title>Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Title>Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
         <CategoriesList />
       </SafeAreaView>
     );

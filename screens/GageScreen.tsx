@@ -6,14 +6,16 @@ import { setGageInDatabase } from "../utils/http/httpGage";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../store/slices/gagesSlice";
+
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import DELAYS from "../constants/delays";
 
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
-  const gages = useSelector((state: RootState) => state.gages);
-  const categories = useSelector((state: RootState) => state.categories);
+  const gagesStore = useSelector((state: RootState) => state.gages);
+
+  const categoriesStore = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +23,7 @@ const GageScreen = () => {
   const [description, setDescription] = useState<string>("description gage");
   const [isDone, setIsDone] = useState<boolean>(false);
   const [cost, setCost] = useState<number>(450);
-  const [category, setCategory] = useState<null | string>(categories.categoryGageSelection);
+  const [categoryInStore, setCategoryInStore] = useState<null | string>(categoriesStore.categoryGageSelection);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
@@ -45,7 +47,7 @@ const GageScreen = () => {
     description: "description gage",
     is_done: false,
     cost: 450,
-    category: category,
+    category: categoryInStore,
     day: day,
     month: month,
     year: year,
@@ -79,8 +81,12 @@ const GageScreen = () => {
       <Text>Choississeez une catégorie!</Text>
       <DropdownCategories />
 
-      <Text>Faire subir un gage</Text>
+      <Text>Choississeez une tâche!</Text>
+      {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
+        return <Text key={index}>{item.title}</Text>;
+      })}
 
+      <Text>Choississez une date :</Text>
       <CustomCalendar
         markingType="multi-dot"
         markedDates={marked}
@@ -132,7 +138,8 @@ const GageScreen = () => {
           monthTextColor: "#888",
         }}
       />
-      {day !== null && month !== null && year !== null && category !== null ? (
+
+      {day !== null && month !== null && year !== null && categoryInStore !== null ? (
         <Button onPress={handlePress}>Valider</Button>
       ) : (
         <Button size={GlobalStyles.buttons.xl} alternativeStyle={true} onPress={() => {}}>

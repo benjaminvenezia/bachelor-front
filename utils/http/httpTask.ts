@@ -53,7 +53,7 @@ export const toggleStatusTaskInDatabase = (id: string, token: string, actualStat
     method: "patch",
     url: "http://localhost:8000/api/tasks/" + id,
     data: {
-      isDone: !actualStatus,
+      is_done: !actualStatus,
     },
     headers: {
       Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ export const setTasksInDatabase = (tasks: Task[], token: string): void => {
         description: "rédigé manuellment",
         category: task.category,
         reward: task.reward,
-        isDone: task.isDone,
+        is_done: task.is_done,
         path_icon_todo: task.path_icon_todo,
         associated_day: task.associatedDay,
       },

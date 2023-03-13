@@ -13,8 +13,8 @@ const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
-  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["activeTasks"].filter((task) => task.isDone && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associatedDay === storeActiveDay["activeDay"]);
 
   const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ const HomeScreen: FunctionComponent = () => {
               title={item.title}
               reward={item.reward}
               id={item.id}
-              isDone={item.isDone}
+              is_done={item.is_done}
               path_icon_todo={item.path_icon_todo}
             />
           ))}
@@ -72,7 +72,7 @@ const HomeScreen: FunctionComponent = () => {
               title={item.title}
               reward={item.reward}
               id={item.id}
-              isDone={item.isDone}
+              is_done={item.is_done}
               style={{ backgroundColor: GlobalStyles.colors.done }}
               path_icon_todo={item.path_icon_todo}
             />

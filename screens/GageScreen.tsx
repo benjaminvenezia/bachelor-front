@@ -22,7 +22,7 @@ const GageScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState<string>("title gage");
   const [description, setDescription] = useState<string>("description gage");
-  const [isDone, setIsDone] = useState<boolean>(false);
+  const [is_done, setis_done] = useState<boolean>(false);
   const [cost, setCost] = useState<number>(450);
   const [categoryInStore, setCategoryInStore] = useState<null | string>(categoriesStore.categoryGageSelection);
   const [day, setDay] = useState<null | number>(null);

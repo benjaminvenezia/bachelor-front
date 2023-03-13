@@ -15,11 +15,11 @@ type TaskItemProps = {
   title: string;
   reward: number;
   style?: any;
-  isDone: boolean;
+  is_done: boolean;
   path_icon_todo: string;
 };
 
-const TaskItem = ({ title, reward, id, style, path_icon_todo, isDone }: TaskItemProps) => {
+const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskItemProps) => {
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
@@ -37,9 +37,9 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, isDone }: TaskItem
 
   const handlePressIn = () => {
     dispatch(toggleStatus({ id: id }));
-    toggleStatusTaskInDatabase(id, user.user.token, isDone);
+    toggleStatusTaskInDatabase(id, user.user.token, is_done);
 
-    if (!isDone) {
+    if (!is_done) {
       dispatch(setUserPoints({ points: reward }));
       setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
     }

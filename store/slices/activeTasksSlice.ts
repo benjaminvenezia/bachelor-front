@@ -21,7 +21,7 @@ const activeTasksSlice = createSlice({
         ...state,
         activeTasks: state.activeTasks.map((task) => {
           if (task.id === action.payload.id) {
-            return { ...task, isDone: !task.isDone };
+            return { ...task, is_done: !task.is_done };
           } else {
             return task;
           }

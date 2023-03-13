@@ -7,7 +7,7 @@ export type Task = {
   category: string;
   description: string;
   reward: number;
-  isDone: boolean;
+  is_done: boolean;
   associatedDay: string;
   path_icon_todo: string;
 };
@@ -24,7 +24,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       description: "description de la tâche",
       reward: 15,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -34,7 +34,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       description: "description de la tâche",
       reward: 30,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -44,7 +44,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       description: "description de la tâche",
       reward: 10,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -54,7 +54,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       description: "description de la tâche",
       reward: 15,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -64,7 +64,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.KITCHEN,
       description: "description de la tâche",
       reward: 10,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -74,7 +74,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.ROOM,
       description: "description de la tâche",
       reward: 10,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },
@@ -84,7 +84,7 @@ const initialState: GenericsTasksState = {
       category: CATEGORIES.ROOM,
       description: "description de la tâche",
       reward: 10,
-      isDone: false,
+      is_done: false,
       associatedDay: "",
       path_icon_todo: "bocal",
     },

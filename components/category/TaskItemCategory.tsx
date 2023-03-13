@@ -40,7 +40,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       reward,
       description: "desc",
       is_done: false,
-      associatedDay: "",
+      associated_day: "",
       path_icon_todo,
     };
 

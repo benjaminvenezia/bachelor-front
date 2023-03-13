@@ -13,8 +13,8 @@ const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
-  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associatedDay === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associatedDay === storeActiveDay["activeDay"]);
+  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
 
   const dispatch = useDispatch();
 

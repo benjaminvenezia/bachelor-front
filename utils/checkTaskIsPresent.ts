@@ -7,5 +7,5 @@ import { Task } from "../store/slices/allTasksSlice";
  * @returns true if the task is present.
  */
 export const checkTaskIsPresent = (arrayToCheck: Task[], taskToAdd: Task): boolean => {
-  return arrayToCheck.some((t: Task) => t.title === taskToAdd.title && t.associatedDay === taskToAdd.associatedDay);
+  return arrayToCheck.some((t: Task) => t.title === taskToAdd.title && t.associated_day === taskToAdd.associated_day);
 };

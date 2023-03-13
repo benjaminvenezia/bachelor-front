@@ -85,7 +85,7 @@ export const setTasksInDatabase = (tasks: Task[], token: string): void => {
         reward: task.reward,
         is_done: task.is_done,
         path_icon_todo: task.path_icon_todo,
-        associated_day: task.associatedDay,
+        associated_day: task.associated_day,
       },
       headers: {
         Authorization: `Bearer ${token}`,

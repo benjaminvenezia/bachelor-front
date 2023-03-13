@@ -1,5 +1,6 @@
 import { KeyboardTypeOptions, StyleSheet } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { GlobalStyles } from "../../constants/style";
 
 type Props = {
   style?: object;
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     borderRadius: 50,
     color: "white",
+    fontFamily: GlobalStyles.police.text,
   },
 });
 

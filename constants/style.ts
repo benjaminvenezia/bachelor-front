@@ -25,6 +25,11 @@ export const GlobalStyles = {
     notification: "rgb(0, 0, 0)",
     darktheme: false,
   },
+
+  police: {
+    task: "RobotoCondensed-Bold",
+  },
+
   fontsSize: {
     h1: 30,
     h2: 26,

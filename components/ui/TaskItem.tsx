@@ -118,12 +118,13 @@ const styles = StyleSheet.create({
     top: 0,
   },
   title: {
-    fontWeight: "bold",
-    fontSize: 15,
+    fontSize: 12,
+    fontFamily: GlobalStyles.police.task,
   },
   text: {
     color: GlobalStyles.colors.text,
     fontSize: GlobalStyles.fontsSize.text,
+    fontFamily: GlobalStyles.police.task,
   },
   reward: {
     fontWeight: "bold",

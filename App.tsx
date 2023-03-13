@@ -23,9 +23,9 @@ const MyTheme = {
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-    "Roboto-Italic": require("./assets/fonts/Roboto-Italic.ttf"),
-    "Climate-Crisis": require("./assets/fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf"),
+    "Gatwick-Bold": require("./assets/fonts/PPGatwick-Bold.otf"),
+    "Gafiton-Regular": require("./assets/fonts/Gafiton-Regular.otf"),
+    "RobotoCondensed-Bold": require("./assets/fonts/RobotoCondensed-Bold.ttf"),
   });
 
   if (!fontsLoaded) {

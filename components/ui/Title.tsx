@@ -12,6 +12,7 @@ const Title = ({ children, titleType = "h1", style }: Props) => {
     h1: {
       fontSize: GlobalStyles.fontsSize.h1,
       color: GlobalStyles.colors.h1,
+      fontFamily: "Gatwick-Bold",
     },
     h2: {
       fontSize: GlobalStyles.fontsSize.h2,

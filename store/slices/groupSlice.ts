@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import CATEGORIES from "../../constants/categories";
-import { ImageBuilder } from "../../utils/ImageBuilder";
 
 export type Group = {
   idGroup: string;

@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginRight: 2,
     marginBottom: 2,
-    width: "32.86%",
+    width: "32.80%",
     height: 130,
     backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",

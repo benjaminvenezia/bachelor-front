@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StyleSheet, Text } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
 import ROUTES from "../../constants/routes";
 import React from "react";
 import { Button, Title, Input } from "../../components";
@@ -38,8 +38,12 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground style={styles.image} source={require("../../assets/images/woman-calling-phone.png")} />
+
       <View style={styles.container}>
-        <Title style={styles.title}>Connexion</Title>
+        <Title titleType="h1" style={styles.title}>
+          Connexion
+        </Title>
         <View style={styles.inputsContainer}>
           <Input onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
           <Input onChangeHandler={onChangePassword} value={password} placeholder="Mot de passe" keyboard="default" />
@@ -68,6 +72,13 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 30,
+  },
+  image: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: -1,
+    width: "100%",
+    height: "60%",
   },
 });
 

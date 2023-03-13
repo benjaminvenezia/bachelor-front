@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StyleSheet, Text } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
 import ROUTES from "../../constants/routes";
 import React, { useState } from "react";
 import { Button, Title, Input } from "../../components";
@@ -47,8 +47,11 @@ const RegisterScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ImageBackground style={styles.image} source={require("../../assets/images/man-playing-saxophone.png")} />
       <View style={styles.container}>
-        <Title style={styles.title}>Inscription</Title>
+        <Title titleType="h1" style={styles.title}>
+          Inscription
+        </Title>
         <View style={styles.inputsContainer}>
           <Input onChangeHandler={onChangeName} value={name} placeholder="prénom" keyboard="default" />
           <Input onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
@@ -67,7 +70,9 @@ const RegisterScreen = ({ navigation }: any) => {
           </Button>
         </View>
 
-        <Title style={styles.title}>Déjà un compte?</Title>
+        <Title titleType="h2" style={styles.title}>
+          Déjà un compte?
+        </Title>
         <Button size={GlobalStyles.buttons.lg} onPress={() => navigation.navigate(ROUTES.LOGIN)}>
           Connexion
         </Button>
@@ -89,6 +94,13 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 30,
+  },
+  image: {
+    position: "absolute",
+    zIndex: -1,
+    resizeMode: "cover",
+    width: "100%",
+    height: "81%",
   },
 });
 

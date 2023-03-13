@@ -35,12 +35,13 @@ const Title = ({ children, titleType = "h1", style }: Props) => {
     },
   };
 
-  return <Text style={[styles.title, stylesByType[titleType], style]}>{children}</Text>;
+  return <Text style={[styles.default, stylesByType[titleType], style]}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({
-  title: {
+  default: {
     marginBottom: 10,
+    fontWeight: "bold",
   },
 });
 

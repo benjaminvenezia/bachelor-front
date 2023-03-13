@@ -1,6 +1,6 @@
 export const GlobalStyles = {
   colors: {
-    primary: "#fff200",
+    primary: "#FFF39E",
     background: "rgb(27, 27, 27)",
     secondary: "#ffffff",
     todo: "#FCB1B1",
@@ -18,7 +18,7 @@ export const GlobalStyles = {
   },
   reactNative: {
     primary: "rgb(255, 255, 255)",
-    background: "rgb(27, 27, 27)",
+    background: "rgb(0, 0, 0)",
     card: "rgb(0, 0, 0)",
     text: "rgb(255, 255, 255)",
     border: "rgb(0, 0, 0)",

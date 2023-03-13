@@ -76,19 +76,19 @@ const GageScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <Title>Faire subir un gage</Title>
+      <Title titleType="h1">Faire subir un gage</Title>
 
-      <Text>Choississeez une catégorie!</Text>
+      <Text style={styles.text}>Choississeez une catégorie!</Text>
       <DropdownCategories />
 
-      <Text>Choississeez une tâche!</Text>
+      <Text style={styles.text}>Choississeez une tâche!</Text>
       <View>
         {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
           return <Text key={index}>{item.title}</Text>;
         })}
       </View>
 
-      <Text>Choississez une date :</Text>
+      <Text style={styles.text}>Choississez une date :</Text>
       <CustomCalendar
         markingType="multi-dot"
         markedDates={marked}
@@ -157,6 +157,10 @@ const GageScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     marginHorizontal: 10,
+  },
+  text: {
+    fontSize: GlobalStyles.fontsSize.text,
+    color: GlobalStyles.colors.text,
   },
 });
 

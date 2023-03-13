@@ -35,7 +35,8 @@ const HomeScreen: FunctionComponent = () => {
     return (
       <SafeAreaView style={styles.container}>
         <DaysContainer />
-        <Title style={styles.h1}>Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Title titleType="h1">Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie ci-dessous pour ajouter vos premières tâches </Text>
         <CategoriesList />
       </SafeAreaView>
     );
@@ -109,10 +110,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: GlobalStyles.colors.text,
     fontSize: GlobalStyles.fontsSize.text,
-  },
-  h1: {
-    color: GlobalStyles.colors.h1,
-    fontSize: GlobalStyles.fontsSize.h1,
   },
 });
 

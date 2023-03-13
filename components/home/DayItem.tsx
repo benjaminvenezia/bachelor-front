@@ -2,6 +2,7 @@ import { Pressable, Text, StyleSheet } from "react-native";
 import { changeDay } from "../../store/slices/daySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { GlobalStyles } from "../../constants/style";
 
 type DayProps = {
   children: any;
@@ -21,7 +22,8 @@ const DayItem = ({ children }: DayProps) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
+    fontSize: GlobalStyles.fontsSize.dayText,
+    color: GlobalStyles.colors.text,
   },
   active: {
     fontWeight: "bold",

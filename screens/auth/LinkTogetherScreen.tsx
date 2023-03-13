@@ -36,7 +36,9 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
-        <Title style={styles.title}>Lien avec votre partenaire</Title>
+        <Title titleType="h1" style={styles.title}>
+          Lien avec votre partenaire
+        </Title>
 
         <View style={styles.inputsContainer}>
           <Text>Mon code d'invitation : {user.user.user.personalCode}</Text>

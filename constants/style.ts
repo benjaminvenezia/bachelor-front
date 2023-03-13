@@ -10,6 +10,11 @@ export const GlobalStyles = {
     muted: "#515151",
     text: "#ffffff",
     h1: "#ffffff",
+    h2: "#ffffff",
+    h3: "#ffffff",
+    h4: "#ffffff",
+    h5: "#ffffff",
+    h6: "#ffffff",
   },
   reactNative: {
     primary: "rgb(255, 255, 255)",
@@ -22,8 +27,13 @@ export const GlobalStyles = {
   },
   fontsSize: {
     h1: 30,
-    h2: 22,
+    h2: 26,
+    h3: 22,
+    h4: 18,
+    h5: 16,
+    h6: 14,
     text: 20,
+    dayText: 20,
   },
   buttons: {
     xl: "XL",

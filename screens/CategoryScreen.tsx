@@ -70,7 +70,9 @@ const CategoryScreen = ({ navigation, route }: any) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
-        <Title style={styles.title}>{categoryName}</Title>
+        <Title titleType="h1" style={styles.title}>
+          {categoryName}
+        </Title>
         <FlatList
           data={categoryTasks}
           renderItem={({ item }) => {

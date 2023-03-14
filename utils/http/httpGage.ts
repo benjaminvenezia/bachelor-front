@@ -1,7 +1,25 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { Gage, addGage } from "../../store/slices/gagesSlice";
+import { Gage, addGage, setGages } from "../../store/slices/gagesSlice";
 import axios from "axios";
 
+/**
+ * @param token The token of the current user, stored in store.
+ * @param dispatch The Redux dispatch hook. He can't be invoked here.
+ */
+export const fetchGagesFromDatabase = (token: string, dispatch: Dispatch<any>): void => {
+  axios
+    .get("http://localhost:8000/api/gages", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      dispatch(setGages(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 /**
  * add a gage in database and in the store.
  * @param gage The gage you need to persist

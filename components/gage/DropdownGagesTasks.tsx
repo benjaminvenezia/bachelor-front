@@ -3,14 +3,19 @@ import GageTaskItem from "./GageTaskItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { GlobalStyles } from "../../constants/style";
+import { Gage } from "../../store/slices/gagesSlice";
 
 const DropdownGagesTasks = () => {
   const gagesStore = useSelector((state: RootState) => state.gages);
 
   return (
     <View style={styles.wrapper}>
-      {gagesStore.gagesTaskFiltered.map((item: any, index: any) => {
-        return <GageTaskItem>{item.title}</GageTaskItem>;
+      {gagesStore.gagesTaskFiltered.map((item: Gage, index: any) => {
+        return (
+          <GageTaskItem key={item.id} {...item}>
+            {item.title}
+          </GageTaskItem>
+        );
       })}
     </View>
   );

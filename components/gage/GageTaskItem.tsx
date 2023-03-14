@@ -1,9 +1,26 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { Gage, setTheGageBeforeSendingDatabase } from "../../store/slices/gagesSlice";
 
-const GageTaskItem = ({ children }: any) => {
+const GageTaskItem = ({ children, ...props }: any) => {
+  const { category, cost, description, title } = props;
+
+  const dispatch = useDispatch();
+  const handlePress = () => {
+    const gageToSendToStore = {
+      category,
+      cost,
+      description,
+      title,
+    };
+
+    dispatch(setTheGageBeforeSendingDatabase(gageToSendToStore));
+  };
+
   return (
-    <Pressable style={styles.wrapper}>
+    <Pressable onPress={handlePress} style={styles.wrapper}>
       <Text style={styles.text}>{children}</Text>
     </Pressable>
   );

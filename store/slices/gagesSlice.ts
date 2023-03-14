@@ -15,6 +15,9 @@ export type Gage = {
   month: number | null;
   year: number | null;
   date_string: string;
+  user_id?: string;
+  user_name?: string;
+  user_points?: number;
 };
 
 /**
@@ -32,6 +35,7 @@ export type Gages = {
   gages: Gage[];
   gagesTask: GageTask[];
   gagesTaskFiltered: any;
+  gageToAddInDatabase: any;
 };
 
 const initialState: Gages = {
@@ -67,6 +71,7 @@ const initialState: Gages = {
     },
   ],
   gagesTaskFiltered: [],
+  gageToAddInDatabase: {},
 };
 
 const initialStateOfGagesTaskFiltered = () => {
@@ -80,6 +85,9 @@ const gagesSlice = createSlice({
   name: "gages",
   initialState: initialState,
   reducers: {
+    setGages: (state, action) => {
+      state.gages = action.payload;
+    },
     addGage: (state, action) => {
       state.gages.push(action.payload);
     },
@@ -87,8 +95,11 @@ const gagesSlice = createSlice({
     filterGageTask: (state, action) => {
       state.gagesTaskFiltered = state.gagesTask.filter((item) => item.category === action.payload.category);
     },
+    setTheGageBeforeSendingDatabase: (state, action) => {
+      state.gageToAddInDatabase = action.payload;
+    },
   },
 });
 
-export const { addGage, filterGageTask } = gagesSlice.actions;
+export const { setGages, addGage, filterGageTask, setTheGageBeforeSendingDatabase } = gagesSlice.actions;
 export default gagesSlice.reducer;

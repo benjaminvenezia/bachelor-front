@@ -2,7 +2,7 @@ import { Text, StyleSheet, View } from "react-native";
 import { Button, CustomCalendar, Title, Popup, DropdownGagesTasks } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
-import { setGageInDatabase } from "../utils/http/httpGage";
+import { fetchGagesFromDatabase, setGageInDatabase } from "../utils/http/httpGage";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../store/slices/gagesSlice";
@@ -15,20 +15,14 @@ import { ScrollView } from "react-native-gesture-handler";
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
   const gagesStore = useSelector((state: RootState) => state.gages);
-
   const categoriesStore = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
-  const [title, setTitle] = useState<string>("title gage");
-  const [description, setDescription] = useState<string>("description gage");
-  const [is_done, setis_done] = useState<boolean>(false);
-  const [cost, setCost] = useState<number>(450);
-  const [categoryInStore, setCategoryInStore] = useState<null | string>(categoriesStore.categoryGageSelection);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
-  const [dateString, setDateString] = useState<string>("2023-03-12");
+  const [dateString, setDateString] = useState("");
 
   const running = { key: "running", color: "blue" };
   const cycling = { key: "cycling", color: "green" };
@@ -42,22 +36,17 @@ const GageScreen = () => {
     },
   };
 
-  const gageToSave: Gage = {
-    id: -1,
-    title: "title gage",
-    description: "description gage",
+  const gageToSaveInDatabase: Gage = {
+    id: 0,
+    title: gagesStore.gageToAddInDatabase.title,
+    description: gagesStore.gageToAddInDatabase.description,
     is_done: false,
-    cost: 450,
-    category: categoryInStore,
+    cost: gagesStore.gageToAddInDatabase.cost,
+    category: categoriesStore.categoryGageSelection,
     day: day,
     month: month,
     year: year,
-    date_string: "2023-03-12",
-  };
-
-  const handlePress = () => {
-    setModalVisible(true);
-    setGageInDatabase(gageToSave, user.user.token, dispatch);
+    date_string: dateString,
   };
 
   useEffect(() => {
@@ -69,10 +58,15 @@ const GageScreen = () => {
   }, [modalVisible]);
 
   const setTheCalendarGagePart = (data: any) => {
-    setDateString(data.dateString);
     setDay(data.day);
     setMonth(data.month);
     setYear(data.year);
+    setDateString(data.dateString);
+  };
+
+  const handlePress = () => {
+    setModalVisible(true);
+    setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
   };
 
   return (
@@ -138,8 +132,7 @@ const GageScreen = () => {
             monthTextColor: "#888",
           }}
         />
-
-        {day !== null && month !== null && year !== null && categoryInStore !== null ? (
+        {day !== null && month !== null && year !== null ? (
           <Button onPress={handlePress}>Valider</Button>
         ) : (
           <Button size={GlobalStyles.buttons.xl} alternativeStyle={true} onPress={() => {}}>

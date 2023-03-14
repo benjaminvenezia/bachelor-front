@@ -12,93 +12,37 @@ export type Task = {
   path_icon_todo: string;
 };
 
+// export type DefaultTask = {
+//   id: string;
+//   title: string;
+//   category: string;
+//   description: string;
+//   reward: number;
+//   path_icon_todo: string;
+// };
+
 export type GenericsTasksState = {
   tasks: Task[];
 };
 
 const initialState: GenericsTasksState = {
-  tasks: [
-    {
-      id: "",
-      title: "Nettoyer le plan de travail",
-      category: CATEGORIES.KITCHEN,
-      description: "description de la tâche",
-      reward: 15,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "Faire la vaisselle à la main",
-      category: CATEGORIES.KITCHEN,
-      description: "description de la tâche",
-      reward: 30,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "remplir le lave vaisselle",
-      category: CATEGORIES.KITCHEN,
-      description: "description de la tâche",
-      reward: 10,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "Vider et nettoyer la table",
-      category: CATEGORIES.KITCHEN,
-      description: "description de la tâche",
-      reward: 15,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "Ranger les courses",
-      category: CATEGORIES.KITCHEN,
-      description: "description de la tâche",
-      reward: 10,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "faire le lit",
-      category: CATEGORIES.ROOM,
-      description: "description de la tâche",
-      reward: 10,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-    {
-      id: "",
-      title: "Dépoussiérer les draps",
-      category: CATEGORIES.ROOM,
-      description: "description de la tâche",
-      reward: 10,
-      is_done: false,
-      associated_day: "",
-      path_icon_todo: "bocal",
-    },
-  ],
+  tasks: [],
 };
 
 /**
  * return all tasks thematically associated.
  */
-const activeTasksSlice = createSlice({
+const allTasksSlice = createSlice({
   name: "allTasks",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setDefaultTasks: (state, action): any => {
+      const defaultTasksFromDatabase = action.payload;
+
+      state.tasks = defaultTasksFromDatabase;
+    },
+  },
 });
 
-export const {} = activeTasksSlice.actions;
-export default activeTasksSlice.reducer;
+export const { setDefaultTasks } = allTasksSlice.actions;
+export default allTasksSlice.reducer;

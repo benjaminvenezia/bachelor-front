@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     borderRadius: 50,
     color: "white",
-    fontFamily: GlobalStyles.police.text,
+    fontFamily: GlobalStyles.police.task,
   },
 });
 

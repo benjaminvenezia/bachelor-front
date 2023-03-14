@@ -8,8 +8,27 @@ import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../component
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
+import { fetchDefaultTasksFromDatabase } from "../utils/http/httpDefaultTasks";
 
 const HomeScreen: FunctionComponent = () => {
+  useEffect(() => {
+    async function getTasks() {
+      fetchTasksFromDatabase(user.user.token, dispatch);
+    }
+
+    async function getDefaultTasks() {
+      fetchDefaultTasksFromDatabase(user.user.token, dispatch);
+    }
+
+    async function getGroup() {
+      getGroupFromDatabase(user.user.token, dispatch);
+    }
+
+    getDefaultTasks();
+    getTasks();
+    getGroup();
+  }, []);
+
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
@@ -17,19 +36,6 @@ const HomeScreen: FunctionComponent = () => {
   const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    async function getTasks() {
-      fetchTasksFromDatabase(user.user.token, dispatch);
-    }
-
-    async function getGroup() {
-      getGroupFromDatabase(user.user.token, dispatch);
-    }
-
-    getTasks();
-    getGroup();
-  }, []);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return (

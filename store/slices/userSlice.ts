@@ -11,7 +11,7 @@ type User = {
   name: string;
   points: number;
   personal_code: string;
-  otherCode: string;
+  other_code: string;
   created_at: string;
   email_verified_at: string;
   updated_at: string;
@@ -35,7 +35,7 @@ const userSlice = createSlice({
     setOtherCode: (state, action) => {
       return {
         ...state,
-        otherCode: action.payload.otherCode,
+        other_code: action.payload.other_code,
       };
     },
     setUserPoints: (state, action) => {

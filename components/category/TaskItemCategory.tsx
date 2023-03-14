@@ -59,7 +59,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       <Text style={styles.reward}>{reward} Points</Text>
       <View style={{ flexDirection: "row" }}>
         {days.map((dayLabel, index) => (
-          <BadgeDay dayText={dayLabel} keyProp={index} />
+          <BadgeDay key={index} dayText={dayLabel} />
         ))}
       </View>
       <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />

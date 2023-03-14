@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import GageTaskItem from "./GageTaskItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";

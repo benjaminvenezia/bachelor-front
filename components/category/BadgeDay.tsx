@@ -2,12 +2,11 @@ import { View, Text, StyleSheet } from "react-native";
 
 type Props = {
   dayText: string;
-  keyProp: number;
 };
 
-const BadgeDay = ({ dayText, keyProp }: Props) => {
+const BadgeDay = ({ dayText }: Props) => {
   return (
-    <View style={styles.badge} key={keyProp}>
+    <View style={styles.badge}>
       <Text style={styles.textBadge}>{dayText.substring(0, 1)}</Text>
     </View>
   );

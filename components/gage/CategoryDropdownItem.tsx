@@ -1,12 +1,7 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { Category } from "../../store/slices/categoriesSlice";
 import { useDispatch } from "react-redux";
 import { setCategoryGageSelection } from "../../store/slices/categoriesSlice";
 import { filterGageTask } from "../../store/slices/gagesSlice";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useEffect } from "react";
-import categories from "../../constants/categories";
 import { GlobalStyles } from "../../constants/style";
 
 type Props = {
@@ -19,7 +14,7 @@ type Props = {
 
 const CategoryDropdownItem = (props: Props) => {
   const dispatch = useDispatch();
-  const { id, category, description, title, active }: Props = props;
+  const { category, title, active }: Props = props;
 
   const handlePress = () => {
     dispatch(setCategoryGageSelection({ categoryTitle: category }));
@@ -28,8 +23,8 @@ const CategoryDropdownItem = (props: Props) => {
 
   return (
     <Pressable onPress={handlePress}>
-      <View style={[styles.wrapper, props.active ? styles.active : {}]}>
-        <Text style={styles.text}>{title}</Text>
+      <View style={[styles.wrapper, active ? styles.active : {}]}>
+        <Text style={[styles.text, active ? styles.textActive : {}]}>{title}</Text>
       </View>
     </Pressable>
   );
@@ -45,7 +40,11 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   active: {
-    backgroundColor: "lightgray",
+    backgroundColor: GlobalStyles.colors.primary,
+    borderColor: GlobalStyles.colors.primary,
+  },
+  textActive: {
+    color: "black",
   },
   text: {
     textAlign: "center",

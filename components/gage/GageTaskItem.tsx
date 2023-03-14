@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 
 const GageTaskItem = ({ children }: any) => {
@@ -12,7 +12,8 @@ const GageTaskItem = ({ children }: any) => {
 const styles = StyleSheet.create({
   wrapper: {
     borderWidth: 2,
-    borderColor: GlobalStyles.colors.primary,
+    borderColor: "white",
+    alignItems: "center",
     paddingVertical: 10,
     paddingHorizontal: 10,
     marginBottom: 10,

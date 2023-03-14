@@ -15,7 +15,7 @@ const CategoryItem = ({ children }: Props) => {
     <Pressable style={styles.container} onPress={() => navigation.navigate(ROUTES.CATEGORY, { categoryName: categoryName })}>
       <View style={styles.subContainer}>
         <Text style={styles.text}>{children}</Text>
-        <Image source={require("../../assets/icons/navigation/arrow.png")} />
+        <Image style={styles.icon} source={require("../../assets/icons/navigation/arrow-right.png")} />
       </View>
     </Pressable>
   );
@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: GlobalStyles.fontsSize.text,
     color: GlobalStyles.colors.text,
+  },
+  icon: {
+    width: 30,
+    height: 30,
   },
 });
 

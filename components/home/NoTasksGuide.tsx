@@ -14,8 +14,8 @@ const NoTasksGuide = () => {
       <View style={styles.container}>
         <DaysContainer />
         <Title titleType="h2">Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
-        <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie ci-dessous pour ajouter vos premières tâches </Text>
-        <Image style={styles.image} source={require("../../assets/images/eye.png")} />
+        <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie pour en ajouter </Text>
+        <Image style={styles.image} source={require("../../assets/images/door-moon.png")} />
 
         <CategoriesList />
       </View>
@@ -40,10 +40,10 @@ const styles = StyleSheet.create({
   },
   image: {
     position: "absolute",
-    bottom: "50%",
+    bottom: "-10%",
     zIndex: -1,
-    width: "100%",
-    height: 200,
+    width: 300,
+    height: 550,
   },
 });
 

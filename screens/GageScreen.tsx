@@ -111,25 +111,25 @@ const GageScreen = () => {
           theme={{
             "stylesheet.calendar.header": {
               dayTextAtIndex0: {
-                color: "lightgreen",
+                color: "white",
               },
               dayTextAtIndex1: {
-                color: "green",
+                color: "white",
               },
               dayTextAtIndex2: {
-                color: "yellow",
+                color: "white",
               },
               dayTextAtIndex3: {
-                color: "orange",
+                color: "white",
               },
               dayTextAtIndex4: {
-                color: "red",
+                color: "white",
               },
               dayTextAtIndex5: {
-                color: "purple",
+                color: "white",
               },
               dayTextAtIndex6: {
-                color: "green",
+                color: "white",
               },
             },
             calendarBackground: "#111111",

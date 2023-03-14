@@ -99,19 +99,19 @@ const CategoryScreen = ({ navigation, route }: any) => {
         />
 
         <DaysSelectorContainer />
-
-        {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
-          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
-            Ajouter
-          </Button>
-        ) : (
-          <>
-            <Text style={styles.text}>Merci de choisir au moins un jour et une tâche</Text>
-            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => {}} alternativeStyle={true}>
-              Invalide
+        <View style={styles.containerButton}>
+          {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
+            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
+              Ajouter
             </Button>
-          </>
-        )}
+          ) : (
+            <View style={styles.containerInvalid}>
+              <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => {}} alternativeStyle={true}>
+                Choisir tâches et jours
+              </Button>
+            </View>
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -125,6 +125,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  containerButton: {
+    minHeight: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  containerInvalid: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     color: GlobalStyles.colors.text,

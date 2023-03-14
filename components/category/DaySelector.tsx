@@ -41,16 +41,18 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 40,
     paddingVertical: 15,
-    backgroundColor: "lightblue",
+    borderWidth: 5,
+    borderColor: "white",
     marginVertical: 5,
     marginHorizontal: 3,
-    borderRadius: 5,
+    borderRadius: 100,
   },
   isSelectedItem: {
-    backgroundColor: "purple",
+    backgroundColor: GlobalStyles.colors.primary,
   },
   isSelectedText: {
-    color: "red",
+    color: "black",
+    fontSize: GlobalStyles.fontsSize.text,
   },
   text: {
     color: GlobalStyles.colors.text,

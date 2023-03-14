@@ -1,8 +1,9 @@
-import { Text, StyleSheet, Pressable, Image, View } from "react-native";
+import { Text, StyleSheet, Pressable, Image, View, ImageBackground } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { Task } from "../../store/slices/allTasksSlice";
 import { useState } from "react";
 import { checkTaskIsPresent } from "../../utils/checkTaskIsPresent";
+import images from "../../constants/images";
 
 type TaskItemProps = {
   id: string;
@@ -62,43 +63,60 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
           </Text>
         ))}
       </View>
+      <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    borderRadius: 20,
+    borderWidth: 5,
+    borderColor: "white",
+    paddingTop: 5,
+    paddingBottom: 0,
     marginRight: 2,
     marginBottom: 2,
-    width: "33.3333%",
+    width: "32.80%",
     height: 130,
-    backgroundColor: GlobalStyles.colors.todo,
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  active: {
-    backgroundColor: "purple",
-  },
-  default: {
-    backgroundColor: "pink",
+  iconContainer: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    paddingHorizontal: 5,
+    paddingTop: 5,
   },
   icon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    zIndex: -1,
   },
   title: {
-    color: GlobalStyles.colors.h1,
-    fontWeight: "bold",
+    fontSize: 15,
+    color: "black",
+    fontFamily: GlobalStyles.police.task,
   },
   text: {
-    fontSize: GlobalStyles.fontsSize.text,
     color: GlobalStyles.colors.text,
+    fontSize: 20,
+    fontFamily: GlobalStyles.police.task,
   },
   reward: {
     fontWeight: "bold",
+    fontSize: 15,
     color: GlobalStyles.colors.muted,
+  },
+  active: {
+    borderColor: GlobalStyles.colors.primary,
+  },
+  default: {
+    backgroundColor: "pink",
   },
 });
 

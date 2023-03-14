@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   alternativeStyle: {
     backgroundColor: "lightgrey",
     color: GlobalStyles.colors.primary,
+    borderRadius: 10,
   },
   text: {
     fontWeight: "bold",

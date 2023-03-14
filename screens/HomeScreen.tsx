@@ -4,13 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, Hr, DaysContainer, CategoriesList, Title } from "../components";
+import { TaskItem, Hr, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
 import { fetchDefaultTasksFromDatabase } from "../utils/http/httpDefaultTasks";
 
 const HomeScreen: FunctionComponent = () => {
+  const storeActiveDay = useSelector((state: RootState) => state.day);
+  const tasks = useSelector((state: RootState) => state.activeTasksList);
+  const user = useSelector((state: RootState) => state.user);
+  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
+  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     async function getTasks() {
       fetchTasksFromDatabase(user.user.token, dispatch);
@@ -29,23 +37,8 @@ const HomeScreen: FunctionComponent = () => {
     getGroup();
   }, []);
 
-  const storeActiveDay = useSelector((state: RootState) => state.day);
-  const tasks = useSelector((state: RootState) => state.activeTasksList);
-  const user = useSelector((state: RootState) => state.user);
-  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
-
-  const dispatch = useDispatch();
-
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <DaysContainer />
-        <Title titleType="h1">Salut {user?.user.user.name} Aucune tâche associée à ce jour!</Title>
-        <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie ci-dessous pour ajouter vos premières tâches </Text>
-        <CategoriesList />
-      </SafeAreaView>
-    );
+    return <NoTasksGuide />;
   }
 
   return (
@@ -66,7 +59,7 @@ const HomeScreen: FunctionComponent = () => {
 
           {tasksNotDone.length === 0 && (
             <View style={styles.textContainer}>
-              <Text style={styles.text}>Pas de tâches prévue aujourd'hui.</Text>
+              <Text style={styles.text}>Travail terminé!</Text>
             </View>
           )}
         </View>
@@ -88,7 +81,7 @@ const HomeScreen: FunctionComponent = () => {
             ))}
             {tasksDone.length === 0 && (
               <View style={styles.textContainer}>
-                <Text style={styles.text}>Aucune tâche effectuée</Text>
+                <Text style={styles.text}>Encore du travail?</Text>
               </View>
             )}
           </View>
@@ -102,7 +95,7 @@ const HomeScreen: FunctionComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
+    flex: 1,
   },
   listContainer: {
     flexDirection: "row",
@@ -138,8 +131,6 @@ const styles = StyleSheet.create({
     marginTop: 100,
     position: "relative",
     paddingVertical: 50,
-    // borderColor: "white",
-    // borderWidth: 4,
   },
 });
 

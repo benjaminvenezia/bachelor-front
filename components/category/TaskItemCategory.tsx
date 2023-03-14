@@ -4,6 +4,7 @@ import { Task } from "../../store/slices/allTasksSlice";
 import { useState } from "react";
 import { checkTaskIsPresent } from "../../utils/checkTaskIsPresent";
 import images from "../../constants/images";
+import BadgeDay from "./BadgeDay";
 
 type TaskItemProps = {
   id: string;
@@ -58,9 +59,7 @@ const TaskItemCategory = ({ title, reward, id, category, setActivatedTasks, acti
       <Text style={styles.reward}>{reward} Points</Text>
       <View style={{ flexDirection: "row" }}>
         {days.map((dayLabel, index) => (
-          <Text key={index} style={styles.text}>
-            {dayLabel}
-          </Text>
+          <BadgeDay dayText={dayLabel} keyProp={index} />
         ))}
       </View>
       <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />

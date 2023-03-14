@@ -72,7 +72,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
         is_done ? styles.disabled : null,
       ]}
     >
-      <ImageBackground borderRadius={20} source={images[path_icon_todo]} style={styles.icon} />
+      <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />
       {!isDeleting && (
         <View style={styles.iconContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -104,8 +104,9 @@ const styles = StyleSheet.create({
   iconContainer: {
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#ffffffcd",
-    borderRadius: 20,
+    backgroundColor: "#ffffffd3",
+    borderBottomStartRadius: 15,
+    borderBottomEndRadius: 15,
     width: "100%",
     paddingHorizontal: 5,
     paddingTop: 5,
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   title: {
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: GlobalStyles.police.task,
   },
   text: {

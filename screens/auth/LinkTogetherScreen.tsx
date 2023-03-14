@@ -44,7 +44,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>Mon code d'invitation : </Text>
-          <Title titleType="h1">{user.user.user.personalCode}</Title>
+          <Title titleType="h1">{user.user.user.personal_code}</Title>
 
           <Text style={styles.text}>Code de votre partenaire</Text>
 

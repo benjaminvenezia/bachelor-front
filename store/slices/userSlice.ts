@@ -10,7 +10,7 @@ type User = {
   email: string;
   name: string;
   points: number;
-  personalCode: string;
+  personal_code: string;
   otherCode: string;
   created_at: string;
   email_verified_at: string;

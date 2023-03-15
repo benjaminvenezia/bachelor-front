@@ -1,8 +1,7 @@
 import { View, StyleSheet } from "react-native";
-import GageTaskItem from "./GageTaskItem";
+import GageTaskDropdownItem from "./GageTaskDropdownItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { GlobalStyles } from "../../constants/style";
 import { Gage } from "../../store/slices/gagesSlice";
 
 const DropdownGagesTasks = () => {
@@ -12,9 +11,9 @@ const DropdownGagesTasks = () => {
     <View style={styles.wrapper}>
       {gagesStore.gagesTaskFiltered.map((item: Gage, index: any) => {
         return (
-          <GageTaskItem key={item.id} {...item}>
+          <GageTaskDropdownItem key={item.id} {...item}>
             {item.title}
-          </GageTaskItem>
+          </GageTaskDropdownItem>
         );
       })}
     </View>

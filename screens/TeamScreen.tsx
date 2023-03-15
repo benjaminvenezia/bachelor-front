@@ -1,12 +1,14 @@
-import { Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Group } from "../store/slices/groupSlice";
+import { useEffect } from "react";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
 import { Title } from "../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 import { GlobalStyles } from "../constants/style";
+import { fetchGagesFromDatabase } from "../utils/http/httpGage";
 
 const TeamScreen = () => {
   const dispatch = useDispatch();
@@ -14,6 +16,14 @@ const TeamScreen = () => {
   const gagesStore = useSelector((state: RootState) => state.gages);
   const user = useSelector((state: RootState) => state.user);
   const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group[0];
+
+  useEffect(() => {
+    const getGages = async () => {
+      fetchGagesFromDatabase(user.user.token, dispatch);
+    };
+
+    getGages();
+  }, []);
 
   useFocusEffect(
     React.useCallback(() => {

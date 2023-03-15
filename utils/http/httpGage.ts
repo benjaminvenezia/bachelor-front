@@ -7,18 +7,23 @@ import axios from "axios";
  * @param dispatch The Redux dispatch hook. He can't be invoked here.
  */
 export const fetchGagesFromDatabase = (token: string, dispatch: Dispatch<any>): void => {
-  axios
-    .get("http://localhost:8000/api/gages", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      dispatch(setGages(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    axios
+      .get("http://localhost:8000/api/gages", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        dispatch(setGages(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching gages from database");
+  }
 };
 /**
  * add a gage in database and in the store.
@@ -26,29 +31,34 @@ export const fetchGagesFromDatabase = (token: string, dispatch: Dispatch<any>): 
  * @param token The token of the current user, stored in store.
  */
 export const setGageInDatabase = (gage: Gage, token: string, dispatch: Dispatch): void => {
-  axios({
-    method: "post",
-    url: "http://localhost:8000/api/gages",
-    data: {
-      id: gage.id,
-      title: gage.title,
-      description: gage.description,
-      is_done: gage.is_done,
-      cost: gage.cost,
-      category: gage.category,
-      day: gage.day,
-      month: gage.month,
-      year: gage.year,
-      date_string: gage.date_string,
-    },
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      dispatch(addGage(response.data.data));
+  try {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/api/gages",
+      data: {
+        id: gage.id,
+        title: gage.title,
+        description: gage.description,
+        is_done: gage.is_done,
+        cost: gage.cost,
+        category: gage.category,
+        day: gage.day,
+        month: gage.month,
+        year: gage.year,
+        date_string: gage.date_string,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        dispatch(addGage(response.data.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error setting gage in database");
+  }
 };

@@ -7,22 +7,27 @@ import { setGroup } from "../../store/slices/groupSlice";
  * @param token The token of the current user, stored in store.
  */
 export const setGroupInDatabase = (idPartner: number, token: string, setGroupMessage: any): void => {
-  axios({
-    method: "post",
-    url: "http://localhost:8000/api/group/" + idPartner,
-    data: {
-      idPartner: idPartner,
-    },
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      setGroupMessage(response.data);
+  try {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/api/group/" + idPartner,
+      data: {
+        idPartner: idPartner,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        setGroupMessage(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching default gages from database");
+  }
 };
 
 /**
@@ -30,17 +35,22 @@ export const setGroupInDatabase = (idPartner: number, token: string, setGroupMes
  * @param token The token of the current user, stored in store.
  */
 export const getGroupFromDatabase = (token: string, dispatch: any): void => {
-  axios({
-    method: "get",
-    url: "http://localhost:8000/api/group/",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      dispatch(setGroup(response.data.data));
+  try {
+    axios({
+      method: "get",
+      url: "http://localhost:8000/api/group/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        dispatch(setGroup(response.data.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching default gages from database");
+  }
 };

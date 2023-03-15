@@ -1,23 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { User } from "../../types/User";
 
-type UserParent = {
+type UserState = {
   token: string;
   user: User;
 };
 
-type User = {
-  id: number;
-  email: string;
-  name: string;
-  points: number;
-  personal_code: string;
-  other_code: string;
-  created_at: string;
-  email_verified_at: string;
-  updated_at: string;
-};
-
-const initialState: UserParent | any = {
+const initialState: UserState | any = {
   user: {},
 };
 /**

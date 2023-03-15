@@ -1,19 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CATEGORIES from "../../constants/categories";
+import { Category } from "../../types/Category";
 
-export type Category = {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-};
-
-export type GenericsTasksState = {
+type CategoriesState = {
   categories: Category[];
   categoryGageSelection: string;
 };
 
-const initialState: GenericsTasksState = {
+const initialState: CategoriesState = {
   categories: [
     {
       id: 1,

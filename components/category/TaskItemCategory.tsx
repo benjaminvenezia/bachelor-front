@@ -1,6 +1,6 @@
 import { Text, StyleSheet, Pressable, Image, View, ImageBackground } from "react-native";
 import { GlobalStyles } from "../../constants/style";
-import { Task } from "../../store/slices/allTasksSlice";
+import { Task } from "../../types/Task";
 import { useState } from "react";
 import { checkTaskIsPresent } from "../../utils/checkTaskIsPresent";
 import images from "../../constants/images";

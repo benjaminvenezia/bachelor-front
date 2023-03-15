@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Task } from "./allTasksSlice";
+import { Task } from "../../types/Task";
 
 export type ActiveTasksState = {
   activeTasks: Task[];

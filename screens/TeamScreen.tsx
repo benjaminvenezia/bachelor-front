@@ -1,10 +1,10 @@
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { Text, SafeAreaView, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Group } from "../store/slices/groupSlice";
+import { Group } from "../types/Group";
 import { useEffect } from "react";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
-import { Title } from "../components";
+import { Title, GagesTeam } from "../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 import { GlobalStyles } from "../constants/style";
@@ -13,7 +13,6 @@ import { fetchGagesFromDatabase } from "../utils/http/httpGage";
 const TeamScreen = () => {
   const dispatch = useDispatch();
   const group = useSelector((state: RootState) => state.group);
-  const gagesStore = useSelector((state: RootState) => state.gages);
   const user = useSelector((state: RootState) => state.user);
   const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group[0];
 
@@ -50,16 +49,7 @@ const TeamScreen = () => {
 
       <Title titleType="h2">Gages</Title>
 
-      {gagesStore.gages.map((item, index) => {
-        return (
-          <Text style={styles.text} key={index}>
-            {item.title}
-            {item.day}
-            {item.year}
-            {item.user_name}
-          </Text>
-        );
-      })}
+      <GagesTeam />
     </SafeAreaView>
   );
 };

@@ -1,21 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Group } from "../../types/Group";
 
-export type Group = {
-  idGroup: string;
-  GroupName: string;
-  idUser1: number;
-  idUser2: number;
-  user1Name: string;
-  user2Name: string;
-  user1Points: number;
-  user2Points: number;
-  delta: number;
-  winner: string;
-  looser: string;
+type GroupState = {
+  group: Group;
 };
 
-const initialState = {
-  group: {},
+const initialState: GroupState = {
+  group: {
+    idGroup: "",
+    GroupName: "",
+    idUser1: 0,
+    idUser2: 0,
+    user1Name: "",
+    user2Name: "",
+    user1Points: 0,
+    user2Points: 0,
+    delta: 0,
+    winner: "string",
+    looser: "string",
+  },
 };
 
 /**

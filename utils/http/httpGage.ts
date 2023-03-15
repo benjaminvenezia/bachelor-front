@@ -1,5 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { Gage, addGage, setGages } from "../../store/slices/gagesSlice";
+import { Gage } from "../../types/Gage";
+import { addGage, setGages } from "../../store/slices/gagesSlice";
 import axios from "axios";
 
 /**

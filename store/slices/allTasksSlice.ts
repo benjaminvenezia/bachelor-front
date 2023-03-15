@@ -1,37 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import CATEGORIES from "../../constants/categories";
+import { Task } from "../../types/Task";
 
-export type Task = {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  reward: number;
-  is_done: boolean;
-  associated_day: string;
-  path_icon_todo: string;
-};
-
-// export type DefaultTask = {
-//   id: string;
-//   title: string;
-//   category: string;
-//   description: string;
-//   reward: number;
-//   path_icon_todo: string;
-// };
-
-export type GenericsTasksState = {
+export type TasksState = {
   tasks: Task[];
 };
 
-const initialState: GenericsTasksState = {
+const initialState: TasksState = {
   tasks: [],
 };
 
-/**
- * return all tasks thematically associated.
- */
 const allTasksSlice = createSlice({
   name: "allTasks",
   initialState: initialState,

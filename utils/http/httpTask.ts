@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Task } from "../../store/slices/allTasksSlice";
+import { Task } from "../../types/Task";
 import { setTasks } from "../../store/slices/activeTasksSlice";
 import { Dispatch } from "react";
 

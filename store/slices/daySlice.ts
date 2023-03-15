@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import DAYS from "../../constants/days";
-
-export type Day = {
-  activeDay: string;
-};
+import { Day } from "../../types/Day";
 
 const initialState: Day = {
   activeDay: DAYS.MONDAY,

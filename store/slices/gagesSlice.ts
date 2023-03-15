@@ -1,56 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import CATEGORIES from "../../constants/categories";
-
-/**
- * Gage is the ultimate object who is stored in database.
- */
-export type Gage = {
-  id: number;
-  title: string;
-  description: string;
-  is_done: boolean;
-  cost: number;
-  category: string | null;
-  day: number | null;
-  month: number | null;
-  year: number | null;
-  date_string: string;
-  user_id?: string;
-  user_name?: string;
-  user_points?: number;
-};
+import { Gage } from "../../types/Gage";
+import { GageTask } from "../../types/GageTask";
 
 /**
  * The GageTask is the complementary part of Gage, user can select trough them.
  */
-export type GageTask = {
-  id: number;
-  title: string;
-  description: string;
-  cost: number;
-  category: string;
-};
 
-export type Gages = {
+type GagesState = {
   gages: Gage[];
   gagesTask: GageTask[];
   gagesTaskFiltered: any;
   gageToAddInDatabase: any;
 };
 
-const initialState: Gages = {
+const initialState: GagesState = {
   gages: [],
   gagesTask: [],
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
 };
-
-// const initialStateOfGagesTaskFiltered = () => {
-//   const category = CATEGORIES.KITCHEN;
-//   const filteredGagesTask = initialState.gagesTask.filter((gageTask) => gageTask.category === category);
-//   initialState.gagesTaskFiltered = filteredGagesTask;
-// };
-// initialStateOfGagesTaskFiltered();
 
 const gagesSlice = createSlice({
   name: "gages",

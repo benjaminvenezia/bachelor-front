@@ -12,6 +12,7 @@ import DropdownCategories from "./gage/DropdownCategories";
 import DropdownGagesTasks from "./gage/DropdownGagesTasks";
 import Popup from "./ui/Popup";
 import NoTasksGuide from "./home/NoTasksGuide";
+import GagesTeam from "./gage/GagesTeam";
 
 export {
   TaskItem,
@@ -28,4 +29,5 @@ export {
   DropdownGagesTasks,
   Popup,
   NoTasksGuide,
+  GagesTeam,
 };

@@ -5,7 +5,7 @@ import { DropdownCategories } from "../components";
 import { fetchGagesFromDatabase, setGageInDatabase } from "../utils/http/httpGage";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Gage } from "../store/slices/gagesSlice";
+import { Gage } from "../types/Gage";
 
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";

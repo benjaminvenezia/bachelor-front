@@ -28,7 +28,7 @@ const initialState: GenericsTasksState = {
       description: "Un grand lit, la couverture en boule, on est bien dans la chambre.",
     },
   ],
-  categoryGageSelection: CATEGORIES.KITCHEN,
+  categoryGageSelection: "",
 };
 
 const categoriesSlice = createSlice({

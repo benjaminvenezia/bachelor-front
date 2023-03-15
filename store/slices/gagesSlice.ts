@@ -40,46 +40,17 @@ export type Gages = {
 
 const initialState: Gages = {
   gages: [],
-  gagesTask: [
-    {
-      id: 1,
-      title: "Nettoyer la chambre",
-      description: "Nettoyer la chambre et s'y appliquer!",
-      cost: 200,
-      category: CATEGORIES.ROOM,
-    },
-    {
-      id: 2,
-      title: "Passer l'aspirateur",
-      description: "Passer l'aspirateur dans la chambre",
-      cost: 150,
-      category: CATEGORIES.ROOM,
-    },
-    {
-      id: 3,
-      title: "Laver les vitres",
-      description: "Nettoyer les vitres de la cuisine",
-      cost: 20,
-      category: CATEGORIES.KITCHEN,
-    },
-    {
-      id: 4,
-      title: "Faire la lessive",
-      description: "Laver toutes les machines de linge",
-      cost: 5,
-      category: CATEGORIES.ROOM,
-    },
-  ],
+  gagesTask: [],
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
 };
 
-const initialStateOfGagesTaskFiltered = () => {
-  const category = CATEGORIES.KITCHEN;
-  const filteredGagesTask = initialState.gagesTask.filter((gageTask) => gageTask.category === category);
-  initialState.gagesTaskFiltered = filteredGagesTask;
-};
-initialStateOfGagesTaskFiltered();
+// const initialStateOfGagesTaskFiltered = () => {
+//   const category = CATEGORIES.KITCHEN;
+//   const filteredGagesTask = initialState.gagesTask.filter((gageTask) => gageTask.category === category);
+//   initialState.gagesTaskFiltered = filteredGagesTask;
+// };
+// initialStateOfGagesTaskFiltered();
 
 const gagesSlice = createSlice({
   name: "gages",
@@ -87,6 +58,9 @@ const gagesSlice = createSlice({
   reducers: {
     setGages: (state, action) => {
       state.gages = action.payload;
+    },
+    setGagesTask: (state, action) => {
+      state.gagesTask = action.payload;
     },
     addGage: (state, action) => {
       state.gages.push(action.payload);
@@ -101,5 +75,5 @@ const gagesSlice = createSlice({
   },
 });
 
-export const { setGages, addGage, filterGageTask, setTheGageBeforeSendingDatabase } = gagesSlice.actions;
+export const { setGages, setGagesTask, addGage, filterGageTask, setTheGageBeforeSendingDatabase } = gagesSlice.actions;
 export default gagesSlice.reducer;

@@ -3,11 +3,13 @@ import { GlobalStyles } from "../../constants/style";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Gage, setTheGageBeforeSendingDatabase } from "../../store/slices/gagesSlice";
+import { useEffect } from "react";
+import { fetchGagesFromDatabase } from "../../utils/http/httpGage";
 
 const GageTaskItem = ({ children, ...props }: any) => {
   const { category, cost, description, title } = props;
-
   const dispatch = useDispatch();
+
   const handlePress = () => {
     const gageToSendToStore = {
       category,

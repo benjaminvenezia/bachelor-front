@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import DELAYS from "../constants/delays";
 import { ScrollView } from "react-native-gesture-handler";
+import { fetchDefaultGagesFromDatabase } from "../utils/http/httpDefaultGages";
 
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -18,6 +19,7 @@ const GageScreen = () => {
   const categoriesStore = useSelector((state: RootState) => state.categories);
 
   const dispatch = useDispatch();
+
   const [modalVisible, setModalVisible] = useState(false);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
@@ -57,6 +59,14 @@ const GageScreen = () => {
     return () => clearTimeout(timeoutId);
   }, [modalVisible]);
 
+  useEffect(() => {
+    const getGages = async () => {
+      fetchDefaultGagesFromDatabase(user.user.token, dispatch);
+    };
+
+    getGages();
+  }, []);
+
   const setTheCalendarGagePart = (data: any) => {
     setDay(data.day);
     setMonth(data.month);
@@ -67,6 +77,7 @@ const GageScreen = () => {
   const handlePress = () => {
     setModalVisible(true);
     setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
+    // setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
   };
 
   return (

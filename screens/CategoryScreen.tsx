@@ -20,13 +20,14 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const [activatedTasks, setActivatedTasks] = useState([]);
 
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
-  const allTasks = useSelector((state: RootState) => state.allTasksList);
+  const { tasks } = useSelector((state: RootState) => state.allTasksList);
+
   const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
 
   const { categoryName } = route.params;
 
-  const categoryTasks = allTasks["tasks"].filter((task) => task.category === categoryName);
+  const categoryTasks = tasks.data.filter((task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
     const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);

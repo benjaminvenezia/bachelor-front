@@ -10,7 +10,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
-//PLUTOT UTILISER https://www.npmjs.com/package/react-id-generator pour plus facilement sélectionner id et tout
 import uuid from "react-native-uuid";
 import { setTasksInDatabase } from "../utils/http/httpTask";
 
@@ -27,7 +26,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const { categoryName } = route.params;
 
-  const categoryTasks = tasks.data.filter((task) => task.category === categoryName);
+  const categoryTasks = tasks.data.filter((task: Task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
     const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);

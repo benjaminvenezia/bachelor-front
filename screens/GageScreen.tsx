@@ -1,15 +1,14 @@
-import { Text, StyleSheet, View } from "react-native";
-import { Button, CustomCalendar, Title, Popup, DropdownGagesTasks } from "../components";
+import { Text, StyleSheet } from "react-native";
+import { Button, CustomCalendar, Title, DropdownGagesTasks } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
-import { fetchGagesFromDatabase, setGageInDatabase } from "../utils/http/httpGage";
+import { setGageInDatabase } from "../utils/http/httpGage";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../types/Gage";
 
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
-import DELAYS from "../constants/delays";
 import { ScrollView } from "react-native-gesture-handler";
 import { fetchDefaultGagesFromDatabase } from "../utils/http/httpDefaultGages";
 
@@ -50,14 +49,6 @@ const GageScreen = () => {
     year: year,
     date_string: dateString,
   };
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setModalVisible(false);
-    }, DELAYS.POPUP);
-
-    return () => clearTimeout(timeoutId);
-  }, [modalVisible]);
 
   useEffect(() => {
     const getGages = async () => {
@@ -150,8 +141,6 @@ const GageScreen = () => {
             Choisir un jour
           </Button>
         )}
-
-        {modalVisible && <Popup>Vous avez offert un gage!</Popup>}
       </ScrollView>
     </SafeAreaView>
   );

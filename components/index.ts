@@ -10,7 +10,6 @@ import TaskItemCategory from "./category/TaskItemCategory";
 import CustomCalendar from "./gage/CustomCalendar";
 import DropdownCategories from "./gage/DropdownCategories";
 import DropdownGagesTasks from "./gage/DropdownGagesTasks";
-import Popup from "./ui/Popup";
 import NoTasksGuide from "./home/NoTasksGuide";
 import GagesTeam from "./gage/GagesTeam";
 
@@ -27,7 +26,6 @@ export {
   CustomCalendar,
   DropdownCategories,
   DropdownGagesTasks,
-  Popup,
   NoTasksGuide,
   GagesTeam,
 };

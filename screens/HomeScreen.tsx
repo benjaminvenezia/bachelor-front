@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect } from "react";
-import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, Pressable, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, Hr, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
+import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
 import { getGroupFromDatabase } from "../utils/http/httpGroup";
@@ -13,7 +13,9 @@ import { fetchDefaultTasksFromDatabase } from "../utils/http/httpDefaultTasks";
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
   const tasks = useSelector((state: RootState) => state.activeTasksList);
-  const user = useSelector((state: RootState) => state.user);
+  // const user = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
+
   const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
   const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
 

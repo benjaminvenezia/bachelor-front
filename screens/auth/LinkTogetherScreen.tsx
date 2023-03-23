@@ -6,24 +6,23 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { setGroupInDatabase, getGroupFromDatabase } from "../../utils/http/httpGroup";
-import { getUserByCode } from "../../utils/http/httpUser";
+//import { getUserByCode } from "../../utils/http/httpUser";
+import { getUserByCode } from "../../store/slices/userSlice";
 import ROUTES from "../../constants/routes";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const user = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
   const [anotherLink, setAnotherLink] = useState("");
   const [anotherId, setAnotherId] = useState(-1);
   const [groupMessage, setGroupMessage]: any = useState("");
   const [linkMessage, setLinkMessage]: any = useState("");
-  const token = user.user.token;
 
   const dispatch = useDispatch();
 
+  //Tout cela sera fait par thunk
   const handleClick = () => {
     getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
-
     setGroupInDatabase(anotherId, token, setGroupMessage);
-
     getGroupFromDatabase(token, dispatch);
   };
 
@@ -44,7 +43,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>Mon code d'invitation : </Text>
-          <Title titleType="h1">{user.user.user.personal_code}</Title>
+          <Title titleType="h1">{user.personal_code}</Title>
 
           <Text style={styles.text}>Code de votre partenaire</Text>
 

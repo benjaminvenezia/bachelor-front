@@ -1,17 +1,16 @@
 import axios from "axios";
+import { getValueFor } from "../secureStore";
 
 const customFetch = axios.create({
   baseURL: "http://localhost:8000/api",
 });
 
-// customFetch.interceptors.request.use((config) => {
-//   const user = getUserFromLocalStorage();
+customFetch.interceptors.request.use((config) => {
+  const token = getValueFor("token");
 
-//   if (user) {
-//     const token = getTokenFromLocalStorage();
-//     config.headers["Authorization"] = `Bearer ${token}`;
-//   }
-//   return config;
-// });
+  config.headers["Authorization"] = `Bearer ${token}`;
+
+  return config;
+});
 
 export default customFetch;

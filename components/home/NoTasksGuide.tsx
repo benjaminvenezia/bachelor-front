@@ -7,13 +7,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 const NoTasksGuide = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
 
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
         <DaysContainer />
-        <Title titleType="h2">Salut {user.user.user.name} Aucune tâche associée à ce jour!</Title>
+        <Title titleType="h2">Salut {user.name} Aucune tâche associée à ce jour!</Title>
         <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie pour en ajouter </Text>
 
         <CategoriesList />

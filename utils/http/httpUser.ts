@@ -1,5 +1,6 @@
 import axios from "axios";
 import { setUserPoints } from "../../store/slices/userSlice";
+import { getValueFor } from "../secureStore";
 
 /**
  * @param token The token of the current user, stored in store.
@@ -10,7 +11,7 @@ export const getUserByCode = (token: string, code: string, setAnotherId: any, se
     axios
       .get("http://localhost:8000/api/users/" + code, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getValueFor("token")}`,
         },
       })
       .then((response) => {

@@ -12,7 +12,9 @@ const initialState: UserState | any = {
   user: {},
   isLoading: false,
   isLogged: false,
+  isRegistered: false,
   idPartner: null,
+  message: null,
 };
 
 /**
@@ -22,12 +24,9 @@ const initialState: UserState | any = {
 export const getPartnerByCode: any = createAsyncThunk("user/getPartnerByCode", async (code: string, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/users/${code}`);
-    console.log("getPartnerByCode thunk : ", resp.data);
     return resp.data;
   } catch (error: any) {
-    console.log("Erreur dans getUserByCode");
-    console.log(error);
-    return thunkAPI.rejectWithValue("Une erreur s'est produite lors de la récupération de l'autre utilisateur");
+    return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
@@ -37,8 +36,7 @@ export const login: any = createAsyncThunk("user/login", async (access: { email:
     save("token", resp.data.data.token);
     return resp.data.data;
   } catch (error: any) {
-    console.log(error.response);
-    return thunkAPI.rejectWithValue("Une erreur s'est produite lors de la connexion");
+    return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
@@ -48,11 +46,9 @@ export const register: any = createAsyncThunk(
     try {
       const resp = await customFetch.post(`/register`, access);
       save("token", resp.data.data.token);
-      console.log("REGISTER HOMIE: ", resp.data.data);
       return resp.data.data;
     } catch (error: any) {
-      console.log(error.response);
-      return thunkAPI.rejectWithValue("Une erreur s'est produite lors de la connexion");
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -87,46 +83,38 @@ const userSlice = createSlice({
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.user;
+        state.isRegistered = true;
         save("token", payload.token);
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
-        // toast.error(payload);
+        state.isRegistered = false;
+        console.log("1. ", payload);
+        state.message = payload;
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
+        state.isRegistered = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-
         state.user = payload.user;
         state.isLogged = true;
         save("token", payload.token);
-        // state.token = payload.data.token;
-        // addTokenToLocalStorage(payload.data.token);
-        // addUserToLocalStorage(payload.data.user);
-        // toast.success(`Salut ${payload.data.user.name}`);
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isLogged = false;
-        // toast.error(payload);
       })
-
       .addCase(getPartnerByCode.pending, (state) => {
         state.isLoading = true;
-
-        console.log("MAKAAO", state);
       })
       .addCase(getPartnerByCode.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        console.log("FRaNCHE COMPTEE!: ", payload);
         state.idPartner = payload.id;
-        // toast.success(`Salut ${payload.data.user.name}`);
       })
       .addCase(getPartnerByCode.rejected, (state, { payload }) => {
         state.isLoading = false;
-        // toast.error(payload);
       });
   },
 });

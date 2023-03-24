@@ -5,6 +5,8 @@ import customFetch from "../../utils/http/axios";
 type GroupState = {
   group: Group;
   isLoading: boolean;
+  isGroupCreated: boolean;
+  message: string;
 };
 
 const initialState: GroupState = {
@@ -18,35 +20,31 @@ const initialState: GroupState = {
     user1Points: 0,
     user2Points: 0,
     delta: 0,
-    winner: "string",
-    looser: "string",
+    winner: "",
+    looser: "",
   },
   isLoading: false,
+  isGroupCreated: false,
+  message: "",
 };
 
-export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (idPartner: number) => {
+export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (idPartner: number, thunkAPI) => {
   try {
     const resp = await customFetch.post(`/group/${idPartner}`);
-    // console.log("set group in db : ", resp.data);
-
     return resp.data;
-  } catch (error) {
-    console.log("Erreur dans setGroupInDatabase");
-    console.log(error);
-    throw new Error("Error fetching default gages from database");
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
-export const getGroupFromDatabase = createAsyncThunk("group/getGroupFromDB", async () => {
+export const getGroupFromDatabase = createAsyncThunk("group/getGroupFromDB", async (thunkAPI) => {
   try {
     const resp = await customFetch.get(`/group`);
-    // console.log("get group from db: ", resp.data);
+    console.log("get group from db: ", resp.data);
 
     return resp.data;
-  } catch (error) {
-    console.log("Erreur dans getGroupFromDatabase");
-    console.log(error);
-    throw new Error("Error fetching default gages from database");
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
@@ -72,13 +70,16 @@ const groupSlice = createSlice({
 
       .addCase(getGroupFromDatabase.pending, (state) => {
         state.isLoading = true;
+        state.isGroupCreated = true;
       })
       .addCase(getGroupFromDatabase.fulfilled, (state, { payload }) => {
-        state.group = payload;
+        state.group = payload.data[0];
         state.isLoading = false;
+        state.isGroupCreated = false;
       })
       .addCase(getGroupFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.isGroupCreated = false;
       });
   },
 });

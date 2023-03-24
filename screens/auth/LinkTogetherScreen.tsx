@@ -8,14 +8,11 @@ import { RootState } from "../../store/store";
 import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
 import { getPartnerByCode } from "../../store/slices/userSlice";
 import ROUTES from "../../constants/routes";
-import { getValueFor } from "../../utils/secureStore";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const { user, idPartner } = useSelector((state: RootState) => state.user);
+  const { user, idPartner, isLogged } = useSelector((state: RootState) => state.user);
+  const { isGroupCreated } = useSelector((state: RootState) => state.group);
   const [anotherLink, setAnotherLink] = useState("");
-  // const [anotherId, setAnotherId] = useState(-1);
-  const [groupMessage, setGroupMessage]: any = useState("");
-  const [linkMessage, setLinkMessage]: any = useState("");
 
   const dispatch = useDispatch();
 
@@ -27,15 +24,10 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   };
 
   useEffect(() => {
-    if (groupMessage["code"] === 200) {
+    if (isGroupCreated) {
       navigation.navigate(ROUTES.HOME);
     }
-  }, [groupMessage]);
-
-  const getTheToken = async () => {
-    const tokendudus = await getValueFor("token");
-    return tokendudus;
-  };
+  }, [isGroupCreated]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -56,8 +48,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
-          <Text style={styles.text}>{groupMessage.message}</Text>
-          <Text style={styles.text}>{linkMessage.message}</Text>
+          {/* <Text style={styles.text}>{linkMessage.message}</Text> */}
 
           <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
             Valider

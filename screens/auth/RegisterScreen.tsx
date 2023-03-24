@@ -1,18 +1,19 @@
 import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
 import ROUTES from "../../constants/routes";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useDispatch } from "react-redux";
 import { register } from "../../store/slices/userSlice";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 const RegisterScreen = ({ navigation }: any) => {
   const [name, onChangeName] = useState("benjamin");
   const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [password_verification, onChangePasswordVerification] = useState("password");
-
-  const [error, setError] = useState(false);
+  const { user, message, isRegistered } = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
 
@@ -20,6 +21,12 @@ const RegisterScreen = ({ navigation }: any) => {
     e.preventDefault();
     dispatch(register({ name: name, email: email, password: password, password_confirmation: password_verification }));
   };
+
+  useEffect(() => {
+    if (isRegistered) {
+      navigation.navigate(ROUTES.LINK);
+    }
+  }, [isRegistered]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -40,7 +47,7 @@ const RegisterScreen = ({ navigation }: any) => {
             keyboard="default"
           />
 
-          {error ? <Text>Erreur, un champ est non rempli ou l'adresse existe déjà. </Text> : ""}
+          {message ? <Text>{message} </Text> : ""}
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider

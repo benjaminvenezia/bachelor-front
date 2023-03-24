@@ -2,7 +2,7 @@ import { Text, StyleSheet, Pressable, Vibration, ImageBackground, View } from "r
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
 import { useEffect, useState } from "react";
-import { removeTaskFromDatabase } from "../../utils/http/httpTask";
+import { removeTaskFromDatabase } from "../../store/slices/activeTasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../store/slices/activeTasksSlice";
@@ -29,7 +29,8 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
   let timeoutTogglingId: any;
 
   const handleRemove = () => {
-    removeTaskFromDatabase(id, user.user.token);
+    dispatch(removeTaskFromDatabase(id));
+
     dispatch(removeTask({ id: id }));
     Vibration.vibrate(200);
     setIsDeleting(false);

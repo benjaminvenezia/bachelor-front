@@ -21,6 +21,16 @@ export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFr
   }
 });
 
+export const removeTaskFromDatabase = createAsyncThunk("allTasks/removeTaskFromDatabase", async (idTask, thunkAPI) => {
+  try {
+    const resp = await customFetch.delete(`/tasks/${idTask}`);
+
+    return resp.data.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
 export const toggleStatusTaskInDatabase = createAsyncThunk("activeTasks/toggleStatusTaskInDatabase", async (id: string, thunkAPI) => {
   try {
     const resp = await customFetch.patch(`/tasks/toggle/${id}`);
@@ -85,6 +95,15 @@ const activeTasksSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(toggleStatusTaskInDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(removeTaskFromDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(removeTaskFromDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(removeTaskFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
       });
   },

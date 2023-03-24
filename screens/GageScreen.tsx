@@ -19,7 +19,6 @@ const GageScreen = () => {
 
   const dispatch = useDispatch();
 
-  const [modalVisible, setModalVisible] = useState(false);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
@@ -66,7 +65,6 @@ const GageScreen = () => {
   };
 
   const handlePress = () => {
-    setModalVisible(true);
     setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
     // setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
   };

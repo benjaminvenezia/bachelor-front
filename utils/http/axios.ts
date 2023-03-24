@@ -3,6 +3,9 @@ import { getValueFor } from "../secureStore";
 
 const customFetch = axios.create({
   baseURL: "http://localhost:8000/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 customFetch.interceptors.request.use(async (config) => {

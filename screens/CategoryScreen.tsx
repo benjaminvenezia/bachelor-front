@@ -21,11 +21,8 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
   const { tasks } = useSelector((state: RootState) => state.allTasksList);
   const { activeTasks } = useSelector((state: RootState) => state.activeTasksList);
-  const user = useSelector((state: RootState) => state.user);
 
   const { categoryName } = route.params;
-  console.log("SEE OGRE : ", tasks);
-
   const categoryTasks = tasks.filter((task: Task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
@@ -46,7 +43,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
         taskToPush.associated_day = activeDays["activeDays"][j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
-        if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {
+        if (!checkTaskIsPresent(activeTasks, taskToPush)) {
           toPush.push(taskToPush);
           setActivatedTasks([]);
         }

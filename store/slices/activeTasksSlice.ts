@@ -1,17 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isDraft } from "@reduxjs/toolkit";
 import { Task } from "../../types/Task";
+import customFetch from "../../utils/http/axios";
 
 export type ActiveTasksState = {
   activeTasks: Task[];
+  isLoading: boolean;
 };
 
 const initialState: ActiveTasksState = {
   activeTasks: [],
+  isLoading: false,
 };
 
-/**
- * return active tasks (selected in thematic menu) attached in a specific day.
- */
+export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (thunkAPI) => {
+  try {
+    const resp = await customFetch.get(`/tasks`);
+    return resp.data.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
+export const toggleStatusTaskInDatabase = createAsyncThunk("activeTasks/toggleStatusTaskInDatabase", async (id: string, thunkAPI) => {
+  try {
+    const resp = await customFetch.patch(`/tasks/toggle/${id}`);
+    return resp.data.data;
+  } catch (error: any) {
+    console.log(error.response);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
 const activeTasksSlice = createSlice({
   name: "activeTasks",
   initialState: initialState,
@@ -46,6 +65,28 @@ const activeTasksSlice = createSlice({
         activeTasks: state.activeTasks.filter((task) => task.id !== action.payload.id),
       };
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchTasksFromDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchTasksFromDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.activeTasks = payload;
+      })
+      .addCase(fetchTasksFromDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(toggleStatusTaskInDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(toggleStatusTaskInDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(toggleStatusTaskInDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
+      });
   },
 });
 

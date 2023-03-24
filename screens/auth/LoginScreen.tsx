@@ -9,7 +9,7 @@ import { RootState } from "../../store/store";
 import ROUTES from "../../constants/routes";
 
 const LoginScreen = ({ navigation }: any) => {
-  const [email, onChangeMail] = useState("papa@gmail.com");
+  const [email, onChangeMail] = useState("papak@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [error, setError]: any = useState();
 

@@ -40,8 +40,6 @@ export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (
 export const getGroupFromDatabase = createAsyncThunk("group/getGroupFromDB", async (thunkAPI) => {
   try {
     const resp = await customFetch.get(`/group`);
-    console.log("get group from db: ", resp.data);
-
     return resp.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);

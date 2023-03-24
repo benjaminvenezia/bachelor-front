@@ -72,7 +72,7 @@ const userSlice = createSlice({
       };
     },
     setUserPoints: (state, action) => {
-      state.user.user.points += action.payload.points;
+      state.user.points += action.payload.points;
     },
   },
   extraReducers: (builder) => {
@@ -89,7 +89,6 @@ const userSlice = createSlice({
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isRegistered = false;
-        console.log("1. ", payload);
         state.message = payload;
       })
       .addCase(login.pending, (state) => {

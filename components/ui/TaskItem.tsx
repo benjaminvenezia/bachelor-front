@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { removeTaskFromDatabase } from "../../utils/http/httpTask";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
-import { toggleStatusTaskInDatabase } from "../../utils/http/httpTask";
+import { toggleStatusTaskInDatabase } from "../../store/slices/activeTasksSlice";
 import { setUserPointsInDatabase } from "../../utils/http/httpUser";
 import { setUserPoints } from "../../store/slices/userSlice";
 import images from "../../constants/images";
@@ -37,11 +37,11 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
 
   const handlePressIn = () => {
     dispatch(toggleStatus({ id: id }));
-    toggleStatusTaskInDatabase(id, user.user.token, is_done);
+    dispatch(toggleStatusTaskInDatabase(id, is_done));
 
     if (!is_done) {
       dispatch(setUserPoints({ points: reward }));
-      setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
+      //setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
     }
   };
 

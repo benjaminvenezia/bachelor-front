@@ -12,6 +12,55 @@ const initialState: ActiveTasksState = {
   isLoading: false,
 };
 
+/**
+ *
+ * @param tasks An array of Task objects
+ * @param token The token of the current user, stored in store.
+ */
+// export const setTasksInDatabase = (tasks: Task[], token: string): void => {
+//   try {
+//     tasks.map((task: Task) => {
+//       axios({
+//         method: "post",
+//         url: "http://localhost:8000/api/tasks",
+//         data: {
+//           id: task.id,
+//           title: task.title,
+//           description: "rédigé manuellment",
+//           category: task.category,
+//           reward: task.reward,
+//           is_done: task.is_done,
+//           path_icon_todo: task.path_icon_todo,
+//           associated_day: task.associated_day,
+//         },
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       })
+//         .then((response) => {
+//           // console.log(response.data);
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//         });
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     throw new Error("Error setting tasks in database");
+//   }
+// };
+
+export const setTasksInDatabase = createAsyncThunk("activeTasks/setTasksInDatabase", async (tasks: Task[], thunkAPI) => {
+  try {
+    const resp = await customFetch.post(`/tasks/multiple`, tasks);
+
+    console.log("setTasksInDatabase : ", resp.data);
+    return resp.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
 export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (thunkAPI) => {
   try {
     const resp = await customFetch.get(`/tasks`);

@@ -11,7 +11,7 @@ import { Task } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
-import { setTasksInDatabase } from "../utils/http/httpTask";
+import { setTasksInDatabase } from "../store/slices/activeTasksSlice";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch();
@@ -20,16 +20,16 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
   const { tasks } = useSelector((state: RootState) => state.allTasksList);
-
-  const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);
+  const { activeTasks } = useSelector((state: RootState) => state.activeTasksList);
   const user = useSelector((state: RootState) => state.user);
 
   const { categoryName } = route.params;
+  console.log("SEE OGRE : ", tasks);
 
-  const categoryTasks = tasks.data.filter((task: Task) => task.category === categoryName);
+  const categoryTasks = tasks.filter((task: Task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
-    const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);
+    const days = activeTasks.filter((task: Task) => task.title === title);
     const daysLabels = days.map((item) => item.associated_day);
 
     return daysLabels;
@@ -66,7 +66,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
     const tasksExtracted = getTasksForEachDaysSelected();
 
     setTasksInHomeScreen(tasksExtracted);
-    setTasksInDatabase(tasksExtracted, user.user.token);
+    dispatch(setTasksInDatabase(tasksExtracted));
   };
 
   return (

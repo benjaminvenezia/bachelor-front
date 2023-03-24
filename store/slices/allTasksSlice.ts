@@ -17,7 +17,7 @@ export const fetchDefaultTasksFromDatabase = createAsyncThunk("allTasks/fetchDef
   try {
     const resp = await customFetch.get(`/default_tasks`);
 
-    return resp.data.data[0];
+    return resp.data.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);
   }

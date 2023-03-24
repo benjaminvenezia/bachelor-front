@@ -25,7 +25,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   useEffect(() => {
     if (isLogged) {
-      user.otherCode ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.LINK);
+      navigation.navigate(ROUTES.HOME);
     }
   }, [isLogged]);
 

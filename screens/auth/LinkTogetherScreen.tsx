@@ -5,25 +5,25 @@ import { GlobalStyles } from "../../constants/style";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { setGroupInDatabase, getGroupFromDatabase } from "../../utils/http/httpGroup";
-//import { getUserByCode } from "../../utils/http/httpUser";
-import { getUserByCode } from "../../store/slices/userSlice";
+import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
+import { getPartnerByCode } from "../../store/slices/userSlice";
 import ROUTES from "../../constants/routes";
+import { getValueFor } from "../../utils/secureStore";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user, idPartner } = useSelector((state: RootState) => state.user);
   const [anotherLink, setAnotherLink] = useState("");
-  const [anotherId, setAnotherId] = useState(-1);
+  // const [anotherId, setAnotherId] = useState(-1);
   const [groupMessage, setGroupMessage]: any = useState("");
   const [linkMessage, setLinkMessage]: any = useState("");
 
   const dispatch = useDispatch();
 
-  //Tout cela sera fait par thunk
+  //On récupère l'id de l'autre utilisateur pour set le groupe dans la database
   const handleClick = () => {
-    getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
-    setGroupInDatabase(anotherId, token, setGroupMessage);
-    getGroupFromDatabase(token, dispatch);
+    dispatch(getPartnerByCode(anotherLink));
+    dispatch(setGroupInDatabase(idPartner));
+    dispatch(getGroupFromDatabase());
   };
 
   useEffect(() => {
@@ -31,6 +31,11 @@ const LinkTogetherScreen = ({ navigation }: any) => {
       navigation.navigate(ROUTES.HOME);
     }
   }, [groupMessage]);
+
+  const getTheToken = async () => {
+    const tokendudus = await getValueFor("token");
+    return tokendudus;
+  };
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -40,6 +45,8 @@ const LinkTogetherScreen = ({ navigation }: any) => {
         <Title titleType="h1" style={styles.title}>
           Lien avec votre partenaire
         </Title>
+
+        <Button onPress={() => {}}>Voir</Button>
 
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>Mon code d'invitation : </Text>

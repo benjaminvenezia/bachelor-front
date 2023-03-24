@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, Pressable, Button } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
@@ -7,8 +7,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../utils/http/httpTask";
-import { getGroupFromDatabase } from "../utils/http/httpGroup";
 import { fetchDefaultTasksFromDatabase } from "../utils/http/httpDefaultTasks";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 
 const HomeScreen: FunctionComponent = () => {
   const storeActiveDay = useSelector((state: RootState) => state.day);
@@ -30,13 +30,10 @@ const HomeScreen: FunctionComponent = () => {
       fetchDefaultTasksFromDatabase(user.user.token, dispatch);
     }
 
-    async function getGroup() {
-      getGroupFromDatabase(user.user.token, dispatch);
-    }
-
     getDefaultTasks();
     getTasks();
-    getGroup();
+
+    dispatch(getGroupFromDatabase());
   }, []);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {

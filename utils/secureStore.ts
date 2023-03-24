@@ -7,9 +7,4 @@ export async function save(key: string, value: string) {
 export async function getValueFor(key: string) {
   let result = await SecureStore.getItemAsync(key);
   return result;
-  //   if (result) {
-  //     alert("🔐 Here's your value 🔐 \n" + result);
-  //   } else {
-  //     alert("No values stored under that key.");
-  //   }
 }

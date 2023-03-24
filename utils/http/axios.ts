@@ -5,8 +5,8 @@ const customFetch = axios.create({
   baseURL: "http://localhost:8000/api",
 });
 
-customFetch.interceptors.request.use((config) => {
-  const token = getValueFor("token");
+customFetch.interceptors.request.use(async (config) => {
+  const token = await getValueFor("token");
 
   config.headers["Authorization"] = `Bearer ${token}`;
 

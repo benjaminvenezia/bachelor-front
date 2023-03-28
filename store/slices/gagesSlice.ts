@@ -1,6 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Gage } from "../../types/Gage";
 import { GageTask } from "../../types/GageTask";
+import { Task } from "react-native";
+import customFetch from "../../utils/http/axios";
 
 /**
  * The GageTask is the complementary part of Gage, user can select trough them.
@@ -11,6 +13,7 @@ type GagesState = {
   gagesTask: GageTask[];
   gagesTaskFiltered: any;
   gageToAddInDatabase: any;
+  isLoading: boolean;
 };
 
 const initialState: GagesState = {
@@ -18,7 +21,18 @@ const initialState: GagesState = {
   gagesTask: [],
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
+  isLoading: false,
 };
+
+export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (thunkAPI) => {
+  try {
+    const resp = await customFetch.get(`/default_gages`);
+    return resp.data;
+  } catch (error: any) {
+    console.log("erreur dans le thunk: ", error.response);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
 
 const gagesSlice = createSlice({
   name: "gages",
@@ -40,6 +54,19 @@ const gagesSlice = createSlice({
     setTheGageBeforeSendingDatabase: (state, action) => {
       state.gageToAddInDatabase = action.payload;
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchDefaultGagesFromDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchDefaultGagesFromDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.gagesTask = payload;
+      })
+      .addCase(fetchDefaultGagesFromDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
+      });
   },
 });
 

@@ -10,7 +10,7 @@ import { Gage } from "../types/Gage";
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
-import { fetchDefaultGagesFromDatabase } from "../utils/http/httpDefaultGages";
+import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
 
 const GageScreen = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -50,11 +50,7 @@ const GageScreen = () => {
   };
 
   useEffect(() => {
-    const getGages = async () => {
-      fetchDefaultGagesFromDatabase(user.user.token, dispatch);
-    };
-
-    getGages();
+    dispatch(fetchDefaultGagesFromDatabase());
   }, []);
 
   const setTheCalendarGagePart = (data: any) => {

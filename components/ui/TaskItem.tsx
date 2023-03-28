@@ -6,8 +6,7 @@ import { removeTaskFromDatabase } from "../../store/slices/activeTasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../store/slices/activeTasksSlice";
-import { setUserPointsInDatabase } from "../../utils/http/httpUser";
-import { setUserPoints } from "../../store/slices/userSlice";
+import { setUserPointsInDatabase, setUserPoints } from "../../store/slices/userSlice";
 import images from "../../constants/images";
 
 type TaskItemProps = {
@@ -23,7 +22,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
-  const user = useSelector((state: RootState) => state.user);
+  let user = useSelector((state: RootState) => state.user);
 
   let timeoutDeletingId: any;
   let timeoutTogglingId: any;
@@ -42,7 +41,8 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
 
     if (!is_done) {
       dispatch(setUserPoints({ points: reward }));
-      //setUserPointsInDatabase(user.user.user.id, user.user.token, (user.user.user.points += reward), dispatch);
+      console.log(user.user.id);
+      dispatch(setUserPointsInDatabase({ id: user.user.id, points: user.user.points + reward }));
     }
   };
 

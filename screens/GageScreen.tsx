@@ -13,7 +13,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
 
 const GageScreen = () => {
-  const user = useSelector((state: RootState) => state.user);
   const gagesStore = useSelector((state: RootState) => state.gages);
   const categoriesStore = useSelector((state: RootState) => state.categories);
 

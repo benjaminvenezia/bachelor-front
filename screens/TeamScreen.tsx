@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Group } from "../types/Group";
 import { useEffect } from "react";
-// import { getGroupFromDatabase } from "../utils/http/httpGroup";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { Title, GagesTeam } from "../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
@@ -13,8 +13,8 @@ import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 const TeamScreen = () => {
   const dispatch = useDispatch();
   const group = useSelector((state: RootState) => state.group);
-  const user = useSelector((state: RootState) => state.user);
-  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group[0];
+
+  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group;
 
   useEffect(() => {
     dispatch(fetchGagesFromDatabase());
@@ -23,7 +23,7 @@ const TeamScreen = () => {
   useFocusEffect(
     React.useCallback(() => {
       const getGroup = async () => {
-        getGroupFromDatabase(user.user.token, dispatch);
+        dispatch(getGroupFromDatabase());
       };
 
       getGroup();

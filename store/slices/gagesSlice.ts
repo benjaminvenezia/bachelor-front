@@ -48,22 +48,7 @@ export const fetchGagesFromDatabase = createAsyncThunk("gages/fetchGagesFromData
 
 export const setGageInDatabase = createAsyncThunk("gages/setGageInDatabase", async (gage: Gage, thunkAPI) => {
   try {
-    const { id, title, description, is_done, cost, category, day, month, year, date_string } = gage;
-
-    const gageToRegister = {
-      id,
-      title,
-      description,
-      is_done,
-      cost,
-      category,
-      day,
-      month,
-      year,
-      date_string,
-    };
-
-    const resp = await customFetch.post(`/gages`, gageToRegister);
+    const resp = await customFetch.post(`/gages`, gage);
 
     return resp.data;
   } catch (error: any) {
@@ -71,39 +56,6 @@ export const setGageInDatabase = createAsyncThunk("gages/setGageInDatabase", asy
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
-
-// export const setGageInDatabase = (gage: Gage, token: string, dispatch: Dispatch): void => {
-//   try {
-//     axios({
-//       method: "post",
-//       url: "http://localhost:8000/api/gages",
-//       data: {
-//         id: gage.id,
-//         title: gage.title,
-//         description: gage.description,
-//         is_done: gage.is_done,
-//         cost: gage.cost,
-//         category: gage.category,
-//         day: gage.day,
-//         month: gage.month,
-//         year: gage.year,
-//         date_string: gage.date_string,
-//       },
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     })
-//       .then((response) => {
-//         dispatch(addGage(response.data.data));
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   } catch (error) {
-//     console.log(error);
-//     throw new Error("Error setting gage in database");
-//   }
-// };
 
 const gagesSlice = createSlice({
   name: "gages",

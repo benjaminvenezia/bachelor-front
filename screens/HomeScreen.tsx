@@ -22,8 +22,8 @@ const HomeScreen: FunctionComponent = () => {
   const { activeDay } = useSelector((state: RootState) => state.day);
   const { activeTasks, isLoading } = useSelector((state: RootState) => state.activeTasksList);
 
-  const tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
-  const tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
+  let tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
+  let tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return <NoTasksGuide />;

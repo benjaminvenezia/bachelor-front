@@ -53,10 +53,23 @@ export const register: any = createAsyncThunk(
   }
 );
 
+export const setUserPointsInDatabase = createAsyncThunk(
+  "user/setUserPointsInDatabase",
+  async ({ id, points }: { id: string; points: number }, thunkAPI) => {
+    try {
+      const resp = await customFetch.patch(`/users/${id}`, { points: points });
+      return resp.data.data;
+    } catch (error: any) {
+      console.log(error.response);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 /**
  * This slice store the crucial information for the user.
  */
-const userSlice = createSlice({
+let userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
@@ -114,9 +127,19 @@ const userSlice = createSlice({
       })
       .addCase(getPartnerByCode.rejected, (state, { payload }) => {
         state.isLoading = false;
+      })
+      .addCase(setUserPointsInDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setUserPointsInDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user.points += payload.points;
+      })
+      .addCase(setUserPointsInDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
       });
   },
 });
 
-export const { setUser, setOtherCode, setUserPoints } = userSlice.actions;
+export const { setUserPoints, setUser, setOtherCode } = userSlice.actions;
 export default userSlice.reducer;

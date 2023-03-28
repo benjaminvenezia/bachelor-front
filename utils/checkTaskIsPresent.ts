@@ -1,4 +1,4 @@
-import { Task } from "../store/slices/allTasksSlice";
+import { Task } from "../types/Task";
 
 /**
  * Check if a task object is present in an array of tasks objects.

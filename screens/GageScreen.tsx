@@ -2,7 +2,7 @@ import { Text, StyleSheet } from "react-native";
 import { Button, CustomCalendar, Title, DropdownGagesTasks } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
-import { setGageInDatabase } from "../utils/http/httpGage";
+import { setGageInDatabase } from "../store/slices/gagesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../types/Gage";
@@ -61,8 +61,7 @@ const GageScreen = () => {
   };
 
   const handlePress = () => {
-    setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
-    // setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
+    dispatch(setGageInDatabase(gageToSaveInDatabase));
   };
 
   return (

@@ -24,7 +24,7 @@ export const setTasksInDatabase = createAsyncThunk("activeTasks/setTasksInDataba
   }
 });
 
-export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (thunkAPI) => {
+export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/tasks`);
     return resp.data.data;
@@ -33,7 +33,7 @@ export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFr
   }
 });
 
-export const removeTaskFromDatabase = createAsyncThunk("allTasks/removeTaskFromDatabase", async (idTask, thunkAPI) => {
+export const removeTaskFromDatabase = createAsyncThunk("allTasks/removeTaskFromDatabase", async (idTask: string, thunkAPI) => {
   try {
     const resp = await customFetch.delete(`/tasks/${idTask}`);
 

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
 import { getPartnerByCode } from "../../store/slices/userSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
@@ -14,7 +15,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   const { isGroupCreated } = useSelector((state: RootState) => state.group);
   const [anotherLink, setAnotherLink] = useState("");
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   //On récupère l'id de l'autre utilisateur pour set le groupe dans la database
   const handleClick = () => {

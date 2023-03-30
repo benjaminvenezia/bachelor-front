@@ -2,7 +2,6 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDay, removeDay } from "../../store/slices/daysToAddTasksSlice";
-import { Day } from "../../types/Day";
 import { RootState } from "../../store/store";
 import { GlobalStyles } from "../../constants/style";
 

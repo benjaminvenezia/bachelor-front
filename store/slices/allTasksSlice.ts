@@ -13,7 +13,7 @@ const initialState: TasksState = {
   isLoading: false,
 };
 
-export const fetchDefaultTasksFromDatabase = createAsyncThunk("allTasks/fetchDefaultTasksFromDatabase", async (thunkAPI) => {
+export const fetchDefaultTasksFromDatabase = createAsyncThunk("allTasks/fetchDefaultTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/default_tasks`);
 

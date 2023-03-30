@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AnyAction, AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Group } from "../../types/Group";
 import customFetch from "../../utils/http/axios";
+import { RootState } from "../store";
 
 type GroupState = {
   group: Group;
@@ -37,7 +38,7 @@ export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (
   }
 });
 
-export const getGroupFromDatabase = createAsyncThunk("group/getGroupFromDB", async (thunkAPI) => {
+export const getGroupFromDatabase: any = createAsyncThunk("group/getGroupFromDB", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/group`);
     return resp.data;

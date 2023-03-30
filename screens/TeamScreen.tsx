@@ -9,9 +9,10 @@ import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 import { GlobalStyles } from "../constants/style";
 import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const TeamScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const group = useSelector((state: RootState) => state.group);
 
   const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group;

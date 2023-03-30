@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Gage } from "../../types/Gage";
 import { GageTask } from "../../types/GageTask";
 import { Task } from "react-native";
 import customFetch from "../../utils/http/axios";
+import { RootState } from "../store";
 
 /**
  * The GageTask is the complementary part of Gage, user can select trough them.
@@ -24,7 +25,7 @@ const initialState: GagesState = {
   isLoading: false,
 };
 
-export const fetchDefaultGagesFromDatabase: any = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (thunkAPI) => {
+export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/default_gages`);
     return resp.data;
@@ -36,7 +37,7 @@ export const fetchDefaultGagesFromDatabase: any = createAsyncThunk("defaultGages
 /**
  * Les gages associés aux utilisateurs
  */
-export const fetchGagesFromDatabase = createAsyncThunk("gages/fetchGagesFromDatabase", async (thunkAPI) => {
+export const fetchGagesFromDatabase = createAsyncThunk("gages/fetchGagesFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/gages`);
     return resp.data;

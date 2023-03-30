@@ -1,13 +1,14 @@
 import { Text, StyleSheet, Pressable, Vibration, ImageBackground, View } from "react-native";
 import { GlobalStyles } from "../../constants/style";
 import { toggleStatus, removeTask } from "../../store/slices/activeTasksSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { removeTaskFromDatabase } from "../../store/slices/activeTasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { toggleStatusTaskInDatabase } from "../../store/slices/activeTasksSlice";
 import { setUserPointsInDatabase, setUserPoints } from "../../store/slices/userSlice";
 import images from "../../constants/images";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 type TaskItemProps = {
   id: string;
@@ -19,7 +20,8 @@ type TaskItemProps = {
 };
 
 const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskItemProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
+
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
   let user = useSelector((state: RootState) => state.user);
@@ -37,11 +39,10 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
 
   const handlePressIn = () => {
     dispatch(toggleStatus({ id: id }));
-    dispatch(toggleStatusTaskInDatabase(id, is_done));
+    dispatch(toggleStatusTaskInDatabase(id));
 
     if (!is_done) {
       dispatch(setUserPoints({ points: reward }));
-      console.log(user.user.id);
       dispatch(setUserPointsInDatabase({ id: user.user.id, points: user.user.points + reward }));
     }
   };

@@ -12,13 +12,14 @@ import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
 import { setTasksInDatabase } from "../store/slices/activeTasksSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const CategoryScreen = ({ navigation, route }: any) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [activatedTasks, setActivatedTasks] = useState([]);
 
-  const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
+  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
   const { tasks } = useSelector((state: RootState) => state.allTasksList);
   const { activeTasks } = useSelector((state: RootState) => state.activeTasksList);
 
@@ -36,11 +37,11 @@ const CategoryScreen = ({ navigation, route }: any) => {
     let toPush: Task[] = [];
 
     for (let i = 0; i < activatedTasks.length; i++) {
-      for (let j = 0; j < activeDays["activeDays"].length; j++) {
+      for (let j = 0; j < activeDays.length; j++) {
         const taskToExtract: Task = activatedTasks[i];
-        let taskToPush = { ...taskToExtract };
+        let taskToPush: Task = { ...taskToExtract };
         taskToPush.id = uuid.v4().toString();
-        taskToPush.associated_day = activeDays["activeDays"][j];
+        taskToPush.associated_day = activeDays[j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
         if (!checkTaskIsPresent(activeTasks, taskToPush)) {
@@ -97,7 +98,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
         <DaysSelectorContainer />
         <View style={styles.containerButton}>
-          {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
+          {activeDays.length > 0 && activatedTasks.length > 0 ? (
             <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
               Ajouter
             </Button>

@@ -11,12 +11,13 @@ import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
 import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const GageScreen = () => {
   const gagesStore = useSelector((state: RootState) => state.gages);
   const categoriesStore = useSelector((state: RootState) => state.categories);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);

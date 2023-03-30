@@ -45,8 +45,6 @@ const LoginScreen = ({ navigation }: any) => {
             Valider
           </Button>
 
-          <Text style={styles.text}>{isLogged ? "true" : "false"}</Text>
-
           <Text style={styles.text}>{error?.message}</Text>
         </View>
       </View>

@@ -9,9 +9,10 @@ import { GlobalStyles } from "../constants/style";
 import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
 import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const HomeScreen: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   useEffect(() => {
     dispatch(fetchTasksFromDatabase());

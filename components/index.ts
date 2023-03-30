@@ -1,17 +1,17 @@
-import TaskItem from "./ui/TaskItem";
-import Hr from "./ui/Hr";
-import Title from "./ui/Title";
-import DaysContainer from "./home/DaysContainer";
-import CategoriesList from "./home/CategoriesList";
-import Button from "./ui/Button";
-import Input from "./ui/Input";
-import DaysSelectorContainer from "./category/DaysSelectorContainer";
-import TaskItemCategory from "./category/TaskItemCategory";
-import CustomCalendar from "./gage/CustomCalendar";
-import DropdownCategories from "./gage/DropdownCategories";
-import DropdownGagesTasks from "./gage/DropdownGagesTasks";
-import NoTasksGuide from "./home/NoTasksGuide";
-import GagesTeam from "./gage/GagesTeam";
+import TaskItem from "./ui/TaskItem/TaskItem";
+import Hr from "./ui/Hr/Hr";
+import Title from "./ui/Title/Title";
+import DaysContainer from "./home/DaysContainer/DaysContainer";
+import CategoriesList from "./home/CategoriesList/CategoriesList";
+import Button from "./ui/Button/Button";
+import Input from "./ui/Input/Input";
+import DaysSelectorContainer from "./category/DaysSelectorContainer/DaysSelectorContainer";
+import TaskItemCategory from "./category/TaskItemCategory/TaskItemCategory";
+import CustomCalendar from "./gage/CustomCalendar/CustomCalendar";
+import DropdownCategories from "./gage/DropdownCategories/DropdownCategories";
+import DropdownGagesTasks from "./gage/DropdownGagesTasks/DropdownGagesTasks";
+import NoTasksGuide from "./home/NoTasksGuide/NoTasksGuide";
+import GagesTeam from "./gage/GagesTeam/GagesTeam";
 
 export {
   TaskItem,

@@ -11,25 +11,23 @@ import { Task } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
-import { setTasksInDatabase } from "../utils/http/httpTask";
+import { setTasksInDatabase } from "../store/slices/activeTasksSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const CategoryScreen = ({ navigation, route }: any) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [activatedTasks, setActivatedTasks] = useState([]);
 
-  const activeDays = useSelector((state: RootState) => state.daysToAddTasks);
+  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
   const { tasks } = useSelector((state: RootState) => state.allTasksList);
-
-  const activeTasksInHome = useSelector((state: RootState) => state.activeTasksList);
-  const user = useSelector((state: RootState) => state.user);
+  const { activeTasks } = useSelector((state: RootState) => state.activeTasksList);
 
   const { categoryName } = route.params;
-
-  const categoryTasks = tasks.data.filter((task: Task) => task.category === categoryName);
+  const categoryTasks = tasks.filter((task: Task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
-    const days = activeTasksInHome["activeTasks"].filter((task: Task) => task.title === title);
+    const days = activeTasks.filter((task: Task) => task.title === title);
     const daysLabels = days.map((item) => item.associated_day);
 
     return daysLabels;
@@ -39,14 +37,14 @@ const CategoryScreen = ({ navigation, route }: any) => {
     let toPush: Task[] = [];
 
     for (let i = 0; i < activatedTasks.length; i++) {
-      for (let j = 0; j < activeDays["activeDays"].length; j++) {
+      for (let j = 0; j < activeDays.length; j++) {
         const taskToExtract: Task = activatedTasks[i];
-        let taskToPush = { ...taskToExtract };
+        let taskToPush: Task = { ...taskToExtract };
         taskToPush.id = uuid.v4().toString();
-        taskToPush.associated_day = activeDays["activeDays"][j];
+        taskToPush.associated_day = activeDays[j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
-        if (!checkTaskIsPresent(activeTasksInHome["activeTasks"], taskToPush)) {
+        if (!checkTaskIsPresent(activeTasks, taskToPush)) {
           toPush.push(taskToPush);
           setActivatedTasks([]);
         }
@@ -66,7 +64,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
     const tasksExtracted = getTasksForEachDaysSelected();
 
     setTasksInHomeScreen(tasksExtracted);
-    setTasksInDatabase(tasksExtracted, user.user.token);
+    dispatch(setTasksInDatabase(tasksExtracted));
   };
 
   return (
@@ -100,7 +98,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
         <DaysSelectorContainer />
         <View style={styles.containerButton}>
-          {activeDays["activeDays"].length > 0 && activatedTasks.length > 0 ? (
+          {activeDays.length > 0 && activatedTasks.length > 0 ? (
             <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
               Ajouter
             </Button>

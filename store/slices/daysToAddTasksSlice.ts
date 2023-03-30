@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Day } from "../../types/Day";
 
 export type daysToAddTasksState = {
-  activeDays: Array<Day>;
+  activeDays: Array<string>;
 };
 
 const initialState: daysToAddTasksState = {

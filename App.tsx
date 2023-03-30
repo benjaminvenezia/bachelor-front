@@ -8,7 +8,7 @@ import AuthNavigator from "./navigation/AuthNavigator";
 import { GlobalStyles } from "./constants/style";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { fetchDefaultTasksFromDatabase } from "./utils/http/httpDefaultTasks";
+import { fetchDefaultTasksFromDatabase } from "./store/slices/allTasksSlice";
 
 const MyTheme = {
   dark: GlobalStyles.reactNative.darktheme,

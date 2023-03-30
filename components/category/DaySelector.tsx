@@ -2,7 +2,6 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDay, removeDay } from "../../store/slices/daysToAddTasksSlice";
-import { Day } from "../../types/Day";
 import { RootState } from "../../store/store";
 import { GlobalStyles } from "../../constants/style";
 
@@ -14,7 +13,7 @@ const DaySelector = ({ label }: Props) => {
   const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
 
-  const daysSelected = useSelector((state: RootState) => state.daysToAddTasks);
+  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
 
   const addTaskDay = () => {
     setIsSelected(!isSelected);
@@ -23,7 +22,7 @@ const DaySelector = ({ label }: Props) => {
       dispatch(removeDay({ label: label }));
     }
 
-    if (!daysSelected["activeDays"].includes(label)) {
+    if (!activeDays.includes(label)) {
       dispatch(addDay({ label: label }));
     }
   };

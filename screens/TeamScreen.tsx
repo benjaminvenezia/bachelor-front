@@ -3,31 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Group } from "../types/Group";
 import { useEffect } from "react";
-import { getGroupFromDatabase } from "../utils/http/httpGroup";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { Title, GagesTeam } from "../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 import { GlobalStyles } from "../constants/style";
-import { fetchGagesFromDatabase } from "../utils/http/httpGage";
+import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const TeamScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const group = useSelector((state: RootState) => state.group);
-  const user = useSelector((state: RootState) => state.user);
-  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group[0];
+
+  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group;
 
   useEffect(() => {
-    const getGages = async () => {
-      fetchGagesFromDatabase(user.user.token, dispatch);
-    };
-
-    getGages();
+    dispatch(fetchGagesFromDatabase());
   }, []);
 
   useFocusEffect(
     React.useCallback(() => {
       const getGroup = async () => {
-        getGroupFromDatabase(user.user.token, dispatch);
+        dispatch(getGroupFromDatabase());
       };
 
       getGroup();

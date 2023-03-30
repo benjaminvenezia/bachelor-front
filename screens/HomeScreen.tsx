@@ -4,41 +4,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, Hr, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
+import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
-import { fetchTasksFromDatabase } from "../utils/http/httpTask";
-import { getGroupFromDatabase } from "../utils/http/httpGroup";
-import { fetchDefaultTasksFromDatabase } from "../utils/http/httpDefaultTasks";
+import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
+import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 
 const HomeScreen: FunctionComponent = () => {
-  const storeActiveDay = useSelector((state: RootState) => state.day);
-  const tasks = useSelector((state: RootState) => state.activeTasksList);
-  const user = useSelector((state: RootState) => state.user);
-  const tasksNotDone = tasks["activeTasks"].filter((task) => !task.is_done && task.associated_day === storeActiveDay["activeDay"]);
-  const tasksDone = tasks["activeTasks"].filter((task) => task.is_done && task.associated_day === storeActiveDay["activeDay"]);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getTasks() {
-      fetchTasksFromDatabase(user.user.token, dispatch);
-    }
-
-    async function getDefaultTasks() {
-      fetchDefaultTasksFromDatabase(user.user.token, dispatch);
-    }
-
-    async function getGroup() {
-      getGroupFromDatabase(user.user.token, dispatch);
-    }
-
-    getDefaultTasks();
-    getTasks();
-    getGroup();
+    dispatch(fetchTasksFromDatabase());
+    dispatch(fetchDefaultTasksFromDatabase());
+    dispatch(getGroupFromDatabase());
   }, []);
+
+  const { activeDay } = useSelector((state: RootState) => state.day);
+  const { activeTasks, isLoading } = useSelector((state: RootState) => state.activeTasksList);
+
+  let tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
+  let tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
 
   if (tasksDone.length === 0 && tasksNotDone.length === 0) {
     return <NoTasksGuide />;
+  }
+
+  if (isLoading) {
+    return <Text>Chargement ...</Text>;
   }
 
   return (
@@ -47,14 +39,7 @@ const HomeScreen: FunctionComponent = () => {
       <ScrollView>
         <View style={styles.listContainer}>
           {tasksNotDone.map((item) => (
-            <TaskItem
-              key={item.id}
-              title={item.title}
-              reward={item.reward}
-              id={item.id}
-              is_done={item.is_done}
-              path_icon_todo={item.path_icon_todo}
-            />
+            <TaskItem key={item.id} {...item} />
           ))}
 
           {tasksNotDone.length === 0 && (
@@ -69,15 +54,7 @@ const HomeScreen: FunctionComponent = () => {
 
           <View style={styles.listContainer}>
             {tasksDone.map((item) => (
-              <TaskItem
-                key={item.id}
-                title={item.title}
-                reward={item.reward}
-                id={item.id}
-                is_done={item.is_done}
-                style={{ backgroundColor: GlobalStyles.colors.done }}
-                path_icon_todo={item.path_icon_todo}
-              />
+              <TaskItem key={item.id} {...item} />
             ))}
             {tasksDone.length === 0 && (
               <View style={styles.textContainer}>

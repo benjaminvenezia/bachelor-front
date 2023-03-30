@@ -1,40 +1,33 @@
 import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
-import ROUTES from "../../constants/routes";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useState } from "react";
-import axios from "axios";
-import { setUser } from "../../store/slices/userSlice";
-import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import ROUTES from "../../constants/routes";
 
 const LoginScreen = ({ navigation }: any) => {
-  const [email, onChangeMail] = useState("papa@gmail.com");
+  const [email, onChangeMail] = useState("papak@gmail.com");
   const [password, onChangePassword] = useState("password");
-  const [loading, setLoading] = useState(false);
   const [error, setError]: any = useState();
+
+  const { isLogged, user } = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    setLoading(true);
 
-    axios
-      .post("http://127.0.0.1:8000/api/login/", { email: email, password: password })
-      .then((response) => {
-        dispatch(setUser({ user: response.data.data }));
-        setLoading(false);
-
-        if (response.status === 200) {
-          navigation.navigate(ROUTES.HOME);
-        }
-      })
-      .catch((error) => {
-        setError(error.response.data);
-        console.log(error.response.data);
-      });
+    dispatch(login({ email: email, password: password }));
   };
+
+  useEffect(() => {
+    if (isLogged) {
+      navigation.navigate(ROUTES.HOME);
+    }
+  }, [isLogged]);
 
   return (
     <SafeAreaView style={styles.wrapper}>

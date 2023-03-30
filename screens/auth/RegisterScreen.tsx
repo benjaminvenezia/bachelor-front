@@ -1,49 +1,32 @@
 import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
 import ROUTES from "../../constants/routes";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/slices/userSlice";
+import { register } from "../../store/slices/userSlice";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 const RegisterScreen = ({ navigation }: any) => {
-  const [email, onChangeMail] = useState("papa@gmail.com");
   const [name, onChangeName] = useState("benjamin");
+  const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
-  const [passwordVerification, onChangePasswordVerification] = useState("password");
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [status, setStatus] = useState(0);
+  const [password_verification, onChangePasswordVerification] = useState("password");
+  const { user, message, isRegistered } = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    setLoading(true);
-
-    const res = axios
-      .post("http://127.0.0.1:8000/api/register/", {
-        name: name,
-        email: email,
-        password: password,
-        password_confirmation: passwordVerification,
-      })
-      .then((response) => {
-        dispatch(setUser({ user: response.data.data }));
-        setLoading(false);
-
-        if (response.status === 200) {
-          navigation.navigate(ROUTES.LINK);
-        }
-      })
-      .catch((error) => {
-        setStatus(400);
-        setError(true);
-        console.log(error);
-      });
+    dispatch(register({ name: name, email: email, password: password, password_confirmation: password_verification }));
   };
+
+  useEffect(() => {
+    if (isRegistered) {
+      navigation.navigate(ROUTES.LINK);
+    }
+  }, [isRegistered]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -59,12 +42,12 @@ const RegisterScreen = ({ navigation }: any) => {
           <Input
             shadow={true}
             onChangeHandler={onChangePasswordVerification}
-            value={passwordVerification}
+            value={password_verification}
             placeholder="Vérifier le mot de passe"
             keyboard="default"
           />
 
-          {error ? <Text>Erreur, un champ est non rempli ou l'adresse existe déjà. </Text> : ""}
+          {message ? <Text>{message} </Text> : ""}
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider

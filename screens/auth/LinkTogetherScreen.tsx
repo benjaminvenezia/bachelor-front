@@ -5,33 +5,30 @@ import { GlobalStyles } from "../../constants/style";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { setGroupInDatabase, getGroupFromDatabase } from "../../utils/http/httpGroup";
-import { getUserByCode } from "../../utils/http/httpUser";
+import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
+import { getPartnerByCode } from "../../store/slices/userSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const user = useSelector((state: RootState) => state.user);
+  const { user, idPartner, isLogged } = useSelector((state: RootState) => state.user);
+  const { isGroupCreated } = useSelector((state: RootState) => state.group);
   const [anotherLink, setAnotherLink] = useState("");
-  const [anotherId, setAnotherId] = useState(-1);
-  const [groupMessage, setGroupMessage]: any = useState("");
-  const [linkMessage, setLinkMessage]: any = useState("");
-  const token = user.user.token;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
+  //On récupère l'id de l'autre utilisateur pour set le groupe dans la database
   const handleClick = () => {
-    getUserByCode(token, anotherLink, setAnotherId, setLinkMessage);
-
-    setGroupInDatabase(anotherId, token, setGroupMessage);
-
-    getGroupFromDatabase(token, dispatch);
+    dispatch(getPartnerByCode(anotherLink));
+    dispatch(setGroupInDatabase(idPartner));
+    dispatch(getGroupFromDatabase());
   };
 
   useEffect(() => {
-    if (groupMessage["code"] === 200) {
+    if (isGroupCreated) {
       navigation.navigate(ROUTES.HOME);
     }
-  }, [groupMessage]);
+  }, [isGroupCreated]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -42,16 +39,17 @@ const LinkTogetherScreen = ({ navigation }: any) => {
           Lien avec votre partenaire
         </Title>
 
+        <Button onPress={() => {}}>Voir</Button>
+
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>Mon code d'invitation : </Text>
-          <Title titleType="h1">{user.user.user.personal_code}</Title>
+          <Title titleType="h1">{user.personal_code}</Title>
 
           <Text style={styles.text}>Code de votre partenaire</Text>
 
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
-          <Text style={styles.text}>{groupMessage.message}</Text>
-          <Text style={styles.text}>{linkMessage.message}</Text>
+          {/* <Text style={styles.text}>{linkMessage.message}</Text> */}
 
           <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
             Valider

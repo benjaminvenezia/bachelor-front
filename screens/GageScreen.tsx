@@ -2,7 +2,7 @@ import { Text, StyleSheet } from "react-native";
 import { Button, CustomCalendar, Title, DropdownGagesTasks } from "../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../components";
-import { setGageInDatabase } from "../utils/http/httpGage";
+import { setGageInDatabase } from "../store/slices/gagesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Gage } from "../types/Gage";
@@ -10,16 +10,15 @@ import { Gage } from "../types/Gage";
 import { useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
-import { fetchDefaultGagesFromDatabase } from "../utils/http/httpDefaultGages";
+import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const GageScreen = () => {
-  const user = useSelector((state: RootState) => state.user);
   const gagesStore = useSelector((state: RootState) => state.gages);
   const categoriesStore = useSelector((state: RootState) => state.categories);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
-  const [modalVisible, setModalVisible] = useState(false);
   const [day, setDay] = useState<null | number>(null);
   const [month, setMonth] = useState<null | number>(null);
   const [year, setYear] = useState<null | number>(null);
@@ -51,11 +50,7 @@ const GageScreen = () => {
   };
 
   useEffect(() => {
-    const getGages = async () => {
-      fetchDefaultGagesFromDatabase(user.user.token, dispatch);
-    };
-
-    getGages();
+    dispatch(fetchDefaultGagesFromDatabase());
   }, []);
 
   const setTheCalendarGagePart = (data: any) => {
@@ -66,9 +61,7 @@ const GageScreen = () => {
   };
 
   const handlePress = () => {
-    setModalVisible(true);
-    setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
-    // setGageInDatabase(gageToSaveInDatabase, user.user.token, dispatch);
+    dispatch(setGageInDatabase(gageToSaveInDatabase));
   };
 
   return (

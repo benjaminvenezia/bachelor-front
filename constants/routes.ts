@@ -41,6 +41,10 @@ export default {
   GAGE_TAB: "Gage Tab",
   GAGE_DRAWER: "Gage Drawer",
 
+  SELECT_DATE: "Gage select date",
+  SELECT_TASK: "Gage select task",
+  VALIDATE_GAGE: "Gage validate",
+
   ABOUT: "About",
   ABOUT_TAB: "About Tab",
   ABOUT_DRAWER: "About Drawer",

@@ -1,19 +1,20 @@
 import { Text, StyleSheet } from "react-native";
-import { Button, CustomCalendar, Title, DropdownGagesTasks } from "../components";
+import { Button, CustomCalendar, Title, DropdownGagesTasks } from "../../components";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DropdownCategories } from "../components";
-import { setGageInDatabase } from "../store/slices/gagesSlice";
+import { DropdownCategories } from "../../components";
+import { setGageInDatabase } from "../../store/slices/gagesSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { Gage } from "../types/Gage";
+import { RootState } from "../../store/store";
+import { Gage } from "../../types/Gage";
 
 import { useEffect, useState } from "react";
-import { GlobalStyles } from "../constants/style";
+import { GlobalStyles } from "../../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
-import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
+import { fetchDefaultGagesFromDatabase } from "../../store/slices/gagesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
+import ROUTES from "../../constants/routes";
 
-const GageScreen = () => {
+const GageScreen = ({ navigation }: any) => {
   const gagesStore = useSelector((state: RootState) => state.gages);
   const categoriesStore = useSelector((state: RootState) => state.categories);
 
@@ -66,6 +67,8 @@ const GageScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <Button onPress={() => navigation.navigate(ROUTES.SELECT_TASK)}>select task</Button>
+
       <ScrollView>
         <Title titleType="h1">Faire subir un gage</Title>
 

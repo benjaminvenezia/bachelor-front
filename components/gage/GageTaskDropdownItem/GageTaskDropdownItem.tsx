@@ -22,20 +22,21 @@ const GageTaskDropdownItem = ({ children, ...props }: GageTaskDropdownItemProps)
   return (
     <Pressable onPress={handlePress} style={styles.wrapper}>
       <Text style={styles.text}>{children}</Text>
+      <Text style={styles.text}>{cost}</Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
-    borderWidth: 2,
-    borderColor: "white",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "row",
     padding: 5,
-    marginBottom: 10,
-    borderRadius: 100,
-    width: "50%",
+    backgroundColor: "purple",
+    width: "100%",
+    marginBottom: 5,
+    minHeight: 60,
   },
   text: {
     fontSize: GlobalStyles.fontsSize.text,

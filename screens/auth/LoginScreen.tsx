@@ -17,9 +17,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   const dispatch = useDispatch();
 
-  const handleClick = (e: any) => {
-    e.preventDefault();
-
+  const handleClick = () => {
     dispatch(login({ email: email, password: password }));
   };
 

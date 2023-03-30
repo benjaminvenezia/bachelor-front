@@ -10,7 +10,7 @@ import { RootState } from "../store";
  */
 
 type GagesState = {
-  gages: Gage[];
+  gagesAttributedToUsers: Gage[];
   gagesTask: GageTask[];
   gagesTaskFiltered: any;
   gageToAddInDatabase: any;
@@ -18,7 +18,7 @@ type GagesState = {
 };
 
 const initialState: GagesState = {
-  gages: [],
+  gagesAttributedToUsers: [],
   gagesTask: [],
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
@@ -97,7 +97,7 @@ const gagesSlice = createSlice({
       })
       .addCase(fetchGagesFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.gages = payload;
+        state.gagesTask = payload;
       })
       .addCase(fetchGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -107,7 +107,7 @@ const gagesSlice = createSlice({
       })
       .addCase(setGageInDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.gages.push(payload);
+        state.gagesAttributedToUsers.push(payload);
       })
       .addCase(setGageInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;

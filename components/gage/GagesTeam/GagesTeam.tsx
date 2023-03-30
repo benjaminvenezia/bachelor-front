@@ -6,11 +6,11 @@ import { RootState } from "../../../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 
 const GagesTeam = () => {
-  const { gages } = useSelector((state: RootState) => state.gages);
+  const { gagesAttributedToUsers } = useSelector((state: RootState) => state.gages);
 
   return (
     <ScrollView>
-      {gages.map((item, index) => {
+      {gagesAttributedToUsers.map((item, index) => {
         return <GageTeamItem key={index} {...item} />;
       })}
     </ScrollView>

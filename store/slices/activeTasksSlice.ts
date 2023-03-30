@@ -16,7 +16,6 @@ export const setTasksInDatabase = createAsyncThunk("activeTasks/setTasksInDataba
   try {
     const data = { tasks: tasks };
     const resp = await customFetch.post(`/tasks/multiple`, JSON.stringify(data));
-
     return resp.data;
   } catch (error: any) {
     console.log(error.response);
@@ -36,7 +35,6 @@ export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFr
 export const removeTaskFromDatabase = createAsyncThunk("allTasks/removeTaskFromDatabase", async (idTask: string, thunkAPI) => {
   try {
     const resp = await customFetch.delete(`/tasks/${idTask}`);
-
     return resp.data.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);

@@ -13,7 +13,7 @@ const DaySelector = ({ label }: Props) => {
   const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
 
-  const daysSelected = useSelector((state: RootState) => state.daysToAddTasks);
+  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
 
   const addTaskDay = () => {
     setIsSelected(!isSelected);
@@ -22,7 +22,7 @@ const DaySelector = ({ label }: Props) => {
       dispatch(removeDay({ label: label }));
     }
 
-    if (!daysSelected["activeDays"].includes(label)) {
+    if (!activeDays.includes(label)) {
       dispatch(addDay({ label: label }));
     }
   };

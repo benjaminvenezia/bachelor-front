@@ -11,11 +11,11 @@ type DayProps = {
 const DayItem = ({ children }: DayProps) => {
   const dispatch = useDispatch();
 
-  const storeActiveDay = useSelector((state: RootState) => state.day);
+  const { activeDay } = useSelector((state: RootState) => state.day);
 
   return (
     <Pressable onPress={() => dispatch(changeDay({ activeDay: children }))}>
-      <Text style={storeActiveDay["activeDay"] === children ? [styles.text, styles.active] : styles.text}>{children}</Text>
+      <Text style={activeDay === children ? [styles.text, styles.active] : styles.text}>{children}</Text>
     </Pressable>
   );
 };

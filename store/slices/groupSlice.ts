@@ -1,4 +1,4 @@
-import { AnyAction, AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Group } from "../../types/Group";
 import customFetch from "../../utils/http/axios";
 import { RootState } from "../store";

@@ -17,5 +17,4 @@ export type GageTaskDropdownItemProps = {
   key: number;
   children: any;
   isSelected: boolean;
-  handleSelect: SetStateAction<any>;
 };

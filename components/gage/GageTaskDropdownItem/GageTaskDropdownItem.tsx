@@ -1,11 +1,12 @@
 import { Text, StyleSheet, Pressable, View, Image } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { useDispatch } from "react-redux";
-import { setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
+import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
 import { GageTaskDropdownItemProps } from "./GageTaskDropdownItemProps.types";
 
-const GageTaskDropdownItem = ({ children, isSelected, handleSelect, ...props }: GageTaskDropdownItemProps) => {
+const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdownItemProps) => {
   const { id, category, cost, description, title } = props;
+
   const dispatch = useDispatch();
 
   const handlePress = () => {
@@ -16,7 +17,7 @@ const GageTaskDropdownItem = ({ children, isSelected, handleSelect, ...props }: 
       title,
     };
 
-    handleSelect(id);
+    dispatch(setGageTaskId({ gageTaskId: id }));
     dispatch(setTheGageBeforeSendingDatabase(gageToSendToStore));
   };
 

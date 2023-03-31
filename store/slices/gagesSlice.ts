@@ -17,6 +17,10 @@ type GagesState = {
   isLoading: boolean;
   categoryGageSelection: string | null;
   gageTaskId: number | null;
+  gageDay: number | null;
+  gageMonth: number | null;
+  gageYear: number | null;
+  gageDateString: string | null;
 };
 
 const initialState: GagesState = {
@@ -27,6 +31,10 @@ const initialState: GagesState = {
   isLoading: false,
   categoryGageSelection: null, //The category selected by user when giving a gage
   gageTaskId: null, //The id of selected gagetask to give.
+  gageDay: null,
+  gageMonth: null,
+  gageYear: null,
+  gageDateString: null,
 };
 
 export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
@@ -88,6 +96,13 @@ const gagesSlice = createSlice({
     setGageTaskId: (state, action) => {
       state.gageTaskId = action.payload.gageTaskId;
     },
+
+    setDate: (state, action) => {
+      state.gageDay = action.payload.day;
+      state.gageMonth = action.payload.month;
+      state.gageYear = action.payload.year;
+      state.gageDateString = action.payload.date_string;
+    },
   },
 
   extraReducers(builder) {
@@ -125,5 +140,5 @@ const gagesSlice = createSlice({
   },
 });
 
-export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection, setGageTaskId } = gagesSlice.actions;
+export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection, setGageTaskId, setDate } = gagesSlice.actions;
 export default gagesSlice.reducer;

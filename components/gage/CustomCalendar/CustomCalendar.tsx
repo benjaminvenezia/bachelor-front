@@ -14,6 +14,14 @@ const CustomCalendar = (props: any) => {
     [selected]
   );
 
-  return <Calendar disableAllTouchEventsForDisabledDays={true} firstDay={1} markedDates={marked} {...props} />;
+  return (
+    <Calendar
+      minDate={new Date().toDateString()}
+      disableAllTouchEventsForDisabledDays={true}
+      firstDay={1}
+      markedDates={marked}
+      {...props}
+    />
+  );
 };
 export default CustomCalendar;

@@ -1,16 +1,28 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Button, DropdownGagesTasks } from "../../components";
+import { Button, DropdownGagesTasks, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { GlobalStyles } from "../../constants/style";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const GageSelectTaskScreen = ({ navigation }: any) => {
+  const { gageTaskId } = useSelector((state: RootState) => state.gages);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Choississeez une tâche!</Text>
+      <Title titleType="h2" style={styles.text}>
+        Choississeez une tâche!
+      </Title>
       <DropdownGagesTasks />
       <View style={styles.buttonContainer}>
         <Button onPress={() => navigation.goBack()}>Retour</Button>
-        <Button onPress={() => navigation.navigate(ROUTES.SELECT_DATE)}>Suivant</Button>
+
+        {gageTaskId ? (
+          <Button onPress={() => navigation.navigate(ROUTES.SELECT_DATE)}>Suivant</Button>
+        ) : (
+          <Button alternativeStyle onPress={() => {}}>
+            Choisir
+          </Button>
+        )}
       </View>
     </View>
   );

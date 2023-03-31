@@ -1,20 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Button, CustomCalendar } from "../../components";
+import { Button, CustomCalendar, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { GlobalStyles } from "../../constants/style";
-import { useState } from "react";
+import { setDate } from "../../store/slices/gagesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const GageSelectDateScreen = ({ navigation }: any) => {
-  const [day, setDay] = useState<null | number>(null);
-  const [month, setMonth] = useState<null | number>(null);
-  const [year, setYear] = useState<null | number>(null);
-  const [dateString, setDateString] = useState("");
+  const dispatch = useDispatch();
+
+  const { gageDay, gageMonth, gageYear, gageDateString } = useSelector((state: RootState) => state.gages);
 
   const running = { key: "running", color: "blue" };
   const cycling = { key: "cycling", color: "green" };
   const walking = { key: "walking", color: "orange" };
   const marked = {
-    "2023-03-01": {
+    dateString: {
       dots: [running, walking],
     },
     "2023-03-02": {
@@ -23,18 +24,20 @@ const GageSelectDateScreen = ({ navigation }: any) => {
   };
 
   const setTheCalendarGagePart = (data: any) => {
-    setDay(data.day);
-    setMonth(data.month);
-    setYear(data.year);
-    setDateString(data.dateString);
+    dispatch(setDate({ day: data.day, month: data.month, year: data.year, date_string: data.dateString }));
   };
+
+  const handlePress = () => {
+    navigation.navigate(ROUTES.VALIDATE_GAGE);
+  };
+
   return (
     <View>
       <View>
-        <Button onPress={() => navigation.navigate(ROUTES.VALIDATE_GAGE)}>validation</Button>
-        <Button onPress={() => navigation.goBack()}>Retour</Button>
+        <Title titleType="h2" style={styles.text}>
+          Choississez une date :
+        </Title>
 
-        <Text style={styles.text}>Choississez une date :</Text>
         <CustomCalendar
           markingType="multi-dot"
           markedDates={marked}
@@ -42,11 +45,9 @@ const GageSelectDateScreen = ({ navigation }: any) => {
           onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
           onMonthChange={(date: string) => console.log("onMonthChange", date)}
           onPressArrowLeft={(goToPreviousMonth: any) => {
-            console.log("onPressArrowLeft");
             goToPreviousMonth();
           }}
           onPressArrowRight={(goToNextMonth: any) => {
-            console.log("onPressArrowRight");
             goToNextMonth();
           }}
           style={{
@@ -54,7 +55,7 @@ const GageSelectDateScreen = ({ navigation }: any) => {
             marginVertical: 10,
             elevation: 5,
             borderWidth: 4,
-            borderColor: "rgba(0, 0, 0, 0.1)",
+            borderColor: "rgba(189, 189, 189, 0.1)",
           }}
           theme={{
             "stylesheet.calendar.header": {
@@ -83,9 +84,21 @@ const GageSelectDateScreen = ({ navigation }: any) => {
             calendarBackground: "#111111",
             dayTextColor: "#fff",
             textDisabledColor: "#444",
-            monthTextColor: "#888",
+            monthTextColor: "#888888",
           }}
         />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button onPress={() => navigation.goBack()}>Retour</Button>
+
+        {gageDay ? (
+          <Button onPress={handlePress}>Suivant</Button>
+        ) : (
+          <Button alternativeStyle onPress={() => {}}>
+            Choisir
+          </Button>
+        )}
       </View>
     </View>
   );
@@ -93,11 +106,18 @@ const GageSelectDateScreen = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginHorizontal: 10,
+    flex: 1,
+    justifyContent: "flex-end",
   },
   text: {
     fontSize: GlobalStyles.fontsSize.text,
     color: GlobalStyles.colors.text,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
 });
 export default GageSelectDateScreen;

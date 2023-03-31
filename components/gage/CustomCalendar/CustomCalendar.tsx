@@ -3,6 +3,9 @@ import { Calendar } from "react-native-calendars";
 
 const CustomCalendar = (props: any) => {
   const [selected, setSelected]: any = useState();
+  const currentDate = new Date();
+  const maxDate = new Date().setMonth(currentDate.getMonth() + 3);
+
   const marked = useMemo(
     () => ({
       [selected]: {
@@ -16,7 +19,8 @@ const CustomCalendar = (props: any) => {
 
   return (
     <Calendar
-      minDate={new Date().toDateString()}
+      minDate={new Date(currentDate).toDateString()}
+      maxDate={new Date(maxDate).toDateString()}
       disableAllTouchEventsForDisabledDays={true}
       firstDay={1}
       markedDates={marked}

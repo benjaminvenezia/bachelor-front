@@ -4,31 +4,20 @@ import customFetch from "../../utils/http/axios";
 import { save } from "../../utils/secureStore";
 
 type UserState = {
-  token: string;
-  user: User;
+  user: User | null;
+  isLoading: boolean;
+  isLogged: boolean;
+  isRegistered: boolean;
+  message: string | null;
 };
 
-const initialState: UserState | any = {
-  user: {},
+const initialState: UserState = {
+  user: null,
   isLoading: false,
   isLogged: false,
   isRegistered: false,
-  idPartner: null,
   message: null,
 };
-
-/**
- * @param token The token of the current user, stored in store.
- * @param dispatch The Redux dispatch hook. He can't be invoked here.
- */
-export const getPartnerByCode: any = createAsyncThunk("user/getPartnerByCode", async (code: string, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/users/${code}`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
 
 export const login: any = createAsyncThunk("user/login", async (access: { email: string; password: string }, thunkAPI) => {
   try {
@@ -117,16 +106,6 @@ let userSlice = createSlice({
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isLogged = false;
-      })
-      .addCase(getPartnerByCode.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getPartnerByCode.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.idPartner = payload.id;
-      })
-      .addCase(getPartnerByCode.rejected, (state, { payload }) => {
-        state.isLoading = false;
       })
       .addCase(setUserPointsInDatabase.pending, (state) => {
         state.isLoading = true;

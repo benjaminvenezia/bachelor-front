@@ -47,7 +47,7 @@ const RegisterScreen = ({ navigation }: any) => {
             keyboard="default"
           />
 
-          {message ? <Text>{message} </Text> : ""}
+          {message ? <Text style={styles.text}>{message} </Text> : ""}
 
           <Button size={GlobalStyles.buttons.lg} onPress={handleClick}>
             Valider
@@ -85,6 +85,9 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     width: "100%",
     height: "81%",
+  },
+  text: {
+    color: GlobalStyles.colors.text,
   },
 });
 

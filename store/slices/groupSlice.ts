@@ -29,9 +29,9 @@ const initialState: GroupState = {
   message: "",
 };
 
-export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (idPartner: number, thunkAPI) => {
+export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (partnerCode: string, thunkAPI) => {
   try {
-    const resp = await customFetch.post(`/group/${idPartner}`);
+    const resp = await customFetch.post(`/group/${partnerCode}`);
     return resp.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);
@@ -69,12 +69,12 @@ const groupSlice = createSlice({
 
       .addCase(getGroupFromDatabase.pending, (state) => {
         state.isLoading = true;
-        state.isGroupCreated = true;
+        state.isGroupCreated = false;
       })
       .addCase(getGroupFromDatabase.fulfilled, (state, { payload }) => {
         state.group = payload.data[0];
         state.isLoading = false;
-        state.isGroupCreated = false;
+        state.isGroupCreated = true;
       })
       .addCase(getGroupFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;

@@ -6,22 +6,20 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
-import { getPartnerByCode } from "../../store/slices/userSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const { user, idPartner, isLogged } = useSelector((state: RootState) => state.user);
+  const { user, isLogged, message } = useSelector((state: RootState) => state.user);
   const { isGroupCreated } = useSelector((state: RootState) => state.group);
   const [anotherLink, setAnotherLink] = useState("");
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
-  //On récupère l'id de l'autre utilisateur pour set le groupe dans la database
   const handleClick = () => {
-    dispatch(getPartnerByCode(anotherLink));
-    dispatch(setGroupInDatabase(idPartner));
+    dispatch(setGroupInDatabase(anotherLink));
     dispatch(getGroupFromDatabase());
+    navigation.navigate(ROUTES.HOME);
   };
 
   useEffect(() => {
@@ -39,8 +37,6 @@ const LinkTogetherScreen = ({ navigation }: any) => {
           Lien avec votre partenaire
         </Title>
 
-        <Button onPress={() => {}}>Voir</Button>
-
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>Mon code d'invitation : </Text>
           <Title titleType="h1">{user.personal_code}</Title>
@@ -49,11 +45,17 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
-          {/* <Text style={styles.text}>{linkMessage.message}</Text> */}
+          <Text style={styles.text}>{message}</Text>
 
-          <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
-            Valider
-          </Button>
+          {anotherLink.length === 0 ? (
+            <Button onPress={() => {}} alternativeStyle>
+              Valider
+            </Button>
+          ) : (
+            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
+              Valider
+            </Button>
+          )}
         </View>
       </View>
     </SafeAreaView>

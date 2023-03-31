@@ -4,15 +4,20 @@ import GageTeamItem from "../GageTeamItem/GageTeamItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { ScrollView } from "react-native-gesture-handler";
+import Title from "../../ui/Title/Title";
 
 const GagesTeam = () => {
   const { gagesAssociatedToUsers } = useSelector((state: RootState) => state.gages);
 
   return (
     <ScrollView>
-      {gagesAssociatedToUsers.map((item, index) => {
-        return <GageTeamItem key={index} {...item} />;
-      })}
+      {gagesAssociatedToUsers.length > 0 ? (
+        gagesAssociatedToUsers.map((item, index) => {
+          return <GageTeamItem key={index} {...item} />;
+        })
+      ) : (
+        <Title titleType="h5">Aucun gage n'a été assigné</Title>
+      )}
     </ScrollView>
   );
 };

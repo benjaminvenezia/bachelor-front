@@ -11,18 +11,6 @@ const GageSelectDateScreen = ({ navigation }: any) => {
 
   const { gageDay, gageMonth, gageYear, gageDateString } = useSelector((state: RootState) => state.gages);
 
-  const running = { key: "running", color: "blue" };
-  const cycling = { key: "cycling", color: "green" };
-  const walking = { key: "walking", color: "orange" };
-  const marked = {
-    dateString: {
-      dots: [running, walking],
-    },
-    "2023-03-02": {
-      dots: [running, walking, cycling],
-    },
-  };
-
   const setTheCalendarGagePart = (data: any) => {
     dispatch(setDate({ day: data.day, month: data.month, year: data.year, date_string: data.dateString }));
   };
@@ -39,11 +27,10 @@ const GageSelectDateScreen = ({ navigation }: any) => {
         </Title>
 
         <CustomCalendar
-          markingType="multi-dot"
-          markedDates={marked}
+          onDaySelect={(day: string) => console.log(`Date selected: ${day}`)}
           onDayPress={(day: string) => setTheCalendarGagePart(day)}
-          onDayLongPress={(day: string) => console.log("onDayLongPress", day)}
-          onMonthChange={(date: string) => console.log("onMonthChange", date)}
+          onDayLongPress={(day: string) => setTheCalendarGagePart(day)}
+          onMonthChange={() => {}}
           onPressArrowLeft={(goToPreviousMonth: any) => {
             goToPreviousMonth();
           }}

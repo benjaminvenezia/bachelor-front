@@ -1,10 +1,14 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Calendar } from "react-native-calendars";
 
 const CustomCalendar = (props: any) => {
-  const [selected, setSelected]: any = useState();
   const currentDate = new Date();
-  const maxDate = new Date().setMonth(currentDate.getMonth() + 3);
+  const maxDate = new Date().setMonth(currentDate.getMonth() + 2);
+
+  const initDate = "2023-03-31";
+  const [selected, setSelected]: any = useState(initDate);
+
+  console.log(selected);
 
   const marked = useMemo(
     () => ({
@@ -23,7 +27,13 @@ const CustomCalendar = (props: any) => {
       maxDate={new Date(maxDate).toDateString()}
       disableAllTouchEventsForDisabledDays={true}
       firstDay={1}
+      initialDate={initDate}
       markedDates={marked}
+      onDayPress={(day) => {
+        console.log("bfbf");
+        setSelected(day.dateString);
+        props.onDaySelect && props.onDaySelect(day);
+      }}
       {...props}
     />
   );

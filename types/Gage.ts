@@ -11,7 +11,7 @@ export type Gage = {
   day: number | null;
   month: number | null;
   year: number | null;
-  date_string: string;
+  date_string: string | null;
   user_id?: string;
   user_name?: string;
   user_points?: number;

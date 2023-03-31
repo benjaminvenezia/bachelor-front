@@ -7,6 +7,7 @@ import { RootState } from "../../store/store";
 
 const GageSelectTaskScreen = ({ navigation }: any) => {
   const { gageTaskId } = useSelector((state: RootState) => state.gages);
+
   return (
     <View style={styles.container}>
       <Title titleType="h2" style={styles.text}>

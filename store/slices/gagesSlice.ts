@@ -15,6 +15,7 @@ type GagesState = {
   gagesTaskFiltered: any;
   gageToAddInDatabase: any;
   isLoading: boolean;
+  categoryGageSelection: string | null;
 };
 
 const initialState: GagesState = {
@@ -23,6 +24,7 @@ const initialState: GagesState = {
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
   isLoading: false,
+  categoryGageSelection: null,
 };
 
 export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
@@ -78,6 +80,9 @@ const gagesSlice = createSlice({
     setTheGageBeforeSendingDatabase: (state, action) => {
       state.gageToAddInDatabase = action.payload;
     },
+    setCategoryGageSelection: (state, action) => {
+      state.categoryGageSelection = action.payload.categoryTitle;
+    },
   },
 
   extraReducers(builder) {
@@ -115,5 +120,5 @@ const gagesSlice = createSlice({
   },
 });
 
-export const { filterGageTask, setTheGageBeforeSendingDatabase } = gagesSlice.actions;
+export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection } = gagesSlice.actions;
 export default gagesSlice.reducer;

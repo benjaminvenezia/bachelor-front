@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export type GageTaskDropdownItemProps = {
   id: number;
   title: string;
@@ -14,4 +16,6 @@ export type GageTaskDropdownItemProps = {
   user_name?: string | undefined;
   key: number;
   children: any;
+  isSelected: boolean;
+  handleSelect: SetStateAction<any>;
 };

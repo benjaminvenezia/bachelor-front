@@ -5,7 +5,7 @@ import CategoryScreen from "./CategoryScreen";
 import GageScreen from "./gage/GageScreen";
 import GageSelectDateScreen from "./gage/GageSelectDateScreen";
 import GageSelectTaskScreen from "./gage/GageSelectTaskScreen";
-import GageValidateGageScreen from "./gage/GageValidateGageScreen";
+import GageValidateScreen from "./gage/GageValidateScreen";
 import HabitsScreen from "./HabitsScreen";
 import HomeScreen from "./HomeScreen";
 import ShopScreen from "./ShopScreen";
@@ -23,7 +23,7 @@ export {
   GageScreen,
   GageSelectDateScreen,
   GageSelectTaskScreen,
-  GageValidateGageScreen,
+  GageValidateScreen,
   HabitsScreen,
   HomeScreen,
   ShopScreen,

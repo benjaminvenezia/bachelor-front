@@ -4,7 +4,8 @@ import { RootState } from "../../../store/store";
 import CategoryDropdownItem from "../CategoryDropdownItem/CategoryDropdownItem";
 
 const DropdownCategories = () => {
-  const { categories, categoryGageSelection } = useSelector((state: RootState) => state.categories);
+  const { categoryGageSelection } = useSelector((state: RootState) => state.gages);
+  const { categories } = useSelector((state: RootState) => state.categories);
 
   return (
     <View style={styles.wrapper}>

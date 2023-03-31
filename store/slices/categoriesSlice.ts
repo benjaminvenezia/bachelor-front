@@ -4,7 +4,6 @@ import { Category } from "../../types/Category";
 
 type CategoriesState = {
   categories: Category[];
-  categoryGageSelection: string;
 };
 
 const initialState: CategoriesState = {
@@ -22,18 +21,13 @@ const initialState: CategoriesState = {
       description: "Un grand lit, la couverture en boule, on est bien dans la chambre.",
     },
   ],
-  categoryGageSelection: "",
 };
 
 const categoriesSlice = createSlice({
   name: "categories",
   initialState: initialState,
-  reducers: {
-    setCategoryGageSelection: (state, action) => {
-      state.categoryGageSelection = action.payload.categoryTitle;
-    },
-  },
+  reducers: {},
 });
 
-export const { setCategoryGageSelection } = categoriesSlice.actions;
+export const {} = categoriesSlice.actions;
 export default categoriesSlice.reducer;

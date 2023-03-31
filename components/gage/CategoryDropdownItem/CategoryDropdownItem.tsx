@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useDispatch } from "react-redux";
-import { setCategoryGageSelection } from "../../../store/slices/categoriesSlice";
+import { setCategoryGageSelection } from "../../../store/slices/gagesSlice";
 import { filterGageTask } from "../../../store/slices/gagesSlice";
 import { GlobalStyles } from "../../../constants/style";
 import { categoryDropdownItemProps } from "./CategoryDropdownItemProps.types";

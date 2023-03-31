@@ -10,7 +10,7 @@ export type GageTaskDropdownItemProps = {
   day: number | null;
   month: number | null;
   year: number | null;
-  date_string: string;
+  date_string: string | null;
   user_id?: string | null;
   user_points?: number | undefined;
   user_name?: string | undefined;

@@ -9,6 +9,7 @@ type UserState = {
   isLogged: boolean;
 
   isRegistered: boolean;
+  isUserFetched: boolean;
   message: string | null;
 };
 
@@ -19,6 +20,8 @@ const initialState: UserState = {
 
   isRegistered: false,
   message: null,
+
+  isUserFetched: false,
 };
 
 export const login: any = createAsyncThunk("user/login", async (access: { email: string; password: string }, thunkAPI) => {
@@ -43,6 +46,17 @@ export const register: any = createAsyncThunk(
     }
   }
 );
+
+export const fetchCurrentUser: any = createAsyncThunk("user/fetchCurrentUser", async (_, thunkAPI) => {
+  try {
+    const resp = await customFetch.get(`/users/get/get_current_user`);
+    console.log("In thunk: ", resp.data);
+    return resp.data.data;
+  } catch (error: any) {
+    console.log(error.response);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
 
 export const setUserPointsInDatabase = createAsyncThunk(
   "user/setUserPointsInDatabase",
@@ -95,6 +109,7 @@ let userSlice = createSlice({
         state.isRegistered = false;
         state.message = payload;
       })
+
       .addCase(login.pending, (state) => {
         state.isLoading = true;
         state.isRegistered = false;
@@ -109,6 +124,7 @@ let userSlice = createSlice({
         state.isLoading = false;
         state.isLogged = false;
       })
+
       .addCase(setUserPointsInDatabase.pending, (state) => {
         state.isLoading = true;
       })
@@ -118,6 +134,21 @@ let userSlice = createSlice({
       })
       .addCase(setUserPointsInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+      })
+
+      .addCase(fetchCurrentUser.pending, (state) => {
+        state.isLoading = true;
+        state.isUserFetched = false;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isUserFetched = true;
+
+        state.user = payload;
+      })
+      .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isUserFetched = false;
       });
   },
 });

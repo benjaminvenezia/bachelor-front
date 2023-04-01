@@ -13,7 +13,7 @@ const NoTasksGuide = () => {
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
         <DaysContainer />
-        <Title titleType="h2">Salut {user.name} Aucune tâche associée à ce jour!</Title>
+        <Title titleType="h2">Salut {user?.name} Aucune tâche associée à ce jour!</Title>
         <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie pour en ajouter </Text>
 
         <CategoriesList />

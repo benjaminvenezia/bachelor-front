@@ -1,14 +1,12 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
-import { Provider as ReduxProvider, useDispatch, useSelector } from "react-redux";
-import store, { RootState } from "./store/store";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { Provider as ReduxProvider } from "react-redux";
+import store from "./store/store";
+import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "./navigation/AuthNavigator";
 import { GlobalStyles } from "./constants/style";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
-import { fetchDefaultTasksFromDatabase } from "./store/slices/allTasksSlice";
 
 const MyTheme = {
   dark: GlobalStyles.reactNative.darktheme,

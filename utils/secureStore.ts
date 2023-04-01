@@ -8,3 +8,7 @@ export async function getValueFor(key: string) {
   let result = await SecureStore.getItemAsync(key);
   return result;
 }
+
+export async function deleteValueFor(key: string) {
+  await SecureStore.deleteItemAsync(key);
+}

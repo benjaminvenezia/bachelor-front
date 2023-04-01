@@ -2,13 +2,11 @@ import { Text, SafeAreaView, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Group } from "../types/Group";
-import { useEffect } from "react";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { Title, GagesTeam } from "../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 import { GlobalStyles } from "../constants/style";
-import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const TeamScreen = () => {
@@ -16,10 +14,6 @@ const TeamScreen = () => {
   const group = useSelector((state: RootState) => state.group);
 
   const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group;
-
-  useEffect(() => {
-    dispatch(fetchGagesFromDatabase());
-  }, []);
 
   useFocusEffect(
     React.useCallback(() => {

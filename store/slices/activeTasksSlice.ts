@@ -1,18 +1,20 @@
-import { createAsyncThunk, createSlice, isDraft } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Task } from "../../types/Task";
 import customFetch from "../../utils/http/axios";
 
 export type ActiveTasksState = {
   activeTasks: Task[];
   isLoading: boolean;
+  areTasksFetched: boolean;
 };
 
 const initialState: ActiveTasksState = {
   activeTasks: [],
   isLoading: false,
+  areTasksFetched: false,
 };
 
-export const setTasksInDatabase = createAsyncThunk("activeTasks/setTasksInDatabase", async (tasks: Task[], thunkAPI) => {
+export const setTasksInDatabase: any = createAsyncThunk("activeTasks/setTasksInDatabase", async (tasks: Task[], thunkAPI) => {
   try {
     const data = { tasks: tasks };
     const resp = await customFetch.post(`/tasks/multiple`, JSON.stringify(data));
@@ -23,7 +25,7 @@ export const setTasksInDatabase = createAsyncThunk("activeTasks/setTasksInDataba
   }
 });
 
-export const fetchTasksFromDatabase = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
+export const fetchTasksFromDatabase: any = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/tasks`);
     return resp.data.data;
@@ -90,13 +92,16 @@ const activeTasksSlice = createSlice({
     builder
       .addCase(fetchTasksFromDatabase.pending, (state) => {
         state.isLoading = true;
+        state.areTasksFetched = false;
       })
       .addCase(fetchTasksFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.activeTasks = payload;
+        state.areTasksFetched = true;
       })
       .addCase(fetchTasksFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.areTasksFetched = false;
       })
       .addCase(toggleStatusTaskInDatabase.pending, (state) => {
         state.isLoading = true;

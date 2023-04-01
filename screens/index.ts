@@ -1,3 +1,4 @@
+import LoadingScreen from "./LoadingScreen";
 import LoginScreen from "./auth/LoginScreen";
 import RegisterScreen from "./auth/RegisterScreen";
 import AboutScreen from "./AboutScreen";
@@ -15,6 +16,7 @@ import WelcomeScreen from "./WelcomeScreen";
 import LinkTogetherScreen from "./auth/LinkTogetherScreen";
 
 export {
+  LoadingScreen,
   LoginScreen,
   RegisterScreen,
   LinkTogetherScreen,

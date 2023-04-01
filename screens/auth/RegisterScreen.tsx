@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../store/slices/userSlice";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
+import { getValueFor } from "../../utils/secureStore";
 
 const RegisterScreen = ({ navigation }: any) => {
   const [name, onChangeName] = useState("benjamin");
@@ -27,6 +28,24 @@ const RegisterScreen = ({ navigation }: any) => {
       navigation.navigate(ROUTES.LINK);
     }
   }, [isRegistered]);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      const token = await getValueFor("token");
+      if (token) {
+        return token;
+      } else {
+        return false;
+      }
+    };
+    const checkToken = async () => {
+      const token = await fetchToken();
+      if (token) {
+        navigation.navigate(ROUTES.HOME);
+      }
+    };
+    checkToken();
+  }, []);
 
   return (
     <SafeAreaView style={styles.wrapper}>

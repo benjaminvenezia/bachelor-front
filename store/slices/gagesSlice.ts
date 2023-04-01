@@ -21,6 +21,8 @@ type GagesState = {
   gageMonth: number | null;
   gageYear: number | null;
   gageDateString: string | null;
+  areGagesFetched: boolean;
+  areDefaultGagesFetched: boolean;
 };
 
 const initialState: GagesState = {
@@ -35,9 +37,11 @@ const initialState: GagesState = {
   gageMonth: null,
   gageYear: null,
   gageDateString: null,
+  areGagesFetched: false,
+  areDefaultGagesFetched: false,
 };
 
-export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
+export const fetchDefaultGagesFromDatabase: any = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/default_gages`);
     return resp.data;
@@ -49,12 +53,11 @@ export const fetchDefaultGagesFromDatabase = createAsyncThunk("defaultGages/fetc
 /**
  * Les gages associés aux utilisateurs
  */
-export const fetchGagesFromDatabase = createAsyncThunk("gages/fetchGagesFromDatabase", async (_, thunkAPI) => {
+export const fetchGagesFromDatabase: any = createAsyncThunk("gages/fetchGagesFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/gages`);
     return resp.data;
   } catch (error: any) {
-    console.log("erreur dans le thunk: ", error.response);
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
@@ -109,24 +112,32 @@ const gagesSlice = createSlice({
     builder
       .addCase(fetchDefaultGagesFromDatabase.pending, (state) => {
         state.isLoading = true;
+        state.areDefaultGagesFetched = false;
       })
       .addCase(fetchDefaultGagesFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.areDefaultGagesFetched = true;
         state.gagesTask = payload;
       })
       .addCase(fetchDefaultGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.areDefaultGagesFetched = false;
       })
+
       .addCase(fetchGagesFromDatabase.pending, (state) => {
         state.isLoading = true;
+        state.areGagesFetched = false;
       })
       .addCase(fetchGagesFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.areGagesFetched = true;
         state.gagesAssociatedToUsers = payload;
       })
       .addCase(fetchGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.areGagesFetched = false;
       })
+
       .addCase(setGageInDatabase.pending, (state) => {
         state.isLoading = true;
       })

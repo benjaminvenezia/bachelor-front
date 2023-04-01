@@ -7,6 +7,7 @@ type UserState = {
   user: User | null;
   isLoading: boolean;
   isLogged: boolean;
+
   isRegistered: boolean;
   message: string | null;
 };
@@ -15,6 +16,7 @@ const initialState: UserState = {
   user: null,
   isLoading: false,
   isLogged: false,
+
   isRegistered: false,
   message: null,
 };

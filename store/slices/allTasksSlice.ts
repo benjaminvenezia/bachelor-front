@@ -6,14 +6,16 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export type TasksState = {
   tasks: Task[];
   isLoading: boolean;
+  areDefaultTasksFetched: boolean;
 };
 
 const initialState: TasksState = {
   tasks: [],
   isLoading: false,
+  areDefaultTasksFetched: false,
 };
 
-export const fetchDefaultTasksFromDatabase = createAsyncThunk("allTasks/fetchDefaultTasksFromDatabase", async (_, thunkAPI) => {
+export const fetchDefaultTasksFromDatabase: any = createAsyncThunk("allTasks/fetchDefaultTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/default_tasks`);
 
@@ -37,13 +39,16 @@ const allTasksSlice = createSlice({
     builder
       .addCase(fetchDefaultTasksFromDatabase.pending, (state) => {
         state.isLoading = true;
+        state.areDefaultTasksFetched = false;
       })
       .addCase(fetchDefaultTasksFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.areDefaultTasksFetched = true;
         state.tasks = payload;
       })
       .addCase(fetchDefaultTasksFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.areDefaultTasksFetched = false;
       });
   },
 });

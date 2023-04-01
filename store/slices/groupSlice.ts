@@ -7,6 +7,7 @@ type GroupState = {
   group: Group;
   isLoading: boolean;
   isGroupCreated: boolean;
+  isGroupLoaded: boolean;
   message: string;
 };
 
@@ -26,6 +27,7 @@ const initialState: GroupState = {
   },
   isLoading: false,
   isGroupCreated: false,
+  isGroupLoaded: false,
   message: "",
 };
 
@@ -70,15 +72,18 @@ const groupSlice = createSlice({
       .addCase(getGroupFromDatabase.pending, (state) => {
         state.isLoading = true;
         state.isGroupCreated = false;
+        state.isGroupLoaded = false;
       })
       .addCase(getGroupFromDatabase.fulfilled, (state, { payload }) => {
         state.group = payload.data[0];
         state.isLoading = false;
         state.isGroupCreated = true;
+        state.isGroupLoaded = true;
       })
       .addCase(getGroupFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isGroupCreated = false;
+        state.isGroupLoaded = false;
       });
   },
 });

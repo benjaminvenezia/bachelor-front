@@ -1,4 +1,6 @@
 export default {
+  LOADING: "Loading",
+
   LOGIN: "Login",
   REGISTER: "Register",
   LINK: "Link together",

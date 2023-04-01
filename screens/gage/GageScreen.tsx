@@ -2,22 +2,14 @@ import { Text, StyleSheet, View } from "react-native";
 import { Button, Title } from "../../components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DropdownCategories } from "../../components";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { GlobalStyles } from "../../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
-import { fetchDefaultGagesFromDatabase } from "../../store/slices/gagesSlice";
-import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 import { RootState } from "../../store/store";
 
 const GageScreen = ({ navigation }: any) => {
-  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { categoryGageSelection } = useSelector((state: RootState) => state.gages);
-
-  useEffect(() => {
-    dispatch(fetchDefaultGagesFromDatabase());
-  }, []);
 
   const handlePress = () => {
     navigation.navigate(ROUTES.SELECT_TASK);

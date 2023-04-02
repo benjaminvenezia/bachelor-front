@@ -105,12 +105,6 @@ const activeTasksSlice = createSlice({
         state.isAnErrorTogglingTheTask = true;
       })
 
-      .addCase(removeTaskFromDatabase.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(removeTaskFromDatabase.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-      })
       .addCase(removeTaskFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
       });

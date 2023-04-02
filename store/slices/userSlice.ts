@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User } from "../../types/User";
 import customFetch from "../../utils/http/axios";
-import { save } from "../../utils/secureStore";
+import { deleteValueFor, save } from "../../utils/secureStore";
 
 type UserState = {
   user: User | null;
@@ -17,7 +17,6 @@ const initialState: UserState = {
   user: null,
   isLoading: false,
   isLogged: false,
-
   isRegistered: false,
   message: null,
 
@@ -91,6 +90,16 @@ let userSlice = createSlice({
     setUserPoints: (state, action) => {
       state.user.points += action.payload.points;
     },
+    logoutUser: (state, action) => {
+      const logout = async () => {
+        await deleteValueFor("token");
+      };
+
+      logout();
+
+      state.user = null;
+      state.isLogged = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -152,5 +161,5 @@ let userSlice = createSlice({
   },
 });
 
-export const { setUserPoints, setUser, setOtherCode } = userSlice.actions;
+export const { setUserPoints, setUser, setOtherCode, logoutUser } = userSlice.actions;
 export default userSlice.reducer;

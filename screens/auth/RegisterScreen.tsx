@@ -32,18 +32,14 @@ const RegisterScreen = ({ navigation }: any) => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getValueFor("token");
-      if (token) {
-        return token;
-      } else {
-        return false;
-      }
+      return token ? token : false;
     };
+
     const checkToken = async () => {
       const token = await fetchToken();
-      if (token) {
-        navigation.navigate(ROUTES.HOME);
-      }
+      token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);
     };
+
     checkToken();
   }, []);
 

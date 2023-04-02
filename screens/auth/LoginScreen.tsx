@@ -8,24 +8,49 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import ROUTES from "../../constants/routes";
 
+import { getGroupFromDatabase } from "../../store/slices/groupSlice";
+import { fetchDefaultTasksFromDatabase } from "../../store/slices/allTasksSlice";
+import { fetchTasksFromDatabase } from "../../store/slices/activeTasksSlice";
+import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../../store/slices/gagesSlice";
+import { fetchCurrentUser } from "../../store/slices/userSlice";
+
 const LoginScreen = ({ navigation }: any) => {
+  const dispatch = useDispatch();
   const [email, onChangeMail] = useState("papak@gmail.com");
   const [password, onChangePassword] = useState("password");
   const [error, setError]: any = useState();
-
-  const { isLogged, user } = useSelector((state: RootState) => state.user);
-
-  const dispatch = useDispatch();
+  const { isLogged } = useSelector((state: RootState) => state.user);
 
   const handleClick = () => {
+    dispatch(getGroupFromDatabase());
+    dispatch(fetchDefaultTasksFromDatabase());
+    dispatch(fetchTasksFromDatabase());
+    dispatch(fetchGagesFromDatabase());
+    dispatch(fetchDefaultGagesFromDatabase());
+    dispatch(fetchCurrentUser());
     dispatch(login({ email: email, password: password }));
   };
 
+  const { isGroupLoaded } = useSelector((state: RootState) => state.group);
+  const { areDefaultTasksFetched } = useSelector((state: RootState) => state.allTasksList);
+  const { areTasksFetched } = useSelector((state: RootState) => state.activeTasksList);
+  const { areGagesFetched } = useSelector((state: RootState) => state.gages);
+  const { areDefaultGagesFetched } = useSelector((state: RootState) => state.gages);
+  const { isUserFetched } = useSelector((state: RootState) => state.user);
+
   useEffect(() => {
-    if (isLogged) {
+    if (
+      isLogged &&
+      isGroupLoaded &&
+      areDefaultTasksFetched &&
+      areTasksFetched &&
+      areGagesFetched &&
+      areDefaultGagesFetched &&
+      isUserFetched
+    ) {
       navigation.navigate(ROUTES.HOME);
     }
-  }, [isLogged]);
+  }, [isLogged, isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
 
   return (
     <SafeAreaView style={styles.wrapper}>

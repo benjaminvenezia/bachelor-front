@@ -14,6 +14,7 @@ import SuggestionScreen from "./SuggestionScreen";
 import TeamScreen from "./TeamScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import LinkTogetherScreen from "./auth/LinkTogetherScreen";
+import UserScreen from "./user/UserScreen";
 
 export {
   LoadingScreen,
@@ -32,4 +33,5 @@ export {
   SuggestionScreen,
   TeamScreen,
   WelcomeScreen,
+  UserScreen,
 };

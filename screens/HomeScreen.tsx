@@ -14,12 +14,12 @@ const HomeScreen: FunctionComponent = () => {
   let tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
   let tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
 
-  if (tasksDone.length === 0 && tasksNotDone.length === 0) {
-    return <NoTasksGuide />;
-  }
-
   if (isLoading) {
     return <Text>Chargement ...</Text>;
+  }
+
+  if (tasksDone.length === 0 && tasksNotDone.length === 0) {
+    return <NoTasksGuide />;
   }
 
   return (

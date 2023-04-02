@@ -14,10 +14,10 @@ const Button = ({ children, style, size = GlobalStyles.buttons.md, alternativeSt
       dynamicSize = styles.lg;
       break;
     case GlobalStyles.buttons.md:
-      dynamicSize = styles.lg;
+      dynamicSize = styles.md;
       break;
     default:
-      dynamicSize = styles.lg;
+      dynamicSize = styles.md;
       break;
   }
 

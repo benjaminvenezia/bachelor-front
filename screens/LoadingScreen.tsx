@@ -8,8 +8,8 @@ import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
 import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 import { Title } from "../components";
-import { getValueFor } from "../utils/secureStore";
 import { fetchCurrentUser } from "../store/slices/userSlice";
+import { getValueFor } from "../utils/secureStore";
 
 const LoadingScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
@@ -22,16 +22,12 @@ const LoadingScreen = ({ navigation }: any) => {
   const { isUserFetched } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    const loadData = async () => {
-      await dispatch(getGroupFromDatabase());
-      await dispatch(fetchDefaultTasksFromDatabase());
-      await dispatch(fetchTasksFromDatabase());
-      await dispatch(fetchGagesFromDatabase());
-      await dispatch(fetchDefaultGagesFromDatabase());
-      await dispatch(fetchCurrentUser());
-    };
-
-    loadData();
+    dispatch(getGroupFromDatabase());
+    dispatch(fetchDefaultTasksFromDatabase());
+    dispatch(fetchTasksFromDatabase());
+    dispatch(fetchGagesFromDatabase());
+    dispatch(fetchDefaultGagesFromDatabase());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   useEffect(() => {

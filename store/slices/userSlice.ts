@@ -50,8 +50,7 @@ export const register: any = createAsyncThunk(
 export const fetchCurrentUser: any = createAsyncThunk("user/fetchCurrentUser", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/users/get/get_current_user`);
-    console.log("In thunk: ", resp.data);
-    return resp.data.data;
+    return resp.data;
   } catch (error: any) {
     console.log(error.response);
     return thunkAPI.rejectWithValue(error.response.data.message);
@@ -130,7 +129,7 @@ let userSlice = createSlice({
       })
       .addCase(setUserPointsInDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user.points += payload.points;
+        //state.user.points += payload.points;
       })
       .addCase(setUserPointsInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -144,7 +143,7 @@ let userSlice = createSlice({
         state.isLoading = false;
         state.isUserFetched = true;
 
-        state.user = payload;
+        state.user = payload.currentUser;
       })
       .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false;

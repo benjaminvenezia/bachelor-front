@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   containerButton: {
-    minHeight: 200,
     justifyContent: "center",
     alignItems: "center",
   },

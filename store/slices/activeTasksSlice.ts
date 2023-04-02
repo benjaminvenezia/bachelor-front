@@ -6,12 +6,14 @@ export type ActiveTasksState = {
   activeTasks: Task[];
   isLoading: boolean;
   areTasksFetched: boolean;
+  isAnErrorTogglingTheTask: boolean;
 };
 
 const initialState: ActiveTasksState = {
   activeTasks: [],
   isLoading: false,
   areTasksFetched: false,
+  isAnErrorTogglingTheTask: false,
 };
 
 export const setTasksInDatabase: any = createAsyncThunk("activeTasks/setTasksInDatabase", async (tasks: Task[], thunkAPI) => {
@@ -58,16 +60,11 @@ const activeTasksSlice = createSlice({
   initialState: initialState,
   reducers: {
     toggleStatus: (state, action) => {
-      return {
-        ...state,
-        activeTasks: state.activeTasks.map((task) => {
-          if (task.id === action.payload.id) {
-            return { ...task, is_done: !task.is_done };
-          } else {
-            return task;
-          }
-        }),
-      };
+      const { id } = action.payload;
+      const taskIndex = state.activeTasks.findIndex((task) => task.id === id);
+      if (taskIndex !== -1) {
+        state.activeTasks[taskIndex].is_done = !state.activeTasks[taskIndex].is_done;
+      }
     },
     addTask: (state, action): any => {
       const tasksFromCategory = action.payload;
@@ -103,15 +100,11 @@ const activeTasksSlice = createSlice({
         state.isLoading = false;
         state.areTasksFetched = false;
       })
-      .addCase(toggleStatusTaskInDatabase.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(toggleStatusTaskInDatabase.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-      })
+
       .addCase(toggleStatusTaskInDatabase.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isAnErrorTogglingTheTask = true;
       })
+
       .addCase(removeTaskFromDatabase.pending, (state) => {
         state.isLoading = true;
       })

@@ -16,7 +16,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
 
   const [isDeleting, setIsDeleting] = useState(false);
   const [updatePointsMessage, setUpdatePointsMessage] = useState("");
-  let user = useSelector((state: RootState) => state.user);
+  let { user } = useSelector((state: RootState) => state.user);
 
   let timeoutDeletingId: any;
   let timeoutTogglingId: any;
@@ -30,12 +30,12 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
   };
 
   const handlePressIn = () => {
-    dispatch(toggleStatus({ id: id }));
     dispatch(toggleStatusTaskInDatabase(id));
+    dispatch(toggleStatus({ id: id }));
 
     if (!is_done) {
       dispatch(setUserPoints({ points: reward }));
-      dispatch(setUserPointsInDatabase({ id: user.user.id, points: user.user.points + reward }));
+      dispatch(setUserPointsInDatabase({ id: user.id, points: user.points + reward }));
     }
   };
 

@@ -9,7 +9,7 @@ import { GlobalStyles } from "../constants/style";
 
 const HomeScreen: FunctionComponent = () => {
   const { activeDay } = useSelector((state: RootState) => state.day);
-  const { activeTasks, isLoading } = useSelector((state: RootState) => state.activeTasksList);
+  const { activeTasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.activeTasksList);
 
   let tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
   let tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
@@ -50,6 +50,7 @@ const HomeScreen: FunctionComponent = () => {
                 <Text style={styles.text}>Encore du travail?</Text>
               </View>
             )}
+            {isAnErrorTogglingTheTask ? <Title titleType="h5">Une erreur a eu lieu lors du changement d'état de la tâche.</Title> : ""}
           </View>
           <CategoriesList />
           <ImageBackground style={styles.background} source={require("../assets/images/menu-background.png")} />

@@ -37,6 +37,7 @@ const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdo
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "row",
+    minHeight: 120,
     padding: 10,
     backgroundColor: "gray",
     width: "100%",

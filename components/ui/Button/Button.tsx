@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   xl: { width: 230, height: 60, paddingVertical: 10, paddingHorizontal: 25 },
   lg: { width: 120, height: 45, paddingVertical: 8, paddingHorizontal: 20 },
-  md: { width: 80, height: 20, paddingVertical: 5, paddingHorizontal: 15 },
+  md: { width: 90, height: 40, paddingVertical: 5, paddingHorizontal: 15 },
   sm: { width: 60, height: 10, paddingVertical: 5, paddingHorizontal: 15 },
   xs: { width: 40, height: 5, paddingVertical: 5, paddingHorizontal: 15 },
 });

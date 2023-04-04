@@ -13,3 +13,8 @@ expo start
 Follow the instructions from the terminal to preview the app on your phone or using an emulator.
 
 # todos
+
+backend
+
+- créer une méthode pour décrémenter les points.
+- lors de l'attribution d'un gage, vérifier si les points sont suffisants.

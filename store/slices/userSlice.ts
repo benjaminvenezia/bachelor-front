@@ -87,8 +87,11 @@ let userSlice = createSlice({
         other_code: action.payload.other_code,
       };
     },
-    setUserPoints: (state, action) => {
+    incrementPointsInStore: (state, action) => {
       state.user.points += action.payload.points;
+    },
+    decrementPointsInStore: (state, action) => {
+      state.user.points -= action.payload.points;
     },
     logoutUser: (state, action) => {
       const logout = async () => {
@@ -161,5 +164,5 @@ let userSlice = createSlice({
   },
 });
 
-export const { setUserPoints, setUser, setOtherCode, logoutUser } = userSlice.actions;
+export const { incrementPointsInStore, decrementPointsInStore, setUser, setOtherCode, logoutUser } = userSlice.actions;
 export default userSlice.reducer;

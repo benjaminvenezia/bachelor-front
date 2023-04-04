@@ -7,6 +7,8 @@ import { RootState } from "../../store/store";
 import { Gage } from "../../types/Gage";
 import { setGageInDatabase } from "../../store/slices/gagesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
+import { decrementPointsInStore } from "../../store/slices/userSlice";
+import { removeGageTaskId } from "../../store/slices/gagesSlice";
 
 const GageValidateScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -29,6 +31,8 @@ const GageValidateScreen = ({ navigation }: any) => {
 
   const handlePress = () => {
     dispatch(setGageInDatabase(gageToSaveInDatabase));
+    dispatch(decrementPointsInStore({ points: gageToAddInDatabase.cost }));
+    dispatch(removeGageTaskId());
     navigation.navigate(ROUTES.HOME);
   };
 

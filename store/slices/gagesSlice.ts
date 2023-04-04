@@ -99,6 +99,9 @@ const gagesSlice = createSlice({
     setGageTaskId: (state, action) => {
       state.gageTaskId = action.payload.gageTaskId;
     },
+    removeGageTaskId: (state) => {
+      state.gageTaskId = null;
+    },
 
     setDate: (state, action) => {
       state.gageDay = action.payload.day;
@@ -151,5 +154,6 @@ const gagesSlice = createSlice({
   },
 });
 
-export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection, setGageTaskId, setDate } = gagesSlice.actions;
+export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection, setGageTaskId, removeGageTaskId, setDate } =
+  gagesSlice.actions;
 export default gagesSlice.reducer;

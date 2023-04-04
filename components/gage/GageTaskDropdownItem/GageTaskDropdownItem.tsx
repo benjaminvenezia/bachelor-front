@@ -1,13 +1,18 @@
 import { Text, StyleSheet, Pressable, View, Image } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
 import { GageTaskDropdownItemProps } from "./GageTaskDropdownItemProps.types";
+import { RootState } from "../../../store/store";
 
 const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdownItemProps) => {
   const { id, category, cost, description, title } = props;
 
+  const { user } = useSelector((state: RootState) => state.user);
+
   const dispatch = useDispatch();
+
+  const priceIsToHigh = () => user.points < cost;
 
   const handlePress = () => {
     const gageToSendToStore = {
@@ -22,10 +27,14 @@ const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdo
   };
 
   return (
-    <Pressable onPress={handlePress} style={[styles.wrapper, isSelected ? styles.isSelected : {}]}>
+    <Pressable
+      onPress={priceIsToHigh() ? () => {} : handlePress}
+      style={[priceIsToHigh() ? styles.disabledBackground : styles.wrapper, isSelected ? styles.isSelected : {}]}
+    >
       <View style={styles.content}>
         <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>{title}</Text>
         <Text style={[styles.description, isSelected ? styles.isSelectedText : {}]}>{description}</Text>
+        {user.points < cost ? <Text style={styles.disabledLabel}>Il vous manque {cost - user?.points} points pour ce gage.</Text> : ""}
       </View>
       <View style={styles.cost}>
         <Text style={[styles.costText, isSelected ? styles.isSelectedText : {}]}>{cost}</Text>
@@ -77,6 +86,19 @@ const styles = StyleSheet.create({
     fontSize: GlobalStyles.fontsSize.text,
     color: GlobalStyles.colors.primary,
     fontWeight: "900",
+  },
+  disabledLabel: {
+    fontSize: 13,
+    color: "#e84a5f",
+  },
+  disabledBackground: {
+    flexDirection: "row",
+    minHeight: 120,
+    padding: 10,
+    backgroundColor: "#2a363b",
+    width: "100%",
+    marginBottom: 10,
+    borderRadius: 20,
   },
 });
 

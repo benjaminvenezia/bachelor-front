@@ -8,8 +8,6 @@ const CustomCalendar = (props: any) => {
   const initDate = "2023-03-31";
   const [selected, setSelected]: any = useState(initDate);
 
-  console.log(selected);
-
   const marked = useMemo(
     () => ({
       [selected]: {
@@ -30,7 +28,6 @@ const CustomCalendar = (props: any) => {
       initialDate={initDate}
       markedDates={marked}
       onDayPress={(day) => {
-        console.log("bfbf");
         setSelected(day.dateString);
         props.onDaySelect && props.onDaySelect(day);
       }}

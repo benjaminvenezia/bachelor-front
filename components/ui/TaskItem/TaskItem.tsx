@@ -6,7 +6,7 @@ import { removeTaskFromDatabase } from "../../../store/slices/activeTasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import { toggleStatusTaskInDatabase } from "../../../store/slices/activeTasksSlice";
-import { setUserPointsInDatabase, setUserPoints } from "../../../store/slices/userSlice";
+import { setUserPointsInDatabase, incrementPointsInStore } from "../../../store/slices/userSlice";
 import images from "../../../constants/images";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { TaskItemProps } from "./TaskItemProps.types";
@@ -34,7 +34,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
     dispatch(toggleStatus({ id: id }));
 
     if (!is_done) {
-      dispatch(setUserPoints({ points: reward }));
+      dispatch(incrementPointsInStore({ points: reward }));
       dispatch(setUserPointsInDatabase({ id: user.id, points: user.points + reward }));
     }
   };

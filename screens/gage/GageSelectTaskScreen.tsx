@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button, DropdownGagesTasks, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { GlobalStyles } from "../../constants/style";
@@ -11,7 +11,7 @@ const GageSelectTaskScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <Title titleType="h2" style={styles.text}>
-        Choississeez une tâche!
+        Choisisseez une tâche!
       </Title>
       <DropdownGagesTasks />
       <View style={styles.buttonContainer}>

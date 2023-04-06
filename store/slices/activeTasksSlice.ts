@@ -30,7 +30,7 @@ export const setTasksInDatabase: any = createAsyncThunk("activeTasks/setTasksInD
 export const fetchTasksFromDatabase: any = createAsyncThunk("activeTasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/tasks`);
-    return resp.data.data;
+    return resp.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response.data.message);
   }

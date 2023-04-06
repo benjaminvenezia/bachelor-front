@@ -4,7 +4,7 @@ import customFetch from "../../utils/http/axios";
 import { RootState } from "../store";
 
 type GroupState = {
-  group: Group;
+  group: Group | null;
   isLoading: boolean;
   isGroupCreated: boolean;
   isGroupLoaded: boolean;
@@ -12,19 +12,7 @@ type GroupState = {
 };
 
 const initialState: GroupState = {
-  group: {
-    idGroup: "",
-    GroupName: "",
-    idUser1: 0,
-    idUser2: 0,
-    user1Name: "",
-    user2Name: "",
-    user1Points: 0,
-    user2Points: 0,
-    delta: 0,
-    winner: "",
-    looser: "",
-  },
+  group: null,
   isLoading: false,
   isGroupCreated: false,
   isGroupLoaded: false,
@@ -56,6 +44,9 @@ const groupSlice = createSlice({
     setGroup: (state, action) => {
       state.group = action.payload;
     },
+    resetGroupStore: (state) => {
+      (state.group = null), (state.isLoading = false), (state.isGroupCreated = false), (state.isGroupLoaded = false), (state.message = "");
+    },
   },
   extraReducers(builder) {
     builder
@@ -70,17 +61,19 @@ const groupSlice = createSlice({
       })
 
       .addCase(getGroupFromDatabase.pending, (state) => {
+        state.group = null;
         state.isLoading = true;
         state.isGroupCreated = false;
         state.isGroupLoaded = false;
       })
       .addCase(getGroupFromDatabase.fulfilled, (state, { payload }) => {
-        state.group = payload.data[0];
+        state.group = payload[0];
         state.isLoading = false;
         state.isGroupCreated = true;
         state.isGroupLoaded = true;
       })
       .addCase(getGroupFromDatabase.rejected, (state, { payload }) => {
+        state.group = null;
         state.isLoading = false;
         state.isGroupCreated = false;
         state.isGroupLoaded = false;
@@ -88,5 +81,5 @@ const groupSlice = createSlice({
   },
 });
 
-export const { setGroup } = groupSlice.actions;
+export const { setGroup, resetGroupStore } = groupSlice.actions;
 export default groupSlice.reducer;

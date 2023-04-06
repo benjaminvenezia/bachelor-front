@@ -4,7 +4,7 @@ import customFetch from "../../utils/http/axios";
 import { deleteValueFor, save } from "../../utils/secureStore";
 
 type UserState = {
-  user: User | null;
+  user: any | User | null;
   isLoading: boolean;
   isLogged: boolean;
 
@@ -26,9 +26,10 @@ const initialState: UserState = {
 export const login: any = createAsyncThunk("user/login", async (access: { email: string; password: string }, thunkAPI) => {
   try {
     const resp = await customFetch.post(`/login`, access);
-    save("token", resp.data.data.token);
+    // save("token", resp.data.data.token);
     return resp.data.data;
   } catch (error: any) {
+    console.log("erreur login");
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
@@ -39,8 +40,9 @@ export const register: any = createAsyncThunk(
     try {
       const resp = await customFetch.post(`/register`, access);
       save("token", resp.data.data.token);
-      return resp.data.data;
+      return resp.data;
     } catch (error: any) {
+      console.log("erreur register");
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
@@ -51,19 +53,20 @@ export const fetchCurrentUser: any = createAsyncThunk("user/fetchCurrentUser", a
     const resp = await customFetch.get(`/users/get/get_current_user`);
     return resp.data;
   } catch (error: any) {
-    console.log(error.response);
+    console.log("erreur fetchCurrentUser");
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
 
 export const setUserPointsInDatabase = createAsyncThunk(
   "user/setUserPointsInDatabase",
-  async ({ id, points }: { id: string; points: number }, thunkAPI) => {
+  async ({ id, points }: { id: number; points: number }, thunkAPI) => {
     try {
       const resp = await customFetch.patch(`/users/${id}`, { points: points });
-      return resp.data.data;
+
+      return resp.data;
     } catch (error: any) {
-      console.log(error.response);
+      console.log("erreur setUserPointsInDatabase");
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
@@ -76,11 +79,6 @@ let userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    setUser: (state, action) => {
-      return {
-        user: action.payload.user,
-      };
-    },
     setOtherCode: (state, action) => {
       return {
         ...state,
@@ -93,7 +91,7 @@ let userSlice = createSlice({
     decrementPointsInStore: (state, action) => {
       state.user.points -= action.payload.points;
     },
-    logoutUser: (state, action) => {
+    logoutUser: (state) => {
       const logout = async () => {
         await deleteValueFor("token");
       };
@@ -111,7 +109,7 @@ let userSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload.user;
+        state.user = payload.data.user;
         state.isRegistered = true;
         save("token", payload.token);
       })
@@ -141,7 +139,6 @@ let userSlice = createSlice({
       })
       .addCase(setUserPointsInDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        //state.user.points += payload.points;
       })
       .addCase(setUserPointsInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -154,8 +151,7 @@ let userSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isUserFetched = true;
-
-        state.user = payload.currentUser;
+        state.user = payload;
       })
       .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -164,5 +160,5 @@ let userSlice = createSlice({
   },
 });
 
-export const { incrementPointsInStore, decrementPointsInStore, setUser, setOtherCode, logoutUser } = userSlice.actions;
+export const { incrementPointsInStore, decrementPointsInStore, setOtherCode, logoutUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -7,7 +7,7 @@ import { RootState } from "../../store/store";
 import { Gage } from "../../types/Gage";
 import { setGageInDatabase } from "../../store/slices/gagesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { decrementPointsInStore } from "../../store/slices/userSlice";
+import { decrementPointsInStore, setUserPointsInDatabase } from "../../store/slices/userSlice";
 import { removeGageTaskId } from "../../store/slices/gagesSlice";
 
 const GageValidateScreen = ({ navigation }: any) => {
@@ -15,6 +15,8 @@ const GageValidateScreen = ({ navigation }: any) => {
   const { gageToAddInDatabase, categoryGageSelection, gageDay, gageMonth, gageYear, gageDateString } = useSelector(
     (state: RootState) => state.gages
   );
+
+  const { user } = useSelector((state: RootState) => state.user);
 
   const gageToSaveInDatabase: Gage = {
     id: 0,
@@ -33,6 +35,7 @@ const GageValidateScreen = ({ navigation }: any) => {
     dispatch(setGageInDatabase(gageToSaveInDatabase));
     dispatch(decrementPointsInStore({ points: gageToAddInDatabase.cost }));
     dispatch(removeGageTaskId());
+    dispatch(setUserPointsInDatabase({ id: user.id, points: user.points - gageToAddInDatabase.cost }));
     navigation.navigate(ROUTES.HOME);
   };
 

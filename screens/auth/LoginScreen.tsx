@@ -22,13 +22,13 @@ const LoginScreen = ({ navigation }: any) => {
   const { isLogged } = useSelector((state: RootState) => state.user);
 
   const handleClick = () => {
+    dispatch(login({ email: email, password: password }));
     dispatch(getGroupFromDatabase());
     dispatch(fetchDefaultTasksFromDatabase());
     dispatch(fetchTasksFromDatabase());
     dispatch(fetchGagesFromDatabase());
     dispatch(fetchDefaultGagesFromDatabase());
     dispatch(fetchCurrentUser());
-    dispatch(login({ email: email, password: password }));
   };
 
   const { isGroupLoaded } = useSelector((state: RootState) => state.group);

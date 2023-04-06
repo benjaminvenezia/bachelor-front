@@ -14,7 +14,7 @@ import { getValueFor } from "../utils/secureStore";
 const LoadingScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
-  const { isGroupLoaded } = useSelector((state: RootState) => state.group);
+  const { isGroupLoaded, group } = useSelector((state: RootState) => state.group);
   const { areDefaultTasksFetched } = useSelector((state: RootState) => state.allTasksList);
   const { areTasksFetched } = useSelector((state: RootState) => state.activeTasksList);
   const { areGagesFetched } = useSelector((state: RootState) => state.gages);
@@ -22,33 +22,35 @@ const LoadingScreen = ({ navigation }: any) => {
   const { isUserFetched } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    dispatch(getGroupFromDatabase());
+    //dispatch(getGroupFromDatabase());
     dispatch(fetchDefaultTasksFromDatabase());
-    dispatch(fetchTasksFromDatabase());
-    dispatch(fetchGagesFromDatabase());
     dispatch(fetchDefaultGagesFromDatabase());
-    dispatch(fetchCurrentUser());
-  }, [dispatch]);
+    //dispatch(fetchTasksFromDatabase());
+    //dispatch(fetchGagesFromDatabase());
+    //dispatch(fetchCurrentUser());
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      const token = await getValueFor("token");
-      return token ? token : false;
-    };
+    if (!group) {
+      navigation.navigate(ROUTES.REGISTER);
+    } else {
+      const fetchToken = async () => {
+        const token = await getValueFor("token");
+        return token ? token : false;
+      };
 
-    const checkToken = async () => {
-      const token = await fetchToken();
-      token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);
-    };
+      const checkToken = async () => {
+        const token = await fetchToken();
+        token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);
+      };
 
-    checkToken();
+      checkToken();
+    }
   }, []);
 
-  useEffect(() => {
-    if (isGroupLoaded && areDefaultTasksFetched && areTasksFetched && areGagesFetched && areDefaultGagesFetched && isUserFetched) {
-      navigation.navigate(ROUTES.HOME);
-    }
-  }, [isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
+  // useEffect(() => {
+  //   if (isGroupLoaded && areDefaultTasksFetched && areTasksFetched && areGagesFetched && areDefaultGagesFetched && isUserFetched) {
+  //     navigation.navigate(ROUTES.HOME);
+  //   }
+  // }, [isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
 
   return (
     <View style={styles.container}>

@@ -5,13 +5,15 @@ import { RootState } from "../../store/store";
 import { GlobalStyles } from "../../constants/style";
 import ROUTES from "../../constants/routes";
 import { logoutUser } from "../../store/slices/userSlice";
+import { resetGroupStore } from "../../store/slices/groupSlice";
 
 const UserScreen = ({ navigation }: any) => {
   let { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const logout = () => {
-    dispatch(logoutUser(1));
+    dispatch(logoutUser());
+    dispatch(resetGroupStore());
     navigation.navigate(ROUTES.REGISTER);
   };
 

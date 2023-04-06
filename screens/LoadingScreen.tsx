@@ -22,12 +22,12 @@ const LoadingScreen = ({ navigation }: any) => {
   const { isUserFetched } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    //dispatch(getGroupFromDatabase());
+    dispatch(getGroupFromDatabase());
     dispatch(fetchDefaultTasksFromDatabase());
     dispatch(fetchDefaultGagesFromDatabase());
-    //dispatch(fetchTasksFromDatabase());
-    //dispatch(fetchGagesFromDatabase());
-    //dispatch(fetchCurrentUser());
+    dispatch(fetchTasksFromDatabase());
+    dispatch(fetchGagesFromDatabase());
+    dispatch(fetchCurrentUser());
 
     if (!group) {
       navigation.navigate(ROUTES.REGISTER);

@@ -30,7 +30,7 @@ export const login: any = createAsyncThunk("user/login", async (access: { email:
     return resp.data.data;
   } catch (error: any) {
     console.log("erreur login");
-    return thunkAPI.rejectWithValue(error.response.data.message);
+    return thunkAPI.rejectWithValue(error.response.data.details);
   }
 });
 
@@ -39,7 +39,7 @@ export const register: any = createAsyncThunk(
   async (access: { name: string; email: string; password: string; password_confirmation: string }, thunkAPI) => {
     try {
       const resp = await customFetch.post(`/register`, access);
-      save("token", resp.data.data.token);
+      // save("token", resp.data.data.token);
       return resp.data;
     } catch (error: any) {
       console.log("erreur register");
@@ -132,6 +132,8 @@ let userSlice = createSlice({
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isLogged = false;
+        console.log(payload);
+        state.message = payload;
       })
 
       .addCase(setUserPointsInDatabase.pending, (state) => {

@@ -8,49 +8,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import ROUTES from "../../constants/routes";
 
-import { getGroupFromDatabase } from "../../store/slices/groupSlice";
-import { fetchDefaultTasksFromDatabase } from "../../store/slices/allTasksSlice";
-import { fetchTasksFromDatabase } from "../../store/slices/activeTasksSlice";
-import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../../store/slices/gagesSlice";
-import { fetchCurrentUser } from "../../store/slices/userSlice";
-
 const LoginScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
   const [email, onChangeMail] = useState("papak@gmail.com");
   const [password, onChangePassword] = useState("password");
-  const [error, setError]: any = useState();
-  const { isLogged } = useSelector((state: RootState) => state.user);
+  const { isLogged, message } = useSelector((state: RootState) => state.user);
 
   const handleClick = () => {
     dispatch(login({ email: email, password: password }));
-    dispatch(getGroupFromDatabase());
-    dispatch(fetchDefaultTasksFromDatabase());
-    dispatch(fetchTasksFromDatabase());
-    dispatch(fetchGagesFromDatabase());
-    dispatch(fetchDefaultGagesFromDatabase());
-    dispatch(fetchCurrentUser());
   };
 
-  const { isGroupLoaded } = useSelector((state: RootState) => state.group);
-  const { areDefaultTasksFetched } = useSelector((state: RootState) => state.allTasksList);
-  const { areTasksFetched } = useSelector((state: RootState) => state.activeTasksList);
-  const { areGagesFetched } = useSelector((state: RootState) => state.gages);
-  const { areDefaultGagesFetched } = useSelector((state: RootState) => state.gages);
-  const { isUserFetched } = useSelector((state: RootState) => state.user);
-
   useEffect(() => {
-    if (
-      isLogged &&
-      isGroupLoaded &&
-      areDefaultTasksFetched &&
-      areTasksFetched &&
-      areGagesFetched &&
-      areDefaultGagesFetched &&
-      isUserFetched
-    ) {
+    if (isLogged) {
       navigation.navigate(ROUTES.HOME);
     }
-  }, [isLogged, isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
+  }, [isLogged, dispatch]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -68,7 +40,7 @@ const LoginScreen = ({ navigation }: any) => {
             Valider
           </Button>
 
-          <Text style={styles.text}>{error?.message}</Text>
+          <Text style={styles.text}>{message}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -97,7 +69,7 @@ const styles = StyleSheet.create({
     height: "60%",
   },
   text: {
-    color: GlobalStyles.colors.text,
+    color: "white",
     fontSize: GlobalStyles.fontsSize.text,
   },
 });

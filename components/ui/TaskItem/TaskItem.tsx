@@ -15,7 +15,6 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [isDeleting, setIsDeleting] = useState(false);
-  const [updatePointsMessage, setUpdatePointsMessage] = useState("");
   let { user } = useSelector((state: RootState) => state.user);
 
   let timeoutDeletingId: any;
@@ -70,8 +69,8 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
       {!isDeleting && (
         <View style={styles.iconContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={[styles.text, styles.reward]}>{reward} Points</Text>
-          <Text style={styles.text}>{updatePointsMessage}</Text>
+          {!is_done && <Text style={[styles.text, styles.reward]}>{reward} Points</Text>}
+          {is_done && <Text style={styles.text}>{`+${reward} points!`}</Text>}
         </View>
       )}
       {isDeleting && <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>}
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     fontFamily: GlobalStyles.police.task,
   },
   text: {
-    color: GlobalStyles.colors.text,
+    color: "black",
     fontSize: GlobalStyles.fontsSize.text,
     fontFamily: GlobalStyles.police.task,
   },
@@ -131,7 +130,8 @@ const styles = StyleSheet.create({
     color: "red",
   },
   disabled: {
-    opacity: 0.25,
+    opacity: 0.3,
+    tintColor: "red",
   },
 });
 

@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import ROUTES from "../constants/routes";
-import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { RootState } from "../store/store";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
 import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
-import { Title } from "../components";
 import { fetchCurrentUser } from "../store/slices/userSlice";
+import { Title } from "../components";
 import { getValueFor } from "../utils/secureStore";
 
 const LoadingScreen = ({ navigation }: any) => {
@@ -22,12 +22,8 @@ const LoadingScreen = ({ navigation }: any) => {
   const { isUserFetched } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    dispatch(getGroupFromDatabase());
     dispatch(fetchDefaultTasksFromDatabase());
     dispatch(fetchDefaultGagesFromDatabase());
-    dispatch(fetchTasksFromDatabase());
-    dispatch(fetchGagesFromDatabase());
-    dispatch(fetchCurrentUser());
 
     if (!group) {
       navigation.navigate(ROUTES.REGISTER);

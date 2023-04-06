@@ -61,7 +61,6 @@ const groupSlice = createSlice({
       })
 
       .addCase(getGroupFromDatabase.pending, (state) => {
-        state.group = null;
         state.isLoading = true;
         state.isGroupCreated = false;
         state.isGroupLoaded = false;
@@ -73,7 +72,7 @@ const groupSlice = createSlice({
         state.isGroupLoaded = true;
       })
       .addCase(getGroupFromDatabase.rejected, (state, { payload }) => {
-        state.group = null;
+        state.group = payload[0];
         state.isLoading = false;
         state.isGroupCreated = false;
         state.isGroupLoaded = false;

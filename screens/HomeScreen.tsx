@@ -1,13 +1,28 @@
 import { FunctionComponent } from "react";
 import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
-import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
+import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
+import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
+import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
+import { fetchCurrentUser } from "../store/slices/userSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const HomeScreen: FunctionComponent = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGroupFromDatabase());
+    dispatch(fetchTasksFromDatabase());
+    dispatch(fetchGagesFromDatabase());
+    dispatch(fetchCurrentUser());
+  }, []);
+
   const { activeDay } = useSelector((state: RootState) => state.day);
   const { activeTasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.activeTasksList);
 

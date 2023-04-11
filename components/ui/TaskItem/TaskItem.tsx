@@ -68,9 +68,9 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
       <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />
       {!isDeleting && (
         <View style={styles.iconContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={[styles.title, is_done ? styles.titleDone : {}]}>{title}</Text>
           {!is_done && <Text style={[styles.text, styles.reward]}>{reward} Points</Text>}
-          {is_done && <Text style={styles.text}> {`+${reward} points!`} </Text>}
+          {is_done && <Text style={styles.text}>{reward} Points!</Text>}
         </View>
       )}
       {isDeleting && <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>}
@@ -114,6 +114,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 13,
     fontFamily: GlobalStyles.police.task,
+  },
+
+  titleDone: {
+    textDecorationLine: "line-through",
+    textDecorationStyle: "solid",
   },
   text: {
     color: "black",

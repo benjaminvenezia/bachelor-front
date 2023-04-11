@@ -1,19 +1,20 @@
 import { Text, SafeAreaView, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { Group } from "../types/Group";
-import { getGroupFromDatabase } from "../store/slices/groupSlice";
-import { Title, GagesTeam } from "../components";
+import { RootState } from "../../store/store";
+import { Group } from "../../types/Group";
+import { getGroupFromDatabase } from "../../store/slices/groupSlice";
+import { Title, GagesTeam, Button } from "../../components";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
-import { GlobalStyles } from "../constants/style";
+import { GlobalStyles } from "../../constants/style";
 import { ThunkDispatch } from "@reduxjs/toolkit";
+import ROUTES from "../../constants/routes";
 
-const TeamScreen = () => {
+const TeamScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const group = useSelector((state: RootState) => state.group);
+  const { group } = useSelector((state: RootState) => state.group);
 
-  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group = group.group;
+  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group | any = group;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -38,9 +39,14 @@ const TeamScreen = () => {
         {looser} est en train de perdre, {winner} est en tête de {delta} points
       </Text>
 
-      <Title titleType="h2">Gages</Title>
-
-      <GagesTeam />
+      <Button
+        onPress={() => {
+          navigation.navigate(ROUTES.GAGE_TEAM);
+        }}
+        size="XL"
+      >
+        Voir les Gages
+      </Button>
     </SafeAreaView>
   );
 };

@@ -35,6 +35,8 @@ export default {
   TEAM_TAB: "Team Tab",
   TEAM_DRAWER: "Team Drawer",
 
+  GAGE_TEAM: "Gage team",
+
   USER: "User",
   USER_TAB: "User Tab",
   USER_DRAWER: "User Drawer",

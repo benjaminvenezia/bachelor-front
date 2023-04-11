@@ -11,10 +11,11 @@ import HabitsScreen from "./HabitsScreen";
 import HomeScreen from "./HomeScreen";
 import ShopScreen from "./ShopScreen";
 import SuggestionScreen from "./SuggestionScreen";
-import TeamScreen from "./TeamScreen";
+import TeamScreen from "./team/TeamScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import LinkTogetherScreen from "./auth/LinkTogetherScreen";
 import UserScreen from "./user/UserScreen";
+import GagesTeamScreen from "./team/GagesTeamScreen";
 
 export {
   LoadingScreen,
@@ -34,4 +35,5 @@ export {
   TeamScreen,
   WelcomeScreen,
   UserScreen,
+  GagesTeamScreen,
 };

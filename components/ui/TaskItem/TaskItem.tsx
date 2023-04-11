@@ -1,11 +1,9 @@
 import { Text, StyleSheet, Pressable, Vibration, ImageBackground, View } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
-import { toggleStatus, removeTask } from "../../../store/slices/tasksSlice";
 import { useState } from "react";
-import { removeTaskFromDatabase } from "../../../store/slices/tasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
-import { toggleStatusTaskInDatabase } from "../../../store/slices/tasksSlice";
+import { toggleStatusTaskInDatabase, removeTaskFromDatabase, toggleStatus, removeTask } from "../../../store/slices/tasksSlice";
 import { setUserPointsInDatabase, incrementPointsInStore } from "../../../store/slices/userSlice";
 import images from "../../../constants/images";
 import { ThunkDispatch } from "@reduxjs/toolkit";

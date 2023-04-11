@@ -70,7 +70,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
         <View style={styles.iconContainer}>
           <Text style={styles.title}>{title}</Text>
           {!is_done && <Text style={[styles.text, styles.reward]}>{reward} Points</Text>}
-          {is_done && <Text style={styles.text}>{`+${reward} points!`}</Text>}
+          {is_done && <Text style={styles.text}> {`+${reward} points!`} </Text>}
         </View>
       )}
       {isDeleting && <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>}

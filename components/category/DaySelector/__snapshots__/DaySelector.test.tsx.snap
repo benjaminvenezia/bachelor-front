@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DaySelector /> renders correctly 1`] = `
+Array [
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderColor": "white",
+          "borderRadius": 100,
+          "borderWidth": 5,
+          "marginHorizontal": 3,
+          "marginVertical": 5,
+          "paddingHorizontal": 40,
+          "paddingVertical": 15,
+        },
+        null,
+      ]
+    }
+  >
+    <View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontSize": 20,
+            },
+          ]
+        }
+      >
+        Lun
+      </Text>
+    </View>
+  </View>,
+  " ",
+]
+`;

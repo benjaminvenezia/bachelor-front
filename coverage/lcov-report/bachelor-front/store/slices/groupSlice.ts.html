@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>0/30</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>0/30</span>
             </div>
         
             
@@ -147,15 +147,7 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,18 +161,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -214,20 +194,23 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,6 +221,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -253,7 +237,7 @@ import customFetch from "../../utils/http/axios";
 import { RootState } from "../store";
 &nbsp;
 type GroupState = {
-  group: Group;
+  group: Group | null;
   isLoading: boolean;
   isGroupCreated: boolean;
   isGroupLoaded: boolean;
@@ -261,19 +245,7 @@ type GroupState = {
 };
 &nbsp;
 const initialState: GroupState = <span class="cstat-no" title="statement not covered" >{</span>
-  group: {
-    idGroup: "",
-    GroupName: "",
-    idUser1: 0,
-    idUser2: 0,
-    user1Name: "",
-    user2Name: "",
-    user1Points: 0,
-    user2Points: 0,
-    delta: 0,
-    winner: "",
-    looser: "",
-  },
+  group: null,
   isLoading: false,
   isGroupCreated: false,
   isGroupLoaded: false,
@@ -305,6 +277,9 @@ const groupSlice = <span class="cstat-no" title="statement not covered" >createS
     setGroup: <span class="fstat-no" title="function not covered" >(s</span>tate, action) =&gt; {
 <span class="cstat-no" title="statement not covered" >      state.group = action.payload;</span>
     },
+    resetGroupStore: <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
+<span class="cstat-no" title="statement not covered" >      (state.group = null), (state.isLoading = false), (state.isGroupCreated = false), (state.isGroupLoaded = false), (state.message = "");</span>
+    },
   },
 <span class="fstat-no" title="function not covered" >  ex</span>traReducers(builder) {
 <span class="cstat-no" title="statement not covered" >    builder</span>
@@ -324,12 +299,13 @@ const groupSlice = <span class="cstat-no" title="statement not covered" >createS
 <span class="cstat-no" title="statement not covered" >        state.isGroupLoaded = false;</span>
       })
       .addCase(getGroupFromDatabase.fulfilled, <span class="fstat-no" title="function not covered" >(s</span>tate, { payload }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.group = payload.data[0];</span>
+<span class="cstat-no" title="statement not covered" >        state.group = payload[0];</span>
 <span class="cstat-no" title="statement not covered" >        state.isLoading = false;</span>
 <span class="cstat-no" title="statement not covered" >        state.isGroupCreated = true;</span>
 <span class="cstat-no" title="statement not covered" >        state.isGroupLoaded = true;</span>
       })
       .addCase(getGroupFromDatabase.rejected, <span class="fstat-no" title="function not covered" >(s</span>tate, { payload }) =&gt; {
+<span class="cstat-no" title="statement not covered" >        state.group = payload[0];</span>
 <span class="cstat-no" title="statement not covered" >        state.isLoading = false;</span>
 <span class="cstat-no" title="statement not covered" >        state.isGroupCreated = false;</span>
 <span class="cstat-no" title="statement not covered" >        state.isGroupLoaded = false;</span>
@@ -337,7 +313,7 @@ const groupSlice = <span class="cstat-no" title="statement not covered" >createS
   },
 });
 &nbsp;
-export const { setGroup } = <span class="cstat-no" title="statement not covered" >groupSlice.actions;</span>
+export const { setGroup, resetGroupStore } = <span class="cstat-no" title="statement not covered" >groupSlice.actions;</span>
 export default groupSlice.reducer;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -346,7 +322,7 @@ export default groupSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-04T20:29:16.243Z
+                at 2023-04-11T10:21:15.505Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

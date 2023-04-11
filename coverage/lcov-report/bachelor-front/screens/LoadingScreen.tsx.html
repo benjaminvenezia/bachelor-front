@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/34</span>
+                <span class='fraction'>0/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>0/22</span>
             </div>
         
             
@@ -129,9 +129,7 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,13 +155,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -177,9 +172,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,19 +199,19 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import ROUTES from "../constants/routes";
-import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { RootState } from "../store/store";
+import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
 import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
-import { Title } from "../components";
 import { fetchCurrentUser } from "../store/slices/userSlice";
+import { Title } from "../components";
 import { getValueFor } from "../utils/secureStore";
 &nbsp;
 const LoadingScreen = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> navigation }: any) =&gt; {</span>
   const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
 &nbsp;
-  const { isGroupLoaded } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.group)</span>;</span>
+  const { isGroupLoaded, group } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.group)</span>;</span>
   const { areDefaultTasksFetched } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.allTasksList)</span>;</span>
   const { areTasksFetched } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.activeTasksList)</span>;</span>
   const { areGagesFetched } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.gages)</span>;</span>
@@ -223,33 +219,31 @@ const LoadingScreen = <span class="cstat-no" title="statement not covered" ><spa
   const { isUserFetched } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.user)</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(getGroupFromDatabase());</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(fetchDefaultTasksFromDatabase());</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(fetchTasksFromDatabase());</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(fetchGagesFromDatabase());</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(fetchDefaultGagesFromDatabase());</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(fetchCurrentUser());</span>
-  }, [dispatch]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const fetchToken = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-      const token = <span class="cstat-no" title="statement not covered" >await getValueFor("token");</span>
-<span class="cstat-no" title="statement not covered" >      return token ? token : false;</span>
-    };
+<span class="cstat-no" title="statement not covered" >    if (!group) {</span>
+<span class="cstat-no" title="statement not covered" >      navigation.navigate(ROUTES.REGISTER);</span>
+    } else {
+      const fetchToken = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+        const token = <span class="cstat-no" title="statement not covered" >await getValueFor("token");</span>
+<span class="cstat-no" title="statement not covered" >        return token ? token : false;</span>
+      };
 &nbsp;
-    const checkToken = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-      const token = <span class="cstat-no" title="statement not covered" >await fetchToken();</span>
-<span class="cstat-no" title="statement not covered" >      token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);</span>
-    };
+      const checkToken = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+        const token = <span class="cstat-no" title="statement not covered" >await fetchToken();</span>
+<span class="cstat-no" title="statement not covered" >        token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);</span>
+      };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    checkToken();</span>
+<span class="cstat-no" title="statement not covered" >      checkToken();</span>
+    }
   }, []);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (isGroupLoaded &amp;&amp; areDefaultTasksFetched &amp;&amp; areTasksFetched &amp;&amp; areGagesFetched &amp;&amp; areDefaultGagesFetched &amp;&amp; isUserFetched) {</span>
-<span class="cstat-no" title="statement not covered" >      navigation.navigate(ROUTES.HOME);</span>
-    }
-  }, [isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
+  // useEffect(() =&gt; {
+  //   if (isGroupLoaded &amp;&amp; areDefaultTasksFetched &amp;&amp; areTasksFetched &amp;&amp; areGagesFetched &amp;&amp; areDefaultGagesFetched &amp;&amp; isUserFetched) {
+  //     navigation.navigate(ROUTES.HOME);
+  //   }
+  // }, [isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;View style={styles.container}&gt;
@@ -274,7 +268,7 @@ export default LoadingScreen;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-04T20:29:16.243Z
+                at 2023-04-11T10:21:15.505Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

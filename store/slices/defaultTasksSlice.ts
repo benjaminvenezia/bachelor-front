@@ -3,14 +3,14 @@ import { Task } from "../../types/Task";
 import customFetch from "../../utils/http/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export type TasksState = {
-  tasks: Task[];
+export type DefaultTasksState = {
+  defaultTasks: Task[];
   isLoading: boolean;
   areDefaultTasksFetched: boolean;
 };
 
-const initialState: TasksState = {
-  tasks: [],
+const initialState: DefaultTasksState = {
+  defaultTasks: [],
   isLoading: false,
   areDefaultTasksFetched: false,
 };
@@ -25,14 +25,14 @@ export const fetchDefaultTasksFromDatabase: any = createAsyncThunk("allTasks/fet
   }
 });
 
-const allTasksSlice = createSlice({
-  name: "allTasks",
+const defaultTasks = createSlice({
+  name: "defaultTasks",
   initialState: initialState,
   reducers: {
     setDefaultTasks: (state, action): any => {
       const defaultTasksFromDatabase = action.payload;
 
-      state.tasks = defaultTasksFromDatabase;
+      state.defaultTasks = defaultTasksFromDatabase;
     },
   },
   extraReducers(builder) {
@@ -44,7 +44,7 @@ const allTasksSlice = createSlice({
       .addCase(fetchDefaultTasksFromDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.areDefaultTasksFetched = true;
-        state.tasks = payload;
+        state.defaultTasks = payload;
       })
       .addCase(fetchDefaultTasksFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -53,5 +53,5 @@ const allTasksSlice = createSlice({
   },
 });
 
-export const { setDefaultTasks } = allTasksSlice.actions;
-export default allTasksSlice.reducer;
+export const { setDefaultTasks } = defaultTasks.actions;
+export default defaultTasks.reducer;

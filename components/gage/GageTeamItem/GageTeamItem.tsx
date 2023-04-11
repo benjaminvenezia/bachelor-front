@@ -4,10 +4,11 @@ import { Gage } from "../../../types/Gage";
 
 const GageTeamItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_points }: Gage) => {
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={[styles.container, is_done ? styles.isDone : {}]}>
       <Text style={[styles.text, styles.title]}>{title}</Text>
-      <Text style={styles.text}>{description}</Text>
-      <Text style={styles.text}>{user_name}</Text>
+      {/* <Text style={styles.text}>{description}</Text> */}
+      <Text style={styles.text}>Attribué à {user_name}</Text>
+      <Text>{user_name}</Text>
       <Text style={styles.text}>
         {day} - {month} - {year}
       </Text>
@@ -18,9 +19,11 @@ const GageTeamItem = ({ id, title, description, is_done, cost, category, day, mo
 const styles = StyleSheet.create({
   container: {
     marginBottom: 10,
-    borderLeftWidth: 5,
-    borderColor: "white",
-    paddingLeft: 10,
+    backgroundColor: GlobalStyles.colors.todo,
+    padding: 10,
+  },
+  isDone: {
+    backgroundColor: GlobalStyles.colors.done,
   },
   title: {
     fontWeight: "bold",

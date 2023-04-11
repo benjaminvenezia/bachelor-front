@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import activeTasksSlice from "./slices/activeTasksSlice";
+import tasksSlice from "./slices/tasksSlice";
 import daySlice from "./slices/daySlice";
-import allTasksSlice from "./slices/allTasksSlice";
+import defaultTasks from "./slices/defaultTasksSlice";
 import daysToAddTasksSlice from "./slices/daysToAddTasksSlice";
 import userSlice from "./slices/userSlice";
 import groupSlice from "./slices/groupSlice";
@@ -10,8 +10,8 @@ import gagesSlice from "./slices/gagesSlice";
 
 const rootReducer = combineReducers({
   user: userSlice,
-  activeTasksList: activeTasksSlice,
-  allTasksList: allTasksSlice,
+  tasks: tasksSlice,
+  defaultTasks: defaultTasks,
   day: daySlice,
   daysToAddTasks: daysToAddTasksSlice,
   group: groupSlice,

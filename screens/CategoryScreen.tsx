@@ -5,13 +5,12 @@ import { RootState } from "../store/store";
 import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
-import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
-import { setTasksInDatabase } from "../store/slices/activeTasksSlice";
+import { setTasksInDatabase, addTask } from "../store/slices/tasksSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const CategoryScreen = ({ navigation, route }: any) => {
@@ -20,14 +19,14 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const [activatedTasks, setActivatedTasks] = useState([]);
 
   const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
-  const { tasks } = useSelector((state: RootState) => state.allTasksList);
-  const { activeTasks } = useSelector((state: RootState) => state.activeTasksList);
+  const { defaultTasks } = useSelector((state: RootState) => state.defaultTasks);
+  const { tasks } = useSelector((state: RootState) => state.tasks);
 
   const { categoryName } = route.params;
-  const categoryTasks = tasks.filter((task: Task) => task.category === categoryName);
+  const categoryTasks = defaultTasks.filter((task: Task) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
-    const days = activeTasks.filter((task: Task) => task.title === title);
+    const days = tasks.filter((task: Task) => task.title === title);
     const daysLabels = days.map((item) => item.associated_day);
 
     return daysLabels;
@@ -44,7 +43,8 @@ const CategoryScreen = ({ navigation, route }: any) => {
         taskToPush.associated_day = activeDays[j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
 
-        if (!checkTaskIsPresent(activeTasks, taskToPush)) {
+        //Attention, tasks est ptetre faux
+        if (!checkTaskIsPresent(tasks, taskToPush)) {
           toPush.push(taskToPush);
           setActivatedTasks([]);
         }

@@ -6,8 +6,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
-import { fetchDefaultTasksFromDatabase } from "../store/slices/allTasksSlice";
-import { fetchTasksFromDatabase } from "../store/slices/activeTasksSlice";
+import { fetchDefaultTasksFromDatabase } from "../store/slices/defaultTasksSlice";
+import { fetchTasksFromDatabase } from "../store/slices/tasksSlice";
 import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 import { fetchCurrentUser } from "../store/slices/userSlice";
 import { useEffect } from "react";
@@ -24,10 +24,10 @@ const HomeScreen: FunctionComponent = () => {
   }, []);
 
   const { activeDay } = useSelector((state: RootState) => state.day);
-  const { activeTasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.activeTasksList);
+  const { tasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.tasks);
 
-  let tasksNotDone = activeTasks.filter((task) => !task.is_done && task.associated_day === activeDay);
-  let tasksDone = activeTasks.filter((task) => task.is_done && task.associated_day === activeDay);
+  let tasksNotDone = tasks.filter((task) => !task.is_done && task.associated_day === activeDay);
+  let tasksDone = tasks.filter((task) => task.is_done && task.associated_day === activeDay);
 
   if (isLoading) {
     return <Text>Chargement ...</Text>;

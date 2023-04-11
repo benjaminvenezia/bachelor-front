@@ -12,7 +12,7 @@ const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdo
 
   const dispatch = useDispatch();
 
-  const priceIsToHigh = () => user.points < cost;
+  const priceIsToHigh = () => user?.points < cost;
 
   const handlePress = () => {
     const gageToSendToStore = {

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GageTeamItem /> renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FF6363",
+        "marginBottom": 10,
+        "padding": 10,
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontSize": 20,
+        },
+        Object {
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    string
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#ffffff",
+        "fontSize": 20,
+      }
+    }
+  >
+    Attribué à 
+    Michel
+  </Text>
+  <Text>
+    Michel
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#ffffff",
+        "fontSize": 20,
+      }
+    }
+  >
+    1
+     - 
+    2
+     - 
+    2012
+  </Text>
+</View>
+`;

@@ -223,7 +223,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,6 +252,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -360,13 +360,12 @@ import { RootState } from "../store/store";
 import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
-import { addTask } from "../store/slices/activeTasksSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Task } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
-import { setTasksInDatabase } from "../store/slices/activeTasksSlice";
+import { setTasksInDatabase, addTask } from "../store/slices/tasksSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 &nbsp;
 const CategoryScreen = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> navigation, route }: any) =&gt; {</span>
@@ -375,14 +374,14 @@ const CategoryScreen = <span class="cstat-no" title="statement not covered" ><sp
   const [activatedTasks, setActivatedTasks] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
 &nbsp;
   const { activeDays } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.daysToAddTasks)</span>;</span>
-  const { tasks } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.allTasksList)</span>;</span>
-  const { activeTasks } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.activeTasksList)</span>;</span>
+  const { defaultTasks } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.defaultTasks)</span>;</span>
+  const { tasks } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.tasks)</span>;</span>
 &nbsp;
   const { categoryName } = <span class="cstat-no" title="statement not covered" >route.params;</span>
-  const categoryTasks = <span class="cstat-no" title="statement not covered" >tasks.filter(<span class="fstat-no" title="function not covered" >(t</span>ask: Task) =&gt; <span class="cstat-no" title="statement not covered" >task.category === categoryName)</span>;</span>
+  const categoryTasks = <span class="cstat-no" title="statement not covered" >defaultTasks.filter(<span class="fstat-no" title="function not covered" >(t</span>ask: Task) =&gt; <span class="cstat-no" title="statement not covered" >task.category === categoryName)</span>;</span>
 &nbsp;
   const getDaysAssociated = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>itle: string) =&gt; {</span>
-    const days = <span class="cstat-no" title="statement not covered" >activeTasks.filter(<span class="fstat-no" title="function not covered" >(t</span>ask: Task) =&gt; <span class="cstat-no" title="statement not covered" >task.title === title)</span>;</span>
+    const days = <span class="cstat-no" title="statement not covered" >tasks.filter(<span class="fstat-no" title="function not covered" >(t</span>ask: Task) =&gt; <span class="cstat-no" title="statement not covered" >task.title === title)</span>;</span>
     const daysLabels = <span class="cstat-no" title="statement not covered" >days.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item.associated_day)</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return daysLabels;</span>
@@ -399,7 +398,8 @@ const CategoryScreen = <span class="cstat-no" title="statement not covered" ><sp
 <span class="cstat-no" title="statement not covered" >        taskToPush.associated_day = activeDays[j];</span>
 <span class="cstat-no" title="statement not covered" >        taskToPush.path_icon_todo = taskToExtract.path_icon_todo;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (!checkTaskIsPresent(activeTasks, taskToPush)) {</span>
+        //Attention, tasks est ptetre faux
+<span class="cstat-no" title="statement not covered" >        if (!checkTaskIsPresent(tasks, taskToPush)) {</span>
 <span class="cstat-no" title="statement not covered" >          toPush.push(taskToPush);</span>
 <span class="cstat-no" title="statement not covered" >          setActivatedTasks([]);</span>
         }
@@ -505,7 +505,7 @@ export default CategoryScreen;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-11T10:21:15.505Z
+                at 2023-04-12T13:04:30.444Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

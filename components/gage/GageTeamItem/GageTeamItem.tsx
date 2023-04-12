@@ -4,7 +4,12 @@ import { Gage } from "../../../types/Gage";
 
 const GageTeamItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_points }: Gage) => {
   return (
-    <Pressable style={[styles.container, is_done ? styles.isDone : {}]}>
+    <Pressable
+      onPress={() => {
+        alert(1);
+      }}
+      style={[styles.container, is_done ? styles.isDone : {}]}
+    >
       <Text style={[styles.text, styles.title]}>{title}</Text>
       {/* <Text style={styles.text}>{description}</Text> */}
       <Text style={styles.text}>Attribué à {user_name}</Text>

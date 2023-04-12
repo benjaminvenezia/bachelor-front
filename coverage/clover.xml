@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681208475877" clover="3.2.0">
-  <project timestamp="1681208475877" name="All files">
-    <metrics statements="607" coveredstatements="12" conditionals="123" coveredconditionals="0" methods="236" coveredmethods="3" elements="966" coveredelements="15" complexity="0" loc="607" ncloc="607" packages="34" files="80" classes="80"/>
+<coverage generated="1681304670504" clover="3.2.0">
+  <project timestamp="1681304670504" name="All files">
+    <metrics statements="613" coveredstatements="4" conditionals="125" coveredconditionals="1" methods="240" coveredmethods="1" elements="978" coveredelements="6" complexity="0" loc="613" ncloc="613" packages="35" files="82" classes="82"/>
     <package name="bachelor-front">
       <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="App.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/App.tsx">
+      <file name="App.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/App.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="10" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
@@ -14,30 +14,30 @@
     </package>
     <package name="bachelor-front.components">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/index.ts">
+      <file name="index.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.category.BadgeDay">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="BadgeDay.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/BadgeDay/BadgeDay.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="BadgeDay.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/BadgeDay/BadgeDay.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
       </file>
-      <file name="BadgeDayProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/BadgeDay/BadgeDayProps.types.ts">
+      <file name="BadgeDayProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/BadgeDay/BadgeDayProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.category.DaySelector">
-      <metrics statements="13" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="2"/>
-      <file name="DaySelector.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/DaySelector/DaySelector.tsx">
-        <metrics statements="13" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+      <metrics statements="13" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="DaySelector.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/DaySelector/DaySelector.tsx">
+        <metrics statements="13" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -46,15 +46,15 @@
         <line num="23" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
       </file>
-      <file name="DaySelectorProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/DaySelector/DaySelectorProps.types.ts">
+      <file name="DaySelectorProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/DaySelector/DaySelectorProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.category.DaysSelectorContainer">
       <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="DaysSelectorContainer.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/DaysSelectorContainer/DaysSelectorContainer.tsx">
+      <file name="DaysSelectorContainer.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/DaysSelectorContainer/DaysSelectorContainer.tsx">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -65,7 +65,7 @@
     </package>
     <package name="bachelor-front.components.category.TaskItemCategory">
       <metrics statements="16" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="TaskItemCategory.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/TaskItemCategory/TaskItemCategory.tsx">
+      <file name="TaskItemCategory.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/TaskItemCategory/TaskItemCategory.tsx">
         <metrics statements="16" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="10" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -84,13 +84,13 @@
         <line num="57" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
       </file>
-      <file name="TaskItemCategoryProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/category/TaskItemCategory/TaskItemCategoryProps.types.ts">
+      <file name="TaskItemCategoryProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/category/TaskItemCategory/TaskItemCategoryProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.gage.CategoryDropdownItem">
       <metrics statements="8" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CategoryDropdownItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/CategoryDropdownItem/CategoryDropdownItem.tsx">
+      <file name="CategoryDropdownItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/CategoryDropdownItem/CategoryDropdownItem.tsx">
         <metrics statements="8" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -101,13 +101,13 @@
         <line num="17" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
       </file>
-      <file name="CategoryDropdownItemProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/CategoryDropdownItem/CategoryDropdownItemProps.types.ts">
+      <file name="CategoryDropdownItemProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/CategoryDropdownItem/CategoryDropdownItemProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.gage.CustomCalendar">
       <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="CustomCalendar.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/CustomCalendar/CustomCalendar.tsx">
+      <file name="CustomCalendar.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/CustomCalendar/CustomCalendar.tsx">
         <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -123,7 +123,7 @@
     </package>
     <package name="bachelor-front.components.gage.DropdownCategories">
       <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="DropdownCategories.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/DropdownCategories/DropdownCategories.tsx">
+      <file name="DropdownCategories.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/DropdownCategories/DropdownCategories.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -135,7 +135,7 @@
     </package>
     <package name="bachelor-front.components.gage.DropdownGagesTasks">
       <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="DropdownGagesTasks.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/DropdownGagesTasks/DropdownGagesTasks.tsx">
+      <file name="DropdownGagesTasks.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/DropdownGagesTasks/DropdownGagesTasks.tsx">
         <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -146,7 +146,7 @@
     </package>
     <package name="bachelor-front.components.gage.GageTaskDropdownItem">
       <metrics statements="11" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="GageTaskDropdownItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/GageTaskDropdownItem/GageTaskDropdownItem.tsx">
+      <file name="GageTaskDropdownItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/GageTaskDropdownItem/GageTaskDropdownItem.tsx">
         <metrics statements="11" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -160,22 +160,23 @@
         <line num="29" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
       </file>
-      <file name="GageTaskDropdownItemProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/GageTaskDropdownItem/GageTaskDropdownItemProps.types.ts">
+      <file name="GageTaskDropdownItemProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/GageTaskDropdownItem/GageTaskDropdownItemProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.gage.GageTeamItem">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="GageTeamItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/GageTeamItem/GageTeamItem.tsx">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+      <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="GageTeamItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/GageTeamItem/GageTeamItem.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
     <package name="bachelor-front.components.gage.GagesTeam">
       <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="GagesTeam.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/gage/GagesTeam/GagesTeam.tsx">
+      <file name="GagesTeam.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/gage/GagesTeam/GagesTeam.tsx">
         <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -186,7 +187,7 @@
     </package>
     <package name="bachelor-front.components.home.CategoriesList">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CategoriesList.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/CategoriesList/CategoriesList.tsx">
+      <file name="CategoriesList.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/CategoriesList/CategoriesList.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -196,7 +197,7 @@
     </package>
     <package name="bachelor-front.components.home.CategoryItem">
       <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="CategoryItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/CategoryItem/CategoryItem.tsx">
+      <file name="CategoryItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/CategoryItem/CategoryItem.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -205,13 +206,13 @@
         <line num="12" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
       </file>
-      <file name="CategoryItemProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/CategoryItem/CategoryItemProps.types.ts">
+      <file name="CategoryItemProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/CategoryItem/CategoryItemProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.home.DayItem">
       <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="DayItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/DayItem/DayItem.tsx">
+      <file name="DayItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/DayItem/DayItem.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -220,13 +221,13 @@
         <line num="14" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
       </file>
-      <file name="DayItemProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/DayItem/DayItemProps.types.ts">
+      <file name="DayItemProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/DayItem/DayItemProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.home.DaysContainer">
       <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="DaysContainer.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/DaysContainer/DaysContainer.tsx">
+      <file name="DaysContainer.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/DaysContainer/DaysContainer.tsx">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -235,7 +236,7 @@
     </package>
     <package name="bachelor-front.components.home.NoTasksGuide">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="NoTasksGuide.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/home/NoTasksGuide/NoTasksGuide.tsx">
+      <file name="NoTasksGuide.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/home/NoTasksGuide/NoTasksGuide.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -245,29 +246,29 @@
     </package>
     <package name="bachelor-front.components.ui.Button">
       <metrics statements="13" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Button.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Button/Button.tsx">
+      <file name="Button.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Button/Button.tsx">
         <metrics statements="13" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
       </file>
-      <file name="ButtonProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Button/ButtonProps.types.ts">
+      <file name="ButtonProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Button/ButtonProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.ui.Hr">
       <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Hr.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Hr/Hr.tsx">
+      <file name="Hr.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Hr/Hr.tsx">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -276,138 +277,143 @@
     </package>
     <package name="bachelor-front.components.ui.Input">
       <metrics statements="4" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Input.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Input/Input.tsx">
+      <file name="Input.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Input/Input.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="6" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="7" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
       </file>
-      <file name="InputProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Input/InputProps.types.ts">
+      <file name="InputProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Input/InputProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.ui.TaskItem">
       <metrics statements="24" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="7" coveredmethods="0"/>
-      <file name="TaskItem.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/TaskItem/TaskItem.tsx">
+      <file name="TaskItem.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/TaskItem/TaskItem.tsx">
         <metrics statements="24" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
       </file>
-      <file name="TaskItemProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/TaskItem/TaskItemProps.types.ts">
+      <file name="TaskItemProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/TaskItem/TaskItemProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.components.ui.Title">
       <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Title.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Title/Title.tsx">
+      <file name="Title.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Title/Title.tsx">
         <metrics statements="4" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="6" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
       </file>
-      <file name="TitleProps.types.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/components/ui/Title/TitleProps.types.ts">
+      <file name="TitleProps.types.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/components/ui/Title/TitleProps.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.constants">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="categories.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/constants/categories.ts">
+      <file name="categories.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/constants/categories.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="days.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/constants/days.ts">
+      <file name="days.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/constants/days.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="images.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/constants/images.ts">
+      <file name="images.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/constants/images.ts">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
       </file>
-      <file name="routes.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/constants/routes.ts">
+      <file name="routes.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/constants/routes.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="style.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/constants/style.ts">
+      <file name="style.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/constants/style.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="bachelor-front.navigation">
-      <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="AuthNavigator.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/navigation/AuthNavigator.tsx">
+      <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="AuthNavigator.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/navigation/AuthNavigator.tsx">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
       </file>
-      <file name="BottomTabNavigator.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/navigation/BottomTabNavigator.tsx">
+      <file name="BottomTabNavigator.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/navigation/BottomTabNavigator.tsx">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
       </file>
-      <file name="DrawerNavigator.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/navigation/DrawerNavigator.tsx">
+      <file name="DrawerNavigator.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/navigation/DrawerNavigator.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
       </file>
-      <file name="GageStacknavigator.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/navigation/GageStacknavigator.tsx">
+      <file name="GageStacknavigator.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/navigation/GageStacknavigator.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+      </file>
+      <file name="TeamStackNavigator.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/navigation/TeamStackNavigator.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
       </file>
     </package>
     <package name="bachelor-front.screens">
-      <metrics statements="100" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="42" coveredmethods="0"/>
-      <file name="AboutScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/AboutScreen.tsx">
+      <metrics statements="90" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="38" coveredmethods="0"/>
+      <file name="AboutScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/AboutScreen.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
       </file>
-      <file name="CategoryScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/CategoryScreen.tsx">
+      <file name="CategoryScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/CategoryScreen.tsx">
         <metrics statements="39" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="15" coveredmethods="0"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
         <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
@@ -427,12 +433,12 @@
         <line num="102" count="0" type="stmt"/>
         <line num="118" count="0" type="stmt"/>
       </file>
-      <file name="HabitsScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/HabitsScreen.tsx">
+      <file name="HabitsScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/HabitsScreen.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
       </file>
-      <file name="HomeScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/HomeScreen.tsx">
+      <file name="HomeScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/HomeScreen.tsx">
         <metrics statements="19" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
@@ -454,7 +460,7 @@
         <line num="61" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
       </file>
-      <file name="LoadingScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/LoadingScreen.tsx">
+      <file name="LoadingScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/LoadingScreen.tsx">
         <metrics statements="22" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
@@ -479,41 +485,28 @@
         <line num="51" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
       </file>
-      <file name="ShopScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/ShopScreen.tsx">
+      <file name="ShopScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/ShopScreen.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
       </file>
-      <file name="SuggestionScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/SuggestionScreen.tsx">
+      <file name="SuggestionScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/SuggestionScreen.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
       </file>
-      <file name="TeamScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/TeamScreen.tsx">
-        <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-      </file>
-      <file name="WelcomeScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/WelcomeScreen.tsx">
+      <file name="WelcomeScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/WelcomeScreen.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
       </file>
-      <file name="index.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/index.ts">
+      <file name="index.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.screens.auth">
       <metrics statements="50" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="18" coveredmethods="0"/>
-      <file name="LinkTogetherScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/auth/LinkTogetherScreen.tsx">
+      <file name="LinkTogetherScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/auth/LinkTogetherScreen.tsx">
         <metrics statements="14" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -530,7 +523,7 @@
         <line num="31" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
       </file>
-      <file name="LoginScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/auth/LoginScreen.tsx">
+      <file name="LoginScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/auth/LoginScreen.tsx">
         <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -545,7 +538,7 @@
         <line num="27" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
       </file>
-      <file name="RegisterScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/auth/RegisterScreen.tsx">
+      <file name="RegisterScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/auth/RegisterScreen.tsx">
         <metrics statements="24" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -575,7 +568,7 @@
     </package>
     <package name="bachelor-front.screens.gage">
       <metrics statements="43" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="27" coveredmethods="0"/>
-      <file name="GageScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/gage/GageScreen.tsx">
+      <file name="GageScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/gage/GageScreen.tsx">
         <metrics statements="7" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -585,7 +578,7 @@
         <line num="26" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
       </file>
-      <file name="GageSelectDateScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/gage/GageSelectDateScreen.tsx">
+      <file name="GageSelectDateScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/gage/GageSelectDateScreen.tsx">
         <metrics statements="15" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -603,7 +596,7 @@
         <line num="80" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
       </file>
-      <file name="GageSelectTaskScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/gage/GageSelectTaskScreen.tsx">
+      <file name="GageSelectTaskScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/gage/GageSelectTaskScreen.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -612,7 +605,7 @@
         <line num="21" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
       </file>
-      <file name="GageValidateScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/gage/GageValidateScreen.tsx">
+      <file name="GageValidateScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/gage/GageValidateScreen.tsx">
         <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -631,9 +624,31 @@
         <line num="74" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="bachelor-front.screens.team">
+      <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="GagesTeamScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/team/GagesTeamScreen.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="TeamScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/team/TeamScreen.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+      </file>
+    </package>
     <package name="bachelor-front.screens.user">
       <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="UserScreen.tsx" path="/Users/benjamin/Desktop/dev/bachelor-front/screens/user/UserScreen.tsx">
+      <file name="UserScreen.tsx" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/screens/user/UserScreen.tsx">
         <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -649,65 +664,37 @@
     </package>
     <package name="bachelor-front.store">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="store.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/store.ts">
+      <file name="store.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/store.ts">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="11" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
     </package>
     <package name="bachelor-front.store.slices">
-      <metrics statements="219" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="80" coveredmethods="0"/>
-      <file name="activeTasksSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/activeTasksSlice.ts">
-        <metrics statements="47" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+      <metrics statements="219" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="80" coveredmethods="0"/>
+      <file name="categoriesSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/categoriesSlice.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="95" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="101" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="114" count="0" type="stmt"/>
       </file>
-      <file name="allTasksSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/allTasksSlice.ts">
+      <file name="daySlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/daySlice.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+      </file>
+      <file name="daysToAddTasksSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/daysToAddTasksSlice.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+      <file name="defaultTasksSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/defaultTasksSlice.ts">
         <metrics statements="18" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="12" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
@@ -728,29 +715,7 @@
         <line num="51" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
       </file>
-      <file name="categoriesSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/categoriesSlice.ts">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-      </file>
-      <file name="daySlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/daySlice.ts">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-      </file>
-      <file name="daysToAddTasksSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/daysToAddTasksSlice.ts">
-        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-      </file>
-      <file name="gagesSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/gagesSlice.ts">
+      <file name="gagesSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/gagesSlice.ts">
         <metrics statements="47" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="20" coveredmethods="0"/>
         <line num="28" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
@@ -800,7 +765,7 @@
         <line num="152" count="0" type="stmt"/>
         <line num="158" count="0" type="stmt"/>
       </file>
-      <file name="groupSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/groupSlice.ts">
+      <file name="groupSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/groupSlice.ts">
         <metrics statements="30" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="14" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -833,7 +798,57 @@
         <line num="78" count="0" type="stmt"/>
         <line num="83" count="0" type="stmt"/>
       </file>
-      <file name="userSlice.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/store/slices/userSlice.ts">
+      <file name="tasksSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/tasksSlice.ts">
+        <metrics statements="47" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+      </file>
+      <file name="userSlice.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/store/slices/userSlice.ts">
         <metrics statements="64" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="22" coveredmethods="0"/>
         <line num="16" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -903,36 +918,36 @@
     </package>
     <package name="bachelor-front.types">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Category.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/Category.ts">
+      <file name="Category.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/Category.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="Day.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/Day.ts">
+      <file name="Day.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/Day.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="Gage.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/Gage.ts">
+      <file name="Gage.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/Gage.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="GageTask.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/GageTask.ts">
+      <file name="GageTask.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/GageTask.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="Group.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/Group.ts">
+      <file name="Group.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/Group.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="Task.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/Task.ts">
+      <file name="Task.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/Task.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="User.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/types/User.ts">
+      <file name="User.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/types/User.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="bachelor-front.utils">
       <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="checkTaskIsPresent.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/utils/checkTaskIsPresent.ts">
+      <file name="checkTaskIsPresent.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/utils/checkTaskIsPresent.ts">
         <metrics statements="2" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
-      <file name="secureStore.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/utils/secureStore.ts">
+      <file name="secureStore.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/utils/secureStore.ts">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -942,7 +957,7 @@
     </package>
     <package name="bachelor-front.utils.http">
       <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="axios.ts" path="/Users/benjamin/Desktop/dev/bachelor-front/utils/http/axios.ts">
+      <file name="axios.ts" path="/Users/benjamin/Desktop/dev/perso/travail_bachelor/bachelor-front/utils/http/axios.ts">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>

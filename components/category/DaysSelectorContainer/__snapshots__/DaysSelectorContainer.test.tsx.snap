@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DaySelector /> renders correctly 1`] = `
+<View>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontWeight": "bold",
+          "marginBottom": 10,
+        },
+        Object {
+          "color": "#ffffff",
+          "fontSize": 22,
+        },
+        undefined,
+      ]
+    }
+  >
+    À quel(s) jour(s) souhaitez vous attribuer ces tâches?
+  </Text>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "space-around",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Lun
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Jeu
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Mer
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Mar
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Ven
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Sam
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderColor": "white",
+            "borderRadius": 100,
+            "borderWidth": 5,
+            "marginHorizontal": 3,
+            "marginVertical": 5,
+            "paddingHorizontal": 40,
+            "paddingVertical": 15,
+          },
+          null,
+        ]
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontSize": 20,
+              },
+            ]
+          }
+        >
+          Dim
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

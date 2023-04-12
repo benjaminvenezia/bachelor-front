@@ -18,3 +18,7 @@ backend
 
 - créer une méthode pour décrémenter les points.
 - lors de l'attribution d'un gage, vérifier si les points sont suffisants.
+
+# snapshot
+
+https://jestjs.io/docs/tutorial-react-native

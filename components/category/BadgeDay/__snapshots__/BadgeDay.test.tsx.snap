@@ -1,31 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BadgeDay /> renders correctly 1`] = `
-Array [
-  <View
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "borderColor": "black",
+      "borderRadius": 10,
+      "height": 15,
+      "justifyContent": "center",
+      "textAlign": "center",
+      "width": 15,
+    }
+  }
+>
+  <Text
     style={
       Object {
-        "alignItems": "center",
-        "backgroundColor": "white",
-        "borderColor": "black",
-        "borderRadius": 10,
-        "height": 15,
-        "justifyContent": "center",
-        "textAlign": "center",
-        "width": 15,
+        "fontWeight": "bold",
       }
     }
   >
-    <Text
-      style={
-        Object {
-          "fontWeight": "bold",
-        }
-      }
-    >
-      L
-    </Text>
-  </View>,
-  " ",
-]
+    L
+  </Text>
+</View>
 `;

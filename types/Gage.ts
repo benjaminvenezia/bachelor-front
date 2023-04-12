@@ -7,11 +7,11 @@ export type Gage = {
   description: string;
   is_done: boolean;
   cost: number;
-  category: string | null;
-  day: number | null;
-  month: number | null;
-  year: number | null;
-  date_string: string | null;
+  category: string;
+  day: number;
+  month: number;
+  year: number;
+  date_string: string;
   user_id?: string;
   user_name?: string;
   user_points?: number;

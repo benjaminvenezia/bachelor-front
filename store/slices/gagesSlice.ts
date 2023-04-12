@@ -1,9 +1,7 @@
 import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Gage } from "../../types/Gage";
 import { GageTask } from "../../types/GageTask";
-import { Task } from "react-native";
 import customFetch from "../../utils/http/axios";
-import { RootState } from "../store";
 
 /**
  * The GageTask is the complementary part of Gage, user can select trough them.
@@ -90,6 +88,11 @@ const gagesSlice = createSlice({
     filterGageTask: (state, action) => {
       state.gagesTaskFiltered = state.gagesTask.filter((item) => item.category === action.payload.category);
     },
+    sortByDate: (state) => {
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.sort(
+        (g1: Gage, g2: Gage) => new Date(g1.date_string).getTime() - new Date(g2.date_string).getTime()
+      );
+    },
     setTheGageBeforeSendingDatabase: (state, action) => {
       state.gageToAddInDatabase = action.payload;
     },
@@ -102,7 +105,6 @@ const gagesSlice = createSlice({
     removeGageTaskId: (state) => {
       state.gageTaskId = null;
     },
-
     setDate: (state, action) => {
       state.gageDay = action.payload.day;
       state.gageMonth = action.payload.month;
@@ -154,6 +156,13 @@ const gagesSlice = createSlice({
   },
 });
 
-export const { filterGageTask, setTheGageBeforeSendingDatabase, setCategoryGageSelection, setGageTaskId, removeGageTaskId, setDate } =
-  gagesSlice.actions;
+export const {
+  filterGageTask,
+  sortByDate,
+  setTheGageBeforeSendingDatabase,
+  setCategoryGageSelection,
+  setGageTaskId,
+  removeGageTaskId,
+  setDate,
+} = gagesSlice.actions;
 export default gagesSlice.reducer;

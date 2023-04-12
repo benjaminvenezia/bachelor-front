@@ -1,9 +1,11 @@
 import { View, StyleSheet } from "react-native";
 import Button from "../../ui/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { sortByDate } from "../../../store/slices/gagesSlice";
+import { sortByDate, sortByDateDesc } from "../../../store/slices/gagesSlice";
+import { useState } from "react";
 const GagesTeamsFilters = () => {
   const dispatch = useDispatch();
+  const [dateMode, setDateMode] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -16,10 +18,11 @@ const GagesTeamsFilters = () => {
       <Button
         style={styles.filter}
         onPress={() => {
-          dispatch(sortByDate());
+          setDateMode(!dateMode);
+          dateMode ? dispatch(sortByDate()) : dispatch(sortByDateDesc());
         }}
       >
-        Date
+        {dateMode ? "Asc" : "Desc"}
       </Button>
     </View>
   );

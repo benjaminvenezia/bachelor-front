@@ -93,6 +93,11 @@ const gagesSlice = createSlice({
         (g1: Gage, g2: Gage) => new Date(g1.date_string).getTime() - new Date(g2.date_string).getTime()
       );
     },
+    sortByDateDesc: (state) => {
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.sort(
+        (g1: Gage, g2: Gage) => new Date(g2.date_string).getTime() - new Date(g1.date_string).getTime()
+      );
+    },
     setTheGageBeforeSendingDatabase: (state, action) => {
       state.gageToAddInDatabase = action.payload;
     },
@@ -159,6 +164,7 @@ const gagesSlice = createSlice({
 export const {
   filterGageTask,
   sortByDate,
+  sortByDateDesc,
   setTheGageBeforeSendingDatabase,
   setCategoryGageSelection,
   setGageTaskId,

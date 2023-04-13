@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { Button, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,8 +64,13 @@ const GageValidateScreen = ({ navigation }: any) => {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <Button onPress={() => navigation.goBack()}>Retour</Button>
-        <Button onPress={handlePress}>Valider le gage</Button>
+        <Button size="LG" onPress={() => navigation.goBack()}>
+          Retour
+        </Button>
+        <Button size="LG" onPress={handlePress}>
+          Valider le gage
+        </Button>
+        <ImageBackground style={styles.image} source={require("../../assets/images/bang.png")} />
       </View>
     </View>
   );
@@ -93,6 +98,11 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     display: "flex",
     flexDirection: "row",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginTop: 20,
   },
 });
 

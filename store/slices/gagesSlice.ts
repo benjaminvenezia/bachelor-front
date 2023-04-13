@@ -9,6 +9,7 @@ import customFetch from "../../utils/http/axios";
 
 type GagesState = {
   gagesAssociatedToUsers: Gage[];
+  gagesAssociatedToUsersSave: Gage[];
   gagesTask: GageTask[];
   gagesTaskFiltered: any;
   gageToAddInDatabase: any;
@@ -25,6 +26,7 @@ type GagesState = {
 
 const initialState: GagesState = {
   gagesAssociatedToUsers: [],
+  gagesAssociatedToUsersSave: [],
   gagesTask: [],
   gagesTaskFiltered: [],
   gageToAddInDatabase: {},
@@ -98,6 +100,15 @@ const gagesSlice = createSlice({
         (g1: Gage, g2: Gage) => new Date(g2.date_string).getTime() - new Date(g1.date_string).getTime()
       );
     },
+    sortByUser: (state, action) => {
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter((gage: Gage) => gage.user_name === action.payload.userName);
+    },
+    filterByGagesAreNotDone: (state) => {
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter((gage: Gage) => !gage.is_done);
+    },
+    resetGagesAssociatedToUsers: (state) => {
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsersSave;
+    },
     setTheGageBeforeSendingDatabase: (state, action) => {
       state.gageToAddInDatabase = action.payload;
     },
@@ -142,6 +153,7 @@ const gagesSlice = createSlice({
         state.isLoading = false;
         state.areGagesFetched = true;
         state.gagesAssociatedToUsers = payload;
+        state.gagesAssociatedToUsersSave = payload;
       })
       .addCase(fetchGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -164,7 +176,10 @@ const gagesSlice = createSlice({
 export const {
   filterGageTask,
   sortByDate,
+  sortByUser,
   sortByDateDesc,
+  filterByGagesAreNotDone,
+  resetGagesAssociatedToUsers,
   setTheGageBeforeSendingDatabase,
   setCategoryGageSelection,
   setGageTaskId,

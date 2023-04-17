@@ -11,7 +11,7 @@ const GageSelectTaskScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <Title titleType="h2" style={styles.text}>
-        Choisisseez une tâche!
+        Choisissez une tâche!
       </Title>
       <DropdownGagesTasks />
       <View style={styles.buttonContainer}>

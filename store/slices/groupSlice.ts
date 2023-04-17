@@ -58,6 +58,7 @@ const groupSlice = createSlice({
       })
       .addCase(setGroupInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+        console.log("gmegugug", payload);
       })
 
       .addCase(getGroupFromDatabase.pending, (state) => {

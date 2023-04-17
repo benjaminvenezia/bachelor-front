@@ -8,6 +8,7 @@ import { RootState } from "../../store/store";
 import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
+import { fetchCurrentUser } from "../../store/slices/userSlice";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
   const { user, isLogged, message } = useSelector((state: RootState) => state.user);
@@ -19,8 +20,11 @@ const LinkTogetherScreen = ({ navigation }: any) => {
   const handleClick = () => {
     dispatch(setGroupInDatabase(anotherLink));
     dispatch(getGroupFromDatabase());
-    navigation.navigate(ROUTES.HOME);
   };
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, []);
 
   useEffect(() => {
     if (isGroupCreated) {

@@ -154,6 +154,7 @@ const gagesSlice = createSlice({
         state.areGagesFetched = true;
         state.gagesAssociatedToUsers = payload;
         state.gagesAssociatedToUsersSave = payload;
+        state.gagesTaskFiltered = payload;
       })
       .addCase(fetchGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;

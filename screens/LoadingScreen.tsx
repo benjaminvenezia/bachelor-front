@@ -7,7 +7,6 @@ import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { fetchDefaultTasksFromDatabase } from "../store/slices/defaultTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/tasksSlice";
 import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
-import { fetchCurrentUser } from "../store/slices/userSlice";
 import { Title } from "../components";
 import { getValueFor } from "../utils/secureStore";
 
@@ -19,7 +18,7 @@ const LoadingScreen = ({ navigation }: any) => {
   const { areTasksFetched } = useSelector((state: RootState) => state.tasks);
   const { areGagesFetched } = useSelector((state: RootState) => state.gages);
   const { areDefaultGagesFetched } = useSelector((state: RootState) => state.gages);
-  const { isUserFetched } = useSelector((state: RootState) => state.user);
+  const { isUserFetched, user } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     dispatch(fetchDefaultTasksFromDatabase());
@@ -41,12 +40,6 @@ const LoadingScreen = ({ navigation }: any) => {
       checkToken();
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (isGroupLoaded && areDefaultTasksFetched && areTasksFetched && areGagesFetched && areDefaultGagesFetched && isUserFetched) {
-  //     navigation.navigate(ROUTES.HOME);
-  //   }
-  // }, [isGroupLoaded, areDefaultTasksFetched, areTasksFetched, areGagesFetched, areDefaultGagesFetched, isUserFetched]);
 
   return (
     <View style={styles.container}>

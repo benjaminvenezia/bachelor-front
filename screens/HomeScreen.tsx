@@ -12,8 +12,12 @@ import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/
 import { fetchCurrentUser } from "../store/slices/userSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useFocusEffect } from "@react-navigation/native";
+import ROUTES from "../constants/routes";
 
-const HomeScreen: FunctionComponent = () => {
+const HomeScreen: FunctionComponent = ({ navigation }: any) => {
+  const { isUserFetched } = useSelector((state: RootState) => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +26,12 @@ const HomeScreen: FunctionComponent = () => {
     dispatch(fetchGagesFromDatabase());
     dispatch(fetchCurrentUser());
   }, []);
+
+  useFocusEffect(() => {
+    if (!isUserFetched) {
+      navigation.navigate(ROUTES.REGISTER);
+    }
+  });
 
   const { activeDay } = useSelector((state: RootState) => state.day);
   const { tasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.tasks);

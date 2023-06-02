@@ -13,6 +13,7 @@ import DropdownGagesTasks from "./gage/DropdownGagesTasks/DropdownGagesTasks";
 import NoTasksGuide from "./home/NoTasksGuide/NoTasksGuide";
 import GagesTeam from "./gage/GagesTeam/GagesTeam";
 import GagesTeamsFilters from "./gage/GagesTeamFilters/GagesTeamsFilters";
+import HabitsList from "./habit/HabitsList";
 
 export {
   TaskItem,
@@ -30,4 +31,5 @@ export {
   NoTasksGuide,
   GagesTeam,
   GagesTeamsFilters,
+  HabitsList,
 };

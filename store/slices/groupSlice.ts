@@ -47,7 +47,11 @@ const groupSlice = createSlice({
       state.group = action.payload;
     },
     resetGroupStore: (state) => {
-      (state.group = null), (state.isLoading = false), (state.isGroupCreated = false), (state.isGroupLoaded = false), (state.message = "");
+      (state.group = null),
+        (state.isLoading = false),
+        (state.isGroupCreated = false),
+        (state.isGroupLoaded = false),
+        (state.messageSettingGroup = "");
     },
   },
   extraReducers(builder) {
@@ -60,7 +64,7 @@ const groupSlice = createSlice({
         state.codeSettingGroup = payload.code;
         state.messageSettingGroup = payload.message;
       })
-      .addCase(setGroupInDatabase.rejected, (state, { payload }) => {
+      .addCase(setGroupInDatabase.rejected, (state, { payload }: any) => {
         state.isLoading = false;
         state.codeSettingGroup = payload.code;
         state.messageSettingGroup = payload.message;

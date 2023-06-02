@@ -6,6 +6,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
+import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
+import { fetchDefaultTasksFromDatabase } from "../store/slices/defaultTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/tasksSlice";
 import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 import { fetchCurrentUser } from "../store/slices/userSlice";
@@ -19,6 +21,8 @@ const HomeScreen: FunctionComponent = ({ navigation }: any) => {
     dispatch(getGroupFromDatabase());
     dispatch(fetchTasksFromDatabase());
     dispatch(fetchGagesFromDatabase());
+    dispatch(fetchDefaultGagesFromDatabase());
+    dispatch(fetchDefaultTasksFromDatabase());
     dispatch(fetchCurrentUser());
   }, []);
 

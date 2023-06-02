@@ -9,10 +9,12 @@ import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/gro
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 import { fetchCurrentUser } from "../../store/slices/userSlice";
+import { useFocusEffect } from "@react-navigation/native";
+import React from "react";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const { user, isLogged, message } = useSelector((state: RootState) => state.user);
-  const { isGroupCreated } = useSelector((state: RootState) => state.group);
+  const { user, isLogged, message, code } = useSelector((state: RootState) => state.user);
+  const { isGroupCreated, codeSettingGroup, messageSettingGroup } = useSelector((state: RootState) => state.group);
   const [anotherLink, setAnotherLink] = useState("");
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -22,12 +24,19 @@ const LinkTogetherScreen = ({ navigation }: any) => {
     dispatch(getGroupFromDatabase());
   };
 
-  useEffect(() => {
-    dispatch(fetchCurrentUser());
-  }, []);
+  //modifier pour que à chaque fois qu'on vienne sur cet écran
+  useFocusEffect(
+    React.useCallback(() => {
+      const getUser = async () => {
+        dispatch(fetchCurrentUser());
+      };
+
+      getUser();
+    }, [])
+  );
 
   useEffect(() => {
-    if (isGroupCreated) {
+    if (isGroupCreated && codeSettingGroup == 200) {
       navigation.navigate(ROUTES.HOME);
     }
   }, [isGroupCreated]);
@@ -49,7 +58,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
           <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
 
-          <Text style={styles.text}>{message}</Text>
+          <Text style={styles.text}>{messageSettingGroup}</Text>
 
           {anotherLink.length === 0 ? (
             <Button onPress={() => {}} alternativeStyle>

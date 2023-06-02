@@ -8,7 +8,8 @@ type GroupState = {
   isLoading: boolean;
   isGroupCreated: boolean;
   isGroupLoaded: boolean;
-  message: string;
+  messageSettingGroup: string;
+  codeSettingGroup: null | number;
 };
 
 const initialState: GroupState = {
@@ -16,7 +17,8 @@ const initialState: GroupState = {
   isLoading: false,
   isGroupCreated: false,
   isGroupLoaded: false,
-  message: "",
+  messageSettingGroup: "",
+  codeSettingGroup: null,
 };
 
 export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (partnerCode: string, thunkAPI) => {
@@ -55,10 +57,13 @@ const groupSlice = createSlice({
       })
       .addCase(setGroupInDatabase.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.codeSettingGroup = payload.code;
+        state.messageSettingGroup = payload.message;
       })
       .addCase(setGroupInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
-        console.log("gmegugug", payload);
+        state.codeSettingGroup = payload.code;
+        state.messageSettingGroup = payload.message;
       })
 
       .addCase(getGroupFromDatabase.pending, (state) => {

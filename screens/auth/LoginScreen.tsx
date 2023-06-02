@@ -10,25 +10,21 @@ import ROUTES from "../../constants/routes";
 
 const LoginScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
-  const [email, onChangeMail] = useState("papasq@gmail.com");
+  const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
-  const { isLogged, message, user } = useSelector((state: RootState) => state.user);
+  const { isLogged, message, user, code } = useSelector((state: RootState) => state.user);
 
   const handleClick = () => {
     dispatch(login({ email: email, password: password }));
   };
 
   useEffect(() => {
-    if (message === "Vous devez vous lier à votre partenaire avant d'accéder à la page d'accueil") {
+    if (code === 403) {
       navigation.navigate(ROUTES.LINK);
-    }
-  }, [message]);
-
-  useEffect(() => {
-    if (isLogged) {
+    } else if (isLogged) {
       navigation.navigate(ROUTES.HOME);
     }
-  }, [handleClick]);
+  }, [isLogged, code]);
 
   return (
     <SafeAreaView style={styles.wrapper}>

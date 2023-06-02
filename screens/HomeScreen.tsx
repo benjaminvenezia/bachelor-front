@@ -6,14 +6,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
 import { GlobalStyles } from "../constants/style";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
-import { fetchDefaultTasksFromDatabase } from "../store/slices/defaultTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/tasksSlice";
-import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
+import { fetchGagesFromDatabase } from "../store/slices/gagesSlice";
 import { fetchCurrentUser } from "../store/slices/userSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useFocusEffect } from "@react-navigation/native";
-import ROUTES from "../constants/routes";
 
 const HomeScreen: FunctionComponent = ({ navigation }: any) => {
   const dispatch = useDispatch();

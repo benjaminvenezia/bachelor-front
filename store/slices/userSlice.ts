@@ -11,6 +11,7 @@ type UserState = {
   isRegistered: boolean;
   isUserFetched: boolean;
   message: string | null;
+  code: number | null;
 };
 
 const initialState: UserState = {
@@ -21,6 +22,7 @@ const initialState: UserState = {
   message: null,
 
   isUserFetched: false,
+  code: null,
 };
 
 export const login: any = createAsyncThunk("user/login", async (access: { email: string; password: string }, thunkAPI) => {
@@ -52,6 +54,7 @@ export const fetchCurrentUser: any = createAsyncThunk("user/fetchCurrentUser", a
     return resp.data;
   } catch (error: any) {
     console.log("erreur fetchCurrentUser");
+    console.log(error.response.data.message);
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });
@@ -125,12 +128,15 @@ let userSlice = createSlice({
         state.isLoading = false;
         state.user = payload.user;
         state.isLogged = true;
+        state.code = payload.code;
         save("token", payload.token);
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isLogged = false;
         state.message = payload;
+        state.code = payload.code;
+
         console.log(payload);
       })
 

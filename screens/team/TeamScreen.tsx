@@ -36,7 +36,7 @@ const TeamScreen = ({ navigation }: any) => {
         {user2Name} a marqué {user2Points} points cette semaine.
       </Text>
       <Text style={styles.text}>
-        {looser} est en train de perdre, {winner} est en tête de {delta} points
+        {delta} ? {looser} est en train de perdre, {winner} est en tête de {delta} points : "";
       </Text>
 
       <Button

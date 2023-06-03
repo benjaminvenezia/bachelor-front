@@ -34,7 +34,7 @@ const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdo
       <View style={styles.content}>
         <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>{title}</Text>
         <Text style={[styles.description, isSelected ? styles.isSelectedText : {}]}>{description}</Text>
-        {user.points < cost ? <Text style={styles.disabledLabel}>Il vous manque {cost - user?.points} points pour ce gage.</Text> : ""}
+        {user?.points < cost ? <Text style={styles.disabledLabel}>Il vous manque {cost - user?.points} points pour ce gage.</Text> : ""}
       </View>
       <View style={styles.cost}>
         <Text style={[styles.costText, isSelected ? styles.isSelectedText : {}]}>{cost}</Text>

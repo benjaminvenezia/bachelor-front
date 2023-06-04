@@ -24,11 +24,11 @@ const GageValidateScreen = ({ navigation }: any) => {
     description: gageToAddInDatabase.description,
     is_done: false,
     cost: gageToAddInDatabase.cost,
-    category: categoryGageSelection,
-    day: gageDay,
-    month: gageMonth,
-    year: gageYear,
-    date_string: gageDateString,
+    category: categoryGageSelection !== null ? categoryGageSelection : "",
+    day: gageDay !== null ? gageDay : 0,
+    month: gageMonth !== null ? gageMonth : 0,
+    year: gageYear !== null ? gageYear : 0,
+    date_string: gageDateString !== null ? gageDateString : "",
   };
 
   const handlePress = () => {

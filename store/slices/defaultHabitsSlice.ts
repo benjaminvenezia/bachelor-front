@@ -1,57 +1,57 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import { DefaultHabit } from "../../types/DefaultHabit";
-// import customFetch from "../../utils/http/axios";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { DefaultHabit } from "../../types/DefaultHabit";
+import customFetch from "../../utils/http/axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// export type DefaultHabitsState = {
-//   defaultHabits: DefaultHabit[];
-//   isLoading: boolean;
-//   areDefaultHabitsFetched: boolean;
-// };
+export type DefaultHabitsState = {
+  defaultHabits: DefaultHabit[];
+  isLoading: boolean;
+  areDefaultHabitsFetched: boolean;
+};
 
-// const initialState: DefaultHabitsState = {
-//   defaultHabits: [],
-//   isLoading: false,
-//   areDefaultHabitsFetched: false,
-// };
+const initialState: DefaultHabitsState = {
+  defaultHabits: [],
+  isLoading: false,
+  areDefaultHabitsFetched: false,
+};
 
-// export const fetchDefaultHabitsFromDatabase: any = createAsyncThunk("defaultHabits/fetchDefaultHabitsFromDatabase", async (_, thunkAPI) => {
-//   try {
-//     const resp = await customFetch.get(`/default_habits`);
+export const fetchDefaultHabitsFromDatabase: any = createAsyncThunk("defaultHabits/fetchDefaultHabitsFromDatabase", async (_, thunkAPI) => {
+  try {
+    const resp = await customFetch.get(`/default_habits`);
 
-//     return resp.data.data;
-//   } catch (error: any) {
-//     return thunkAPI.rejectWithValue(error.response.data.message);
-//   }
-// });
+    return resp.data.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
 
-// const defaultTasks = createSlice({
-//   name: "defaultHabits",
-//   initialState: initialState,
-//   reducers: {
-//     setDefaultTasks: (state, action): any => {
-//       const defaultTasksFromDatabase = action.payload;
+const defaultHabits = createSlice({
+  name: "defaultHabits",
+  initialState: initialState,
+  reducers: {
+    setDefaultHabits: (state, action): any => {
+      const defaultHabitsFromDatabase = action.payload;
 
-//       state.defaultTasks = defaultTasksFromDatabase;
-//     },
-//   },
-//   extraReducers(builder) {
-//     builder
-//       .addCase(fetchDefaultTasksFromDatabase.pending, (state) => {
-//         state.isLoading = true;
-//         state.areDefaultTasksFetched = false;
-//       })
-//       .addCase(fetchDefaultTasksFromDatabase.fulfilled, (state, { payload }) => {
-//         state.isLoading = false;
-//         state.areDefaultTasksFetched = true;
-//         state.defaultTasks = payload;
-//       })
-//       .addCase(fetchDefaultTasksFromDatabase.rejected, (state, { payload }) => {
-//         state.isLoading = false;
-//         state.areDefaultTasksFetched = false;
-//       });
-//   },
-// });
+      state.defaultHabits = defaultHabitsFromDatabase;
+    },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchDefaultHabitsFromDatabase.pending, (state) => {
+        state.isLoading = true;
+        state.areDefaultHabitsFetched = false;
+      })
+      .addCase(fetchDefaultHabitsFromDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.areDefaultHabitsFetched = true;
+        state.defaultHabits = payload;
+      })
+      .addCase(fetchDefaultHabitsFromDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.areDefaultHabitsFetched = false;
+      });
+  },
+});
 
-// export const { setDefaultTasks } = defaultTasks.actions;
-// export default defaultTasks.reducer;
+export const { setDefaultHabits } = defaultHabits.actions;
+export default defaultHabits.reducer;

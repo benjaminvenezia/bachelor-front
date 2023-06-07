@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import { Button, DropdownGagesTasks, Title } from "../../components";
+import { Button, ListGagesTasks, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { GlobalStyles } from "../../constants/style";
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ const GageSelectTaskScreen = ({ navigation }: any) => {
       <Title titleType="h2" style={styles.text}>
         Choisissez une tâche!
       </Title>
-      <DropdownGagesTasks />
+      <ListGagesTasks />
       <View style={styles.buttonContainer}>
         <Button onPress={() => navigation.goBack()}>Retour</Button>
 

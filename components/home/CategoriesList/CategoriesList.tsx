@@ -1,12 +1,12 @@
 import { View, StyleSheet } from "react-native";
-import CategoryItem from "../CategoryItem/CategoryItem";
+import CategoryListItem from "../CategoryListItem/CategoryListItem";
 import CATEGORIES from "../../../constants/categories";
 
 const CategoriesList = () => {
   return (
     <View style={styles.container}>
       {Object.values(CATEGORIES).map((category, index) => {
-        return <CategoryItem key={index}>{category}</CategoryItem>;
+        return <CategoryListItem key={index}>{category}</CategoryListItem>;
       })}
     </View>
   );

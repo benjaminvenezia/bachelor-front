@@ -1,4 +1,4 @@
-export type categoryDropdownItemProps = {
+export type CategoryListItemProps = {
   id: number;
   category: string;
   description: string;

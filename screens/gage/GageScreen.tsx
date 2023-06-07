@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View } from "react-native";
-import { Button, Title } from "../../components";
+import { Button, ListGagesTasks, Title } from "../../components";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DropdownCategories } from "../../components";
+import { ListCategories } from "../../components";
 import { useSelector } from "react-redux";
 import { GlobalStyles } from "../../constants/style";
 import { ScrollView } from "react-native-gesture-handler";
@@ -20,7 +20,7 @@ const GageScreen = ({ navigation }: any) => {
       <ScrollView style={styles.scrollView}>
         <Title titleType="h1">Faire subir un gage</Title>
         <Text style={styles.text}>Choisissez une catégorie!</Text>
-        <DropdownCategories />
+        <ListCategories />
       </ScrollView>
       <View style={styles.buttonContainer}>
         <Button onPress={() => navigation.goBack()}>Retour</Button>

@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { setCategoryGageSelection } from "../../../store/slices/gagesSlice";
 import { filterGageTask } from "../../../store/slices/gagesSlice";
 import { GlobalStyles } from "../../../constants/style";
-import { categoryDropdownItemProps } from "./CategoryDropdownItemProps.types";
+import { CategoryListItemProps } from "./CategoryListItemProps.types";
 
-const CategoryDropdownItem = (props: categoryDropdownItemProps) => {
+const CategoryListItem = (props: CategoryListItemProps) => {
   const dispatch = useDispatch();
-  const { category, title, active }: categoryDropdownItemProps = props;
+  const { category, title, active }: CategoryListItemProps = props;
 
   const handlePress = () => {
     dispatch(setCategoryGageSelection({ categoryTitle: category }));
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryDropdownItem;
+export default CategoryListItem;

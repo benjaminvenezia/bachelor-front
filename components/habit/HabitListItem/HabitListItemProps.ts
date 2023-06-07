@@ -1,4 +1,4 @@
-export type HabitProps = {
+export type HabitListItemProps = {
   id: number | string;
   path_icon: string;
   category: string;

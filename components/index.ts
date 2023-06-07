@@ -8,10 +8,10 @@ import Input from "./ui/Input/Input";
 import DaysSelectorContainer from "./category/DaysSelectorContainer/DaysSelectorContainer";
 import TaskItemCategory from "./category/TaskItemCategory/TaskItemCategory";
 import CustomCalendar from "./gage/CustomCalendar/CustomCalendar";
-import DropdownCategories from "./gage/DropdownCategories/DropdownCategories";
-import DropdownGagesTasks from "./gage/DropdownGagesTasks/DropdownGagesTasks";
+import ListCategories from "./gage/ListCategories/ListCategories";
+import ListGagesTasks from "./gage/ListGagesTasks/ListGagesTasks";
 import NoTasksGuide from "./home/NoTasksGuide/NoTasksGuide";
-import GagesTeam from "./gage/GagesTeam/GagesTeam";
+import GagesTeam from "./gage/ListGagesTeam/ListGagesTeam";
 import GagesTeamsFilters from "./gage/GagesTeamFilters/GagesTeamsFilters";
 import HabitsList from "./habit/HabitsList/HabitsList";
 
@@ -26,8 +26,8 @@ export {
   DaysSelectorContainer,
   TaskItemCategory,
   CustomCalendar,
-  DropdownCategories,
-  DropdownGagesTasks,
+  ListCategories,
+  ListGagesTasks,
   NoTasksGuide,
   GagesTeam,
   GagesTeamsFilters,

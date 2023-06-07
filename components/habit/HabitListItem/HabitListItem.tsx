@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
-import { HabitProps } from "./HabitProps";
+import { HabitListItemProps } from "./HabitListItemProps";
 import Title from "../../ui/Title/Title";
 
-const Habit = ({ title, description, category, path_icon }: HabitProps) => {
+const HabitListItem = ({ title, description, category, path_icon }: HabitListItemProps) => {
   return (
     <View style={styles.container}>
       <Title titleType="h2" style={styles.text}>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Habit;
+export default HabitListItem;

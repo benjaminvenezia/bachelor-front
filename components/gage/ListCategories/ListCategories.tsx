@@ -1,16 +1,15 @@
 import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import CategoryDropdownItem from "../CategoryDropdownItem/CategoryDropdownItem";
-
-const DropdownCategories = () => {
+import CategoryListItem from "../CategoryListItem/CategoryListItem";
+const ListCategories = () => {
   const { categoryGageSelection } = useSelector((state: RootState) => state.gages);
   const { categories } = useSelector((state: RootState) => state.categories);
 
   return (
     <View style={styles.wrapper}>
       {categories.map((item) => (
-        <CategoryDropdownItem key={item.id} active={item.category === categoryGageSelection ? true : false} {...item} />
+        <CategoryListItem key={item.id} active={item.category === categoryGageSelection ? true : false} {...item} />
       ))}
     </View>
   );
@@ -24,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DropdownCategories;
+export default ListCategories;

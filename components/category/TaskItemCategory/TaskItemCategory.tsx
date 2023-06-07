@@ -1,6 +1,6 @@
 import { Text, StyleSheet, Pressable, View, ImageBackground } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
-import { Task } from "../../../types/Task";
+import { DefaultTask } from "../../../types/Task";
 import { useState } from "react";
 import { checkTaskIsPresent } from "../../../utils/checkTaskIsPresent";
 import images from "../../../constants/images";
@@ -30,7 +30,7 @@ const TaskItemCategory = ({
       return;
     }
 
-    const taskToAdd: Task = {
+    const taskToAdd: DefaultTask = {
       id,
       title,
       category,

@@ -2,10 +2,10 @@ import { Text, StyleSheet, Pressable, View, Image } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { useDispatch, useSelector } from "react-redux";
 import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
-import { GageTaskDropdownItemProps } from "./GageTaskDropdownItemProps.types";
+import { GageTaskItemProps } from "./GageTaskListItemProps.types";
 import { RootState } from "../../../store/store";
 
-const GageTaskDropdownItem = ({ children, isSelected, ...props }: GageTaskDropdownItemProps) => {
+const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps) => {
   const { id, category, cost, description, title } = props;
 
   const { user } = useSelector((state: RootState) => state.user);
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GageTaskDropdownItem;
+export default GageTaskListItem;

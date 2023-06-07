@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import GageTeamItem from "./GageTeamItem";
+import GageTeamListItem from "./GageTeamListItem";
 
 describe("<GageTeamItem />", () => {
   const gage = {
@@ -20,7 +20,7 @@ describe("<GageTeamItem />", () => {
   };
 
   it("renders correctly", () => {
-    const tree = renderer.create(<GageTeamItem {...gage} />).toJSON();
+    const tree = renderer.create(<GageTeamListItem {...gage} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

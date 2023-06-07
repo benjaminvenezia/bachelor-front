@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import Button from "../../ui/Button/Button";
 
-const GageTeamItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_id, user_points }: Gage) => {
+const GageTeamListItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_id, user_points }: Gage) => {
   const { user } = useSelector((state: RootState) => state.user);
 
   return (
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GageTeamItem;
+export default GageTeamListItem;

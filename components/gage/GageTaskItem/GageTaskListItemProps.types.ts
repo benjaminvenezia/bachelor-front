@@ -1,6 +1,4 @@
-import { SetStateAction } from "react";
-
-export type GageTaskDropdownItemProps = {
+export type GageTaskItemProps = {
   id: number;
   title: string;
   description: string;

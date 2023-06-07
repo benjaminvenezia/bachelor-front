@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import Habit from "../Habit/Habit";
+import Habit from "../HabitListItem/HabitListItem";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { fetchDefaultHabitsFromDatabase } from "../../../store/slices/defaultHabitsSlice";

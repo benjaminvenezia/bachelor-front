@@ -2,7 +2,7 @@ export const GlobalStyles = {
   colors: {
     primary: "#FFF39E",
     background: "rgb(0, 0, 0)",
-    secondary: "#ffffff",
+    secondary: "#943D8A",
     todo: "#FF6363",
     done: "#125B50",
     deleting: "#ff0033",

@@ -17,7 +17,7 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "purple",
+    backgroundColor: GlobalStyles.colors.secondary,
     minHeight: 150,
     borderRadius: 25,
     marginBottom: 5,

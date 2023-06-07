@@ -29,7 +29,7 @@ const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps)
   return (
     <Pressable
       onPress={priceIsToHigh() ? () => {} : handlePress}
-      style={[priceIsToHigh() ? styles.disabledBackground : styles.wrapper, isSelected ? styles.isSelected : {}]}
+      style={[priceIsToHigh() ? styles.disabledBackground : styles.container, isSelected ? styles.isSelected : {}]}
     >
       <View style={styles.content}>
         <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>{title}</Text>
@@ -44,9 +44,9 @@ const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps)
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     flexDirection: "row",
-    minHeight: 120,
+    minHeight: 140,
     padding: 10,
     backgroundColor: "gray",
     width: "100%",
@@ -69,9 +69,11 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: "center",
+    minHeight: 140,
   },
   title: {
     fontSize: GlobalStyles.fontsSize.text,
+    color: GlobalStyles.colors.text,
     fontWeight: "bold",
     marginBottom: 5,
   },

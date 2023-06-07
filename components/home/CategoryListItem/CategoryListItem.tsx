@@ -3,6 +3,7 @@ import { GlobalStyles } from "../../../constants/style";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../../constants/routes";
 import { CategoryListItemProps } from "./CategoryListItemProps.types";
+import { AntDesign } from "@expo/vector-icons";
 
 const CategoryListItem = ({ children }: CategoryListItemProps) => {
   const navigation = useNavigation<any>();
@@ -12,7 +13,7 @@ const CategoryListItem = ({ children }: CategoryListItemProps) => {
     <Pressable style={styles.container} onPress={() => navigation.navigate(ROUTES.CATEGORY, { categoryName: categoryName })}>
       <View style={styles.subContainer}>
         <Text style={styles.text}>{children}</Text>
-        <Image style={styles.icon} source={require("../../../assets/icons/navigation/arrow-right.png")} />
+        <AntDesign name="pluscircle" size={30} color="gray" />
       </View>
     </Pressable>
   );
@@ -20,22 +21,23 @@ const CategoryListItem = ({ children }: CategoryListItemProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
-    marginVertical: 15,
+    paddingVertical: 0,
+    marginVertical: 5,
     width: "85%",
-    borderBottomWidth: 1,
-    borderBottomColor: GlobalStyles.colors.muted,
   },
   subContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 10,
+    padding: 7,
+    backgroundColor: "white",
   },
   text: {
-    fontSize: GlobalStyles.fontsSize.text,
-    color: GlobalStyles.colors.text,
+    fontSize: 25,
+    fontWeight: "700",
+    color: "gray",
   },
   icon: {
+    color: "black",
     width: 30,
     height: 30,
   },

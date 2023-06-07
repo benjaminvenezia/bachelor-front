@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginBottom: 5,
     padding: 15,
+    borderWidth: 5,
+    borderColor: "white",
   },
   text: {
     color: GlobalStyles.colors.text,

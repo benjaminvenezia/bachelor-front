@@ -18,7 +18,7 @@ const NoTasksGuide = () => {
 
         <CategoriesList />
       </View>
-      <ImageBackground blurRadius={0} style={styles.image} source={require("../../../assets/images/woman-sorrow.png")} />
+      <ImageBackground blurRadius={0} style={styles.image} source={require("../../../assets/images/confeti.png")} />
     </SafeAreaView>
   );
 };
@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
   image: {
     position: "absolute",
     bottom: "0%",
-    zIndex: -1,
-    width: 113,
-    height: 335,
+    zIndex: -2,
+    width: "100%",
+    height: 435,
   },
 });
 

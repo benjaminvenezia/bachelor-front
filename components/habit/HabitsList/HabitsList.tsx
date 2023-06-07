@@ -13,8 +13,6 @@ const HabitsList = () => {
     dispatch(fetchDefaultHabitsFromDatabase());
   }, []);
 
-  console.log(defaultHabits);
-
   return (
     <View>
       {defaultHabits.map((habit) => (

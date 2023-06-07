@@ -17,8 +17,9 @@ const Habit = ({ title, description, category, path_icon }: HabitProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "white",
-    borderWidth: 1,
+    backgroundColor: "purple",
+    minHeight: 150,
+    borderRadius: 25,
     marginBottom: 5,
     padding: 15,
   },

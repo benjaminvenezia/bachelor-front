@@ -1,4 +1,4 @@
-export type Task = {
+export type DefaultTask = {
   id: string;
   title: string;
   category: string;

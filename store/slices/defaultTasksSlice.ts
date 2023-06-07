@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Task } from "../../types/Task";
+import { DefaultTask } from "../../types/Task";
 import customFetch from "../../utils/http/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export type DefaultTasksState = {
-  defaultTasks: Task[];
+  defaultTasks: DefaultTask[];
   isLoading: boolean;
   areDefaultTasksFetched: boolean;
 };

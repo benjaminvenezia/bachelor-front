@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../../constants/style";
 import { useNavigation } from "@react-navigation/native";
 import ROUTES from "../../../constants/routes";
 import { CategoryListItemProps } from "./CategoryListItemProps.types";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const CategoryListItem = ({ children }: CategoryListItemProps) => {
   const navigation = useNavigation<any>();
@@ -13,7 +13,7 @@ const CategoryListItem = ({ children }: CategoryListItemProps) => {
     <Pressable style={styles.container} onPress={() => navigation.navigate(ROUTES.CATEGORY, { categoryName: categoryName })}>
       <View style={styles.subContainer}>
         <Text style={styles.text}>{children}</Text>
-        <AntDesign name="pluscircle" size={30} color="gray" />
+        <MaterialIcons name="read-more" size={30} color="white" />
       </View>
     </Pressable>
   );
@@ -21,23 +21,24 @@ const CategoryListItem = ({ children }: CategoryListItemProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 0,
-    marginVertical: 5,
-    width: "85%",
+    marginVertical: 7,
+    width: "100%",
   },
   subContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 7,
-    backgroundColor: "white",
+    borderColor: "white",
+    borderBottomWidth: 2,
+    backgroundColor: "black",
+    opacity: 0.7,
   },
   text: {
     fontSize: 25,
-    fontWeight: "700",
-    color: "gray",
+    fontWeight: "300",
+    color: "white",
   },
   icon: {
-    color: "black",
     width: 30,
     height: 30,
   },

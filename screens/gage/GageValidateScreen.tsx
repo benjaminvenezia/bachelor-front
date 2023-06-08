@@ -64,14 +64,14 @@ const GageValidateScreen = ({ navigation }: any) => {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <Button size="LG" onPress={() => navigation.goBack()}>
+        <Button style={styles.btnLeft} size="LG" onPress={() => navigation.goBack()}>
           Retour
         </Button>
         <Button size="LG" onPress={handlePress}>
           Valider le gage
         </Button>
-        <ImageBackground style={styles.image} source={require("../../assets/images/bang.png")} />
       </View>
+      <ImageBackground style={styles.image} source={require("../../assets/images/bang.png")} />
     </View>
   );
 };
@@ -84,6 +84,9 @@ const styles = StyleSheet.create({
   summaryContainer: {
     flexDirection: "row",
     marginBottom: 16,
+    borderBottomColor: "lightgray",
+    borderBottomWidth: 1,
+    paddingBottom: 10,
   },
   summaryTitle: {
     fontWeight: "bold",
@@ -100,9 +103,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   image: {
-    width: 200,
-    height: 200,
-    marginTop: 20,
+    width: 350,
+    height: 350,
+    marginTop: 10,
+  },
+  btnLeft: {
+    marginEnd: 10,
   },
 });
 

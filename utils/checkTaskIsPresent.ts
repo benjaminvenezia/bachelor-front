@@ -1,4 +1,4 @@
-import { Task } from "../types/Task";
+import { DefaultTask } from "../types/Task";
 
 /**
  * Check if a task object is present in an array of tasks objects.
@@ -6,6 +6,6 @@ import { Task } from "../types/Task";
  * @param taskToAdd    The task we want check before add it.
  * @returns true if the task is present.
  */
-export const checkTaskIsPresent = (arrayToCheck: Task[], taskToAdd: Task): boolean => {
-  return arrayToCheck.some((t: Task) => t.title === taskToAdd.title && t.associated_day === taskToAdd.associated_day);
+export const checkTaskIsPresent = (arrayToCheck: DefaultTask[], taskToAdd: DefaultTask): boolean => {
+  return arrayToCheck.some((t: DefaultTask) => t.title === taskToAdd.title && t.associated_day === taskToAdd.associated_day);
 };

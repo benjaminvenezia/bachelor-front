@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import DAYS from "../../constants/days";
 import { Day } from "../../types/Day";
+import getCurrentLabelDay from "../../utils/getCurrentLabelDay";
 
 const initialState: Day = {
-  activeDay: DAYS.MONDAY,
+  activeDay: getCurrentLabelDay(),
 };
 
 /**

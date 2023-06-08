@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground, Button } from "react-native";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";

@@ -6,7 +6,7 @@ import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../compo
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Task } from "../types/Task";
+import { DefaultTask } from "../types/Task";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
@@ -23,22 +23,22 @@ const CategoryScreen = ({ navigation, route }: any) => {
   const { tasks } = useSelector((state: RootState) => state.tasks);
 
   const { categoryName } = route.params;
-  const categoryTasks = defaultTasks.filter((task: Task) => task.category === categoryName);
+  const categoryTasks = defaultTasks.filter((task: DefaultTask) => task.category === categoryName);
 
   const getDaysAssociated = (title: string) => {
-    const days = tasks.filter((task: Task) => task.title === title);
+    const days = tasks.filter((task: DefaultTask) => task.title === title);
     const daysLabels = days.map((item) => item.associated_day);
 
     return daysLabels;
   };
 
   const getTasksForEachDaysSelected = () => {
-    let toPush: Task[] = [];
+    let toPush: DefaultTask[] = [];
 
     for (let i = 0; i < activatedTasks.length; i++) {
       for (let j = 0; j < activeDays.length; j++) {
-        const taskToExtract: Task = activatedTasks[i];
-        let taskToPush: Task = { ...taskToExtract };
+        const taskToExtract: DefaultTask = activatedTasks[i];
+        let taskToPush: DefaultTask = { ...taskToExtract };
         taskToPush.id = uuid.v4().toString();
         taskToPush.associated_day = activeDays[j];
         taskToPush.path_icon_todo = taskToExtract.path_icon_todo;
@@ -54,7 +54,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
     return toPush;
   };
 
-  const setTasksInHomeScreen = (tasks: Task[]) => {
+  const setTasksInHomeScreen = (tasks: DefaultTask[]) => {
     dispatch(addTask(tasks));
     dispatch(resetDays());
     navigation.navigate(ROUTES.HOME);

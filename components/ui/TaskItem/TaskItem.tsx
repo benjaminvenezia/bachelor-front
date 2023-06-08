@@ -8,15 +8,24 @@ import { setUserPointsInDatabase, incrementPointsInStore } from "../../../store/
 import images from "../../../constants/images";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { TaskItemProps } from "./TaskItemProps.types";
+import Toast from "react-native-toast-message";
 
 const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskItemProps) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [isDeleting, setIsDeleting] = useState(false);
+
   let { user } = useSelector((state: RootState) => state.user);
 
   let timeoutDeletingId: any;
   let timeoutTogglingId: any;
+
+  const TaskToastOn = () => {
+    Toast.show({
+      type: "success",
+      text1: `+ ${reward} points`,
+    });
+  };
 
   const handleRemove = () => {
     dispatch(removeTaskFromDatabase(id));
@@ -31,6 +40,7 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
     dispatch(toggleStatus({ id: id }));
 
     if (!is_done) {
+      TaskToastOn();
       dispatch(incrementPointsInStore({ points: reward }));
       dispatch(setUserPointsInDatabase({ id: user.id, points: user.points + reward }));
     }

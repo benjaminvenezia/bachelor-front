@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "./navigation/AuthNavigator";
 import { GlobalStyles } from "./constants/style";
 import { useFonts } from "expo-font";
+import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 const MyTheme = {
   dark: GlobalStyles.reactNative.darktheme,
@@ -17,6 +18,32 @@ const MyTheme = {
     border: GlobalStyles.reactNative.border,
     notification: GlobalStyles.reactNative.notification,
   },
+};
+
+const toastConfig = {
+  success: (props: any) => (
+    <BaseToast
+      {...props}
+      style={{ borderLeftColor: "pink", backgroundColor: GlobalStyles.colors.secondary, color: "white" }}
+      contentContainerStyle={{ paddingHorizontal: 15 }}
+      text1Style={{
+        color: "white",
+        fontSize: 20,
+        fontWeight: "900",
+      }}
+    />
+  ),
+  error: (props: any) => (
+    <ErrorToast
+      {...props}
+      text1Style={{
+        fontSize: 17,
+      }}
+      text2Style={{
+        fontSize: 15,
+      }}
+    />
+  ),
 };
 
 export default function App() {
@@ -36,6 +63,7 @@ export default function App() {
           <NavigationContainer theme={MyTheme}>
             <AuthNavigator />
           </NavigationContainer>
+          <Toast config={toastConfig} />
         </ReduxProvider>
       </>
     );

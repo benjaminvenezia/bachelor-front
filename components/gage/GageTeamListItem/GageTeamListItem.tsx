@@ -5,9 +5,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import Button from "../../ui/Button/Button";
 import { Fontisto, FontAwesome5 } from "@expo/vector-icons";
+import Toast from "react-native-toast-message";
 
 const GageTeamListItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_id, user_points }: Gage) => {
   const { user } = useSelector((state: RootState) => state.user);
+
+  //a ajouter
+  const ToastAddTask = () => {
+    Toast.show({
+      type: "success",
+      text1: `Le gage a été validé.`,
+      position: "bottom",
+      bottomOffset: 120,
+    });
+  };
 
   return (
     <View style={[styles.container, is_done ? styles.isDone : {}]}>

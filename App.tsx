@@ -24,7 +24,7 @@ const toastConfig = {
   success: (props: any) => (
     <BaseToast
       {...props}
-      style={{ borderLeftColor: "pink", backgroundColor: GlobalStyles.colors.secondary, color: "white" }}
+      style={{ borderLeftColor: GlobalStyles.colors.primary, backgroundColor: GlobalStyles.colors.secondary, color: "white" }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
         color: "white",

@@ -24,6 +24,8 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
     Toast.show({
       type: "success",
       text1: `+ ${reward} points`,
+      position: "bottom",
+      bottomOffset: 120,
     });
   };
 

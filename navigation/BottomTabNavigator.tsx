@@ -1,9 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ROUTES from "../constants/routes";
-import { HomeScreen, HabitsScreen, TeamScreen, SuggestionScreen, ShopScreen } from "../screens";
+import { HomeScreen, HabitsScreen, SuggestionScreen, ShopScreen } from "../screens";
 import GageStackNavigator from "./GageStacknavigator";
 import TeamStackNavigator from "./TeamStackNavigator";
 import { Feather, MaterialCommunityIcons, FontAwesome5, Entypo } from "@expo/vector-icons";
+import { StyleSheet } from "react-native";
+import { GlobalStyles } from "../constants/style";
 
 const Tab = createBottomTabNavigator();
 
@@ -73,5 +75,11 @@ const BottomTabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    color: GlobalStyles.colors.text,
+  },
+});
 
 export default BottomTabNavigator;

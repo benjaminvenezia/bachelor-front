@@ -2,7 +2,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ROUTES from "../constants/routes";
 import { RegisterScreen, LoginScreen, LinkTogetherScreen, CategoryScreen, TeamScreen, LoadingScreen } from "../screens";
 import DrawerNavigator from "./DrawerNavigator";
-import TeamStackNavigator from "./TeamStackNavigator";
 
 const Stack = createStackNavigator();
 

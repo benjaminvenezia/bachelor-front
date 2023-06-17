@@ -17,7 +17,7 @@ const TeamScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { group } = useSelector((state: RootState) => state.group);
 
-  const { delta, GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group | any = group;
+  const { GroupName, user1Points, delta, user2Points, user1Name, user2Name, winner, looser }: Group | any = group;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -29,7 +29,7 @@ const TeamScreen = ({ navigation }: any) => {
     }, [])
   );
 
-  return (
+  return GroupName && user1Points && user2Points && delta && winner ? (
     <SafeAreaView>
       <Title titleType="h1">{GroupName}</Title>
 
@@ -83,6 +83,8 @@ const TeamScreen = ({ navigation }: any) => {
         Voir les Gages
       </Button>
     </SafeAreaView>
+  ) : (
+    ""
   );
 };
 

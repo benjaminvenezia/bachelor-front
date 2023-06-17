@@ -1,19 +1,21 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { Gage } from "../../../types/Gage";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import Button from "../../ui/Button/Button";
 import { Fontisto, FontAwesome5 } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
+import { validateGage, validateGageInDatabase } from "../../../store/slices/gagesSlice";
 
 const GageTeamListItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_id, user_points }: Gage) => {
   const { user } = useSelector((state: RootState) => state.user);
 
-  //a ajouter
-  const ToastAddTask = () => {
+  const dispatch = useDispatch();
+
+  const ToastValidateGage = () => {
     Toast.show({
-      type: "success",
+      type: "info",
       text1: `Le gage a été validé.`,
       position: "bottom",
       bottomOffset: 120,
@@ -33,11 +35,14 @@ const GageTeamListItem = ({ id, title, description, is_done, cost, category, day
         <Text style={styles.text}>
           {day}/{month}/{year}
         </Text>
+        <Text>{is_done ? "true" : "false"}</Text>
       </View>
-      {user.id === user_id ? (
+      {user?.id === user_id ? (
         <Button
           onPress={() => {
-            alert(1);
+            dispatch(validateGage({ gageId: id }));
+            dispatch(validateGageInDatabase({ gageId: id }));
+            ToastValidateGage();
           }}
         >
           Valider le gage

@@ -11,14 +11,14 @@ function DrawerNavigator() {
     <Drawer.Navigator>
       <Drawer.Screen
         options={{
-          title: "",
+          title: "Menu",
           headerRight: () => <CurrentWinnerBadge />,
         }}
         name={ROUTES.HOME_DRAWER}
         component={BottomTabNavigator}
       />
       <Drawer.Screen options={{ title: "A propos" }} name={ROUTES.ABOUT_DRAWER} component={AboutScreen} />
-      <Drawer.Screen options={{ title: "Vous" }} name={ROUTES.TEAM_DRAWER} component={TeamScreen} />
+      {/* <Drawer.Screen options={{ title: "Vous" }} name={ROUTES.TEAM_DRAWER} component={TeamScreen} /> */}
       <Drawer.Screen options={{ title: "Mon compte" }} name={ROUTES.USER} component={UserScreen} />
     </Drawer.Navigator>
   );

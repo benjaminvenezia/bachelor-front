@@ -9,11 +9,13 @@ import Title from "../../ui/Title/Title";
 const ListGagesTeam = () => {
   const { gagesAssociatedToUsers } = useSelector((state: RootState) => state.gages);
 
+  const gagesAssociatedToUsersNotDone = gagesAssociatedToUsers.filter((gage) => !gage.is_done);
+
   return (
     <ScrollView>
-      {gagesAssociatedToUsers.length > 0 ? (
+      {gagesAssociatedToUsersNotDone.length > 0 ? (
         gagesAssociatedToUsers.map((item, index) => {
-          return <GageTeamItem key={index} {...item} />;
+          return !item.is_done ? <GageTeamItem key={index} {...item} /> : "";
         })
       ) : (
         <Title titleType="h5">Aucun gage n'a été assigné</Title>

@@ -33,11 +33,6 @@ const GagesTeamsFilters = () => {
         style={styles.filter}
         alternativeStyle={data.user1}
         onPress={() => {
-          // onPress={(data) => setData((data) => ({
-          //   ...data,
-          //   data.user1 = true;
-          // }))
-
           setData((data) => ({ ...byDefault, user1: !data.user1 }));
           dispatch(resetGagesAssociatedToUsers());
           dispatch(sortByUser({ userName: group?.user1Name }));

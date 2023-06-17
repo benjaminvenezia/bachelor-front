@@ -73,19 +73,20 @@ export const setGageInDatabase = createAsyncThunk("gages/setGageInDatabase", asy
   }
 });
 
+export const validateGageInDatabase = createAsyncThunk("gages/validateGageInDatabase", async (gageId: { gageId: number }, thunkAPI) => {
+  try {
+    const resp = await customFetch.post(`/gage/validate/${gageId.gageId}`);
+    return resp.data;
+  } catch (error: any) {
+    console.log(error.response);
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
+});
+
 const gagesSlice = createSlice({
   name: "gages",
   initialState: initialState,
   reducers: {
-    // setGages: (state, action) => {
-    //   state.gages = action.payload;
-    // },
-    // setGagesTask: (state, action) => {
-    //   state.gagesTask = action.payload;
-    // },
-    // addGage: (state, action) => {
-    //   state.gages.push(action.payload);
-    // },
     /** Used in GageScreen to dynamically update the gageTask when user select a category. */
     filterGageTask: (state, action) => {
       state.gagesTaskFiltered = state.gagesTask.filter((item) => item.category === action.payload.category);
@@ -101,7 +102,9 @@ const gagesSlice = createSlice({
       );
     },
     sortByUser: (state, action) => {
-      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter((gage: Gage) => gage.user_name === action.payload.userName);
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter(
+        (gage: Gage) => !gage.is_done && gage.user_name === action.payload.userName
+      );
     },
     filterByGagesAreNotDone: (state) => {
       state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter((gage: Gage) => !gage.is_done);
@@ -126,6 +129,10 @@ const gagesSlice = createSlice({
       state.gageMonth = action.payload.month;
       state.gageYear = action.payload.year;
       state.gageDateString = action.payload.date_string;
+    },
+    validateGage: (state, action) => {
+      state.gagesAssociatedToUsers.map((gage) => (gage.id === action.payload.gageId ? (gage.is_done = true) : ""));
+      state.gagesAssociatedToUsersSave.map((gage) => (gage.id === action.payload.gageId ? (gage.is_done = true) : ""));
     },
   },
 
@@ -170,6 +177,16 @@ const gagesSlice = createSlice({
       })
       .addCase(setGageInDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
+      })
+
+      .addCase(validateGageInDatabase.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(validateGageInDatabase.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(validateGageInDatabase.rejected, (state, { payload }) => {
+        state.isLoading = false;
       });
   },
 });
@@ -186,5 +203,6 @@ export const {
   setGageTaskId,
   removeGageTaskId,
   setDate,
+  validateGage,
 } = gagesSlice.actions;
 export default gagesSlice.reducer;

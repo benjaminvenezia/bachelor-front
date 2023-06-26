@@ -29,7 +29,7 @@ const TeamScreen = ({ navigation }: any) => {
     }, [])
   );
 
-  return GroupName && user1Points && user2Points && delta && winner ? (
+  return GroupName ? (
     <SafeAreaView>
       <Title titleType="h1">{GroupName}</Title>
 

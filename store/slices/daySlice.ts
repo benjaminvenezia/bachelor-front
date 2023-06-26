@@ -3,6 +3,7 @@ import { Day } from "../../types/Day";
 import getCurrentLabelDay from "../../utils/getCurrentLabelDay";
 
 const initialState: Day = {
+  currentDay: getCurrentLabelDay(),
   activeDay: getCurrentLabelDay(),
 };
 
@@ -16,6 +17,7 @@ const daySlice = createSlice({
     changeDay: (state, action) => {
       return {
         activeDay: action.payload.activeDay,
+        currentDay: state.currentDay,
       };
     },
   },

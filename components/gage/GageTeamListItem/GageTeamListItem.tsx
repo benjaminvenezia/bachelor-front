@@ -35,7 +35,6 @@ const GageTeamListItem = ({ id, title, description, is_done, cost, category, day
         <Text style={styles.text}>
           {day}/{month}/{year}
         </Text>
-        <Text>{is_done ? "true" : "false"}</Text>
       </View>
       {user?.id === user_id ? (
         <Button

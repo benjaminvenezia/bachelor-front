@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
 import { GageTaskItemProps } from "./GageTaskListItemProps.types";
 import { RootState } from "../../../store/store";
+import PointsLabel from "../../ui/PointsLabel/PointsLabel";
 
 const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps) => {
   const { id, category, cost, description, title } = props;
@@ -34,10 +35,17 @@ const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps)
       <View style={styles.content}>
         <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>{title}</Text>
         <Text style={[styles.description, isSelected ? styles.isSelectedText : {}]}>{description}</Text>
-        {user?.points < cost ? <Text style={styles.disabledLabel}>Il vous manque {cost - user?.points} points pour ce gage.</Text> : ""}
+        {user?.points < cost ? (
+          <Text style={styles.disabledLabel}>
+            Il vous manque {cost - user?.points} <PointsLabel /> pour ce gage.
+          </Text>
+        ) : (
+          ""
+        )}
       </View>
       <View style={styles.cost}>
         <Text style={[styles.costText, isSelected ? styles.isSelectedText : {}]}>{cost}</Text>
+        <PointsLabel />
       </View>
     </Pressable>
   );
@@ -82,12 +90,14 @@ const styles = StyleSheet.create({
     color: GlobalStyles.colors.text,
   },
   cost: {
-    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
   },
   costText: {
     fontSize: GlobalStyles.fontsSize.text,
     color: GlobalStyles.colors.primary,
     fontWeight: "900",
+    marginEnd: 5,
   },
   disabledLabel: {
     fontSize: 13,

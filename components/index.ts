@@ -14,7 +14,9 @@ import NoTasksGuide from "./home/NoTasksGuide/NoTasksGuide";
 import GagesTeam from "./gage/ListGagesTeam/ListGagesTeam";
 import GagesTeamsFilters from "./gage/GagesTeamFilters/GagesTeamsFilters";
 import HabitsList from "./habit/HabitsList/HabitsList";
-import CurrentWinnerBadge from "./Team/CurrentWinnerBadge/CurrentWinnerBadge";
+import CurrentWinnerBadge from "./header/CurrentWinnerBadge/CurrentWinnerBadge";
+import UserPoints from "./header/UserPoints/UserPoints";
+import PointsLabel from "./ui/PointsLabel/PointsLabel";
 
 export {
   TaskItem,
@@ -34,4 +36,6 @@ export {
   GagesTeamsFilters,
   HabitsList,
   CurrentWinnerBadge,
+  UserPoints,
+  PointsLabel,
 };

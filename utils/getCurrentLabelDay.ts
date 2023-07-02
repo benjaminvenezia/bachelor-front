@@ -8,7 +8,6 @@ function getCurrentLabelDay() {
   switch (day) {
     case 0:
       label = DAYS.SUNDAY;
-
       break;
     case 1:
       label = DAYS.MONDAY;

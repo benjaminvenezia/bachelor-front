@@ -11,12 +11,13 @@ import ROUTES from "../../../constants/routes";
 
 const CurrentWinnerBadge = () => {
   const { group } = useSelector((state: RootState) => state.group);
+
   const [winnerLabel, setWinnerLabel] = useState(group?.winner);
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    setWinnerLabel();
+    setWinnerLabel(group?.winner);
   }, [group]);
 
   return (

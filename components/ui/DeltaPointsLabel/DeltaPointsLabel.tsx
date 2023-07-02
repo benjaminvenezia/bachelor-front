@@ -19,7 +19,13 @@ const DeltaPointsLabel = () => {
     }
   }, [user?.points]);
 
-  return <Text style={styles.text}>{delta}</Text>;
+  return (
+    <Text style={styles.text}>
+      {" "}
+      {user?.name === group?.winner ? "+" : "-"}
+      {delta}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({

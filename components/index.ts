@@ -17,6 +17,7 @@ import HabitsList from "./habit/HabitsList/HabitsList";
 import CurrentWinnerBadge from "./header/CurrentWinnerBadge/CurrentWinnerBadge";
 import UserPoints from "./header/UserPoints/UserPoints";
 import PointsLabel from "./ui/PointsLabel/PointsLabel";
+import DeltaPointsLabel from "./ui/DeltaPointsLabel/DeltaPointsLabel";
 
 export {
   TaskItem,
@@ -38,4 +39,5 @@ export {
   CurrentWinnerBadge,
   UserPoints,
   PointsLabel,
+  DeltaPointsLabel,
 };

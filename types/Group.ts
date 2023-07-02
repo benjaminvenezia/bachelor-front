@@ -7,7 +7,6 @@ export type Group = {
   user2Name: string;
   user1Points: number;
   user2Points: number;
-  delta: number;
   winner: string;
   looser: string;
 };

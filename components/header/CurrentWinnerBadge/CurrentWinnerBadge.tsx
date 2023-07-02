@@ -16,7 +16,7 @@ const CurrentWinnerBadge = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    setWinnerLabel(group?.winner);
+    setWinnerLabel();
   }, [group]);
 
   return (

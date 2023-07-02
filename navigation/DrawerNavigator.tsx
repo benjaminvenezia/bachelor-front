@@ -13,7 +13,7 @@ function DrawerNavigator() {
     <Drawer.Navigator>
       <Drawer.Screen
         options={{
-          title: "",
+          title: "Home",
           headerRight: () => {
             return (
               <View style={styles.container}>

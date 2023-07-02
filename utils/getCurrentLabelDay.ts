@@ -6,6 +6,10 @@ function getCurrentLabelDay() {
   let label = "";
 
   switch (day) {
+    case 0:
+      label = DAYS.SUNDAY;
+
+      break;
     case 1:
       label = DAYS.MONDAY;
       break;
@@ -24,10 +28,6 @@ function getCurrentLabelDay() {
     case 6:
       label = DAYS.SATURDAY;
       break;
-    case 7:
-      label = DAYS.SUNDAY;
-      break;
-
     default:
       break;
   }

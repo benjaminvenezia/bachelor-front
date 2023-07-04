@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
-import { Button, Title } from "../../components";
+import { Button, PointsLabel, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -67,7 +67,9 @@ const GageValidateScreen = ({ navigation }: any) => {
       </View>
       <View style={styles.summaryContainer}>
         <Text style={styles.summaryTitle}>Coût:</Text>
-        <Text style={styles.summaryText}>{gageToAddInDatabase.cost}</Text>
+        <Text style={styles.summaryText}>
+          {gageToAddInDatabase.cost} <PointsLabel />
+        </Text>
       </View>
       <View style={styles.summaryContainer}>
         <Text style={styles.summaryTitle}>Date:</Text>

@@ -3,6 +3,7 @@ export type User = {
   email: string;
   name: string;
   points: number;
+  points_gage: number;
   personal_code: string;
   other_code: string;
   created_at: string;

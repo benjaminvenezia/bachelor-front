@@ -42,7 +42,7 @@ export const register: any = createAsyncThunk(
       const resp = await customFetch.post(`/register`, access);
       return resp.data;
     } catch (error: any) {
-      console.log("erreur register");
+      console.log("erreur register: ", error.response);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
@@ -68,6 +68,20 @@ export const setUserPointsInDatabase = createAsyncThunk(
       return resp.data;
     } catch (error: any) {
       console.log("erreur setUserPointsInDatabase");
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const setUserPointsGageInDatabase = createAsyncThunk(
+  "user/setUserPointsGageInDatabase",
+  async ({ id, points_gage }: { id: number; points_gage: number }, thunkAPI) => {
+    try {
+      const resp = await customFetch.patch(`/users/${id}`, { points_gage: points_gage });
+
+      return resp.data;
+    } catch (error: any) {
+      console.log("erreur setUserPointsGageInDatabase: ", error.response);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
 import { GageTaskItemProps } from "./GageTaskListItemProps.types";
 import { RootState } from "../../../store/store";
-import PointsLabel from "../../ui/PointsLabel/PointsLabel";
+import { PointsLabel } from "../../index";
 
 const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps) => {
   const { id, category, cost, description, title } = props;
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     marginEnd: 5,
   },
   disabledLabel: {
+    marginTop: 10,
     fontSize: 13,
     color: "#e84a5f",
   },

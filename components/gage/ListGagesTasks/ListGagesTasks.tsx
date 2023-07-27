@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import GageTaskItem from "../GageTaskItem/GageTaskListItem";
+import GageTaskListItem from "../GageTaskItem/GageTaskListItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { Gage } from "../../../types/Gage";
@@ -12,9 +12,9 @@ const ListGagesTasks = () => {
     <ScrollView style={styles.wrapper}>
       {gagesTaskFiltered.map((item: Gage) => {
         return (
-          <GageTaskItem isSelected={!gageTaskId ? false : true && item.id === gageTaskId} key={item.id} {...item}>
+          <GageTaskListItem isSelected={!gageTaskId ? false : true && item.id === gageTaskId} key={item.id} {...item}>
             {item.title}
-          </GageTaskItem>
+          </GageTaskListItem>
         );
       })}
     </ScrollView>

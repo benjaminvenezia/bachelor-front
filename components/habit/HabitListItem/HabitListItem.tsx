@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import { StyleSheet } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { HabitListItemProps } from "./HabitListItemProps";
@@ -13,8 +13,20 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
   const PENALTIES_COST: number[] = [30, 100, 200, 350, 500];
   const COLORS_PROGRESSBAR: string[] = ["#1c0629", "#421462", "#700c50", "#cf2493", "#f67bbf"];
 
-  const handleClick = () => (level < MAX_LEVEL ? setLevel(level + 1) : LimitExceededToast());
-
+  const createTwoButtonAlert = () => {
+    if (level < MAX_LEVEL) {
+      Alert.alert("Confirmation", `Votre partenaire perdra ${PENALTIES_COST[level]} points.`, [
+        {
+          text: "Annuler",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => setLevel(level + 1) },
+      ]);
+    } else {
+      LimitExceededToast();
+    }
+  };
   const LimitExceededToast = () => {
     Toast.show({
       type: "success",
@@ -25,7 +37,7 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
   };
 
   return (
-    <View onTouchEnd={handleClick} style={styles.container}>
+    <View onTouchEnd={createTwoButtonAlert} style={styles.container}>
       <Title titleType="h3" style={styles.text}>
         {title}
       </Title>

@@ -15,14 +15,21 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
 
   const createTwoButtonAlert = () => {
     if (level < MAX_LEVEL) {
-      Alert.alert("Confirmation", `Votre partenaire perdra ${PENALTIES_COST[level]} points.`, [
+      Alert.alert(
+        "Confirmation",
+        `Votre partenaire perdra ${PENALTIES_COST[level]} points.`,
+        [
+          {
+            text: "Annuler",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => setLevel(level + 1) },
+        ],
         {
-          text: "Annuler",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => setLevel(level + 1) },
-      ]);
+          userInterfaceStyle: "dark",
+        }
+      );
     } else {
       LimitExceededToast();
     }

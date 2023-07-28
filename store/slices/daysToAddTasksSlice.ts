@@ -19,7 +19,10 @@ const daysToAddTasksSlice = createSlice({
       state.activeDays.push(action.payload.label);
     },
     removeDay: (state, action) => {
-      state.activeDays.splice(state.activeDays.indexOf(action.payload.label), 1);
+      state.activeDays.splice(
+        state.activeDays.indexOf(action.payload.label),
+        1,
+      );
     },
     resetDays: (state) => {
       state.activeDays = [];

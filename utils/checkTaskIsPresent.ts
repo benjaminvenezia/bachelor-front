@@ -6,6 +6,13 @@ import { DefaultTask } from "../types/DefaultTask";
  * @param taskToAdd    The task we want check before add it.
  * @returns true if the task is present.
  */
-export const checkTaskIsPresent = (arrayToCheck: DefaultTask[], taskToAdd: DefaultTask): boolean => {
-  return arrayToCheck.some((t: DefaultTask) => t.title === taskToAdd.title && t.associated_day === taskToAdd.associated_day);
+export const checkTaskIsPresent = (
+  arrayToCheck: DefaultTask[],
+  taskToAdd: DefaultTask,
+): boolean => {
+  return arrayToCheck.some(
+    (t: DefaultTask) =>
+      t.title === taskToAdd.title &&
+      t.associated_day === taskToAdd.associated_day,
+  );
 };

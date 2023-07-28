@@ -18,7 +18,9 @@ const GageSelectTaskScreen = ({ navigation }: any) => {
         <Button onPress={() => navigation.goBack()}>Retour</Button>
 
         {gageTaskId ? (
-          <Button onPress={() => navigation.navigate(ROUTES.SELECT_DATE)}>Suivant</Button>
+          <Button onPress={() => navigation.navigate(ROUTES.SELECT_DATE)}>
+            Suivant
+          </Button>
         ) : (
           <Button alternativeStyle onPress={() => {}}>
             Choisir

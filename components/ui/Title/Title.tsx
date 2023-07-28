@@ -3,7 +3,10 @@ import { GlobalStyles } from "../../../constants/style";
 import { TitleProps } from "./TitleProps.types";
 
 const Title = ({ children, titleType = "h1", style }: TitleProps) => {
-  const stylesByType: Record<string, { fontSize: number; color: string; fontFamily?: string }> = {
+  const stylesByType: Record<
+    string,
+    { fontSize: number; color: string; fontFamily?: string }
+  > = {
     h1: {
       fontSize: GlobalStyles.fontsSize.h1,
       color: GlobalStyles.colors.h1,
@@ -31,7 +34,11 @@ const Title = ({ children, titleType = "h1", style }: TitleProps) => {
     },
   };
 
-  return <Text style={[styles.default, stylesByType[titleType], style]}>{children}</Text>;
+  return (
+    <Text style={[styles.default, stylesByType[titleType], style]}>
+      {children}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({

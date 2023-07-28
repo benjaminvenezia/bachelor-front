@@ -1,9 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ROUTES from "../constants/routes";
-import { HomeScreen, HabitsScreen, SuggestionScreen, ShopScreen } from "../screens";
+import {
+  HomeScreen,
+  HabitsScreen,
+  SuggestionScreen,
+  ShopScreen,
+} from "../screens";
 import GageStackNavigator from "./GageStacknavigator";
 import TeamStackNavigator from "./TeamStackNavigator";
-import { Feather, MaterialCommunityIcons, FontAwesome5, Entypo } from "@expo/vector-icons";
+import {
+  Feather,
+  MaterialCommunityIcons,
+  FontAwesome5,
+  Entypo,
+} from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import { GlobalStyles } from "../constants/style";
 
@@ -38,7 +48,9 @@ const BottomTabNavigator = () => {
         options={{
           tabBarLabel: "Gage",
           tabBarIcon: ({ color, size }) => {
-            return <MaterialCommunityIcons name="sword" size={size} color={color} />;
+            return (
+              <MaterialCommunityIcons name="sword" size={size} color={color} />
+            );
           },
         }}
       />

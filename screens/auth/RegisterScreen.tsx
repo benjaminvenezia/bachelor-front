@@ -1,4 +1,10 @@
-import { SafeAreaView, View, StyleSheet, Text, ImageBackground } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+} from "react-native";
 import ROUTES from "../../constants/routes";
 import React, { useEffect, useState } from "react";
 import { Button, Title, Input } from "../../components";
@@ -13,14 +19,24 @@ const RegisterScreen = ({ navigation }: any) => {
   const [name, onChangeName] = useState("benjamin");
   const [email, onChangeMail] = useState("papa@gmail.com");
   const [password, onChangePassword] = useState("password");
-  const [password_verification, onChangePasswordVerification] = useState("password");
-  const { user, message, isRegistered } = useSelector((state: RootState) => state.user);
+  const [password_verification, onChangePasswordVerification] =
+    useState("password");
+  const { user, message, isRegistered } = useSelector(
+    (state: RootState) => state.user,
+  );
 
   const dispatch = useDispatch();
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    dispatch(register({ name: name, email: email, password: password, password_confirmation: password_verification }));
+    dispatch(
+      register({
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_verification,
+      }),
+    );
   };
 
   useEffect(() => {
@@ -37,7 +53,9 @@ const RegisterScreen = ({ navigation }: any) => {
 
     const checkToken = async () => {
       const token = await fetchToken();
-      token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);
+      token
+        ? navigation.navigate(ROUTES.HOME)
+        : navigation.navigate(ROUTES.REGISTER);
     };
 
     checkToken();
@@ -45,15 +63,36 @@ const RegisterScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <ImageBackground style={styles.image} source={require("../../assets/images/man-playing-saxophone.png")} />
+      <ImageBackground
+        style={styles.image}
+        source={require("../../assets/images/man-playing-saxophone.png")}
+      />
       <View style={styles.container}>
         <Title titleType="h1" style={styles.title}>
           Inscription
         </Title>
         <View style={styles.inputsContainer}>
-          <Input shadow={true} onChangeHandler={onChangeName} value={name} placeholder="prénom" keyboard="default" />
-          <Input shadow={true} onChangeHandler={onChangeMail} value={email} placeholder="Mail" keyboard="email-address" />
-          <Input shadow={true} onChangeHandler={onChangePassword} value={password} placeholder="Mot de passe" keyboard="default" />
+          <Input
+            shadow={true}
+            onChangeHandler={onChangeName}
+            value={name}
+            placeholder="prénom"
+            keyboard="default"
+          />
+          <Input
+            shadow={true}
+            onChangeHandler={onChangeMail}
+            value={email}
+            placeholder="Mail"
+            keyboard="email-address"
+          />
+          <Input
+            shadow={true}
+            onChangeHandler={onChangePassword}
+            value={password}
+            placeholder="Mot de passe"
+            keyboard="default"
+          />
           <Input
             shadow={true}
             onChangeHandler={onChangePasswordVerification}
@@ -72,7 +111,10 @@ const RegisterScreen = ({ navigation }: any) => {
         <Title titleType="h2" style={styles.title}>
           Déjà un compte?
         </Title>
-        <Button size={GlobalStyles.buttons.lg} onPress={() => navigation.navigate(ROUTES.LOGIN)}>
+        <Button
+          size={GlobalStyles.buttons.lg}
+          onPress={() => navigation.navigate(ROUTES.LOGIN)}
+        >
           Connexion
         </Button>
       </View>

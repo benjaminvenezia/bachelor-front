@@ -17,7 +17,9 @@ const CategoryListItem = (props: CategoryListItemProps) => {
   return (
     <Pressable onPress={handlePress}>
       <View style={[styles.wrapper, active ? styles.active : {}]}>
-        <Text style={[styles.text, active ? styles.textActive : {}]}>{title}</Text>
+        <Text style={[styles.text, active ? styles.textActive : {}]}>
+          {title}
+        </Text>
       </View>
     </Pressable>
   );

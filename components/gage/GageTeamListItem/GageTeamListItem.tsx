@@ -6,9 +6,25 @@ import { RootState } from "../../../store/store";
 import Button from "../../ui/Button/Button";
 import { Fontisto, FontAwesome5 } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
-import { validateGage, validateGageInDatabase } from "../../../store/slices/gagesSlice";
+import {
+  validateGage,
+  validateGageInDatabase,
+} from "../../../store/slices/gagesSlice";
 
-const GageTeamListItem = ({ id, title, description, is_done, cost, category, day, month, year, user_name, user_id, user_points }: Gage) => {
+const GageTeamListItem = ({
+  id,
+  title,
+  description,
+  is_done,
+  cost,
+  category,
+  day,
+  month,
+  year,
+  user_name,
+  user_id,
+  user_points,
+}: Gage) => {
   const { user } = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
@@ -26,7 +42,12 @@ const GageTeamListItem = ({ id, title, description, is_done, cost, category, day
     <View style={[styles.container, is_done ? styles.isDone : {}]}>
       <Text style={[styles.text, styles.title]}>{title}</Text>
       <View style={styles.infoContainer}>
-        <FontAwesome5 style={styles.icon} name="skull" size={19} color="white" />
+        <FontAwesome5
+          style={styles.icon}
+          name="skull"
+          size={19}
+          color="white"
+        />
         <Text style={styles.text}>{user_name}</Text>
       </View>
 

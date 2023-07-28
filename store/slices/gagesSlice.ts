@@ -41,47 +41,59 @@ const initialState: GagesState = {
   areDefaultGagesFetched: false,
 };
 
-export const fetchDefaultGagesFromDatabase: any = createAsyncThunk("defaultGages/fetchDefaultGagesFromDatabase", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/default_gages`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const fetchDefaultGagesFromDatabase: any = createAsyncThunk(
+  "defaultGages/fetchDefaultGagesFromDatabase",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/default_gages`);
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 /**
  * Les gages associés aux utilisateurs
  */
-export const fetchGagesFromDatabase: any = createAsyncThunk("gages/fetchGagesFromDatabase", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/gages`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const fetchGagesFromDatabase: any = createAsyncThunk(
+  "gages/fetchGagesFromDatabase",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/gages`);
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const setGageInDatabase = createAsyncThunk("gages/setGageInDatabase", async (gage: Gage, thunkAPI) => {
-  try {
-    const resp = await customFetch.post(`/gages`, gage);
+export const setGageInDatabase = createAsyncThunk(
+  "gages/setGageInDatabase",
+  async (gage: Gage, thunkAPI) => {
+    try {
+      const resp = await customFetch.post(`/gages`, gage);
 
-    return resp.data;
-  } catch (error: any) {
-    console.log(error.response);
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+      return resp.data;
+    } catch (error: any) {
+      console.log(error.response);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const validateGageInDatabase = createAsyncThunk("gages/validateGageInDatabase", async (gageId: { gageId: number }, thunkAPI) => {
-  try {
-    const resp = await customFetch.post(`/gage/validate/${gageId.gageId}`);
-    return resp.data;
-  } catch (error: any) {
-    console.log(error.response);
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const validateGageInDatabase = createAsyncThunk(
+  "gages/validateGageInDatabase",
+  async (gageId: { gageId: number }, thunkAPI) => {
+    try {
+      const resp = await customFetch.post(`/gage/validate/${gageId.gageId}`);
+      return resp.data;
+    } catch (error: any) {
+      console.log(error.response);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 const gagesSlice = createSlice({
   name: "gages",
@@ -89,25 +101,34 @@ const gagesSlice = createSlice({
   reducers: {
     /** Used in GageScreen to dynamically update the gageTask when user select a category. */
     filterGageTask: (state, action) => {
-      state.gagesTaskFiltered = state.gagesTask.filter((item) => item.category === action.payload.category);
+      state.gagesTaskFiltered = state.gagesTask.filter(
+        (item) => item.category === action.payload.category,
+      );
     },
     sortByDate: (state) => {
       state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.sort(
-        (g1: Gage, g2: Gage) => new Date(g1.date_string).getTime() - new Date(g2.date_string).getTime()
+        (g1: Gage, g2: Gage) =>
+          new Date(g1.date_string).getTime() -
+          new Date(g2.date_string).getTime(),
       );
     },
     sortByDateDesc: (state) => {
       state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.sort(
-        (g1: Gage, g2: Gage) => new Date(g2.date_string).getTime() - new Date(g1.date_string).getTime()
+        (g1: Gage, g2: Gage) =>
+          new Date(g2.date_string).getTime() -
+          new Date(g1.date_string).getTime(),
       );
     },
     sortByUser: (state, action) => {
       state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter(
-        (gage: Gage) => !gage.is_done && gage.user_name === action.payload.userName
+        (gage: Gage) =>
+          !gage.is_done && gage.user_name === action.payload.userName,
       );
     },
     filterByGagesAreNotDone: (state) => {
-      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter((gage: Gage) => !gage.is_done);
+      state.gagesAssociatedToUsers = state.gagesAssociatedToUsers.filter(
+        (gage: Gage) => !gage.is_done,
+      );
     },
     resetGagesAssociatedToUsers: (state) => {
       state.gagesAssociatedToUsers = state.gagesAssociatedToUsersSave;
@@ -131,8 +152,12 @@ const gagesSlice = createSlice({
       state.gageDateString = action.payload.date_string;
     },
     validateGage: (state, action) => {
-      state.gagesAssociatedToUsers.map((gage) => (gage.id === action.payload.gageId ? (gage.is_done = true) : ""));
-      state.gagesAssociatedToUsersSave.map((gage) => (gage.id === action.payload.gageId ? (gage.is_done = true) : ""));
+      state.gagesAssociatedToUsers.map((gage) =>
+        gage.id === action.payload.gageId ? (gage.is_done = true) : "",
+      );
+      state.gagesAssociatedToUsersSave.map((gage) =>
+        gage.id === action.payload.gageId ? (gage.is_done = true) : "",
+      );
     },
   },
 
@@ -142,11 +167,14 @@ const gagesSlice = createSlice({
         state.isLoading = true;
         state.areDefaultGagesFetched = false;
       })
-      .addCase(fetchDefaultGagesFromDatabase.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.areDefaultGagesFetched = true;
-        state.gagesTask = payload;
-      })
+      .addCase(
+        fetchDefaultGagesFromDatabase.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.areDefaultGagesFetched = true;
+          state.gagesTask = payload;
+        },
+      )
       .addCase(fetchDefaultGagesFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.areDefaultGagesFetched = false;

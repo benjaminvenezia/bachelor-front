@@ -25,19 +25,30 @@ const initialState: UserState = {
   code: null,
 };
 
-export const login: any = createAsyncThunk("user/login", async (access: { email: string; password: string }, thunkAPI) => {
-  try {
-    const resp = await customFetch.post(`/login`, access);
-    return resp.data.data;
-  } catch (error: any) {
-    console.log("erreur login");
-    return thunkAPI.rejectWithValue(error.response.data.details);
-  }
-});
+export const login: any = createAsyncThunk(
+  "user/login",
+  async (access: { email: string; password: string }, thunkAPI) => {
+    try {
+      const resp = await customFetch.post(`/login`, access);
+      return resp.data.data;
+    } catch (error: any) {
+      console.log("erreur login");
+      return thunkAPI.rejectWithValue(error.response.data.details);
+    }
+  },
+);
 
 export const register: any = createAsyncThunk(
   "user/register",
-  async (access: { name: string; email: string; password: string; password_confirmation: string }, thunkAPI) => {
+  async (
+    access: {
+      name: string;
+      email: string;
+      password: string;
+      password_confirmation: string;
+    },
+    thunkAPI,
+  ) => {
     try {
       const resp = await customFetch.post(`/register`, access);
       return resp.data;
@@ -45,19 +56,22 @@ export const register: any = createAsyncThunk(
       console.log("erreur register: ", error.response);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );
 
-export const fetchCurrentUser: any = createAsyncThunk("user/fetchCurrentUser", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/users/get/get_current_user`);
-    return resp.data;
-  } catch (error: any) {
-    console.log("erreur fetchCurrentUser");
-    console.log(error.response.data.message);
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const fetchCurrentUser: any = createAsyncThunk(
+  "user/fetchCurrentUser",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/users/get/get_current_user`);
+      return resp.data;
+    } catch (error: any) {
+      console.log("erreur fetchCurrentUser");
+      console.log(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 export const setUserPointsInDatabase = createAsyncThunk(
   "user/setUserPointsInDatabase",
@@ -70,21 +84,26 @@ export const setUserPointsInDatabase = createAsyncThunk(
       console.log("erreur setUserPointsInDatabase");
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );
 
 export const setUserPointsGageInDatabase = createAsyncThunk(
   "user/setUserPointsGageInDatabase",
-  async ({ id, points_gage }: { id: number; points_gage: number }, thunkAPI) => {
+  async (
+    { id, points_gage }: { id: number; points_gage: number },
+    thunkAPI,
+  ) => {
     try {
-      const resp = await customFetch.patch(`/users/${id}`, { points_gage: points_gage });
+      const resp = await customFetch.patch(`/users/${id}`, {
+        points_gage: points_gage,
+      });
 
       return resp.data;
     } catch (error: any) {
       console.log("erreur setUserPointsGageInDatabase: ", error.response);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
-  }
+  },
 );
 
 /**
@@ -180,5 +199,10 @@ let userSlice = createSlice({
   },
 });
 
-export const { incrementPointsInStore, decrementPointsInStore, setOtherCode, logoutUser } = userSlice.actions;
+export const {
+  incrementPointsInStore,
+  decrementPointsInStore,
+  setOtherCode,
+  logoutUser,
+} = userSlice.actions;
 export default userSlice.reducer;

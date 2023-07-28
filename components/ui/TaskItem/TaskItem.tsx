@@ -1,16 +1,38 @@
-import { Text, StyleSheet, Pressable, Vibration, ImageBackground, View } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  Vibration,
+  ImageBackground,
+  View,
+} from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
-import { toggleStatusTaskInDatabase, removeTaskFromDatabase, toggleStatus, removeTask } from "../../../store/slices/tasksSlice";
-import { setUserPointsInDatabase, incrementPointsInStore } from "../../../store/slices/userSlice";
+import {
+  toggleStatusTaskInDatabase,
+  removeTaskFromDatabase,
+  toggleStatus,
+  removeTask,
+} from "../../../store/slices/tasksSlice";
+import {
+  setUserPointsInDatabase,
+  incrementPointsInStore,
+} from "../../../store/slices/userSlice";
 import images from "../../../constants/images";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { TaskItemProps } from "./TaskItemProps.types";
 import Toast from "react-native-toast-message";
 
-const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskItemProps) => {
+const TaskItem = ({
+  title,
+  reward,
+  id,
+  style,
+  path_icon_todo,
+  is_done,
+}: TaskItemProps) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const [isDeleting, setIsDeleting] = useState(false);
@@ -44,7 +66,9 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
     if (!is_done) {
       TaskToastOn();
       dispatch(incrementPointsInStore({ points: reward }));
-      dispatch(setUserPointsInDatabase({ id: user.id, points: user.points + reward }));
+      dispatch(
+        setUserPointsInDatabase({ id: user.id, points: user.points + reward }),
+      );
     }
   };
 
@@ -75,15 +99,25 @@ const TaskItem = ({ title, reward, id, style, path_icon_todo, is_done }: TaskIte
         is_done ? styles.disabled : null,
       ]}
     >
-      <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />
+      <ImageBackground
+        borderRadius={15}
+        source={images[path_icon_todo]}
+        style={styles.icon}
+      />
       {!isDeleting && (
         <View style={styles.iconContainer}>
-          <Text style={[styles.title, is_done ? styles.titleDone : {}]}>{title}</Text>
-          {!is_done && <Text style={[styles.text, styles.reward]}>{reward} Points</Text>}
+          <Text style={[styles.title, is_done ? styles.titleDone : {}]}>
+            {title}
+          </Text>
+          {!is_done && (
+            <Text style={[styles.text, styles.reward]}>{reward} Points</Text>
+          )}
           {/* {is_done && <Text style={styles.text}>{reward} Points!</Text>} */}
         </View>
       )}
-      {isDeleting && <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>}
+      {isDeleting && (
+        <Text style={styles.deleting}>Suppression de la tâche en cours...</Text>
+      )}
     </Pressable>
   );
 };

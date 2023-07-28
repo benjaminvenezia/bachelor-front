@@ -1,4 +1,11 @@
-import { Text, SafeAreaView, StyleSheet, View, Image, ImageBackground } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Image,
+  ImageBackground,
+} from "react-native";
 import Title from "../../ui/Title/Title";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import DaysContainer from "../DaysContainer/DaysContainer";
@@ -24,11 +31,17 @@ const NoTasksGuide = () => {
         <Title titleType="h2">
           Salut {user?.name} Aucune tâche associée au {activeDayFullText}!
         </Title>
-        <Text style={styles.text}>Vous pouvez vous rendre dans une catégorie pour en ajouter </Text>
+        <Text style={styles.text}>
+          Vous pouvez vous rendre dans une catégorie pour en ajouter{" "}
+        </Text>
 
         <CategoriesList />
       </View>
-      <ImageBackground blurRadius={0} style={styles.image} source={require("../../../assets/images/confeti.png")} />
+      <ImageBackground
+        blurRadius={0}
+        style={styles.image}
+        source={require("../../../assets/images/confeti.png")}
+      />
     </SafeAreaView>
   );
 };

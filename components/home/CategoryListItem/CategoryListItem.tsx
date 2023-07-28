@@ -9,7 +9,12 @@ const CategoryListItem = ({ children }: CategoryListItemProps) => {
   const categoryName = children;
 
   return (
-    <Pressable style={styles.container} onPress={() => navigation.navigate(ROUTES.CATEGORY, { categoryName: categoryName })}>
+    <Pressable
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate(ROUTES.CATEGORY, { categoryName: categoryName })
+      }
+    >
       <View style={styles.subContainer}>
         <Text style={styles.text}>{children}</Text>
         <MaterialIcons name="read-more" size={30} color="white" />

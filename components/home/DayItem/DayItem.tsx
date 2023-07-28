@@ -8,14 +8,26 @@ import { DayItemProps } from "./DayItemProps.types";
 const DayItem = ({ children }: DayItemProps) => {
   const dispatch = useDispatch();
 
-  const { activeDay, currentDay } = useSelector((state: RootState) => state.day);
+  const { activeDay, currentDay } = useSelector(
+    (state: RootState) => state.day,
+  );
 
   return (
     <Pressable onPress={() => dispatch(changeDay({ activeDay: children }))}>
       <View style={styles.containerCurrentDay}>
-        <Text style={children === activeDay ? [styles.text, styles.active] : styles.text}>{children}</Text>
+        <Text
+          style={
+            children === activeDay ? [styles.text, styles.active] : styles.text
+          }
+        >
+          {children}
+        </Text>
 
-        {children === currentDay ? <Text style={[styles.text, styles.dot]}>•</Text> : ""}
+        {children === currentDay ? (
+          <Text style={[styles.text, styles.dot]}>•</Text>
+        ) : (
+          ""
+        )}
       </View>
     </Pressable>
   );

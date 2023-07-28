@@ -7,9 +7,13 @@ import { ScrollView } from "react-native-gesture-handler";
 import Title from "../../ui/Title/Title";
 
 const ListGagesTeam = () => {
-  const { gagesAssociatedToUsers } = useSelector((state: RootState) => state.gages);
+  const { gagesAssociatedToUsers } = useSelector(
+    (state: RootState) => state.gages,
+  );
 
-  const gagesAssociatedToUsersNotDone = gagesAssociatedToUsers.filter((gage) => !gage.is_done);
+  const gagesAssociatedToUsersNotDone = gagesAssociatedToUsers.filter(
+    (gage) => !gage.is_done,
+  );
 
   return (
     <ScrollView>

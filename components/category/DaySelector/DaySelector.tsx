@@ -10,7 +10,9 @@ const DaySelector = ({ label }: DaySelectorProps) => {
   const dispatch = useDispatch();
   const [isSelected, setIsSelected] = useState(false);
 
-  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
+  const { activeDays } = useSelector(
+    (state: RootState) => state.daysToAddTasks,
+  );
 
   const addTaskDay = () => {
     setIsSelected(!isSelected);
@@ -25,9 +27,14 @@ const DaySelector = ({ label }: DaySelectorProps) => {
   };
 
   return (
-    <Pressable onPress={() => addTaskDay()} style={[styles.container, isSelected ? styles.isSelectedItem : null]}>
+    <Pressable
+      onPress={() => addTaskDay()}
+      style={[styles.container, isSelected ? styles.isSelectedItem : null]}
+    >
       <View>
-        <Text style={[isSelected ? styles.isSelectedText : styles.text]}>{label}</Text>
+        <Text style={[isSelected ? styles.isSelectedText : styles.text]}>
+          {label}
+        </Text>
       </View>
     </Pressable>
   );

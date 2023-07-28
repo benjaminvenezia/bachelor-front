@@ -1,4 +1,10 @@
-import { Text, StyleSheet, Pressable, View, ImageBackground } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  View,
+  ImageBackground,
+} from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { DefaultTask } from "../../../types/DefaultTask";
 import { useState } from "react";
@@ -49,7 +55,10 @@ const TaskItemCategory = ({
   };
 
   return (
-    <Pressable onPress={handleAddToActiveDay} style={[styles.container, clickedTask ? styles.active : styles.default]}>
+    <Pressable
+      onPress={handleAddToActiveDay}
+      style={[styles.container, clickedTask ? styles.active : styles.default]}
+    >
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.reward}>{reward} Points</Text>
       <View style={{ flexDirection: "row" }}>
@@ -57,7 +66,11 @@ const TaskItemCategory = ({
           <BadgeDay key={index} dayText={dayLabel} />
         ))}
       </View>
-      <ImageBackground borderRadius={15} source={images[path_icon_todo]} style={styles.icon} />
+      <ImageBackground
+        borderRadius={15}
+        source={images[path_icon_todo]}
+        style={styles.icon}
+      />
     </Pressable>
   );
 };

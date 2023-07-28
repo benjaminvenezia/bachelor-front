@@ -1,11 +1,20 @@
-import { View, Text, StyleSheet, SafeAreaView, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ImageBackground,
+} from "react-native";
 import { Button } from "../../components";
 import { Title, Input } from "../../components";
 import { GlobalStyles } from "../../constants/style";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { setGroupInDatabase, getGroupFromDatabase } from "../../store/slices/groupSlice";
+import {
+  setGroupInDatabase,
+  getGroupFromDatabase,
+} from "../../store/slices/groupSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 import { fetchCurrentUser } from "../../store/slices/userSlice";
@@ -13,8 +22,12 @@ import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
 const LinkTogetherScreen = ({ navigation }: any) => {
-  const { user, isLogged, message, code } = useSelector((state: RootState) => state.user);
-  const { isGroupCreated, codeSettingGroup, messageSettingGroup } = useSelector((state: RootState) => state.group);
+  const { user, isLogged, message, code } = useSelector(
+    (state: RootState) => state.user,
+  );
+  const { isGroupCreated, codeSettingGroup, messageSettingGroup } = useSelector(
+    (state: RootState) => state.group,
+  );
   const [anotherLink, setAnotherLink] = useState("");
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -32,7 +45,7 @@ const LinkTogetherScreen = ({ navigation }: any) => {
       };
 
       getUser();
-    }, [])
+    }, []),
   );
 
   useEffect(() => {
@@ -43,7 +56,10 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <ImageBackground style={styles.image} source={require("../../assets/images/man-looking-binoculars.png")} />
+      <ImageBackground
+        style={styles.image}
+        source={require("../../assets/images/man-looking-binoculars.png")}
+      />
 
       <View style={styles.container}>
         <Title titleType="h1" style={styles.title}>
@@ -56,7 +72,11 @@ const LinkTogetherScreen = ({ navigation }: any) => {
 
           <Text style={styles.text}>Code de votre partenaire</Text>
 
-          <Input onChangeHandler={setAnotherLink} value={anotherLink} placeholder="Code de votre partenaire" />
+          <Input
+            onChangeHandler={setAnotherLink}
+            value={anotherLink}
+            placeholder="Code de votre partenaire"
+          />
 
           <Text style={styles.text}>{messageSettingGroup}</Text>
 
@@ -65,7 +85,11 @@ const LinkTogetherScreen = ({ navigation }: any) => {
               Valider
             </Button>
           ) : (
-            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={handleClick}>
+            <Button
+              style={styles.button}
+              size={GlobalStyles.buttons.xl}
+              onPress={handleClick}
+            >
               Valider
             </Button>
           )}

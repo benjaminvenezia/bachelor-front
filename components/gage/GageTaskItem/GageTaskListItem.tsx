@@ -1,12 +1,19 @@
 import { Text, StyleSheet, Pressable, View, Image } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { useDispatch, useSelector } from "react-redux";
-import { setGageTaskId, setTheGageBeforeSendingDatabase } from "../../../store/slices/gagesSlice";
+import {
+  setGageTaskId,
+  setTheGageBeforeSendingDatabase,
+} from "../../../store/slices/gagesSlice";
 import { GageTaskItemProps } from "./GageTaskListItemProps.types";
 import { RootState } from "../../../store/store";
 import { PointsLabel } from "../../index";
 
-const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps) => {
+const GageTaskListItem = ({
+  children,
+  isSelected,
+  ...props
+}: GageTaskItemProps) => {
   const { id, category, cost, description, title } = props;
 
   const { user } = useSelector((state: RootState) => state.user);
@@ -30,11 +37,20 @@ const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps)
   return (
     <Pressable
       onPress={priceIsToHigh() ? () => {} : handlePress}
-      style={[priceIsToHigh() ? styles.disabledBackground : styles.container, isSelected ? styles.isSelected : {}]}
+      style={[
+        priceIsToHigh() ? styles.disabledBackground : styles.container,
+        isSelected ? styles.isSelected : {},
+      ]}
     >
       <View style={styles.content}>
-        <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>{title}</Text>
-        <Text style={[styles.description, isSelected ? styles.isSelectedText : {}]}>{description}</Text>
+        <Text style={[styles.title, isSelected ? styles.isSelectedText : {}]}>
+          {title}
+        </Text>
+        <Text
+          style={[styles.description, isSelected ? styles.isSelectedText : {}]}
+        >
+          {description}
+        </Text>
         {user?.points < cost ? (
           <Text style={styles.disabledLabel}>
             Il vous manque {cost - user?.points} <PointsLabel /> pour ce gage.
@@ -44,7 +60,11 @@ const GageTaskListItem = ({ children, isSelected, ...props }: GageTaskItemProps)
         )}
       </View>
       <View style={styles.cost}>
-        <Text style={[styles.costText, isSelected ? styles.isSelectedText : {}]}>{cost}</Text>
+        <Text
+          style={[styles.costText, isSelected ? styles.isSelectedText : {}]}
+        >
+          {cost}
+        </Text>
         <PointsLabel />
       </View>
     </Pressable>

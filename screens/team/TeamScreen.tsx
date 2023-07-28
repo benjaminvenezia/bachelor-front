@@ -11,13 +11,28 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import ROUTES from "../../constants/routes";
 import { Dimensions } from "react-native";
 
-import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from "react-native-chart-kit";
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart,
+} from "react-native-chart-kit";
 
 const TeamScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { group } = useSelector((state: RootState) => state.group);
 
-  const { GroupName, user1Points, user2Points, user1Name, user2Name, winner, looser }: Group | any = group;
+  const {
+    GroupName,
+    user1Points,
+    user2Points,
+    user1Name,
+    user2Name,
+    winner,
+    looser,
+  }: Group | any = group;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -26,7 +41,7 @@ const TeamScreen = ({ navigation }: any) => {
       };
 
       getGroup();
-    }, [])
+    }, []),
   );
 
   return GroupName ? (

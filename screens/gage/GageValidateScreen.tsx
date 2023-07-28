@@ -7,15 +7,23 @@ import { RootState } from "../../store/store";
 import { Gage } from "../../types/Gage";
 import { setGageInDatabase } from "../../store/slices/gagesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { decrementPointsInStore, setUserPointsInDatabase } from "../../store/slices/userSlice";
+import {
+  decrementPointsInStore,
+  setUserPointsInDatabase,
+} from "../../store/slices/userSlice";
 import { removeGageTaskId } from "../../store/slices/gagesSlice";
 import Toast from "react-native-toast-message";
 
 const GageValidateScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const { gageToAddInDatabase, categoryGageSelection, gageDay, gageMonth, gageYear, gageDateString } = useSelector(
-    (state: RootState) => state.gages
-  );
+  const {
+    gageToAddInDatabase,
+    categoryGageSelection,
+    gageDay,
+    gageMonth,
+    gageYear,
+    gageDateString,
+  } = useSelector((state: RootState) => state.gages);
 
   const { user } = useSelector((state: RootState) => state.user);
 
@@ -45,7 +53,12 @@ const GageValidateScreen = ({ navigation }: any) => {
     dispatch(setGageInDatabase(gageToSaveInDatabase));
     dispatch(decrementPointsInStore({ points: gageToAddInDatabase.cost }));
     dispatch(removeGageTaskId());
-    dispatch(setUserPointsInDatabase({ id: user.id, points: user.points - gageToAddInDatabase.cost }));
+    dispatch(
+      setUserPointsInDatabase({
+        id: user.id,
+        points: user.points - gageToAddInDatabase.cost,
+      }),
+    );
     ToastAddTask();
     navigation.navigate(ROUTES.HOME);
   };
@@ -59,7 +72,9 @@ const GageValidateScreen = ({ navigation }: any) => {
       </View>
       <View style={styles.summaryContainer}>
         <Text style={styles.summaryTitle}>Description:</Text>
-        <Text style={styles.summaryText}>{gageToAddInDatabase.description}</Text>
+        <Text style={styles.summaryText}>
+          {gageToAddInDatabase.description}
+        </Text>
       </View>
       <View style={styles.summaryContainer}>
         <Text style={styles.summaryTitle}>Catégorie:</Text>
@@ -77,14 +92,21 @@ const GageValidateScreen = ({ navigation }: any) => {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <Button style={styles.btnLeft} size="LG" onPress={() => navigation.goBack()}>
+        <Button
+          style={styles.btnLeft}
+          size="LG"
+          onPress={() => navigation.goBack()}
+        >
           Retour
         </Button>
         <Button size="LG" onPress={handlePress}>
           Valider le gage
         </Button>
       </View>
-      <ImageBackground style={styles.image} source={require("../../assets/images/bang.png")} />
+      <ImageBackground
+        style={styles.image}
+        source={require("../../assets/images/bang.png")}
+      />
     </View>
   );
 };

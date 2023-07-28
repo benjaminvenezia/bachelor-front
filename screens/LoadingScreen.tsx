@@ -6,18 +6,27 @@ import { RootState } from "../store/store";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { fetchDefaultTasksFromDatabase } from "../store/slices/defaultTasksSlice";
 import { fetchTasksFromDatabase } from "../store/slices/tasksSlice";
-import { fetchDefaultGagesFromDatabase, fetchGagesFromDatabase } from "../store/slices/gagesSlice";
+import {
+  fetchDefaultGagesFromDatabase,
+  fetchGagesFromDatabase,
+} from "../store/slices/gagesSlice";
 import { Title } from "../components";
 import { getValueFor } from "../utils/secureStore";
 
 const LoadingScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
-  const { isGroupLoaded, group } = useSelector((state: RootState) => state.group);
-  const { areDefaultTasksFetched } = useSelector((state: RootState) => state.defaultTasks);
+  const { isGroupLoaded, group } = useSelector(
+    (state: RootState) => state.group,
+  );
+  const { areDefaultTasksFetched } = useSelector(
+    (state: RootState) => state.defaultTasks,
+  );
   const { areTasksFetched } = useSelector((state: RootState) => state.tasks);
   const { areGagesFetched } = useSelector((state: RootState) => state.gages);
-  const { areDefaultGagesFetched } = useSelector((state: RootState) => state.gages);
+  const { areDefaultGagesFetched } = useSelector(
+    (state: RootState) => state.gages,
+  );
   const { isUserFetched, user } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
@@ -34,7 +43,9 @@ const LoadingScreen = ({ navigation }: any) => {
 
       const checkToken = async () => {
         const token = await fetchToken();
-        token ? navigation.navigate(ROUTES.HOME) : navigation.navigate(ROUTES.REGISTER);
+        token
+          ? navigation.navigate(ROUTES.HOME)
+          : navigation.navigate(ROUTES.REGISTER);
       };
 
       checkToken();

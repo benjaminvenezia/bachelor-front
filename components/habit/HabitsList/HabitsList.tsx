@@ -6,7 +6,9 @@ import { fetchDefaultHabitsFromDatabase } from "../../../store/slices/defaultHab
 import { useEffect } from "react";
 
 const HabitsList = () => {
-  const { defaultHabits } = useSelector((state: RootState) => state.defaultHabits);
+  const { defaultHabits } = useSelector(
+    (state: RootState) => state.defaultHabits,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

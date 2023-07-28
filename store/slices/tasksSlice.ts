@@ -16,44 +16,59 @@ const initialState: TasksState = {
   isAnErrorTogglingTheTask: false,
 };
 
-export const setTasksInDatabase: any = createAsyncThunk("tasks/setTasksInDatabase", async (tasks: DefaultTask[], thunkAPI) => {
-  try {
-    const data = { tasks: tasks };
-    const resp = await customFetch.post(`/tasks/multiple`, JSON.stringify(data));
-    return resp.data;
-  } catch (error: any) {
-    console.log(error.response);
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const setTasksInDatabase: any = createAsyncThunk(
+  "tasks/setTasksInDatabase",
+  async (tasks: DefaultTask[], thunkAPI) => {
+    try {
+      const data = { tasks: tasks };
+      const resp = await customFetch.post(
+        `/tasks/multiple`,
+        JSON.stringify(data),
+      );
+      return resp.data;
+    } catch (error: any) {
+      console.log(error.response);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const fetchTasksFromDatabase: any = createAsyncThunk("tasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/tasks`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const fetchTasksFromDatabase: any = createAsyncThunk(
+  "tasks/fetchTasksFromDatabase",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/tasks`);
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const removeTaskFromDatabase = createAsyncThunk("allTasks/removeTaskFromDatabase", async (idTask: string, thunkAPI) => {
-  try {
-    const resp = await customFetch.delete(`/tasks/${idTask}`);
-    return resp.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const removeTaskFromDatabase = createAsyncThunk(
+  "allTasks/removeTaskFromDatabase",
+  async (idTask: string, thunkAPI) => {
+    try {
+      const resp = await customFetch.delete(`/tasks/${idTask}`);
+      return resp.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const toggleStatusTaskInDatabase = createAsyncThunk("tasks/toggleStatusTaskInDatabase", async (id: string, thunkAPI) => {
-  try {
-    const resp = await customFetch.patch(`/tasks/toggle/${id}`);
-    return resp.data.data;
-  } catch (error: any) {
-    console.log(error.response);
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const toggleStatusTaskInDatabase = createAsyncThunk(
+  "tasks/toggleStatusTaskInDatabase",
+  async (id: string, thunkAPI) => {
+    try {
+      const resp = await customFetch.patch(`/tasks/toggle/${id}`);
+      return resp.data.data;
+    } catch (error: any) {
+      console.log(error.response);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -111,5 +126,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { addTask, removeTask, toggleStatus, setTasks } = tasksSlice.actions;
+export const { addTask, removeTask, toggleStatus, setTasks } =
+  tasksSlice.actions;
 export default tasksSlice.reducer;

@@ -7,11 +7,22 @@ import { useState } from "react";
 import Toast from "react-native-toast-message";
 import PointsLabel from "../../ui/PointsLabel/PointsLabel";
 
-const HabitListItem = ({ title, description, category, path_icon }: HabitListItemProps) => {
+const HabitListItem = ({
+  title,
+  description,
+  category,
+  path_icon,
+}: HabitListItemProps) => {
   const [level, setLevel] = useState(0);
   const MAX_LEVEL: number = 5;
   const PENALTIES_COST: number[] = [30, 100, 200, 350, 500];
-  const COLORS_PROGRESSBAR: string[] = ["#1c0629", "#421462", "#700c50", "#cf2493", "#f67bbf"];
+  const COLORS_PROGRESSBAR: string[] = [
+    "#1c0629",
+    "#421462",
+    "#700c50",
+    "#cf2493",
+    "#f67bbf",
+  ];
 
   const createTwoButtonAlert = () => {
     if (level < MAX_LEVEL) {
@@ -28,7 +39,7 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
         ],
         {
           userInterfaceStyle: "dark",
-        }
+        },
       );
     } else {
       LimitExceededToast();
@@ -51,7 +62,15 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
       <Text style={styles.text}>{description}</Text>
 
       <View style={styles.progressBarFull}>
-        <View style={[{ width: `${(100 / MAX_LEVEL) * level}%`, backgroundColor: `${COLORS_PROGRESSBAR[level - 1]}` }, styles.progressBar]}>
+        <View
+          style={[
+            {
+              width: `${(100 / MAX_LEVEL) * level}%`,
+              backgroundColor: `${COLORS_PROGRESSBAR[level - 1]}`,
+            },
+            styles.progressBar,
+          ]}
+        >
           <Text style={styles.text}> - {PENALTIES_COST[level - 1]}</Text>
           <PointsLabel />
         </View>

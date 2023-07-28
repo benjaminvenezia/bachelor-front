@@ -18,7 +18,7 @@ describe("<DaySelector />", () => {
       .create(
         <Provider store={store}>
           <DaysSelectorContainer />
-        </Provider>
+        </Provider>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

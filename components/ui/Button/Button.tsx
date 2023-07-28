@@ -2,7 +2,13 @@ import { Text, Pressable, View, StyleSheet } from "react-native";
 import { GlobalStyles } from "../../../constants/style";
 import { ButtonProps } from "./ButtonProps.types";
 
-const Button = ({ children, style, size = GlobalStyles.buttons.md, alternativeStyle, onPress }: ButtonProps) => {
+const Button = ({
+  children,
+  style,
+  size = GlobalStyles.buttons.md,
+  alternativeStyle,
+  onPress,
+}: ButtonProps) => {
   let dynamicSize = null;
 
   switch (size) {
@@ -22,7 +28,13 @@ const Button = ({ children, style, size = GlobalStyles.buttons.md, alternativeSt
 
   return (
     <Pressable style={style} onPress={onPress}>
-      <View style={[styles.button, alternativeStyle ? styles.alternativeStyle : styles.defaultStyle, dynamicSize]}>
+      <View
+        style={[
+          styles.button,
+          alternativeStyle ? styles.alternativeStyle : styles.defaultStyle,
+          dynamicSize,
+        ]}
+      >
         <Text style={styles.text}>{children}</Text>
       </View>
     </Pressable>

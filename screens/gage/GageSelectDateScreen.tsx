@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 const GageSelectDateScreen = ({ navigation }: any) => {
-  const { gageDay, gageMonth, gageYear, gageDateString } = useSelector((state: RootState) => state.gages);
+  const { gageDay, gageMonth, gageYear, gageDateString } = useSelector(
+    (state: RootState) => state.gages,
+  );
 
   const handlePress = () => {
     navigation.navigate(ROUTES.VALIDATE_GAGE);

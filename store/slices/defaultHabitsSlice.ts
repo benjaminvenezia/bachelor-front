@@ -15,15 +15,18 @@ const initialState: DefaultHabitsState = {
   areDefaultHabitsFetched: false,
 };
 
-export const fetchDefaultHabitsFromDatabase: any = createAsyncThunk("defaultHabits/fetchDefaultHabitsFromDatabase", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/default_habits`);
+export const fetchDefaultHabitsFromDatabase: any = createAsyncThunk(
+  "defaultHabits/fetchDefaultHabitsFromDatabase",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/default_habits`);
 
-    return resp.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+      return resp.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 const defaultHabits = createSlice({
   name: "defaultHabits",
@@ -41,15 +44,21 @@ const defaultHabits = createSlice({
         state.isLoading = true;
         state.areDefaultHabitsFetched = false;
       })
-      .addCase(fetchDefaultHabitsFromDatabase.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.areDefaultHabitsFetched = true;
-        state.defaultHabits = payload;
-      })
-      .addCase(fetchDefaultHabitsFromDatabase.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.areDefaultHabitsFetched = false;
-      });
+      .addCase(
+        fetchDefaultHabitsFromDatabase.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.areDefaultHabitsFetched = true;
+          state.defaultHabits = payload;
+        },
+      )
+      .addCase(
+        fetchDefaultHabitsFromDatabase.rejected,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.areDefaultHabitsFetched = false;
+        },
+      );
   },
 });
 

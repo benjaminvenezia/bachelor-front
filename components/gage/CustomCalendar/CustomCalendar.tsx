@@ -5,7 +5,11 @@ import { setDate } from "../../../store/slices/gagesSlice";
 
 const CustomCalendar = (props: any) => {
   const date = new Date();
-  const [month, day, year] = [String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0"), date.getFullYear()];
+  const [month, day, year] = [
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0"),
+    date.getFullYear(),
+  ];
   const maxDate = new Date().setMonth(date.getMonth() + 2);
   const initDate = `${year}-${month}-${day}`;
   const [selected, setSelected]: any = useState(initDate);
@@ -13,13 +17,54 @@ const CustomCalendar = (props: any) => {
   const dispatch = useDispatch();
 
   const setTheCalendarGagePart = (data: any) => {
-    dispatch(setDate({ day: data.day, month: data.month, year: data.year, date_string: data.dateString }));
+    dispatch(
+      setDate({
+        day: data.day,
+        month: data.month,
+        year: data.year,
+        date_string: data.dateString,
+      }),
+    );
   };
 
   LocaleConfig.locales["fr"] = {
-    monthNames: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
-    monthNamesShort: ["Janv.", "Févr.", "Mars", "Avril", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."],
-    dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+    monthNames: [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre",
+    ],
+    monthNamesShort: [
+      "Janv.",
+      "Févr.",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juil.",
+      "Août",
+      "Sept.",
+      "Oct.",
+      "Nov.",
+      "Déc.",
+    ],
+    dayNames: [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi",
+    ],
     dayNamesShort: ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."],
     today: "Aujourd'hui",
   };
@@ -34,7 +79,11 @@ const CustomCalendar = (props: any) => {
       firstDay={1}
       initialDate={initDate}
       markedDates={{
-        [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: "orange" },
+        [selected]: {
+          selected: true,
+          disableTouchEvent: true,
+          selectedDotColor: "orange",
+        },
 
         "2023-07-01": { selected: false, marked: true, selectedColor: "blue" },
       }}

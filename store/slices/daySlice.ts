@@ -17,7 +17,9 @@ const daySlice = createSlice({
       return {
         activeDay: action.payload.activeDay,
         currentDay: state.currentDay,
-        activeDayFullText: getCurrentLabelDayInFullText(action.payload.activeDay),
+        activeDayFullText: getCurrentLabelDayInFullText(
+          action.payload.activeDay,
+        ),
       };
     },
   },

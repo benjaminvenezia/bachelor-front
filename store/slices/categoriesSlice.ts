@@ -18,7 +18,8 @@ const initialState: CategoriesState = {
       id: 2,
       title: "Chambre",
       category: CATEGORIES.ROOM,
-      description: "Un grand lit, la couverture en boule, on est bien dans la chambre.",
+      description:
+        "Un grand lit, la couverture en boule, on est bien dans la chambre.",
     },
   ],
 };

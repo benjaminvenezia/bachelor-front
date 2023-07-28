@@ -21,11 +21,21 @@ const CurrentWinnerBadge = () => {
   }, [group]);
 
   return (
-    <Pressable style={styles.container} onPress={() => navigation.navigate(ROUTES.TEAM_TAB)}>
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate(ROUTES.TEAM_TAB)}
+    >
       <View style={styles.box}>
-        <MaterialCommunityIcons style={styles.icon} name="crown-outline" size={20} color="black" />
+        <MaterialCommunityIcons
+          style={styles.icon}
+          name="crown-outline"
+          size={20}
+          color="black"
+        />
         <Title titleType="h5" style={styles.text}>
-          {group?.user1Points === group?.user2Points ? "-" : winnerLabel?.slice(0, 3)}
+          {group?.user1Points === group?.user2Points
+            ? "-"
+            : winnerLabel?.slice(0, 3)}
         </Title>
       </View>
     </Pressable>

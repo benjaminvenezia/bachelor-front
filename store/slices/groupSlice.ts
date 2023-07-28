@@ -21,23 +21,29 @@ const initialState: GroupState = {
   codeSettingGroup: null,
 };
 
-export const setGroupInDatabase = createAsyncThunk("group/setGroupInDB", async (partnerCode: string, thunkAPI) => {
-  try {
-    const resp = await customFetch.post(`/group/${partnerCode}`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const setGroupInDatabase = createAsyncThunk(
+  "group/setGroupInDB",
+  async (partnerCode: string, thunkAPI) => {
+    try {
+      const resp = await customFetch.post(`/group/${partnerCode}`);
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export const getGroupFromDatabase: any = createAsyncThunk("group/getGroupFromDB", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/group`);
-    return resp.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+export const getGroupFromDatabase: any = createAsyncThunk(
+  "group/getGroupFromDB",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/group`);
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 const groupSlice = createSlice({
   name: "group",

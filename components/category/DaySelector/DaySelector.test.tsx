@@ -18,7 +18,7 @@ describe("<DaySelector />", () => {
       .create(
         <Provider store={store}>
           <DaySelector label="Lun" />{" "}
-        </Provider>
+        </Provider>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

@@ -2,7 +2,12 @@ import { useState } from "react";
 import { View, StyleSheet, FlatList, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../components";
+import {
+  Button,
+  DaysSelectorContainer,
+  TaskItemCategory,
+  Title,
+} from "../components";
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,12 +24,18 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
   const [activatedTasks, setActivatedTasks] = useState([]);
 
-  const { activeDays } = useSelector((state: RootState) => state.daysToAddTasks);
-  const { defaultTasks } = useSelector((state: RootState) => state.defaultTasks);
+  const { activeDays } = useSelector(
+    (state: RootState) => state.daysToAddTasks,
+  );
+  const { defaultTasks } = useSelector(
+    (state: RootState) => state.defaultTasks,
+  );
   const { tasks } = useSelector((state: RootState) => state.tasks);
 
   const { categoryName } = route.params;
-  const categoryTasks = defaultTasks.filter((task: DefaultTask) => task.category === categoryName);
+  const categoryTasks = defaultTasks.filter(
+    (task: DefaultTask) => task.category === categoryName,
+  );
 
   const getDaysAssociated = (title: string) => {
     const days = tasks.filter((task: DefaultTask) => task.title === title);
@@ -110,12 +121,22 @@ const CategoryScreen = ({ navigation, route }: any) => {
         <DaysSelectorContainer />
         <View style={styles.containerButton}>
           {activeDays.length > 0 && activatedTasks.length > 0 ? (
-            <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => handleClick()} alternativeStyle={false}>
+            <Button
+              style={styles.button}
+              size={GlobalStyles.buttons.xl}
+              onPress={() => handleClick()}
+              alternativeStyle={false}
+            >
               Ajouter
             </Button>
           ) : (
             <View style={styles.containerInvalid}>
-              <Button style={styles.button} size={GlobalStyles.buttons.xl} onPress={() => {}} alternativeStyle={true}>
+              <Button
+                style={styles.button}
+                size={GlobalStyles.buttons.xl}
+                onPress={() => {}}
+                alternativeStyle={true}
+              >
                 Choisir tâches et jours
               </Button>
             </View>

@@ -9,7 +9,9 @@ import ROUTES from "../../constants/routes";
 import { RootState } from "../../store/store";
 
 const GageScreen = ({ navigation }: any) => {
-  const { categoryGageSelection } = useSelector((state: RootState) => state.gages);
+  const { categoryGageSelection } = useSelector(
+    (state: RootState) => state.gages,
+  );
 
   const handlePress = () => {
     navigation.navigate(ROUTES.SELECT_TASK);

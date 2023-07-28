@@ -15,15 +15,18 @@ const initialState: DefaultTasksState = {
   areDefaultTasksFetched: false,
 };
 
-export const fetchDefaultTasksFromDatabase: any = createAsyncThunk("allTasks/fetchDefaultTasksFromDatabase", async (_, thunkAPI) => {
-  try {
-    const resp = await customFetch.get(`/default_tasks`);
+export const fetchDefaultTasksFromDatabase: any = createAsyncThunk(
+  "allTasks/fetchDefaultTasksFromDatabase",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get(`/default_tasks`);
 
-    return resp.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
-  }
-});
+      return resp.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 const defaultTasks = createSlice({
   name: "defaultTasks",
@@ -41,11 +44,14 @@ const defaultTasks = createSlice({
         state.isLoading = true;
         state.areDefaultTasksFetched = false;
       })
-      .addCase(fetchDefaultTasksFromDatabase.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.areDefaultTasksFetched = true;
-        state.defaultTasks = payload;
-      })
+      .addCase(
+        fetchDefaultTasksFromDatabase.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.areDefaultTasksFetched = true;
+          state.defaultTasks = payload;
+        },
+      )
       .addCase(fetchDefaultTasksFromDatabase.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.areDefaultTasksFetched = false;

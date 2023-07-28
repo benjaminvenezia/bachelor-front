@@ -1,9 +1,22 @@
 import { FunctionComponent } from "react";
-import { View, Text, StyleSheet, Image, ImageBackground, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Button,
+} from "react-native";
 import { RootState } from "../store/store";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { TaskItem, DaysContainer, CategoriesList, Title, NoTasksGuide } from "../components";
+import {
+  TaskItem,
+  DaysContainer,
+  CategoriesList,
+  Title,
+  NoTasksGuide,
+} from "../components";
 import { GlobalStyles } from "../constants/style";
 import { getGroupFromDatabase } from "../store/slices/groupSlice";
 import { fetchDefaultGagesFromDatabase } from "../store/slices/gagesSlice";
@@ -27,10 +40,16 @@ const HomeScreen: FunctionComponent = ({ navigation }: any) => {
   }, []);
 
   const { activeDay } = useSelector((state: RootState) => state.day);
-  const { tasks, isLoading, isAnErrorTogglingTheTask } = useSelector((state: RootState) => state.tasks);
+  const { tasks, isLoading, isAnErrorTogglingTheTask } = useSelector(
+    (state: RootState) => state.tasks,
+  );
 
-  let tasksNotDone = tasks.filter((task) => !task.is_done && task.associated_day === activeDay);
-  let tasksDone = tasks.filter((task) => task.is_done && task.associated_day === activeDay);
+  let tasksNotDone = tasks.filter(
+    (task) => !task.is_done && task.associated_day === activeDay,
+  );
+  let tasksDone = tasks.filter(
+    (task) => task.is_done && task.associated_day === activeDay,
+  );
 
   if (isLoading) {
     return <Text>Chargement ...</Text>;
@@ -57,7 +76,10 @@ const HomeScreen: FunctionComponent = ({ navigation }: any) => {
         </View>
 
         <View style={styles.footer}>
-          <Image style={styles.image} source={require("../assets/images/hr-menu.png")} />
+          <Image
+            style={styles.image}
+            source={require("../assets/images/hr-menu.png")}
+          />
 
           <View style={styles.listContainer}>
             {tasksDone.map((item) => (
@@ -68,10 +90,19 @@ const HomeScreen: FunctionComponent = ({ navigation }: any) => {
                 <Text style={styles.text}>Encore du travail?</Text>
               </View>
             )}
-            {isAnErrorTogglingTheTask ? <Title titleType="h5">Une erreur a eu lieu lors du changement d'état de la tâche.</Title> : ""}
+            {isAnErrorTogglingTheTask ? (
+              <Title titleType="h5">
+                Une erreur a eu lieu lors du changement d'état de la tâche.
+              </Title>
+            ) : (
+              ""
+            )}
           </View>
           <CategoriesList />
-          <ImageBackground style={styles.background} source={require("../assets/images/menu-background.png")} />
+          <ImageBackground
+            style={styles.background}
+            source={require("../assets/images/menu-background.png")}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

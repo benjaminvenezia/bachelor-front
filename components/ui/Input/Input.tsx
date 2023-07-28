@@ -3,7 +3,14 @@ import { TextInput } from "react-native-gesture-handler";
 import { GlobalStyles } from "../../../constants/style";
 import { InputProps } from "./InputProps.types";
 
-const Input = ({ style, onChangeHandler, value, placeholder, keyboard, shadow = false }: InputProps) => {
+const Input = ({
+  style,
+  onChangeHandler,
+  value,
+  placeholder,
+  keyboard,
+  shadow = false,
+}: InputProps) => {
   const shadowStyle = {
     textShadowColor: "rgba(0, 0, 0, 0.2)",
     textShadowOffset: { width: 1, height: 1 },

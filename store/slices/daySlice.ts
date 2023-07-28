@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Day } from "../../types/Day";
 import getCurrentLabelDay from "../../utils/getCurrentLabelDay";
+import getCurrentLabelDayInFullText from "../../utils/getCurrentLabelDayInFullText";
 
 const initialState: Day = {
   currentDay: getCurrentLabelDay(),
   activeDay: getCurrentLabelDay(),
+  activeDayFullText: getCurrentLabelDayInFullText(getCurrentLabelDay()),
 };
 
-/**
- * This slice store the ACTIVE DAY selected by user in Home.
- */
 const daySlice = createSlice({
   name: "day",
   initialState: initialState,
@@ -18,6 +17,7 @@ const daySlice = createSlice({
       return {
         activeDay: action.payload.activeDay,
         currentDay: state.currentDay,
+        activeDayFullText: getCurrentLabelDayInFullText(action.payload.activeDay),
       };
     },
   },

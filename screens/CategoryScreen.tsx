@@ -6,7 +6,7 @@ import { Button, DaysSelectorContainer, TaskItemCategory, Title } from "../compo
 import { GlobalStyles } from "../constants/style";
 import ROUTES from "../constants/routes";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DefaultTask } from "../types/Task";
+import { DefaultTask } from "../types/DefaultTask";
 import { resetDays } from "../store/slices/daysToAddTasksSlice";
 import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DefaultTask } from "../../types/Task";
+import { DefaultTask } from "../../types/DefaultTask";
 import customFetch from "../../utils/http/axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 

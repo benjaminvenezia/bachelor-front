@@ -1,4 +1,4 @@
-import { Task } from "../../../types/Task";
+import { Task } from "../../../types/DefaultTask";
 
 export type TaskItemCategoryProps = {
   id: string;

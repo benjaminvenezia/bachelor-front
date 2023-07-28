@@ -1,4 +1,4 @@
-import { DefaultTask } from "../types/Task";
+import { DefaultTask } from "../types/DefaultTask";
 
 /**
  * Check if a task object is present in an array of tasks objects.

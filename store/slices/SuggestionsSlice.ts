@@ -1,22 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { DefaultTask } from "../../types/DefaultTask";
 import customFetch from "../../utils/http/axios";
+import { Suggestion } from "../../types/Suggestion";
 
-export type TasksState = {
-  tasks: DefaultTask[];
+export type SuggestionState = {
+  suggestions: Suggestion[];
   isLoading: boolean;
-  areTasksFetched: boolean;
-  isAnErrorTogglingTheTask: boolean;
+  areSuggestionsFetched: boolean;
 };
 
-const initialState: TasksState = {
-  tasks: [],
+const initialState: SuggestionState = {
+  suggestions: [],
   isLoading: false,
-  areTasksFetched: false,
-  isAnErrorTogglingTheTask: false,
+  areSuggestionsFetched: false,
 };
 
-export const setTasksInDatabase: any = createAsyncThunk("tasks/setTasksInDatabase", async (tasks: DefaultTask[], thunkAPI) => {
+export const setSuggestionsInDatabase: any = createAsyncThunk("tasks/setTasksInDatabase", async (tasks: Task[], thunkAPI) => {
   try {
     const data = { tasks: tasks };
     const resp = await customFetch.post(`/tasks/multiple`, JSON.stringify(data));
@@ -27,7 +25,7 @@ export const setTasksInDatabase: any = createAsyncThunk("tasks/setTasksInDatabas
   }
 });
 
-export const fetchTasksFromDatabase: any = createAsyncThunk("tasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
+export const fetchSuggestionsFromDatabase: any = createAsyncThunk("tasks/fetchTasksFromDatabase", async (_, thunkAPI) => {
   try {
     const resp = await customFetch.get(`/tasks`);
     return resp.data;
@@ -55,21 +53,14 @@ export const toggleStatusTaskInDatabase = createAsyncThunk("tasks/toggleStatusTa
   }
 });
 
-const tasksSlice = createSlice({
-  name: "tasks",
+const suggestionsSlice = createSlice({
+  name: "suggestions",
   initialState: initialState,
   reducers: {
-    toggleStatus: (state, action) => {
-      const { id } = action.payload;
-      const taskIndex = state.tasks.findIndex((task) => task.id === id);
-      if (taskIndex !== -1) {
-        state.tasks[taskIndex].is_done = !state.tasks[taskIndex].is_done;
-      }
-    },
     addTask: (state, action): any => {
       const tasksFromCategory = action.payload;
 
-      tasksFromCategory.forEach((taskObject: DefaultTask) => {
+      tasksFromCategory.forEach((taskObject: Task) => {
         state.tasks.push(taskObject);
       });
     },

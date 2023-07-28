@@ -14,6 +14,11 @@ function DrawerNavigator() {
       <Drawer.Screen
         options={{
           title: "Home",
+          headerTintColor: "white",
+          headerTitleStyle: {
+            //Hide the title in screen
+            color: "black",
+          },
           headerRight: () => {
             return (
               <View style={styles.container}>

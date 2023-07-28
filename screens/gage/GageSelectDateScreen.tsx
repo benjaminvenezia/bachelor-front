@@ -1,19 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button, CustomCalendar, Title } from "../../components";
 import ROUTES from "../../constants/routes";
 import { GlobalStyles } from "../../constants/style";
-import { setDate } from "../../store/slices/gagesSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 const GageSelectDateScreen = ({ navigation }: any) => {
-  const dispatch = useDispatch();
-
   const { gageDay, gageMonth, gageYear, gageDateString } = useSelector((state: RootState) => state.gages);
-
-  const setTheCalendarGagePart = (data: any) => {
-    dispatch(setDate({ day: data.day, month: data.month, year: data.year, date_string: data.dateString }));
-  };
 
   const handlePress = () => {
     navigation.navigate(ROUTES.VALIDATE_GAGE);
@@ -27,10 +20,6 @@ const GageSelectDateScreen = ({ navigation }: any) => {
         </Title>
 
         <CustomCalendar
-          onDaySelect={(day: string) => console.log(`Date selected: ${day}`)}
-          onDayPress={(day: string) => setTheCalendarGagePart(day)}
-          onDayLongPress={(day: string) => setTheCalendarGagePart(day)}
-          onMonthChange={() => {}}
           onPressArrowLeft={(goToPreviousMonth: any) => {
             goToPreviousMonth();
           }}

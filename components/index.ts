@@ -18,6 +18,7 @@ import CurrentWinnerBadge from "./header/CurrentWinnerBadge/CurrentWinnerBadge";
 import UserPoints from "./header/UserPoints/UserPoints";
 import PointsLabel from "./ui/PointsLabel/PointsLabel";
 import DeltaPointsLabel from "./ui/DeltaPointsLabel/DeltaPointsLabel";
+import SuggestionsList from "./suggestions/SuggestionsList/SuggestionsList";
 
 export {
   TaskItem,
@@ -40,4 +41,5 @@ export {
   UserPoints,
   PointsLabel,
   DeltaPointsLabel,
+  SuggestionsList,
 };

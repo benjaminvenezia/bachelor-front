@@ -43,7 +43,7 @@ const HabitListItem = ({ title, description, category, path_icon }: HabitListIte
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "gray",
+    backgroundColor: "#451c40",
     minHeight: 150,
     borderRadius: 20,
     marginBottom: 10,
@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   progressBarFull: {
-    marginTop: 10,
+    marginTop: 20,
     borderWidth: 2,
-    borderColor: "lightgray",
+    borderColor: "#3f1a3a",
     borderRadius: 100,
   },
 });

@@ -51,12 +51,22 @@ const TaskItem = ({
     });
   };
 
+  const TaskToastDelete = () => {
+    Toast.show({
+      type: "success",
+      text1: `Suppression réussie.`,
+      position: "bottom",
+      bottomOffset: 120,
+    });
+  };
+
   const handleRemove = () => {
     dispatch(removeTaskFromDatabase(id));
 
     dispatch(removeTask({ id: id }));
     Vibration.vibrate(200);
     setIsDeleting(false);
+    TaskToastDelete();
   };
 
   const handlePressIn = () => {

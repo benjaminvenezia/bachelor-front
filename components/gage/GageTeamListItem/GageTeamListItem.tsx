@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import Button from "../../ui/Button/Button";
 import { Fontisto, FontAwesome5 } from "@expo/vector-icons";
-import Toast from "react-native-toast-message";
 import {
   validateGage,
   validateGageInDatabase,
 } from "../../../store/slices/gagesSlice";
+import ToastPopUp from "../../../utils/ToastPopUp";
 
 const GageTeamListItem = ({
   id,
@@ -28,15 +28,6 @@ const GageTeamListItem = ({
   const { user } = useSelector((state: RootState) => state.user);
 
   const dispatch = useDispatch();
-
-  const ToastValidateGage = () => {
-    Toast.show({
-      type: "info",
-      text1: `Le gage a été validé.`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
-  };
 
   return (
     <View style={[styles.container, is_done ? styles.isDone : {}]}>
@@ -62,7 +53,7 @@ const GageTeamListItem = ({
           onPress={() => {
             dispatch(validateGage({ gageId: id }));
             dispatch(validateGageInDatabase({ gageId: id }));
-            ToastValidateGage();
+            ToastPopUp("Le gage a été validé.");
           }}
         >
           Valider le gage

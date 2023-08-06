@@ -12,7 +12,7 @@ import {
   setUserPointsInDatabase,
 } from "../../store/slices/userSlice";
 import { removeGageTaskId } from "../../store/slices/gagesSlice";
-import Toast from "react-native-toast-message";
+import ToastPopUp from "../../utils/ToastPopUp";
 
 const GageValidateScreen = ({ navigation }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -40,15 +40,6 @@ const GageValidateScreen = ({ navigation }: any) => {
     date_string: gageDateString !== null ? gageDateString : "",
   };
 
-  const ToastAddTask = () => {
-    Toast.show({
-      type: "success",
-      text1: `Le gage a été validé. 😈`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
-  };
-
   const handlePress = () => {
     dispatch(setGageInDatabase(gageToSaveInDatabase));
     dispatch(decrementPointsInStore({ points: gageToAddInDatabase.cost }));
@@ -59,7 +50,7 @@ const GageValidateScreen = ({ navigation }: any) => {
         points: user.points - gageToAddInDatabase.cost,
       }),
     );
-    ToastAddTask();
+    ToastPopUp(`Le gage a été validé. 😈`);
     navigation.navigate(ROUTES.HOME);
   };
 

@@ -4,8 +4,8 @@ import { GlobalStyles } from "../../../constants/style";
 import { HabitListItemProps } from "./HabitListItemProps";
 import Title from "../../ui/Title/Title";
 import { useState } from "react";
-import Toast from "react-native-toast-message";
 import PointsLabel from "../../ui/PointsLabel/PointsLabel";
+import ToastPopUp from "../../../utils/ToastPopUp";
 
 const HabitListItem = ({
   title,
@@ -42,16 +42,8 @@ const HabitListItem = ({
         },
       );
     } else {
-      LimitExceededToast();
+      ToastPopUp("Niveau max atteint");
     }
-  };
-  const LimitExceededToast = () => {
-    Toast.show({
-      type: "success",
-      text1: `Niveau max atteint`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
   };
 
   return (

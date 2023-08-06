@@ -17,7 +17,7 @@ import { checkTaskIsPresent } from "../utils/checkTaskIsPresent";
 import uuid from "react-native-uuid";
 import { setTasksInDatabase, addTask } from "../store/slices/tasksSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import Toast from "react-native-toast-message";
+import ToastPopUp from "../utils/ToastPopUp";
 
 const CategoryScreen = ({ navigation, route }: any) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -66,15 +66,6 @@ const CategoryScreen = ({ navigation, route }: any) => {
     return toPush;
   };
 
-  const ToastAddTask = () => {
-    Toast.show({
-      type: "success",
-      text1: `Tâche(s) ajouté(es)!`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
-  };
-
   const setTasksInHomeScreen = (tasks: DefaultTask[]) => {
     dispatch(addTask(tasks));
     dispatch(resetDays());
@@ -86,7 +77,7 @@ const CategoryScreen = ({ navigation, route }: any) => {
 
     setTasksInHomeScreen(tasksExtracted);
     dispatch(setTasksInDatabase(tasksExtracted));
-    ToastAddTask();
+    ToastPopUp("Tâche(s) ajouté(es)!");
   };
 
   return (

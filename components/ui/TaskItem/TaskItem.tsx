@@ -23,7 +23,7 @@ import {
 import images from "../../../constants/images";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { TaskItemProps } from "./TaskItemProps.types";
-import Toast from "react-native-toast-message";
+import ToastPopUp from "../../../utils/ToastPopUp";
 
 const TaskItem = ({
   title,
@@ -42,31 +42,13 @@ const TaskItem = ({
   let timeoutDeletingId: any;
   let timeoutTogglingId: any;
 
-  const TaskToastOn = () => {
-    Toast.show({
-      type: "success",
-      text1: `+ ${reward} points`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
-  };
-
-  const TaskToastDelete = () => {
-    Toast.show({
-      type: "success",
-      text1: `Suppression réussie.`,
-      position: "bottom",
-      bottomOffset: 120,
-    });
-  };
-
   const handleRemove = () => {
     dispatch(removeTaskFromDatabase(id));
 
     dispatch(removeTask({ id: id }));
     Vibration.vibrate(200);
     setIsDeleting(false);
-    TaskToastDelete();
+    ToastPopUp(`Suppression réussie`);
   };
 
   const handlePressIn = () => {
@@ -74,7 +56,7 @@ const TaskItem = ({
     dispatch(toggleStatus({ id: id }));
 
     if (!is_done) {
-      TaskToastOn();
+      ToastPopUp(`+ ${reward} points`);
       dispatch(incrementPointsInStore({ points: reward }));
       dispatch(
         setUserPointsInDatabase({ id: user.id, points: user.points + reward }),
